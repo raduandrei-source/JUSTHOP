@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro" data-tone="light">
+<html lang="ro" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,109 +7,14 @@
 <meta name="description" content="Hub de resurse digitale pentru învățare și cercetare în arhitectură: cursuri, tutoriale video, articole și cărți, organizate pe discipline.">
 <meta name="theme-color" content="#F4F3EF">
 <script>
-  // Aspectul = fundal + culoarea textului. Se calculează și se aplică înainte de randare (fără clipire).
-  // Culorile derivate (suprafață, text secundar, linii, albastru pentru text) se calculează din cele două alese,
-  // iar textul poate fi ales doar dintre culorile cu contrast suficient pe fundalul curent.
+  // tema se aplică înainte de randare, ca pagina să nu clipească
   (function () {
-    var BG = [
-      { id: 'hartie', name: 'Hârtie', hex: '#F4F3EF' },
-      { id: 'nisip', name: 'Nisip', hex: '#E9DFCB' },
-      { id: 'salvie', name: 'Salvie', hex: '#D9E3D6' },
-      { id: 'cer', name: 'Cer', hex: '#DCE6F2' },
-      { id: 'carbune', name: 'Cărbune', hex: '#16171A' },
-      { id: 'noapte', name: 'Noapte', hex: '#0B0C0F' },
-      { id: 'bleumarin', name: 'Bleumarin', hex: '#0E1A2E' },
-      { id: 'padure', name: 'Pădure', hex: '#0F2119' }
-    ];
-    var INK = [
-      { id: 'negru', name: 'Negru', hex: '#1C1C1C' },
-      { id: 'ardezie', name: 'Ardezie', hex: '#26323E' },
-      { id: 'albastru', name: 'Albastru închis', hex: '#12264A' },
-      { id: 'verde', name: 'Verde închis', hex: '#1B3A2C' },
-      { id: 'brun', name: 'Brun', hex: '#3A2A1E' },
-      { id: 'alb', name: 'Alb cald', hex: '#F4F3EF' },
-      { id: 'crema', name: 'Cremă', hex: '#F2E8D0' },
-      { id: 'menta', name: 'Mentă', hex: '#D2EAD8' },
-      { id: 'gheata', name: 'Gheață', hex: '#D4E3F7' }
-    ];
-    var MIN = 7;            // contrast minim text/fundal (WCAG AAA, text curent)
-    var ACCENT = '#1A56DB';
-    var KEY = 'justhop-look';
-    var state = null;
-
-    function rgb(h) { var n = parseInt(h.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
-    function hex(c) { return '#' + c.map(function (v) { return ('0' + Math.round(v).toString(16)).slice(-2); }).join(''); }
-    function lum(h) {
-      var c = rgb(h).map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
-      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+    var t = null;
+    try { t = localStorage.getItem('justhop-theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-    function contrast(a, b) { var x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
-    function mix(a, b, t) { var p = rgb(a), q = rgb(b); return hex(p.map(function (v, i) { return v * (1 - t) + q[i] * t; })); }
-    function find(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
-    function compatible(bgId, inkId) { return contrast(find(BG, bgId).hex, find(INK, inkId).hex) >= MIN; }
-
-    // cea mai apropiată (ca luminozitate) culoare de text lizibilă pe fundalul dat
-    function nearestInk(bgId, prevInkId) {
-      var prev = lum(find(INK, prevInkId).hex), best = null, bestD = 9;
-      INK.forEach(function (i) {
-        if (!compatible(bgId, i.id)) return;
-        var d = Math.abs(lum(i.hex) - prev);
-        if (d < bestD) { bestD = d; best = i.id; }
-      });
-      return best;
-    }
-
-    function derive(bg, ink) {
-      var dark = lum(bg) < 0.18;
-      var surface = dark ? mix(bg, '#ffffff', 0.06) : mix(bg, '#ffffff', 0.7);
-      var muted = ink, t;
-      for (t = 0.5; t >= 0.15; t -= 0.05) {
-        muted = mix(ink, bg, t);
-        if (contrast(muted, bg) >= 4.6 && contrast(muted, surface) >= 4.6) break;
-      }
-      var accentText = ACCENT;
-      for (t = 0; t <= 0.9; t += 0.05) {
-        accentText = mix(ACCENT, '#ffffff', t);
-        if (contrast(accentText, bg) >= 4.6) break;
-      }
-      var r = rgb(ink).join(',');
-      return {
-        '--bg': bg, '--surface': surface, '--ink': ink, '--border': ink,
-        '--muted': muted, '--rule': mix(bg, ink, 0.12), '--line': mix(bg, ink, 0.18),
-        '--accent-text': accentText,
-        '--shadow-rest': 'rgba(' + r + ',0.06)', '--shadow-lift': 'rgba(' + r + ',0.16)'
-      };
-    }
-
-    function apply(bgId, inkId) {
-      var bg = find(BG, bgId), ink = find(INK, inkId), root = document.documentElement;
-      var v = derive(bg.hex, ink.hex);
-      for (var k in v) root.style.setProperty(k, v[k]);
-      root.dataset.tone = lum(bg.hex) < 0.18 ? 'dark' : 'light';
-      root.style.colorScheme = root.dataset.tone;
-      var m = document.querySelector('meta[name="theme-color"]');
-      if (m) m.content = bg.hex;
-      state = { bg: bgId, ink: inkId };
-    }
-
-    function set(bgId, inkId, persist) {
-      if (!compatible(bgId, inkId)) inkId = nearestInk(bgId, inkId);
-      apply(bgId, inkId);
-      if (persist) { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
-    }
-
-    var start = null;
-    try { start = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
-    if (!start || !find(BG, start.bg) || !find(INK, start.ink)) {
-      var old = null;
-      try { old = localStorage.getItem('justhop-theme'); } catch (e) {}
-      var dark = old ? old === 'dark' : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
-      start = dark ? { bg: 'carbune', ink: 'alb' } : { bg: 'hartie', ink: 'negru' };
-    }
-    set(start.bg, start.ink, false);
-
-    window.JustLook = { BG: BG, INK: INK, MIN: MIN, find: find, compatible: compatible, contrast: contrast,
-      get: function () { return state; }, set: set };
+    document.documentElement.dataset.theme = t;
   })();
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -133,7 +38,21 @@
     --wrap: 1280px;
     --mono: 'Space Mono', monospace;
   }
-  * { box-sizing: border-box; }
+  :root[data-theme="dark"] {
+    --bg: #121316;
+    --surface: #1A1B1F;
+    --ink: #F4F3EF;
+    --border: #F4F3EF;
+    --accent-text: #7FA2F0;
+    --muted: #9A9996;
+    --rule: #2C2D32;
+    --line: #3B3B3D;
+    --shadow-rest: rgba(244,243,239,0.06);
+    --shadow-lift: rgba(244,243,239,0.16);
+    color-scheme: dark;
+  }
+
+$1
   html { scroll-padding-top: var(--header-h); }
   body {
     margin: 0;
@@ -199,9 +118,7 @@
     text-decoration: none;
   }
   nav a:hover, nav a[aria-current] { color: var(--accent-text); }
-  /* meniul de aspect: fundal + culoarea textului */
-  .look { position: relative; display: flex; }
-  .look-toggle {
+  .theme-toggle {
     width: var(--header-h);
     border: none;
     border-left: 1px solid var(--line);
@@ -211,45 +128,11 @@
     place-items: center;
     padding: 0;
   }
-  .look-toggle:hover, .look-toggle[aria-expanded="true"] { background: var(--bg); }
-  .look-toggle svg { width: 18px; height: 18px; }
-  .look-menu {
-    position: absolute;
-    right: 0;
-    top: calc(100% + 1px);
-    width: 300px;
-    padding: 16px;
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    box-shadow: 4px 5px 0 var(--shadow-lift);
-    z-index: 60;
-  }
-  .look-menu[hidden] { display: none; }
-  .look-menu h4 { margin: 0 0 8px; font-weight: 400; color: var(--muted); }
-  .look-menu h4:not(:first-child) { margin-top: 16px; }
-  .swatches { display: flex; flex-wrap: wrap; gap: 8px; }
-  .swatch {
-    position: relative;
-    width: 34px;
-    height: 34px;
-    padding: 0;
-    border: 1.5px solid var(--border);
-    display: grid;
-    place-items: center;
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .swatch[aria-pressed="true"] { outline: 2px solid var(--accent-text); outline-offset: 2px; }
-  .swatch:disabled { opacity: 0.3; cursor: not-allowed; }
-  .swatch:disabled::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top right, transparent calc(50% - 1px), var(--border) 50%, transparent calc(50% + 1px));
-  }
-  .look-note { margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
+  .theme-toggle:hover { background: var(--bg); }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
   /* ---------- DISCIPLINE STRIP ---------- */
   .disc-strip { background: var(--accent); color: #fff; }
@@ -449,7 +332,7 @@
   .cat-item:hover { color: var(--accent-text); }
   .cat-item.active { font-weight: 700; }
   .dot { width: 10px; height: 10px; flex-shrink: 0; }
-  [data-tone="dark"] .dot { outline: 1px solid var(--muted); }
+  [data-theme="dark"] .dot { outline: 1px solid var(--muted); }
   .cat-count { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; }
 
   /* ---------- CARDURI ---------- */
@@ -611,18 +494,10 @@
       <a href="#">Newsletter</a>
       <a href="#">Despre</a>
     </nav>
-    <div class="look" id="look">
-      <button class="look-toggle" id="lookToggle" type="button" aria-label="Alege aspectul: fundal și culoarea textului" aria-expanded="false" aria-controls="lookMenu" title="Aspect">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.7 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>
-      </button>
-      <div class="look-menu" id="lookMenu" role="dialog" aria-label="Aspect" hidden>
-        <h4 class="label">Fundal</h4>
-        <div class="swatches" id="bgSwatches"></div>
-        <h4 class="label">Text</h4>
-        <div class="swatches" id="inkSwatches"></div>
-        <p class="look-note">Sunt active doar combinațiile cu contrast de cel puțin 7:1, ca textul să rămână lizibil.</p>
-      </div>
-    </div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Comută tema închisă" title="Comută tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="8" height="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+    </button>
   </div>
 </header>
 
@@ -740,61 +615,31 @@
 </footer>
 
 <script>
-  /* ---------- ASPECT (fundal + culoarea textului; motorul e în <head>) ---------- */
-  const Look = window.JustLook;
-  const lookMenu = document.getElementById('lookMenu');
-  const lookToggle = document.getElementById('lookToggle');
+  /* ---------- TEMĂ ---------- */
+  const THEME_KEY = 'justhop-theme';
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
 
-  function swatch(label, title) {
-    const el = document.createElement('button');
-    el.type = 'button';
-    el.className = 'swatch';
-    el.title = title;
-    el.setAttribute('aria-label', label);
-    return el;
+  function setTheme(t, persist) {
+    document.documentElement.dataset.theme = t;
+    themeMeta.content = t === 'dark' ? '#121316' : '#F4F3EF';
+    const btn = document.getElementById('themeToggle');
+    btn.setAttribute('aria-label', t === 'dark' ? 'Comută tema deschisă' : 'Comută tema închisă');
+    if (persist) {
+      try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+    }
   }
 
-  function renderLook() {
-    const cur = Look.get();
-    const bgBox = document.getElementById('bgSwatches');
-    const inkBox = document.getElementById('inkSwatches');
-    bgBox.innerHTML = '';
-    inkBox.innerHTML = '';
-    // fundalul se poate alege oricând; dacă textul curent nu mai e lizibil, se schimbă singur cu cel mai apropiat lizibil
-    Look.BG.forEach(b => {
-      const el = swatch('Fundal ' + b.name, b.name);
-      el.style.background = b.hex;
-      el.setAttribute('aria-pressed', b.id === cur.bg);
-      el.onclick = () => { Look.set(b.id, cur.ink, true); renderLook(); };
-      bgBox.appendChild(el);
-    });
-    // textul se poate alege doar dintre culorile cu contrast suficient pe fundalul curent
-    const bgHex = Look.find(Look.BG, cur.bg).hex;
-    Look.INK.forEach(i => {
-      const ok = Look.compatible(cur.bg, i.id);
-      const el = swatch('Text ' + i.name, ok ? i.name : i.name + ' — contrast insuficient pe acest fundal');
-      el.textContent = 'Aa';
-      el.style.background = bgHex;
-      el.style.color = i.hex;
-      el.disabled = !ok;
-      el.setAttribute('aria-pressed', i.id === cur.ink);
-      el.onclick = () => { Look.set(cur.bg, i.id, true); renderLook(); };
-      inkBox.appendChild(el);
-    });
-  }
-
-  function closeLook() {
-    lookMenu.hidden = true;
-    lookToggle.setAttribute('aria-expanded', 'false');
-  }
-  lookToggle.addEventListener('click', () => {
-    const opening = lookMenu.hidden;
-    lookMenu.hidden = !opening;
-    lookToggle.setAttribute('aria-expanded', String(opening));
-    if (opening) renderLook();
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
   });
-  document.addEventListener('click', e => { if (!lookMenu.hidden && !e.target.closest('#look')) closeLook(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLook(); });
+
+  // fără alegere salvată, urmăm setarea sistemului
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    let saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (err) {}
+    if (!saved) setTheme(e.matches ? 'dark' : 'light', false);
+  });
+  setTheme(document.documentElement.dataset.theme, false);
 
   /* ---------- DATE ---------- */
   let categories = [];

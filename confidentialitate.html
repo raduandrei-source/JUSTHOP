@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politica de confidențialitate — justhop</title>
+<meta name="robots" content="noindex">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('justhop-theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F4F3EF; --surface:#FFFFFF; --ink:#1C1C1C; --muted:#6B6B6B; --line:#CDCCC8; --accent-text:#1A56DB; --mono:'Space Mono', monospace; }
+  :root[data-theme="dark"] { --bg:#121316; --surface:#1A1B1F; --ink:#F4F3EF; --muted:#9A9996; --line:#3B3B3D; --accent-text:#7FA2F0; color-scheme:dark; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:'Space Grotesk', sans-serif; font-size:16px; line-height:1.65; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; border-left: 1px solid var(--line); border-right: 1px solid var(--line); min-height: 100vh; }
+  .back { font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; }
+  .back:hover { color: var(--accent-text); }
+  h1 { margin: 24px 0 8px; font-size: 40px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 500; }
+  h2 { margin: 36px 0 8px; font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+  p, li { color: var(--muted); }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 20px; }
+  strong { color: var(--ink); font-weight: 500; }
+  a { color: var(--accent-text); }
+  .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">← justhop</a>
+  <h1>Politica de confidențialitate</h1>
+  <p class="meta">Ultima actualizare: 26.10.2026</p>
+
+  <h2>Cine prelucrează datele</h2>
+  <p>Operatorul datelor este <strong>Radu Andrei</strong>, care administrează justhop. Contact pentru orice întrebare despre datele tale: <a href="mailto:radu.and3@gmail.com">radu.and3@gmail.com</a>.</p>
+
+  <h2>Ce date colectăm</h2>
+  <p>Doar dacă te abonezi la newsletter:</p>
+  <ul>
+    <li><strong>adresa de email</strong>;</li>
+    <li><strong>disciplinele</strong> și <strong>frecvența</strong> (săptămânal sau lunar) pe care le alegi;</li>
+    <li><strong>ziua abonării</strong>, folosită ca să împărțim trimiterile pe zile;</li>
+    <li>data și ora confirmării abonării, păstrate în jurnalul serviciului de trimitere, ca dovadă a acordului tău.</li>
+  </ul>
+  <p>Site-ul nu folosește cookie-uri de urmărire sau de publicitate. În browser se păstrează doar preferința pentru tema zi / noapte, care nu pleacă de pe dispozitivul tău.</p>
+
+  <h2>De ce și pe ce bază</h2>
+  <p>Folosim datele doar ca să îți trimitem emailuri cu resurse noi din categoriile alese. Baza legală este <strong>acordul tău</strong> (art. 6 alin. 1 lit. a din GDPR), exprimat prin bifa din formular și confirmat prin linkul primit pe email. Nu vindem datele și nu le folosim pentru alte scopuri.</p>
+
+  <h2>Cine mai are acces la ele</h2>
+  <ul>
+    <li><strong>Brevo</strong> (Franța, UE) trimite emailurile și păstrează lista de abonați, ca persoană împuternicită.</li>
+    <li><strong>Vercel Inc.</strong> (SUA) găzduiește site-ul și rulează funcția care primește formularul; în acest context adresa ta de email și adresa IP de la care trimiți cererea trec prin serverele lui. Transferul către SUA se face pe baza clauzelor contractuale standard ale Uniunii Europene, conform <a href="https://vercel.com/legal/dpa" rel="noopener">acordului de prelucrare a datelor publicat de Vercel</a>.</li>
+  </ul>
+
+  <h2>Cât timp le păstrăm</h2>
+  <p>Cât timp ești abonat. Când te dezabonezi (linkul din orice email), nu mai primești mesaje, iar adresa ta este ștearsă definitiv din lista de trimitere în cel mult 30 de zile. După ștergere nu păstrăm nicio dată despre tine.</p>
+
+  <h2>Drepturile tale</h2>
+  <p>Poți cere oricând accesul la date, corectarea, ștergerea, restricționarea prelucrării sau portabilitatea lor, și poți retrage acordul fără să afecteze trimiterile de până atunci. Scrie-mi la <a href="mailto:radu.and3@gmail.com">radu.and3@gmail.com</a>. Ai dreptul să depui o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href="https://www.dataprotection.ro" rel="noopener">www.dataprotection.ro</a>.</p>
+</div>
+</body>
+</html>

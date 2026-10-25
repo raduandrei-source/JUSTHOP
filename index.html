@@ -410,6 +410,58 @@ $1
 
   .sentinel { text-align: center; padding: 40px 0 0; color: var(--muted); }
 
+  /* ---------- NEWSLETTER ---------- */
+  .nl { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; padding: 56px var(--pad-x); }
+  .nl h2 { margin: 0; font-size: 36px; line-height: 1.05; font-weight: 500; letter-spacing: -0.03em; }
+  .nl-text p { margin: 16px 0 0; max-width: 460px; color: var(--muted); }
+  .nl-text .nl-done { color: var(--ink); font-weight: 500; border-left: 3px solid var(--accent-text); padding-left: 12px; }
+  .nl-done[hidden] { display: none; }
+  .nl-form { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+  .nl-field { display: flex; flex-direction: column; gap: 6px; }
+  .nl-field input[type="email"] {
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 14px;
+    outline: none;
+    border-radius: 0;
+  }
+  .nl-field input::placeholder { color: var(--muted); }
+  .nl-form input:focus-visible, .nl-submit:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+  .nl-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .nl-form legend { padding: 0; margin-bottom: 8px; color: var(--muted); }
+  .nl-hint { text-transform: none; letter-spacing: 0; }
+  .nl-cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 16px; }
+  .nl-cats label, .nl-freq label { display: flex; align-items: center; gap: 8px; font-size: 14px; line-height: 1.3; padding: 4px 0; cursor: pointer; }
+  .nl-freq { display: flex; gap: 24px; }
+  .nl-form input[type="checkbox"], .nl-form input[type="radio"] { accent-color: var(--accent-text); margin: 0; flex-shrink: 0; }
+  .nl-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .nl-consent { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; line-height: 1.5; color: var(--muted); cursor: pointer; }
+  .nl-consent input { margin-top: 3px; }
+  .nl-consent a { color: var(--accent-text); }
+  .nl-submit {
+    align-self: flex-start;
+    padding: 12px 22px;
+    border: 1.5px solid var(--border);
+    border-radius: 0;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 var(--shadow-rest);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .nl-submit:hover { transform: translate(-1px, -2px); box-shadow: 4px 5px 0 var(--shadow-lift); }
+  .nl-submit:disabled { opacity: 0.5; cursor: wait; transform: none; }
+  .nl-status { margin: 0; min-height: 1.4em; font-size: 14px; }
+  .nl-status.ok { font-weight: 500; border-left: 3px solid var(--accent-text); padding-left: 10px; }
+  .nl-status.err { border-left: 3px solid #D14343; padding-left: 10px; }
+
   /* ---------- SUBSOL ---------- */
   .site-footer { border-top: 1px solid var(--line); }
   .footer-grid {
@@ -459,6 +511,8 @@ $1
     .sidebar { position: static; max-height: 240px; }
     .sidebar:hover { transform: none; }
     .kbd { display: none; }
+    .nl { grid-template-columns: 1fr; gap: 32px; padding: 40px var(--pad-x); }
+    .nl h2 { font-size: 28px; }
   }
   @media (max-width: 600px) {
     nav { display: none; }
@@ -491,7 +545,7 @@ $1
     </a>
     <nav class="label">
       <a href="#resurse" aria-current="page">Resurse</a>
-      <a href="#">Newsletter</a>
+      <a href="#newsletter">Newsletter</a>
       <a href="#">Despre</a>
     </nav>
     <button class="theme-toggle" id="themeToggle" type="button" aria-label="Comută tema închisă" title="Comută tema">
@@ -555,6 +609,44 @@ $1
       </main>
     </div>
   </section>
+
+  <section class="section" id="newsletter">
+    <div class="section-bar label">
+      <strong>Newsletter</strong>
+      <span class="hide-sm">gratuit · te dezabonezi oricând</span>
+    </div>
+    <div class="nl">
+      <div class="nl-text">
+        <h2>Resursele noi, direct în email.</h2>
+        <p>Alegi disciplinele care te interesează și cât de des vrei emailul: săptămânal sau lunar. Primești doar resursele noi din categoriile bifate.</p>
+        <p class="nl-done" id="nlDone" hidden>Abonarea ta e confirmată. Mulțumim!</p>
+      </div>
+      <form class="nl-form" id="nlForm" novalidate>
+        <label class="nl-field">
+          <span class="label">Email</span>
+          <input type="email" id="nlEmail" name="email" autocomplete="email" placeholder="nume@exemplu.ro">
+        </label>
+        <fieldset>
+          <legend class="label">Ce te interesează <span class="nl-hint">(nimic bifat = toate)</span></legend>
+          <div class="nl-cats" id="nlCats"></div>
+        </fieldset>
+        <fieldset>
+          <legend class="label">Cât de des</legend>
+          <div class="nl-freq">
+            <label><input type="radio" name="frequency" value="saptamanal" checked> săptămânal</label>
+            <label><input type="radio" name="frequency" value="lunar"> lunar</label>
+          </div>
+        </fieldset>
+        <input class="nl-trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="nl-consent">
+          <input type="checkbox" id="nlConsent">
+          <span>Sunt de acord să primesc emailuri cu resurse noi de la justhop. Datele mele sunt folosite doar pentru asta și mă pot dezabona oricând. <a href="confidentialitate.html" target="_blank" rel="noopener">Politica de confidențialitate</a></span>
+        </label>
+        <button class="nl-submit" type="submit" id="nlSubmit">Abonează-mă</button>
+        <p class="nl-status" id="nlStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
 </div>
 
 <footer class="site-footer">
@@ -595,7 +687,7 @@ $1
         <h4 class="label">Newsletter</h4>
         <ul>
           <li>Resursele noi, vineri seara.</li>
-          <li><a href="#">Abonează-te →</a></li>
+          <li><a href="#newsletter">Abonează-te →</a></li>
         </ul>
       </div>
       <div>
@@ -743,6 +835,62 @@ $1
       document.getElementById('resurse').scrollIntoView();
     });
   }
+
+  // newsletter: disciplinele din formular vin din aceleași date ca restul paginii
+  function renderNewsletterCats() {
+    document.getElementById('nlCats').innerHTML = categories.map(c =>
+      `<label><input type="checkbox" value="${c.id}"><span class="dot" style="background:${c.color}"></span>${esc(c.name)}</label>`
+    ).join('');
+  }
+
+  const nlForm = document.getElementById('nlForm');
+  nlForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const status = document.getElementById('nlStatus');
+    const btn = document.getElementById('nlSubmit');
+    const say = (cls, msg) => { status.className = 'nl-status ' + cls; status.textContent = msg; };
+    const email = document.getElementById('nlEmail').value.trim();
+    if (!email || !document.getElementById('nlEmail').validity.valid) return say('err', 'Scrie o adresă de email validă.');
+    if (!document.getElementById('nlConsent').checked) return say('err', 'Bifează acordul pentru primirea emailurilor.');
+    const categories = [...nlForm.querySelectorAll('#nlCats input:checked')].map(i => i.value);
+    const frequency = nlForm.querySelector('input[name="frequency"]:checked').value;
+    btn.disabled = true;
+    say('', 'Se trimite...');
+    try {
+      const r = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email, categories, frequency, consent: true, website: nlForm.elements.website.value }),
+      });
+      let j = {};
+      try { j = await r.json(); } catch (err) { /* răspuns fără JSON */ }
+      if (r.ok && j.ok) {
+        say('ok', j.message || 'Verifică-ți emailul și confirmă abonarea.');
+        document.getElementById('nlEmail').value = '';
+      } else {
+        say('err', j.error || 'Abonarea nu e disponibilă acum. Încearcă din nou mai târziu.');
+      }
+    } catch (err) {
+      say('err', 'Nu am putut trimite cererea. Verifică conexiunea și încearcă din nou.');
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  // grila se încarcă treptat și mută secțiunea în jos; încărcăm tot (sunt puține resurse) și abia apoi derulăm
+  function goNewsletter() {
+    while (shown < currentResults.length) loadMore();
+    document.getElementById('newsletter').scrollIntoView();
+  }
+  document.querySelectorAll('a[href="#newsletter"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    history.replaceState(null, '', '#newsletter');
+    goNewsletter();
+  }));
+
+  // după ce confirmă din email, Brevo îl aduce înapoi aici cu ?abonat=1
+  const justConfirmed = new URLSearchParams(location.search).get('abonat') === '1';
+  if (justConfirmed) document.getElementById('nlDone').hidden = false;
 
   // banda albastră: deasupra ei, rotița mouse-ului derulează pe orizontală; margini estompate cât mai e de văzut
   function setupStrip() {
@@ -909,10 +1057,12 @@ $1
       renderDiscStrip();
       setupStrip();
       renderFooterCats();
+      renderNewsletterCats();
       renderWeek();
       renderLatest();
       applyFilters();
       observer.observe(document.getElementById('sentinel'));
+      if (location.hash === '#newsletter' || justConfirmed) goNewsletter();
     })
     .catch(() => {
       document.getElementById('searchMeta').textContent = 'eroare';

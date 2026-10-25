@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro" data-theme="light">
+<html lang="ro" data-tone="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +7,109 @@
 <meta name="description" content="Hub de resurse digitale pentru învățare și cercetare în arhitectură: cursuri, tutoriale video, articole și cărți, organizate pe discipline.">
 <meta name="theme-color" content="#F4F3EF">
 <script>
-  // tema se aplică înainte de randare, ca pagina să nu clipească
+  // Aspectul = fundal + culoarea textului. Se calculează și se aplică înainte de randare (fără clipire).
+  // Culorile derivate (suprafață, text secundar, linii, albastru pentru text) se calculează din cele două alese,
+  // iar textul poate fi ales doar dintre culorile cu contrast suficient pe fundalul curent.
   (function () {
-    var t = null;
-    try { t = localStorage.getItem('justhop-theme'); } catch (e) {}
-    if (t !== 'light' && t !== 'dark') {
-      t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var BG = [
+      { id: 'hartie', name: 'Hârtie', hex: '#F4F3EF' },
+      { id: 'nisip', name: 'Nisip', hex: '#E9DFCB' },
+      { id: 'salvie', name: 'Salvie', hex: '#D9E3D6' },
+      { id: 'cer', name: 'Cer', hex: '#DCE6F2' },
+      { id: 'carbune', name: 'Cărbune', hex: '#16171A' },
+      { id: 'noapte', name: 'Noapte', hex: '#0B0C0F' },
+      { id: 'bleumarin', name: 'Bleumarin', hex: '#0E1A2E' },
+      { id: 'padure', name: 'Pădure', hex: '#0F2119' }
+    ];
+    var INK = [
+      { id: 'negru', name: 'Negru', hex: '#1C1C1C' },
+      { id: 'ardezie', name: 'Ardezie', hex: '#26323E' },
+      { id: 'albastru', name: 'Albastru închis', hex: '#12264A' },
+      { id: 'verde', name: 'Verde închis', hex: '#1B3A2C' },
+      { id: 'brun', name: 'Brun', hex: '#3A2A1E' },
+      { id: 'alb', name: 'Alb cald', hex: '#F4F3EF' },
+      { id: 'crema', name: 'Cremă', hex: '#F2E8D0' },
+      { id: 'menta', name: 'Mentă', hex: '#D2EAD8' },
+      { id: 'gheata', name: 'Gheață', hex: '#D4E3F7' }
+    ];
+    var MIN = 7;            // contrast minim text/fundal (WCAG AAA, text curent)
+    var ACCENT = '#1A56DB';
+    var KEY = 'justhop-look';
+    var state = null;
+
+    function rgb(h) { var n = parseInt(h.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+    function hex(c) { return '#' + c.map(function (v) { return ('0' + Math.round(v).toString(16)).slice(-2); }).join(''); }
+    function lum(h) {
+      var c = rgb(h).map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
     }
-    document.documentElement.dataset.theme = t;
+    function contrast(a, b) { var x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); }
+    function mix(a, b, t) { var p = rgb(a), q = rgb(b); return hex(p.map(function (v, i) { return v * (1 - t) + q[i] * t; })); }
+    function find(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return null; }
+    function compatible(bgId, inkId) { return contrast(find(BG, bgId).hex, find(INK, inkId).hex) >= MIN; }
+
+    // cea mai apropiată (ca luminozitate) culoare de text lizibilă pe fundalul dat
+    function nearestInk(bgId, prevInkId) {
+      var prev = lum(find(INK, prevInkId).hex), best = null, bestD = 9;
+      INK.forEach(function (i) {
+        if (!compatible(bgId, i.id)) return;
+        var d = Math.abs(lum(i.hex) - prev);
+        if (d < bestD) { bestD = d; best = i.id; }
+      });
+      return best;
+    }
+
+    function derive(bg, ink) {
+      var dark = lum(bg) < 0.18;
+      var surface = dark ? mix(bg, '#ffffff', 0.06) : mix(bg, '#ffffff', 0.7);
+      var muted = ink, t;
+      for (t = 0.5; t >= 0.15; t -= 0.05) {
+        muted = mix(ink, bg, t);
+        if (contrast(muted, bg) >= 4.6 && contrast(muted, surface) >= 4.6) break;
+      }
+      var accentText = ACCENT;
+      for (t = 0; t <= 0.9; t += 0.05) {
+        accentText = mix(ACCENT, '#ffffff', t);
+        if (contrast(accentText, bg) >= 4.6) break;
+      }
+      var r = rgb(ink).join(',');
+      return {
+        '--bg': bg, '--surface': surface, '--ink': ink, '--border': ink,
+        '--muted': muted, '--rule': mix(bg, ink, 0.12), '--line': mix(bg, ink, 0.18),
+        '--accent-text': accentText,
+        '--shadow-rest': 'rgba(' + r + ',0.06)', '--shadow-lift': 'rgba(' + r + ',0.16)'
+      };
+    }
+
+    function apply(bgId, inkId) {
+      var bg = find(BG, bgId), ink = find(INK, inkId), root = document.documentElement;
+      var v = derive(bg.hex, ink.hex);
+      for (var k in v) root.style.setProperty(k, v[k]);
+      root.dataset.tone = lum(bg.hex) < 0.18 ? 'dark' : 'light';
+      root.style.colorScheme = root.dataset.tone;
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.content = bg.hex;
+      state = { bg: bgId, ink: inkId };
+    }
+
+    function set(bgId, inkId, persist) {
+      if (!compatible(bgId, inkId)) inkId = nearestInk(bgId, inkId);
+      apply(bgId, inkId);
+      if (persist) { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+    }
+
+    var start = null;
+    try { start = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    if (!start || !find(BG, start.bg) || !find(INK, start.ink)) {
+      var old = null;
+      try { old = localStorage.getItem('justhop-theme'); } catch (e) {}
+      var dark = old ? old === 'dark' : (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+      start = dark ? { bg: 'carbune', ink: 'alb' } : { bg: 'hartie', ink: 'negru' };
+    }
+    set(start.bg, start.ink, false);
+
+    window.JustLook = { BG: BG, INK: INK, MIN: MIN, find: find, compatible: compatible, contrast: contrast,
+      get: function () { return state; }, set: set };
   })();
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -28,6 +123,7 @@
     --accent-text: #1A56DB;
     --muted: #6B6B6B;
     --rule: #E6E4DD;
+    --line: #CDCCC8;
     --shadow-rest: rgba(28,28,28,0.06);
     --shadow-lift: rgba(28,28,28,0.14);
 
@@ -37,19 +133,6 @@
     --wrap: 1280px;
     --mono: 'Space Mono', monospace;
   }
-  :root[data-theme="dark"] {
-    --bg: #121316;
-    --surface: #1A1B1F;
-    --ink: #F4F3EF;
-    --border: #F4F3EF;
-    --accent-text: #7FA2F0;
-    --muted: #9A9996;
-    --rule: #2C2D32;
-    --shadow-rest: rgba(244,243,239,0.06);
-    --shadow-lift: rgba(244,243,239,0.16);
-    color-scheme: dark;
-  }
-
   * { box-sizing: border-box; }
   html { scroll-padding-top: var(--header-h); }
   body {
@@ -78,8 +161,8 @@
   .wrap {
     max-width: var(--wrap);
     margin: 0 auto;
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
   }
 
   /* ---------- HEADER ---------- */
@@ -88,7 +171,7 @@
     top: 0;
     z-index: 50;
     background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
   }
   .header-inner {
     height: var(--header-h);
@@ -112,25 +195,61 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
-    border-left: 1px solid var(--border);
+    border-left: 1px solid var(--line);
     text-decoration: none;
   }
   nav a:hover, nav a[aria-current] { color: var(--accent-text); }
-  .theme-toggle {
+  /* meniul de aspect: fundal + culoarea textului */
+  .look { position: relative; display: flex; }
+  .look-toggle {
     width: var(--header-h);
     border: none;
-    border-left: 1px solid var(--border);
+    border-left: 1px solid var(--line);
     background: transparent;
     cursor: pointer;
     display: grid;
     place-items: center;
     padding: 0;
   }
-  .theme-toggle:hover { background: var(--bg); }
-  .theme-toggle svg { width: 18px; height: 18px; }
-  .theme-toggle .icon-sun { display: none; }
-  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+  .look-toggle:hover, .look-toggle[aria-expanded="true"] { background: var(--bg); }
+  .look-toggle svg { width: 18px; height: 18px; }
+  .look-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 1px);
+    width: 300px;
+    padding: 16px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    box-shadow: 4px 5px 0 var(--shadow-lift);
+    z-index: 60;
+  }
+  .look-menu[hidden] { display: none; }
+  .look-menu h4 { margin: 0 0 8px; font-weight: 400; color: var(--muted); }
+  .look-menu h4:not(:first-child) { margin-top: 16px; }
+  .swatches { display: flex; flex-wrap: wrap; gap: 8px; }
+  .swatch {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1.5px solid var(--border);
+    display: grid;
+    place-items: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .swatch[aria-pressed="true"] { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+  .swatch:disabled { opacity: 0.3; cursor: not-allowed; }
+  .swatch:disabled::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top right, transparent calc(50% - 1px), var(--border) 50%, transparent calc(50% + 1px));
+  }
+  .look-note { margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: var(--muted); }
 
   /* ---------- DISCIPLINE STRIP ---------- */
   .disc-strip { background: var(--accent); color: #fff; }
@@ -143,6 +262,10 @@
     padding: 0 calc(var(--pad-x) - 10px);
   }
   .disc-strip .inner::-webkit-scrollbar { display: none; }
+  /* estompare la margini când mai sunt categorii de văzut; fără să crească banda */
+  .disc-strip .inner.fade-r { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); }
+  .disc-strip .inner.fade-l { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 44px), transparent); }
+  .disc-strip .inner.fade-l.fade-r { -webkit-mask-image: linear-gradient(to right, transparent, #000 44px, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, transparent, #000 44px, #000 calc(100% - 44px), transparent); }
   .disc-strip button {
     flex-shrink: 0;
     height: 32px;
@@ -157,7 +280,36 @@
   .disc-strip button.active { background: #fff; color: var(--accent); text-decoration: none; }
 
   /* ---------- INTRO ---------- */
-  .intro { padding: 80px var(--pad-x); }
+  .intro {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 56px;
+    align-items: start;
+    padding: 80px var(--pad-x);
+  }
+
+  /* lista „ultimele adăugate": text mic, spălăcit; la hover revine textul și culoarea categoriei */
+  .latest { min-width: 0; padding-top: 8px; }
+  .latest-head { margin: 0 0 10px; color: var(--muted); }
+  .latest ul { list-style: none; margin: 0; padding: 0; }
+  .latest li a, .latest li .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-decoration: none;
+    color: var(--muted);
+    transition: color 0.15s ease;
+  }
+  .latest .item-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .latest .tag { width: 38px; flex-shrink: 0; text-align: center; opacity: 0.4; transition: opacity 0.15s ease; }
+  .latest li a:hover { color: var(--ink); }
+  .latest li a:hover .tag { opacity: 1; }
   .intro h1 {
     margin: 0;
     max-width: 768px;
@@ -176,7 +328,7 @@
   }
 
   /* ---------- BARA DE SECȚIUNE ---------- */
-  .section { border-top: 1px solid var(--border); }
+  .section { border-top: 1px solid var(--line); }
   .section-bar {
     position: sticky;
     top: var(--header-h);
@@ -188,7 +340,7 @@
     gap: 16px;
     padding: 0 var(--pad-x);
     background: var(--bg);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
     color: var(--muted);
   }
   .section-bar strong { color: var(--ink); font-weight: 400; }
@@ -198,7 +350,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    background: var(--border);
+    background: var(--line);
   }
   .week-cell {
     background: var(--bg);
@@ -217,7 +369,7 @@
     height: 56px;
     padding: 0 var(--pad-x);
     background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
     font-family: var(--mono);
     font-size: 14px;
   }
@@ -297,7 +449,7 @@
   .cat-item:hover { color: var(--accent-text); }
   .cat-item.active { font-weight: 700; }
   .dot { width: 10px; height: 10px; flex-shrink: 0; }
-  [data-theme="dark"] .dot { outline: 1px solid var(--muted); }
+  [data-tone="dark"] .dot { outline: 1px solid var(--muted); }
   .cat-count { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; }
 
   /* ---------- CARDURI ---------- */
@@ -346,7 +498,7 @@
   }
   .author-link { cursor: pointer; border-bottom: 1px solid var(--rule); }
   .author-link:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
-  .sidebar-sub { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .sidebar-sub { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--rule); }
   .sidebar-sub[hidden] { display: none; }
   .card-body { padding: 20px 24px 24px; flex: 1; }
   .card-title { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 500; letter-spacing: -0.02em; }
@@ -367,7 +519,7 @@
     gap: 16px;
     margin-top: 16px;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
     color: var(--muted);
   }
   .date-head:first-child { margin-top: 0; }
@@ -376,12 +528,12 @@
   .sentinel { text-align: center; padding: 40px 0 0; color: var(--muted); }
 
   /* ---------- SUBSOL ---------- */
-  .site-footer { border-top: 1px solid var(--border); }
+  .site-footer { border-top: 1px solid var(--line); }
   .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     gap: 1px;
-    background: var(--border);
+    background: var(--line);
   }
   .footer-grid > div { background: var(--bg); padding: 32px; }
   .footer-grid > .footer-brand { padding: var(--pad-x); }
@@ -405,7 +557,7 @@
     justify-content: space-between;
     gap: 16px;
     padding: 14px var(--pad-x);
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--line);
     color: var(--muted);
   }
 
@@ -416,7 +568,7 @@
   }
   @media (max-width: 860px) {
     :root { --pad-x: 24px; }
-    .intro { padding: 56px var(--pad-x); }
+    .intro { grid-template-columns: 1fr; gap: 32px; padding: 56px var(--pad-x); }
     .intro h1 { font-size: 40px; }
     .intro p { font-size: 16px; }
     .week-grid { grid-template-columns: 1fr; }
@@ -459,10 +611,18 @@
       <a href="#">Newsletter</a>
       <a href="#">Despre</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Comută tema închisă" title="Comută tema">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="8" height="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
-    </button>
+    <div class="look" id="look">
+      <button class="look-toggle" id="lookToggle" type="button" aria-label="Alege aspectul: fundal și culoarea textului" aria-expanded="false" aria-controls="lookMenu" title="Aspect">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4C21 6.7 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>
+      </button>
+      <div class="look-menu" id="lookMenu" role="dialog" aria-label="Aspect" hidden>
+        <h4 class="label">Fundal</h4>
+        <div class="swatches" id="bgSwatches"></div>
+        <h4 class="label">Text</h4>
+        <div class="swatches" id="inkSwatches"></div>
+        <p class="look-note">Sunt active doar combinațiile cu contrast de cel puțin 7:1, ca textul să rămână lizibil.</p>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -472,8 +632,14 @@
 
 <div class="wrap">
   <section class="intro">
-    <h1>Resurse digitale pentru <em>arhitectură.</em></h1>
-    <p>Un hub de resurse digitale pentru învățare și cercetare în arhitectură: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe <span id="catCount">13</span> discipline. Selectate manual, actualizate în fiecare vineri.</p>
+    <div class="intro-main">
+      <h1>Resurse digitale pentru <em>arhitectură.</em></h1>
+      <p>Un hub de resurse digitale pentru învățare și cercetare în arhitectură: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe <span id="catCount">13</span> discipline. Selectate manual, actualizate în fiecare vineri.</p>
+    </div>
+    <aside class="latest" aria-label="Ultimele adăugate">
+      <div class="latest-head label">Ultimele adăugate</div>
+      <ul id="latestList"></ul>
+    </aside>
   </section>
 
   <section class="section" id="saptamana">
@@ -574,31 +740,61 @@
 </footer>
 
 <script>
-  /* ---------- TEMĂ ---------- */
-  const THEME_KEY = 'justhop-theme';
-  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  /* ---------- ASPECT (fundal + culoarea textului; motorul e în <head>) ---------- */
+  const Look = window.JustLook;
+  const lookMenu = document.getElementById('lookMenu');
+  const lookToggle = document.getElementById('lookToggle');
 
-  function setTheme(t, persist) {
-    document.documentElement.dataset.theme = t;
-    themeMeta.content = t === 'dark' ? '#121316' : '#F4F3EF';
-    const btn = document.getElementById('themeToggle');
-    btn.setAttribute('aria-label', t === 'dark' ? 'Comută tema deschisă' : 'Comută tema închisă');
-    if (persist) {
-      try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
-    }
+  function swatch(label, title) {
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'swatch';
+    el.title = title;
+    el.setAttribute('aria-label', label);
+    return el;
   }
 
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
-  });
+  function renderLook() {
+    const cur = Look.get();
+    const bgBox = document.getElementById('bgSwatches');
+    const inkBox = document.getElementById('inkSwatches');
+    bgBox.innerHTML = '';
+    inkBox.innerHTML = '';
+    // fundalul se poate alege oricând; dacă textul curent nu mai e lizibil, se schimbă singur cu cel mai apropiat lizibil
+    Look.BG.forEach(b => {
+      const el = swatch('Fundal ' + b.name, b.name);
+      el.style.background = b.hex;
+      el.setAttribute('aria-pressed', b.id === cur.bg);
+      el.onclick = () => { Look.set(b.id, cur.ink, true); renderLook(); };
+      bgBox.appendChild(el);
+    });
+    // textul se poate alege doar dintre culorile cu contrast suficient pe fundalul curent
+    const bgHex = Look.find(Look.BG, cur.bg).hex;
+    Look.INK.forEach(i => {
+      const ok = Look.compatible(cur.bg, i.id);
+      const el = swatch('Text ' + i.name, ok ? i.name : i.name + ' — contrast insuficient pe acest fundal');
+      el.textContent = 'Aa';
+      el.style.background = bgHex;
+      el.style.color = i.hex;
+      el.disabled = !ok;
+      el.setAttribute('aria-pressed', i.id === cur.ink);
+      el.onclick = () => { Look.set(cur.bg, i.id, true); renderLook(); };
+      inkBox.appendChild(el);
+    });
+  }
 
-  // fără alegere salvată, urmăm setarea sistemului
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    let saved = null;
-    try { saved = localStorage.getItem(THEME_KEY); } catch (err) {}
-    if (!saved) setTheme(e.matches ? 'dark' : 'light', false);
+  function closeLook() {
+    lookMenu.hidden = true;
+    lookToggle.setAttribute('aria-expanded', 'false');
+  }
+  lookToggle.addEventListener('click', () => {
+    const opening = lookMenu.hidden;
+    lookMenu.hidden = !opening;
+    lookToggle.setAttribute('aria-expanded', String(opening));
+    if (opening) renderLook();
   });
-  setTheme(document.documentElement.dataset.theme, false);
+  document.addEventListener('click', e => { if (!lookMenu.hidden && !e.target.closest('#look')) closeLook(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLook(); });
 
   /* ---------- DATE ---------- */
   let categories = [];
@@ -701,6 +897,42 @@
       applyFilters();
       document.getElementById('resurse').scrollIntoView();
     });
+  }
+
+  // banda albastră: deasupra ei, rotița mouse-ului derulează pe orizontală; margini estompate cât mai e de văzut
+  function setupStrip() {
+    const strip = document.getElementById('discStrip');
+    const update = () => {
+      const max = strip.scrollWidth - strip.clientWidth;
+      strip.classList.toggle('fade-l', strip.scrollLeft > 4);
+      strip.classList.toggle('fade-r', strip.scrollLeft < max - 4);
+    };
+    strip.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    strip.addEventListener('wheel', e => {
+      const max = strip.scrollWidth - strip.clientWidth;
+      if (max <= 0 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // deja orizontal sau nimic de derulat
+      const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+      const atStart = strip.scrollLeft <= 0 && dy < 0;
+      const atEnd = strip.scrollLeft >= max - 1 && dy > 0;
+      if (atStart || atEnd) return; // la capete lăsăm pagina să deruleze normal
+      e.preventDefault();
+      strip.scrollLeft += dy;
+    }, { passive: false });
+    update();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
+  }
+
+  // ultimele 8 resurse adăugate (cele mai noi primele), în dreapta titlului
+  function renderLatest() {
+    const latest = [...pool].sort((a, b) => b.added.localeCompare(a.added) || b.n - a.n).slice(0, 8);
+    document.getElementById('latestList').innerHTML = latest.map(p => {
+      const c = p.cats[0];
+      const inner = `<span class="tag" style="background:${c.color}">${c.id}</span><span class="item-title">${esc(p.title)}</span>`;
+      return p.url
+        ? `<li><a href="${esc(p.url)}" target="_blank" rel="noopener" title="${esc(p.title)}">${inner}</a></li>`
+        : `<li><span class="item" title="${esc(p.title)}">${inner}</span></li>`;
+    }).join('');
   }
 
   // „săptămâna asta" = resursele din ultimele 7 zile față de cel mai recent lot (primele 3)
@@ -830,8 +1062,10 @@
         .sort((a, b) => b.added.localeCompare(a.added) || a.n - b.n);
       document.getElementById('catCount').textContent = categories.length;
       renderDiscStrip();
+      setupStrip();
       renderFooterCats();
       renderWeek();
+      renderLatest();
       applyFilters();
       observer.observe(document.getElementById('sentinel'));
     })

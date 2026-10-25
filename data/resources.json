@@ -1,5 +1,4 @@
 {
-  "_note": "Date de test generate din mockup. Se înlocuiesc cu resursele aprobate din Google Sheets.",
   "categories": [
     {
       "id": "GH",
@@ -67,743 +66,890 @@
       "color": "#1E3A5F"
     }
   ],
-  "week": [
-    {
-      "title": "Parametric Roof Optimization — Grasshopper + Karamba",
-      "cat": "GH",
-      "platform": "YouTube"
-    },
-    {
-      "title": "QGIS pentru analiza de umbrire urbană",
-      "cat": "GIS",
-      "platform": "Articol"
-    },
-    {
-      "title": "Prompting pentru schițe conceptuale AI",
-      "cat": "AI",
-      "platform": "Udemy"
-    }
-  ],
   "resources": [
     {
-      "title": "Parametric facades from scratch",
-      "cat": "GH",
+      "title": "Grasshopper for Beginners - Full Course",
+      "cats": [
+        "GH"
+      ],
       "platform": "YouTube",
       "level": "intro",
-      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Curs complet de aproape 12 ore care te duce de la zero la primele modele parametrice în Rhino + Grasshopper, componentă cu componentă.",
+      "url": "https://www.youtube.com/watch?v=b0elmzjWlE8",
+      "author": "Gediminas Kirdeikis",
+      "authorUrl": "https://www.youtube.com/@DesignGoBrr",
+      "added": "2026-10-25",
+      "n": 1
     },
     {
-      "title": "Introducere în IFC și coordonare BIM",
-      "cat": "BIM",
-      "platform": "Udemy",
-      "level": "mediu",
-      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Analiza umbririi urbane cu QGIS",
-      "cat": "GIS",
-      "platform": "Coursera",
-      "level": "avansat",
-      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Simulare termică cu Ladybug + Honeybee",
-      "cat": "SIM",
-      "platform": "Articol",
-      "level": "intro",
-      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Unfolding pentru CNC — ghid complet",
-      "cat": "FAB",
+      "title": "A beginner's guide to Data Trees in Grasshopper with practical Exercises",
+      "cats": [
+        "GH"
+      ],
       "platform": "YouTube",
       "level": "mediu",
-      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Explică logica data trees în Grasshopper și o fixează prin exerciții practice; util exact când listele simple nu mai ajung.",
+      "url": "https://www.youtube.com/watch?v=uHXaEWQDV9w",
+      "author": "Learn Grasshopper",
+      "authorUrl": "https://www.youtube.com/@learngrasshopper",
+      "added": "2026-10-25",
+      "n": 2
     },
     {
-      "title": "AI rendering: de la schiță la imagine finală",
-      "cat": "VIZ",
-      "platform": "Udemy",
-      "level": "avansat",
-      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Algoritmi generativi pentru planuri",
-      "cat": "MC",
-      "platform": "Coursera",
-      "level": "intro",
-      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Prompting eficient pentru concepte arhitecturale",
-      "cat": "AI",
-      "platform": "Articol",
-      "level": "mediu",
-      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Metodologie SLR cu PRISMA",
-      "cat": "CER",
-      "platform": "YouTube",
-      "level": "avansat",
-      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Neuroarhitectură: ce spune cercetarea",
-      "cat": "EBD",
-      "platform": "Udemy",
-      "level": "intro",
-      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Consolidare seismică — principii de bază",
-      "cat": "REZ",
-      "platform": "Coursera",
-      "level": "mediu",
-      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Kangaroo pentru form finding structural",
-      "cat": "FF",
-      "platform": "Articol",
-      "level": "avansat",
-      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Python spațial pentru date urbane deschise",
-      "cat": "PUD",
-      "platform": "YouTube",
-      "level": "intro",
-      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Revit către IFC fără pierderi de date",
-      "cat": "GH",
-      "platform": "Udemy",
-      "level": "mediu",
-      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "De la Karamba la analiza reală de rezistență",
-      "cat": "BIM",
-      "platform": "Coursera",
-      "level": "avansat",
-      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Twinmotion: setup rapid pentru randări",
-      "cat": "GIS",
-      "platform": "Articol",
-      "level": "intro",
-      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Obsidian ca al doilea creier pentru arhitecți",
-      "cat": "SIM",
+      "title": "Lunchbox Grasshopper Tutorial | Parametric Facade | Rhino",
+      "cats": [
+        "GH"
+      ],
       "platform": "YouTube",
       "level": "mediu",
-      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Construiești o fațadă parametrică cu plugin-ul Lunchbox și controlezi panourile cu un attractor point; tutorial scurt, accesibil.",
+      "url": "https://www.youtube.com/watch?v=yN3gRDqVuA4",
+      "author": "architutors",
+      "authorUrl": "https://www.youtube.com/@architutors",
+      "added": "2026-10-25",
+      "n": 3
     },
     {
-      "title": "Zotero — organizarea bibliografiei de cercetare",
-      "cat": "FAB",
-      "platform": "Udemy",
-      "level": "avansat",
-      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "POE: evaluarea post-ocupare explicată",
-      "cat": "VIZ",
-      "platform": "Coursera",
-      "level": "intro",
-      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "GH avansat: data trees fără dureri de cap",
-      "cat": "MC",
-      "platform": "Articol",
-      "level": "mediu",
-      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Honeybee pentru simulare de lumină naturală",
-      "cat": "AI",
+      "title": "How to Tween Curves in Pufferfish for Grasshopper",
+      "cats": [
+        "GH",
+        "FAB"
+      ],
       "platform": "YouTube",
       "level": "avansat",
-      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Folosești Tween din Pufferfish ca să generezi familii de curbe între două forme, apoi aplici logica la un toolpath pentru 3D printing.",
+      "url": "https://www.youtube.com/watch?v=qpqPf47OSW8",
+      "author": "The Different Design",
+      "authorUrl": "https://www.youtube.com/@grasshoppertutorials",
+      "added": "2026-10-25",
+      "n": 4
     },
     {
-      "title": "Fabricație laser — toleranțe și materiale",
-      "cat": "CER",
-      "platform": "Udemy",
-      "level": "intro",
-      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Agenți AI pentru fluxuri de birou de arhitectură",
-      "cat": "EBD",
-      "platform": "Coursera",
-      "level": "mediu",
-      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Karamba topologic — optimizare de material",
-      "cat": "REZ",
-      "platform": "Articol",
-      "level": "avansat",
-      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Modelare energetică EnergyPlus pas cu pas",
-      "cat": "FF",
+      "title": "Autodesk Revit - Full Beginner Course | Complete Project - Start to finish",
+      "cats": [
+        "BIM"
+      ],
       "platform": "YouTube",
       "level": "intro",
-      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Curs complet de Revit pentru începători: modelezi un proiect de la zero, de la pereți și planșee până la planșe și documentație.",
+      "url": "https://www.youtube.com/watch?v=chom9hiewXI",
+      "author": "Balkan Architect",
+      "authorUrl": "https://www.youtube.com/@balkanarchitect",
+      "added": "2026-10-25",
+      "n": 6
     },
     {
-      "title": "ArchiCAD teamwork — coordonare eficientă",
-      "cat": "PUD",
-      "platform": "Udemy",
-      "level": "mediu",
-      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Parametric facades from scratch",
-      "cat": "GH",
-      "platform": "Coursera",
-      "level": "avansat",
-      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Introducere în IFC și coordonare BIM",
-      "cat": "BIM",
-      "platform": "Articol",
+      "title": "ArchiCAD Full Course — Beginners to Advanced (2026)",
+      "cats": [
+        "BIM"
+      ],
+      "platform": "YouTube",
       "level": "intro",
-      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Curs ArchiCAD de la zero la avansat: planuri, secțiuni, fațade și planșele folosite în practică, pe versiunea actuală a programului.",
+      "url": "https://www.youtube.com/watch?v=FWQf9BpVZWg",
+      "author": "Arch Guide",
+      "authorUrl": "https://www.youtube.com/@archguide",
+      "added": "2026-10-25",
+      "n": 7
     },
     {
-      "title": "Analiza umbririi urbane cu QGIS",
-      "cat": "GIS",
+      "title": "Why the openBIM Workflow Matters (And How It Works)",
+      "cats": [
+        "BIM"
+      ],
       "platform": "YouTube",
       "level": "mediu",
-      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Directorul tehnic buildingSMART explică fluxul openBIM: IFC, buildingSMART Data Dictionary și validarea modelelor schimbate între programe.",
+      "url": "https://www.youtube.com/watch?v=LsV3z27iSGc",
+      "author": "buildingSMART International",
+      "authorUrl": "https://www.youtube.com/@buildingSMARTInternational",
+      "added": "2026-10-25",
+      "n": 8
     },
     {
-      "title": "Simulare termică cu Ladybug + Honeybee",
-      "cat": "SIM",
-      "platform": "Udemy",
-      "level": "avansat",
-      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "title": "Revit & Navisworks Coordination Workflow: The Complete Guide to Clash Detection",
+      "cats": [
+        "BIM"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Fluxul complet de coordonare BIM: exporți modelele din Revit în Navisworks, rulezi clash detection și gestionezi conflictele găsite.",
+      "url": "https://www.youtube.com/watch?v=cKNwZusQA9E",
+      "author": "BIM & Tonic",
+      "authorUrl": "https://www.youtube.com/@BIMTonicLive",
+      "added": "2026-10-25",
+      "n": 9
     },
     {
-      "title": "Unfolding pentru CNC — ghid complet",
-      "cat": "FAB",
-      "platform": "Coursera",
+      "title": "Speckle: Ultimate BIM 3D Data Platform?",
+      "cats": [
+        "BIM"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Prezentare practică a platformei Speckle: schimbi modele și date BIM între programe diferite și lucrezi în echipă pe versiuni comune.",
+      "url": "https://www.youtube.com/watch?v=kGr-bkgJuvI",
+      "author": "Balkan Architect",
+      "authorUrl": "https://www.youtube.com/@balkanarchitect",
+      "added": "2026-10-25",
+      "n": 10
+    },
+    {
+      "title": "Create stunning Urban Maps with QGIS and the QuickOSM Plugin",
+      "cats": [
+        "GIS",
+        "PUD"
+      ],
+      "platform": "YouTube",
       "level": "intro",
-      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Descarci date OpenStreetMap cu QuickOSM și faci hărți urbane în QGIS, de la straturi la compoziție finală, pe înțelesul arhitecților.",
+      "url": "https://www.youtube.com/watch?v=pMiVOHgbpGM",
+      "author": "Open Source for Architects",
+      "authorUrl": "https://www.youtube.com/@opensourceforarchitects",
+      "added": "2026-10-25",
+      "n": 12
     },
     {
-      "title": "AI rendering: de la schiță la imagine finală",
-      "cat": "VIZ",
+      "title": "Introduction to QGIS (Full Course, Ad-Free)",
+      "cats": [
+        "GIS"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Curs complet QGIS de la zero: cartografiere, procesare de date spațiale și analiză spațială, cu exerciții practice pas cu pas.",
+      "url": "https://www.youtube.com/watch?v=pGm7w-LywO0",
+      "author": "Spatial Thoughts",
+      "authorUrl": "https://www.youtube.com/@SpatialThoughts",
+      "added": "2026-10-25",
+      "n": 13
+    },
+    {
+      "title": "Geospatial Python - Full Course for Beginners with Geopandas",
+      "cats": [
+        "GIS"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Introducere în Python geospațial cu GeoPandas: citești, filtrezi, unești și vizualizezi date vectoriale, pornind de la zero.",
+      "url": "https://www.youtube.com/watch?v=0mWgVVH_dos",
+      "author": "Matt Forrest",
+      "authorUrl": "https://www.youtube.com/@MattForrest",
+      "added": "2026-10-25",
+      "n": 14
+    },
+    {
+      "title": "A short guide to Copernicus Browser",
+      "cats": [
+        "GIS"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Ghid scurt pentru Copernicus Browser: găsești, vizualizezi și descarci imagini satelitare Sentinel gratuite pentru analiza unui sit.",
+      "url": "https://www.youtube.com/watch?v=F0lIn5r6ZWk",
+      "author": "Copernicus Data Space Ecosystem",
+      "authorUrl": "https://www.youtube.com/@copernicusdataspaceecosystem",
+      "added": "2026-10-25",
+      "n": 15
+    },
+    {
+      "title": "Automating GIS Processes 2026 (AutoGIS)",
+      "cats": [
+        "GIS",
+        "PUD"
+      ],
       "platform": "Articol",
       "level": "mediu",
-      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Curs deschis al Universității din Helsinki: GeoPandas, interogări spațiale, hărți și analiză de rețele stradale cu OSMnx și networkx.",
+      "url": "https://autogis-site.readthedocs.io/",
+      "author": "University of Helsinki",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 16
     },
     {
-      "title": "Algoritmi generativi pentru planuri",
-      "cat": "MC",
-      "platform": "YouTube",
-      "level": "avansat",
-      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Prompting eficient pentru concepte arhitecturale",
-      "cat": "AI",
-      "platform": "Udemy",
-      "level": "intro",
-      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Metodologie SLR cu PRISMA",
-      "cat": "CER",
-      "platform": "Coursera",
-      "level": "mediu",
-      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Neuroarhitectură: ce spune cercetarea",
-      "cat": "EBD",
-      "platform": "Articol",
-      "level": "avansat",
-      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Consolidare seismică — principii de bază",
-      "cat": "REZ",
+      "title": "#1 The Ultimate Ladybug Course | Environmental Analysis in Rhino3D and Grasshopper",
+      "cats": [
+        "SIM",
+        "GH"
+      ],
       "platform": "YouTube",
       "level": "intro",
-      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Primul episod dintr-un curs Ladybug Tools: setezi weather data și înțelegi cum funcționează analiza de mediu în Grasshopper.",
+      "url": "https://www.youtube.com/watch?v=nthyNdfnNsc",
+      "author": "Philipp Galvan Design",
+      "authorUrl": "https://www.youtube.com/@PhilippGalvanDesign",
+      "added": "2026-10-25",
+      "n": 17
     },
     {
-      "title": "Kangaroo pentru form finding structural",
-      "cat": "FF",
-      "platform": "Udemy",
-      "level": "mediu",
-      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Python spațial pentru date urbane deschise",
-      "cat": "PUD",
-      "platform": "Coursera",
-      "level": "avansat",
-      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Revit către IFC fără pierderi de date",
-      "cat": "GH",
-      "platform": "Articol",
-      "level": "intro",
-      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "De la Karamba la analiza reală de rezistență",
-      "cat": "BIM",
-      "platform": "YouTube",
-      "level": "mediu",
-      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Twinmotion: setup rapid pentru randări",
-      "cat": "GIS",
-      "platform": "Udemy",
-      "level": "avansat",
-      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Obsidian ca al doilea creier pentru arhitecți",
-      "cat": "SIM",
-      "platform": "Coursera",
-      "level": "intro",
-      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Zotero — organizarea bibliografiei de cercetare",
-      "cat": "FAB",
-      "platform": "Articol",
-      "level": "mediu",
-      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "POE: evaluarea post-ocupare explicată",
-      "cat": "VIZ",
+      "title": "#23 Ladybug 1.8 Tutorial: Outdoor Comfort and 3D models",
+      "cats": [
+        "SIM",
+        "GH"
+      ],
       "platform": "YouTube",
       "level": "avansat",
-      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Analiză de confort termic exterior (UTCI) cu Ladybug Tools pe modele 3D, pas cu pas, inclusiv interpretarea rezultatelor.",
+      "url": "https://www.youtube.com/watch?v=NfDiHC3rUrM",
+      "author": "Philipp Galvan Design",
+      "authorUrl": "https://www.youtube.com/@PhilippGalvanDesign",
+      "added": "2026-10-25",
+      "n": 18
     },
     {
-      "title": "GH avansat: data trees fără dureri de cap",
-      "cat": "MC",
-      "platform": "Udemy",
-      "level": "intro",
-      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Honeybee pentru simulare de lumină naturală",
-      "cat": "AI",
-      "platform": "Coursera",
-      "level": "mediu",
-      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Fabricație laser — toleranțe și materiale",
-      "cat": "CER",
-      "platform": "Articol",
-      "level": "avansat",
-      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Agenți AI pentru fluxuri de birou de arhitectură",
-      "cat": "EBD",
+      "title": "Ladybug Grasshopper Tutorial Sun Hour and Radiation Analysis",
+      "cats": [
+        "SIM",
+        "GH"
+      ],
       "platform": "YouTube",
       "level": "intro",
-      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Faci analize de ore de soare și radiație solară cu Ladybug în Grasshopper, pentru a evalua însorirea unui proiect.",
+      "url": "https://www.youtube.com/watch?v=UV0rqTDHx6A",
+      "author": "DesignWise",
+      "authorUrl": "https://www.youtube.com/@IDesignWise",
+      "added": "2026-10-25",
+      "n": 20
     },
     {
-      "title": "Karamba topologic — optimizare de material",
-      "cat": "REZ",
-      "platform": "Udemy",
+      "title": "01 - Grasshopper Unroll Surface and Labelling - Part 2",
+      "cats": [
+        "FAB",
+        "GH"
+      ],
+      "platform": "YouTube",
       "level": "mediu",
-      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Curs universitar TU Darmstadt (Digital Fabrication Basics): desfășori suprafețe în Grasshopper și etichetezi piesele pentru fabricație.",
+      "url": "https://www.youtube.com/watch?v=QGtPTMf_kL0",
+      "author": "TU Darmstadt",
+      "authorUrl": "https://www.youtube.com/@digitaldesignunit",
+      "added": "2026-10-25",
+      "n": 23
     },
     {
-      "title": "Modelare energetică EnergyPlus pas cu pas",
-      "cat": "FF",
-      "platform": "Coursera",
+      "title": "Nesting in Rhino 8 with OpenNest, Elefront and byRhinoGadget",
+      "cats": [
+        "FAB"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Cum așezi automat piesele pe plăci (nesting) în Rhino 8 cu pluginurile gratuite OpenNest, Elefront și byRhinoGadget, pentru tăiere.",
+      "url": "https://www.youtube.com/watch?v=Y62tBST4xSk",
+      "author": "mvelentzas",
+      "authorUrl": "https://www.youtube.com/@mvelentzas",
+      "added": "2026-10-25",
+      "n": 24
+    },
+    {
+      "title": "3D Printing from Revit | Snapmaker Artisan 3D printer for Architects",
+      "cats": [
+        "FAB",
+        "BIM"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Cum duci un model din Revit până la macheta printată 3D: export, pregătirea fișierului și printarea pe o imprimantă de birou.",
+      "url": "https://www.youtube.com/watch?v=cLgcdT84gGQ",
+      "author": "Balkan Architect",
+      "authorUrl": "https://www.youtube.com/@balkanarchitect",
+      "added": "2026-10-25",
+      "n": 25
+    },
+    {
+      "title": "EP 25 | ArchiTech Office Tours | ICD: Part 1: Computational Timber & Robotic Construction",
+      "cats": [
+        "FAB",
+        "MC"
+      ],
+      "platform": "YouTube",
       "level": "avansat",
-      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Vizită la ICD, Universitatea din Stuttgart: cum se leagă proiectarea computațională de construcția robotică a structurilor din lemn.",
+      "url": "https://www.youtube.com/watch?v=HnqVl3jvXJo",
+      "author": "ArchiTech Network",
+      "authorUrl": "https://www.youtube.com/@architech.network",
+      "added": "2026-10-25",
+      "n": 26
     },
     {
-      "title": "ArchiCAD teamwork — coordonare eficientă",
-      "cat": "PUD",
+      "title": "Rhino Tutorial: Model a Wooden Bench from Scratch + CNC Fabrication Workflow",
+      "cats": [
+        "FAB"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Modelezi o bancă din lemn în Rhino pornind de la un desen 2D și o pregătești pentru frezare CNC, cu fluxul complet până la piese.",
+      "url": "https://www.youtube.com/watch?v=sTMLkU6JdQY",
+      "author": "RhinoByHossein",
+      "authorUrl": "https://www.youtube.com/@RhinoByHossein",
+      "added": "2026-10-25",
+      "n": 27
+    },
+    {
+      "title": "How to Prepare Your File for Laser Cutting",
+      "cats": [
+        "FAB"
+      ],
       "platform": "Articol",
       "level": "intro",
-      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Ghidul școlii de arhitectură UT Austin: cum pregătești liniile în Rhino, AutoCAD sau Illustrator pentru laser, pe straturi colorate, la Z = 0.",
+      "url": "https://cloud.wikis.utexas.edu/wiki/spaces/SOAdigitech/pages/75235691/How+to+Prepare+Your+File+for+Laser+Cutting",
+      "author": "UT Austin School of Architecture",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 28
     },
     {
-      "title": "Parametric facades from scratch",
-      "cat": "GH",
+      "title": "Twinmotion for Architecture - 2024 Full Beginner Course",
+      "cats": [
+        "VIZ"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Curs complet de Twinmotion pentru arhitecți, de la importul modelului la materiale, lumină, context și randări finale.",
+      "url": "https://www.youtube.com/watch?v=2aUUcsVnq_8",
+      "author": "Gediminas Kirdeikis",
+      "authorUrl": "https://www.youtube.com/@DesignGoBrr",
+      "added": "2026-10-25",
+      "n": 29
+    },
+    {
+      "title": "D5 Render Full Beginner Tutorial!",
+      "cats": [
+        "VIZ"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Introducere completă în D5 Render: interfață, materiale, lumină, assets și setări de export pentru randări de arhitectură.",
+      "url": "https://www.youtube.com/watch?v=5PAg1lGgD5M",
+      "author": "Show It Better",
+      "authorUrl": "https://www.youtube.com/@ShowItBetter",
+      "added": "2026-10-25",
+      "n": 30
+    },
+    {
+      "title": "Complete Beginner's Guide to Blender for Architecture",
+      "cats": [
+        "VIZ"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Ghid de început pentru Blender aplicat în arhitectură: navigare, modelare, materiale și primele randări, pas cu pas, fără experiență anterioară.",
+      "url": "https://www.youtube.com/watch?v=9oNltPoCFEE",
+      "author": "My 3D POV",
+      "authorUrl": "https://www.youtube.com/@My3D_POV",
+      "added": "2026-10-25",
+      "n": 31
+    },
+    {
+      "title": "The Best Render Settings for V-Ray 7 Explained | V-Ray for SketchUp",
+      "cats": [
+        "VIZ"
+      ],
       "platform": "YouTube",
       "level": "mediu",
-      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Setările de randare din V-Ray 7 pentru SketchUp explicate pe rând: ce face fiecare, ce merită schimbat și cum echilibrezi calitatea cu timpul.",
+      "url": "https://www.youtube.com/watch?v=3IZ44a70BPw",
+      "author": "Educk",
+      "authorUrl": "https://www.youtube.com/@educkorg",
+      "added": "2026-10-25",
+      "n": 32
     },
     {
-      "title": "Introducere în IFC și coordonare BIM",
-      "cat": "BIM",
+      "title": "Site Analysis Using Illustrator Tutorial",
+      "cats": [
+        "VIZ",
+        "PUD"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Cum desenezi diagrame de analiză de sit în Illustrator: straturi, simboluri, culori și ierarhie grafică pentru planșele de prezentare.",
+      "url": "https://www.youtube.com/watch?v=R_HhSmk_Ddg",
+      "author": "Surviving Architecture",
+      "authorUrl": "https://www.youtube.com/@SurvivingArchitecture",
+      "added": "2026-10-25",
+      "n": 33
+    },
+    {
+      "title": "Enscape - Rendering, Animation and Visualization",
+      "cats": [
+        "VIZ"
+      ],
       "platform": "Udemy",
-      "level": "avansat",
-      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Analiza umbririi urbane cu QGIS",
-      "cat": "GIS",
-      "platform": "Coursera",
       "level": "intro",
-      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Curs Udemy de Enscape: instalare, navigare, materiale, assets, randări, animații și export EXE pentru prezentarea proiectelor.",
+      "url": "https://www.udemy.com/course/enscape-rendering-animation-and-visualization/",
+      "author": "Ghasem Ariyani",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 34
     },
     {
-      "title": "Simulare termică cu Ladybug + Honeybee",
-      "cat": "SIM",
+      "title": "How to use Script Editor in Rhino 8: Introduction Course",
+      "cats": [
+        "MC",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Introducere în Script Editor din Rhino 8: cum creezi, rulezi și organizezi scripturi CPython direct în Rhino, fără setup extern.",
+      "url": "https://www.youtube.com/watch?v=5jRMYPJ_zKQ",
+      "author": "Urban Decoders",
+      "authorUrl": "https://www.youtube.com/@Urban_Decoders",
+      "added": "2026-10-25",
+      "n": 35
+    },
+    {
+      "title": "Multi-Objective Optimization with Octopus | Tiny House Challenge 02",
+      "cats": [
+        "MC",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Compară Galapagos și Octopus pe un studiu de tiny house și arată cum rulezi o optimizare multi-obiectiv în Grasshopper, cu plusuri și minusuri.",
+      "url": "https://www.youtube.com/watch?v=CEMhfdQKXlA",
+      "author": "Philipp Galvan Design",
+      "authorUrl": "https://www.youtube.com/@PhilippGalvanDesign",
+      "added": "2026-10-25",
+      "n": 36
+    },
+    {
+      "title": "Optimizing Tower Design with Grasshopper: Generative Design & Views with Wallacei",
+      "cats": [
+        "MC",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Prezentare de aproape o oră: studiu de generative design pentru un turn, cu optimizarea formei după vederi folosind Wallacei în Grasshopper.",
+      "url": "https://www.youtube.com/watch?v=4G25Tl1G4po",
+      "author": "Computational Design SA",
+      "authorUrl": "https://www.youtube.com/@ComputationalDesignSA",
+      "added": "2026-10-25",
+      "n": 37
+    },
+    {
+      "title": "Culebra Behaviors V1.0",
+      "cats": [
+        "MC",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Webinar DesignMorphine de 3 ore despre agent-based design cu Culebra în Grasshopper: comportamente de agenți și forme generate din traseele lor.",
+      "url": "https://www.youtube.com/watch?v=y1gZBdYzFnM",
+      "author": "DesignMorphine",
+      "authorUrl": "https://www.youtube.com/@DesignMorphine",
+      "added": "2026-10-25",
+      "n": 38
+    },
+    {
+      "title": "Grasshopper Scripting: Python",
+      "cats": [
+        "MC",
+        "GH"
+      ],
       "platform": "Articol",
       "level": "mediu",
-      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Ghidul oficial McNeel pentru componenta Python 3 din Grasshopper: inputs/outputs, type hints, SDK-mode, debugging și pachete PyPI.",
+      "url": "https://developer.rhino3d.com/guides/scripting/scripting-gh-python/",
+      "author": "McNeel",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 39
     },
     {
-      "title": "Unfolding pentru CNC — ghid complet",
-      "cat": "FAB",
+      "title": "Stable Diffusion + ControlNET in Architecture",
+      "cats": [
+        "AI",
+        "VIZ"
+      ],
       "platform": "YouTube",
-      "level": "avansat",
-      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "AI rendering: de la schiță la imagine finală",
-      "cat": "VIZ",
-      "platform": "Udemy",
-      "level": "intro",
-      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Algoritmi generativi pentru planuri",
-      "cat": "MC",
-      "platform": "Coursera",
       "level": "mediu",
-      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Cum folosești ControlNet peste Stable Diffusion ca să transformi schițe, volumetrii și linii în imagini de arhitectură controlate.",
+      "url": "https://www.youtube.com/watch?v=FJKJPSa0HC4",
+      "author": "ArchViz",
+      "authorUrl": "https://www.youtube.com/@ArchViz007",
+      "added": "2026-10-25",
+      "n": 40
     },
     {
-      "title": "Prompting eficient pentru concepte arhitecturale",
-      "cat": "AI",
+      "title": "AI Plugin for Grasshopper We've Been Waiting For",
+      "cats": [
+        "AI",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Test practic al pluginului Raven, care aduce un LLM direct în canvasul Grasshopper și construiește definiții parametrice din prompturi.",
+      "url": "https://www.youtube.com/watch?v=4mr7thwfzKo",
+      "author": "How to Rhino",
+      "authorUrl": "https://www.youtube.com/@HowtoRhino",
+      "added": "2026-10-25",
+      "n": 41
+    },
+    {
+      "title": "Midjourney for Architects: Advanced Workflow Guide for photorealistic images",
+      "cats": [
+        "AI",
+        "VIZ"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Un flux de lucru avansat în Midjourney pentru imagini de concept fotorealiste în arhitectură, de la prompt la variante rafinate.",
+      "url": "https://www.youtube.com/watch?v=JVifaUyHde4",
+      "author": "Show It Better",
+      "authorUrl": "https://www.youtube.com/@ShowItBetter",
+      "added": "2026-10-25",
+      "n": 42
+    },
+    {
+      "title": "Architects Are Switching to Claude | Here's Why - FULL Guide",
+      "cats": [
+        "AI"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Ghid introductiv despre folosirea lui Claude, un LLM, în munca de zi cu zi a unui birou de arhitectură, cu exemple de fluxuri de lucru.",
+      "url": "https://www.youtube.com/watch?v=la8Ml1fQfOg",
+      "author": "Urban Decoders",
+      "authorUrl": "https://www.youtube.com/@Urban_Decoders",
+      "added": "2026-10-25",
+      "n": 43
+    },
+    {
+      "title": "Generative AI models for different steps in architectural design: A literature review",
+      "cats": [
+        "AI",
+        "MC"
+      ],
       "platform": "Articol",
       "level": "avansat",
-      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Recenzie a modelelor generative (diffusion, 3D, foundation models) aplicate pe etapele proiectării, de la volumetrie la plan și fațadă.",
+      "url": "https://doi.org/10.1016/j.foar.2024.10.001",
+      "author": "Frontiers of Architectural Research",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 44
     },
     {
-      "title": "Metodologie SLR cu PRISMA",
-      "cat": "CER",
-      "platform": "YouTube",
-      "level": "intro",
-      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Neuroarhitectură: ce spune cercetarea",
-      "cat": "EBD",
-      "platform": "Udemy",
-      "level": "mediu",
-      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Consolidare seismică — principii de bază",
-      "cat": "REZ",
-      "platform": "Coursera",
-      "level": "avansat",
-      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Kangaroo pentru form finding structural",
-      "cat": "FF",
-      "platform": "Articol",
-      "level": "intro",
-      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Python spațial pentru date urbane deschise",
-      "cat": "PUD",
+      "title": "How To Conduct A Systematic Review and Write-Up in 7 Steps (Using PRISMA, PICO and AI)",
+      "cats": [
+        "CER"
+      ],
       "platform": "YouTube",
       "level": "mediu",
-      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Cei 7 pași ai unei recenzii sistematice a literaturii, cu întrebare PICO, diagramă PRISMA și unelte AI, până la redactarea finală.",
+      "url": "https://www.youtube.com/watch?v=OIxiqW596nw",
+      "author": "Dr Amina Yonis",
+      "authorUrl": "https://www.youtube.com/@DrAminaYonis",
+      "added": "2026-10-25",
+      "n": 45
     },
     {
-      "title": "Revit către IFC fără pierderi de date",
-      "cat": "GH",
-      "platform": "Udemy",
-      "level": "avansat",
-      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "De la Karamba la analiza reală de rezistență",
-      "cat": "BIM",
-      "platform": "Coursera",
-      "level": "intro",
-      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Twinmotion: setup rapid pentru randări",
-      "cat": "GIS",
-      "platform": "Articol",
-      "level": "mediu",
-      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Obsidian ca al doilea creier pentru arhitecți",
-      "cat": "SIM",
-      "platform": "YouTube",
-      "level": "avansat",
-      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Zotero — organizarea bibliografiei de cercetare",
-      "cat": "FAB",
-      "platform": "Udemy",
-      "level": "intro",
-      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "POE: evaluarea post-ocupare explicată",
-      "cat": "VIZ",
-      "platform": "Coursera",
-      "level": "mediu",
-      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "GH avansat: data trees fără dureri de cap",
-      "cat": "MC",
-      "platform": "Articol",
-      "level": "avansat",
-      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Honeybee pentru simulare de lumină naturală",
-      "cat": "AI",
+      "title": "How To Use Zotero (Including Zotero Connector) - Full Tutorial With Examples",
+      "cats": [
+        "CER"
+      ],
       "platform": "YouTube",
       "level": "intro",
-      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Tutorial complet Zotero cu Zotero Connector: salvezi surse din browser, le organizezi și generezi automat citări și bibliografie.",
+      "url": "https://www.youtube.com/watch?v=tnbwKj6-pD8",
+      "author": "Grad Coach",
+      "authorUrl": "https://www.youtube.com/@GradCoach",
+      "added": "2026-10-25",
+      "n": 46
     },
     {
-      "title": "Fabricație laser — toleranțe și materiale",
-      "cat": "CER",
-      "platform": "Udemy",
-      "level": "mediu",
-      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Agenți AI pentru fluxuri de birou de arhitectură",
-      "cat": "EBD",
-      "platform": "Coursera",
-      "level": "avansat",
-      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Karamba topologic — optimizare de material",
-      "cat": "REZ",
-      "platform": "Articol",
-      "level": "intro",
-      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Modelare energetică EnergyPlus pas cu pas",
-      "cat": "FF",
+      "title": "Obsidian Note-Taking System for Academics & Students - Full Tutorial & Demo",
+      "cats": [
+        "CER"
+      ],
       "platform": "YouTube",
       "level": "mediu",
-      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Sistem complet de notițe în Obsidian pentru cercetare: note legate între ele, recenzia literaturii și scrierea mai rapidă a articolelor.",
+      "url": "https://www.youtube.com/watch?v=S_-uD3GtFno",
+      "author": "The Effortless Academic",
+      "authorUrl": "https://www.youtube.com/@effortlessacademic",
+      "added": "2026-10-25",
+      "n": 47
     },
     {
-      "title": "ArchiCAD teamwork — coordonare eficientă",
-      "cat": "PUD",
-      "platform": "Udemy",
+      "title": "Architectural Research: Formal (and Functional)",
+      "cats": [
+        "CER"
+      ],
+      "platform": "YouTube",
       "level": "avansat",
-      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Prelegere la Facultatea de Arhitectură din Belgrad despre ce înseamnă cercetarea în arhitectură, pe dimensiunea formală și funcțională.",
+      "url": "https://www.youtube.com/watch?v=xl4GFNEVxwg",
+      "author": "Patrik Schumacher",
+      "authorUrl": "https://www.youtube.com/@patrikschumacher2844",
+      "added": "2026-10-25",
+      "n": 48
     },
     {
-      "title": "Parametric facades from scratch",
-      "cat": "GH",
+      "title": "Understanding Research Methods",
+      "cats": [
+        "CER"
+      ],
       "platform": "Coursera",
       "level": "intro",
-      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Curs introductiv despre fundamentele cercetării la nivel postuniversitar: cum gândești un proiect de cercetare și cum alegi metodele.",
+      "url": "https://www.coursera.org/learn/research-methods",
+      "author": "University of London / SOAS",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 49
     },
     {
-      "title": "Introducere în IFC și coordonare BIM",
-      "cat": "BIM",
-      "platform": "Articol",
-      "level": "mediu",
-      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Analiza umbririi urbane cu QGIS",
-      "cat": "GIS",
-      "platform": "YouTube",
-      "level": "avansat",
-      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Simulare termică cu Ladybug + Honeybee",
-      "cat": "SIM",
-      "platform": "Udemy",
-      "level": "intro",
-      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Unfolding pentru CNC — ghid complet",
-      "cat": "FAB",
-      "platform": "Coursera",
-      "level": "mediu",
-      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "AI rendering: de la schiță la imagine finală",
-      "cat": "VIZ",
-      "platform": "Articol",
-      "level": "avansat",
-      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Algoritmi generativi pentru planuri",
-      "cat": "MC",
+      "title": "How Neuro-Architecture will change your well-being | Fiona Beenkens | TEDxGeneva",
+      "cats": [
+        "EBD"
+      ],
       "platform": "YouTube",
       "level": "intro",
-      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Principiile de bază ale neuroarhitecturii: cum ne stresează mediul construit și ce rol au arhitecții pentru sănătatea mintală.",
+      "url": "https://www.youtube.com/watch?v=1oNK6y18zqQ",
+      "author": "TEDx Talks",
+      "authorUrl": "https://www.youtube.com/@TEDx",
+      "added": "2026-10-25",
+      "n": 51
     },
     {
-      "title": "Prompting eficient pentru concepte arhitecturale",
-      "cat": "AI",
-      "platform": "Udemy",
-      "level": "mediu",
-      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Metodologie SLR cu PRISMA",
-      "cat": "CER",
-      "platform": "Coursera",
-      "level": "avansat",
-      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Neuroarhitectură: ce spune cercetarea",
-      "cat": "EBD",
-      "platform": "Articol",
-      "level": "intro",
-      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
-    },
-    {
-      "title": "Consolidare seismică — principii de bază",
-      "cat": "REZ",
+      "title": "Restorative Cities: Urban Design for Mental Health and Wellbeing",
+      "cats": [
+        "EBD",
+        "PUD"
+      ],
       "platform": "YouTube",
       "level": "mediu",
-      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Webinar despre Restorative Cities: cum afectează zgomotul, aglomerarea și lipsa luminii sănătatea mintală și ce poate face designul urban.",
+      "url": "https://www.youtube.com/watch?v=83NNyERJD34",
+      "author": "IHCD Learning",
+      "authorUrl": "https://www.youtube.com/@IHCDLearning",
+      "added": "2026-10-25",
+      "n": 52
     },
     {
-      "title": "Kangaroo pentru form finding structural",
-      "cat": "FF",
-      "platform": "Udemy",
+      "title": "How Architecture Shapes Our Brain – Neuroscience & Architecture Panel | Talks 21",
+      "cats": [
+        "EBD"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Panel cu un arhitect, un expert în ritm circadian și un neurocercetător despre cum spațiul în care stai îți influențează creierul.",
+      "url": "https://www.youtube.com/watch?v=5ReaDTJvrYQ",
+      "author": "Talks 21",
+      "authorUrl": "https://www.youtube.com/@kareljanecek21",
+      "added": "2026-10-25",
+      "n": 53
+    },
+    {
+      "title": "Karamba3D Tidbits #52 Introduction to Shells",
+      "cats": [
+        "REZ",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Primul pas cu plăci curbe (shells) în Karamba3D: secțiuni, materiale, tipuri de încărcări și citirea rezultatelor analizei.",
+      "url": "https://www.youtube.com/watch?v=fUATKcy7sO8",
+      "author": "Karamba3D",
+      "authorUrl": "https://www.youtube.com/@karamba3d",
+      "added": "2026-10-25",
+      "n": 55
+    },
+    {
+      "title": "Karamba3d for Grasshopper 2D - Analysis of Frame Structures",
+      "cats": [
+        "REZ",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Analiza structurilor în cadre cu Karamba3D în Grasshopper, cu explicarea conceptelor de statică din spate și fișiere de curs descărcabile.",
+      "url": "https://www.youtube.com/watch?v=Ro4VNFEv7BI",
+      "author": "Diego Apellániz",
+      "authorUrl": "https://www.youtube.com/@DiegoApell%C3%A1niz",
+      "added": "2026-10-25",
+      "n": 56
+    },
+    {
+      "title": "Basics in Earthquake Engineering & Seismic Design – Part 1 of 4",
+      "cats": [
+        "REZ"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Prima parte dintr-o serie despre bazele ingineriei seismice și proiectarea antiseismică, după principiile din Eurocode 8 și alte coduri.",
+      "url": "https://www.youtube.com/watch?v=pTx52hyRSJE",
+      "author": "Structural Analysis",
+      "authorUrl": "https://www.youtube.com/@Structural.Analysis",
+      "added": "2026-10-25",
+      "n": 57
+    },
+    {
+      "title": "Seismic Irregularities: Soft Story to Shear Walls",
+      "cats": [
+        "REZ"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Neregularitățile seismice explicate pentru arhitecți: de la etajul flexibil (soft story) la pereții structurali (shear walls).",
+      "url": "https://www.youtube.com/watch?v=PxibHAzGwnU",
+      "author": "Young Architect",
+      "authorUrl": "https://www.youtube.com/@Youngarchitect",
+      "added": "2026-10-25",
+      "n": 58
+    },
+    {
+      "title": "Welcome to Karamba3D | Karamba3D v3 (manual)",
+      "cats": [
+        "REZ",
+        "GH"
+      ],
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Manualul oficial Karamba3D v3: instalarea, primul model de analiză structurală în Grasshopper și referința completă a componentelor.",
+      "url": "https://manual.karamba3d.com/",
+      "author": "Karamba3D",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 59
+    },
+    {
+      "title": "Catenary Structures - Kangaroo 2 in Grasshopper",
+      "cats": [
+        "FF",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Bazele Kangaroo2 explicate pe o curbă catenară și pe un shell: anchors, goals, solver și cum ajungi la forma în echilibru.",
+      "url": "https://www.youtube.com/watch?v=hoAah1W0sAE",
+      "author": "mōtus",
+      "authorUrl": "https://www.youtube.com/@motus406",
+      "added": "2026-10-25",
+      "n": 60
+    },
+    {
+      "title": "Modeling Tensile Structures in Rhino using Kangaroo 2 _Part 1: Anchor Points",
+      "cats": [
+        "FF",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Prima parte dintr-o serie despre membrane tensionate în Kangaroo 2: modelezi o membrană pe puncte de ancorare și controlezi tensiunea.",
+      "url": "https://www.youtube.com/watch?v=fcM5UTBeSEo",
+      "author": "PH Studio",
+      "authorUrl": "https://www.youtube.com/@PH.Studio",
+      "added": "2026-10-25",
+      "n": 61
+    },
+    {
+      "title": "Finding Form by Pressure Effect (Grasshopper + Kangaroo2)",
+      "cats": [
+        "FF",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Folosești goal-ul Pressure din Kangaroo2 ca să simulezi forme umflate, de tip balon sau pneumatic, pe baza legilor fizice.",
+      "url": "https://www.youtube.com/watch?v=Z4AykquNoVQ",
+      "author": "davttv",
+      "authorUrl": "https://www.youtube.com/@davttv_Archstudio",
+      "added": "2026-10-25",
+      "n": 62
+    },
+    {
+      "title": "RhinoVAULT – Tutorial",
+      "cats": [
+        "FF",
+        "REZ"
+      ],
+      "platform": "Articol",
+      "level": "mediu",
+      "desc": "Tutorialul oficial RhinoVAULT (ETH Zürich): găsești forma unei bolți în compresiune pură cu form și force diagrams, pas cu pas.",
+      "url": "https://blockresearchgroup.gitbook.io/rhinovault/introduction/tutorial",
+      "author": "Block Research Group, ETH Zürich",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 64
+    },
+    {
+      "title": "Grasshopper Isovist Tutorial",
+      "cats": [
+        "PUD",
+        "GH"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Construiești o analiză isovist în Grasshopper pornind de la obstacole, util pentru evaluarea vizibilității în spații urbane și interioare.",
+      "url": "https://www.youtube.com/watch?v=y_L_YzntDO0",
+      "author": "Paracourse",
+      "authorUrl": "https://www.youtube.com/@paracourse",
+      "added": "2026-10-25",
+      "n": 65
+    },
+    {
+      "title": "3D Urban Modelling with CityEngine",
+      "cats": [
+        "PUD"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Webinar Esri despre CityEngine: modelare procedurală 3D a orașului, analiză urbană de bază și partajarea modelului.",
+      "url": "https://www.youtube.com/watch?v=GKiFg57QCnw",
+      "author": "Esri Canada",
+      "authorUrl": "https://www.youtube.com/@esricanadahighereducationr7164",
+      "added": "2026-10-25",
+      "n": 66
+    },
+    {
+      "title": "How Walkable Is Your City? Analyzing Urban Access with Python & OSM | #30DayMapChallenge (14/30)",
+      "cats": [
+        "PUD",
+        "GIS"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Calculezi în Python cu date OpenStreetMap cât de accesibil pe jos este un oraș, într-o analiză de tip oraș de 15 minute.",
+      "url": "https://www.youtube.com/watch?v=_RU8GlUbsk8",
+      "author": "Milan's Data Stories",
+      "authorUrl": "https://www.youtube.com/@milanjanosov",
+      "added": "2026-10-25",
+      "n": 67
+    },
+    {
+      "title": "VIDEO 2 - Space Syntax (Part 2): Using DepthMapX",
+      "cats": [
+        "PUD"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Space syntax cu depthmapX: importi harta, rulezi analiza și citești rezultatele de conectivitate și integrare pentru spațiul urban.",
+      "url": "https://www.youtube.com/watch?v=H3g11Oy1WYY",
+      "author": "Dynamic Modelling of Cities",
+      "authorUrl": "https://www.youtube.com/@dynamicmodellingofcities9002",
+      "added": "2026-10-25",
+      "n": 68
+    },
+    {
+      "title": "Urban Network Analysis (UNA) Toolbox for Rhino3D",
+      "cats": [
+        "PUD",
+        "GH"
+      ],
+      "platform": "Articol",
       "level": "avansat",
-      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
-      "url": ""
+      "desc": "Documentația UNA Toolbox (MIT City Form Lab) pentru Rhino: accesibilitate, fluxuri pietonale și analiză de rețele urbane, cu tutoriale video.",
+      "url": "https://cityform.mit.edu/projects/una-rhino-toolbox",
+      "author": "MIT City Form Lab",
+      "authorUrl": null,
+      "added": "2026-10-25",
+      "n": 69
     }
   ]
 }

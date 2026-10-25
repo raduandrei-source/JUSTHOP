@@ -337,6 +337,17 @@
     padding: 2px 6px;
   }
   .cat-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tags { display: flex; gap: 3px; flex-shrink: 0; }
+  .card-author {
+    margin: 12px 0 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .author-link { cursor: pointer; border-bottom: 1px solid var(--rule); }
+  .author-link:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
+  .sidebar-sub { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .sidebar-sub[hidden] { display: none; }
   .card-body { padding: 20px 24px 24px; flex: 1; }
   .card-title { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 500; letter-spacing: -0.02em; }
   .card-desc { margin: 8px 0 0; font-size: 14px; line-height: 1.57; color: var(--muted); }
@@ -347,7 +358,20 @@
     border-top: 1px solid var(--rule);
     color: var(--muted);
   }
-  .card:hover .card-meta .arrow { color: var(--accent-text); }
+
+  .date-head {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-top: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .date-head:first-child { margin-top: 0; }
+  .date-head strong { color: var(--ink); font-weight: 700; }
 
   .sentinel { text-align: center; padding: 40px 0 0; color: var(--muted); }
 
@@ -449,7 +473,7 @@
 <div class="wrap">
   <section class="intro">
     <h1>Resurse digitale pentru <em>arhitectură.</em></h1>
-    <p>Cursuri, tutoriale video, articole și cărți despre uneltele digitale ale arhitectului, organizate pe cele 13 discipline ale planului de învățământ 2026–2032. Selectate manual, actualizate în fiecare vineri.</p>
+    <p>Cursuri, tutoriale video, articole și cărți despre uneltele digitale ale arhitectului, organizate pe cele <span id="catCount">13</span> discipline ale planului de învățământ 2026–2032. Selectate manual, actualizate în fiecare vineri.</p>
   </section>
 
   <section class="section" id="saptamana">
@@ -478,6 +502,10 @@
           <button class="reset label" id="resetCats" type="button" hidden>resetează</button>
         </div>
         <div id="catList"></div>
+        <div class="sidebar-head label sidebar-sub" id="authorHead" hidden>
+          <span>Autori</span>
+        </div>
+        <div id="authorList"></div>
       </aside>
 
       <main>
@@ -578,11 +606,19 @@
   let pool = [];
 
   let activeCats = new Set();
+  let activeAuthors = new Set();
   const batchSize = 12;
   let shown = 0;
   let currentResults = [];
 
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const fmtDate = iso => iso.split('-').reverse().join('.');
+
+  // fără căutare, grila e grupată pe date (cele mai noi primele), cu un antet pe fiecare dată
+  let byDate = true;
+  let lastDate = null;
+  let dateCounts = {};
 
   function tokenize(q) {
     return q.toLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -590,7 +626,7 @@
 
   function score(item, tokens) {
     if (tokens.length === 0) return 1;
-    const haystack = (item.title + ' ' + item.cat.id + ' ' + item.cat.name + ' ' + item.platform + ' ' + item.desc).toLowerCase();
+    const haystack = (item.title + ' ' + item.cats.map(c => c.id + ' ' + c.name).join(' ') + ' ' + (item.author || '') + ' ' + item.platform + ' ' + item.desc).toLowerCase();
     let matched = 0;
     tokens.forEach(t => { if (haystack.includes(t)) matched++; });
     return matched; // 0 = fara match, altfel scor crescator cu nr de tokene gasite
@@ -601,11 +637,39 @@
     applyFilters();
   }
 
+  function toggleAuthor(name) {
+    if (activeAuthors.has(name)) activeAuthors.delete(name); else activeAuthors.add(name);
+    applyFilters();
+  }
+
+  // autorii cu cel puțin 2 resurse (plus cei selectați), cei mai bogați primii; generat automat din date
+  function renderAuthors() {
+    const counts = {};
+    pool.forEach(p => { if (p.author) counts[p.author] = (counts[p.author] || 0) + 1; });
+    const names = Object.keys(counts)
+      .filter(a => counts[a] >= 2 || activeAuthors.has(a))
+      .sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))
+      .slice(0, 15);
+    activeAuthors.forEach(a => { if (!names.includes(a)) names.push(a); });
+    document.getElementById('authorHead').hidden = names.length === 0;
+    const list = document.getElementById('authorList');
+    list.innerHTML = '';
+    names.forEach(a => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cat-item' + (activeAuthors.has(a) ? ' active' : '');
+      btn.setAttribute('aria-pressed', activeAuthors.has(a));
+      btn.innerHTML = `${esc(a)}<span class="cat-count">${counts[a]}</span>`;
+      btn.onclick = () => toggleAuthor(a);
+      list.appendChild(btn);
+    });
+  }
+
   function renderCats() {
     const list = document.getElementById('catList');
     list.innerHTML = '';
     categories.forEach(c => {
-      const count = pool.filter(p => p.cat.id === c.id).length;
+      const count = pool.filter(p => p.cats.some(x => x.id === c.id)).length;
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'cat-item' + (activeCats.has(c.id) ? ' active' : '');
@@ -614,7 +678,8 @@
       btn.onclick = () => toggleCat(c.id);
       list.appendChild(btn);
     });
-    document.getElementById('resetCats').hidden = activeCats.size === 0;
+    document.getElementById('resetCats').hidden = activeCats.size === 0 && activeAuthors.size === 0;
+    renderAuthors();
     document.querySelectorAll('#discStrip button').forEach(b => {
       b.classList.toggle('active', activeCats.has(b.dataset.cat));
       b.setAttribute('aria-pressed', activeCats.has(b.dataset.cat));
@@ -632,26 +697,35 @@
     ul.innerHTML = categories.map(c => `<li><button type="button" data-cat="${c.id}">${esc(c.name)}</button></li>`).join('');
     ul.querySelectorAll('button').forEach(b => b.onclick = () => {
       activeCats = new Set([b.dataset.cat]);
+      activeAuthors.clear();
       applyFilters();
       document.getElementById('resurse').scrollIntoView();
     });
   }
 
-  function renderWeek(week) {
-    document.getElementById('weekGrid').innerHTML = week.map(w => {
-      const c = catById[w.cat];
-      return `
-        <div class="week-cell">
-          <div class="label"><span class="tag" style="background:${c.color}">${c.id}</span><span>${esc(w.platform)}</span></div>
-          <h3>${esc(w.title)}</h3>
-        </div>`;
+  // „săptămâna asta" = resursele din ultimele 7 zile față de cel mai recent lot (primele 3)
+  function renderWeek() {
+    const latest = pool.length ? pool[0].added : null; // pool e sortat: cele mai noi primele
+    const limit = latest ? new Date(Date.parse(latest) - 6 * 864e5).toISOString().slice(0, 10) : null;
+    const recent = pool.filter(p => p.added >= limit).slice(0, 3);
+    document.getElementById('weekGrid').innerHTML = recent.map(p => {
+      const tags = p.cats.map(c => `<span class="tag" style="background:${c.color}">${c.id}</span>`).join('');
+      const open = p.url ? `<a class="week-cell" href="${esc(p.url)}" target="_blank" rel="noopener">` : '<div class="week-cell">';
+      const close = p.url ? '</a>' : '</div>';
+      return `${open}
+          <div class="label"><span class="tags">${tags}</span><span>${esc(p.platform)}</span><span style="margin-left:auto">${fmtDate(p.added)}</span></div>
+          <h3>${esc(p.title)}</h3>
+        ${close}`;
     }).join('');
   }
 
   function applyFilters() {
     const q = document.getElementById('searchInput').value;
     const tokens = tokenize(q);
-    let results = pool.filter(p => activeCats.size === 0 || activeCats.has(p.cat.id));
+    // categorii: se potrivește dacă resursa are CEL PUȚIN una dintre cele alese; autori: la fel; cele două filtre se combină
+    let results = pool.filter(p =>
+      (activeCats.size === 0 || p.cats.some(c => activeCats.has(c.id))) &&
+      (activeAuthors.size === 0 || activeAuthors.has(p.author)));
     results = results
       .map(p => ({ item: p, s: score(p, tokens) }))
       .filter(r => r.s > 0)
@@ -660,6 +734,10 @@
 
     currentResults = results;
     shown = 0;
+    byDate = tokens.length === 0;
+    lastDate = null;
+    dateCounts = {};
+    results.forEach(r => { dateCounts[r.added] = (dateCounts[r.added] || 0) + 1; });
     document.getElementById('grid').innerHTML = '';
     document.getElementById('searchMeta').textContent = tokens.length
       ? `${results.length} rezultate pentru "${q.trim()}"`
@@ -672,6 +750,14 @@
     const grid = document.getElementById('grid');
     const next = currentResults.slice(shown, shown + batchSize);
     next.forEach(p => {
+      if (byDate && p.added !== lastDate) {
+        lastDate = p.added;
+        const head = document.createElement('div');
+        head.className = 'date-head label';
+        const count = dateCounts[p.added];
+        head.innerHTML = `<strong>${fmtDate(p.added)}</strong><span>${count} ${count === 1 ? 'resursă' : 'resurse'}</span>`;
+        grid.appendChild(head);
+      }
       const card = document.createElement(p.url ? 'a' : 'article');
       card.className = 'card';
       if (p.url) {
@@ -681,17 +767,18 @@
       }
       card.innerHTML = `
         <div class="card-head label">
-          <span class="tag" style="background:${p.cat.color}">${p.cat.id}</span>
-          <span class="cat-name">${esc(p.cat.name)}</span>
+          <span class="tags">${p.cats.map(c => `<span class="tag" style="background:${c.color}">${c.id}</span>`).join('')}</span>
+          <span class="cat-name">${esc(p.cats[0].name)}${p.cats.length > 1 ? ' +' + (p.cats.length - 1) : ''}</span>
           <span class="platform">${esc(p.platform)}</span>
         </div>
         <div class="card-body">
           <h3 class="card-title">${esc(p.title)}</h3>
           <p class="card-desc">${esc(p.desc)}</p>
+          ${p.author ? `<p class="card-author">de <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span></p>` : ''}
         </div>
         <div class="card-meta label">
           <span>${esc(p.level)}</span>
-          <span class="arrow">→</span>
+          <span>${fmtDate(p.added)} #${p.n}</span>
         </div>`;
       grid.appendChild(card);
     });
@@ -709,7 +796,15 @@
 
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', applyFilters);
-  document.getElementById('resetCats').addEventListener('click', () => { activeCats.clear(); applyFilters(); });
+  document.getElementById('resetCats').addEventListener('click', () => { activeCats.clear(); activeAuthors.clear(); applyFilters(); });
+  // click pe numele autorului dintr-un card = filtrează după autor (fără să deschidă linkul cardului)
+  document.getElementById('grid').addEventListener('click', e => {
+    const a = e.target.closest('.author-link');
+    if (!a) return;
+    e.preventDefault();
+    e.stopPropagation();
+    toggleAuthor(a.dataset.author);
+  });
   document.querySelectorAll('.footer-grid [data-q]').forEach(b => b.onclick = () => {
     searchInput.value = b.dataset.q;
     applyFilters();
@@ -730,11 +825,13 @@
       categories = data.categories;
       catById = Object.fromEntries(categories.map(c => [c.id, c]));
       pool = data.resources
-        .filter(r => catById[r.cat])
-        .map(r => ({ ...r, cat: catById[r.cat] }));
+        .map(r => ({ ...r, cats: (r.cats || []).map(id => catById[id]).filter(Boolean) }))
+        .filter(r => r.cats.length)
+        .sort((a, b) => b.added.localeCompare(a.added) || a.n - b.n);
+      document.getElementById('catCount').textContent = categories.length;
       renderDiscStrip();
       renderFooterCats();
-      renderWeek(data.week || []);
+      renderWeek();
       applyFilters();
       observer.observe(document.getElementById('sentinel'));
     })

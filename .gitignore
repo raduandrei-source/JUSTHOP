@@ -1,0 +1,14 @@
+# note de lucru, rămân doar local
+context/
+logo-explorare/
+CLAUDE.md
+HANDOFF.md
+
+# setări locale Claude Code
+.claude/
+
+# sistem
+.DS_Store
+Thumbs.db
+desktop.ini
+.vercel

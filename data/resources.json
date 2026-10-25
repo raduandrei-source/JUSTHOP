@@ -1,0 +1,809 @@
+{
+  "_note": "Date de test generate din mockup. Se înlocuiesc cu resursele aprobate din Google Sheets.",
+  "categories": [
+    {
+      "id": "GH",
+      "name": "Grasshopper",
+      "color": "#1A56DB"
+    },
+    {
+      "id": "BIM",
+      "name": "BIM",
+      "color": "#0F6E56"
+    },
+    {
+      "id": "GIS",
+      "name": "GIS",
+      "color": "#7C3AED"
+    },
+    {
+      "id": "SIM",
+      "name": "Simulare energetică",
+      "color": "#0E7490"
+    },
+    {
+      "id": "FAB",
+      "name": "Fabricație digitală",
+      "color": "#BE123C"
+    },
+    {
+      "id": "VIZ",
+      "name": "Vizualizare",
+      "color": "#374151"
+    },
+    {
+      "id": "MC",
+      "name": "Modelare computațională",
+      "color": "#4C1D95"
+    },
+    {
+      "id": "AI",
+      "name": "AI și fluxuri de lucru",
+      "color": "#B45309"
+    },
+    {
+      "id": "CER",
+      "name": "Cercetare",
+      "color": "#78716C"
+    },
+    {
+      "id": "EBD",
+      "name": "Evidence-Based Design",
+      "color": "#065F46"
+    },
+    {
+      "id": "REZ",
+      "name": "Reziliență structurală",
+      "color": "#9A3412"
+    },
+    {
+      "id": "FF",
+      "name": "Form Finding",
+      "color": "#166534"
+    },
+    {
+      "id": "PUD",
+      "name": "Proiectare urbană digitală",
+      "color": "#1E3A5F"
+    }
+  ],
+  "week": [
+    {
+      "title": "Parametric Roof Optimization — Grasshopper + Karamba",
+      "cat": "GH",
+      "platform": "YouTube"
+    },
+    {
+      "title": "QGIS pentru analiza de umbrire urbană",
+      "cat": "GIS",
+      "platform": "Articol"
+    },
+    {
+      "title": "Prompting pentru schițe conceptuale AI",
+      "cat": "AI",
+      "platform": "Udemy"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Parametric facades from scratch",
+      "cat": "GH",
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Introducere în IFC și coordonare BIM",
+      "cat": "BIM",
+      "platform": "Udemy",
+      "level": "mediu",
+      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Analiza umbririi urbane cu QGIS",
+      "cat": "GIS",
+      "platform": "Coursera",
+      "level": "avansat",
+      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Simulare termică cu Ladybug + Honeybee",
+      "cat": "SIM",
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Unfolding pentru CNC — ghid complet",
+      "cat": "FAB",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "AI rendering: de la schiță la imagine finală",
+      "cat": "VIZ",
+      "platform": "Udemy",
+      "level": "avansat",
+      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Algoritmi generativi pentru planuri",
+      "cat": "MC",
+      "platform": "Coursera",
+      "level": "intro",
+      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Prompting eficient pentru concepte arhitecturale",
+      "cat": "AI",
+      "platform": "Articol",
+      "level": "mediu",
+      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Metodologie SLR cu PRISMA",
+      "cat": "CER",
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Neuroarhitectură: ce spune cercetarea",
+      "cat": "EBD",
+      "platform": "Udemy",
+      "level": "intro",
+      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Consolidare seismică — principii de bază",
+      "cat": "REZ",
+      "platform": "Coursera",
+      "level": "mediu",
+      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Kangaroo pentru form finding structural",
+      "cat": "FF",
+      "platform": "Articol",
+      "level": "avansat",
+      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Python spațial pentru date urbane deschise",
+      "cat": "PUD",
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Revit către IFC fără pierderi de date",
+      "cat": "GH",
+      "platform": "Udemy",
+      "level": "mediu",
+      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "De la Karamba la analiza reală de rezistență",
+      "cat": "BIM",
+      "platform": "Coursera",
+      "level": "avansat",
+      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Twinmotion: setup rapid pentru randări",
+      "cat": "GIS",
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Obsidian ca al doilea creier pentru arhitecți",
+      "cat": "SIM",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Zotero — organizarea bibliografiei de cercetare",
+      "cat": "FAB",
+      "platform": "Udemy",
+      "level": "avansat",
+      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "POE: evaluarea post-ocupare explicată",
+      "cat": "VIZ",
+      "platform": "Coursera",
+      "level": "intro",
+      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "GH avansat: data trees fără dureri de cap",
+      "cat": "MC",
+      "platform": "Articol",
+      "level": "mediu",
+      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Honeybee pentru simulare de lumină naturală",
+      "cat": "AI",
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Fabricație laser — toleranțe și materiale",
+      "cat": "CER",
+      "platform": "Udemy",
+      "level": "intro",
+      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Agenți AI pentru fluxuri de birou de arhitectură",
+      "cat": "EBD",
+      "platform": "Coursera",
+      "level": "mediu",
+      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Karamba topologic — optimizare de material",
+      "cat": "REZ",
+      "platform": "Articol",
+      "level": "avansat",
+      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Modelare energetică EnergyPlus pas cu pas",
+      "cat": "FF",
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "ArchiCAD teamwork — coordonare eficientă",
+      "cat": "PUD",
+      "platform": "Udemy",
+      "level": "mediu",
+      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Parametric facades from scratch",
+      "cat": "GH",
+      "platform": "Coursera",
+      "level": "avansat",
+      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Introducere în IFC și coordonare BIM",
+      "cat": "BIM",
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Analiza umbririi urbane cu QGIS",
+      "cat": "GIS",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Simulare termică cu Ladybug + Honeybee",
+      "cat": "SIM",
+      "platform": "Udemy",
+      "level": "avansat",
+      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Unfolding pentru CNC — ghid complet",
+      "cat": "FAB",
+      "platform": "Coursera",
+      "level": "intro",
+      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "AI rendering: de la schiță la imagine finală",
+      "cat": "VIZ",
+      "platform": "Articol",
+      "level": "mediu",
+      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Algoritmi generativi pentru planuri",
+      "cat": "MC",
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Prompting eficient pentru concepte arhitecturale",
+      "cat": "AI",
+      "platform": "Udemy",
+      "level": "intro",
+      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Metodologie SLR cu PRISMA",
+      "cat": "CER",
+      "platform": "Coursera",
+      "level": "mediu",
+      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Neuroarhitectură: ce spune cercetarea",
+      "cat": "EBD",
+      "platform": "Articol",
+      "level": "avansat",
+      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Consolidare seismică — principii de bază",
+      "cat": "REZ",
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Kangaroo pentru form finding structural",
+      "cat": "FF",
+      "platform": "Udemy",
+      "level": "mediu",
+      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Python spațial pentru date urbane deschise",
+      "cat": "PUD",
+      "platform": "Coursera",
+      "level": "avansat",
+      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Revit către IFC fără pierderi de date",
+      "cat": "GH",
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "De la Karamba la analiza reală de rezistență",
+      "cat": "BIM",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Twinmotion: setup rapid pentru randări",
+      "cat": "GIS",
+      "platform": "Udemy",
+      "level": "avansat",
+      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Obsidian ca al doilea creier pentru arhitecți",
+      "cat": "SIM",
+      "platform": "Coursera",
+      "level": "intro",
+      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Zotero — organizarea bibliografiei de cercetare",
+      "cat": "FAB",
+      "platform": "Articol",
+      "level": "mediu",
+      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "POE: evaluarea post-ocupare explicată",
+      "cat": "VIZ",
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "GH avansat: data trees fără dureri de cap",
+      "cat": "MC",
+      "platform": "Udemy",
+      "level": "intro",
+      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Honeybee pentru simulare de lumină naturală",
+      "cat": "AI",
+      "platform": "Coursera",
+      "level": "mediu",
+      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Fabricație laser — toleranțe și materiale",
+      "cat": "CER",
+      "platform": "Articol",
+      "level": "avansat",
+      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Agenți AI pentru fluxuri de birou de arhitectură",
+      "cat": "EBD",
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Karamba topologic — optimizare de material",
+      "cat": "REZ",
+      "platform": "Udemy",
+      "level": "mediu",
+      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Modelare energetică EnergyPlus pas cu pas",
+      "cat": "FF",
+      "platform": "Coursera",
+      "level": "avansat",
+      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "ArchiCAD teamwork — coordonare eficientă",
+      "cat": "PUD",
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Parametric facades from scratch",
+      "cat": "GH",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Introducere în IFC și coordonare BIM",
+      "cat": "BIM",
+      "platform": "Udemy",
+      "level": "avansat",
+      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Analiza umbririi urbane cu QGIS",
+      "cat": "GIS",
+      "platform": "Coursera",
+      "level": "intro",
+      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Simulare termică cu Ladybug + Honeybee",
+      "cat": "SIM",
+      "platform": "Articol",
+      "level": "mediu",
+      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Unfolding pentru CNC — ghid complet",
+      "cat": "FAB",
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "AI rendering: de la schiță la imagine finală",
+      "cat": "VIZ",
+      "platform": "Udemy",
+      "level": "intro",
+      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Algoritmi generativi pentru planuri",
+      "cat": "MC",
+      "platform": "Coursera",
+      "level": "mediu",
+      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Prompting eficient pentru concepte arhitecturale",
+      "cat": "AI",
+      "platform": "Articol",
+      "level": "avansat",
+      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Metodologie SLR cu PRISMA",
+      "cat": "CER",
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Neuroarhitectură: ce spune cercetarea",
+      "cat": "EBD",
+      "platform": "Udemy",
+      "level": "mediu",
+      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Consolidare seismică — principii de bază",
+      "cat": "REZ",
+      "platform": "Coursera",
+      "level": "avansat",
+      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Kangaroo pentru form finding structural",
+      "cat": "FF",
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Python spațial pentru date urbane deschise",
+      "cat": "PUD",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Revit către IFC fără pierderi de date",
+      "cat": "GH",
+      "platform": "Udemy",
+      "level": "avansat",
+      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "De la Karamba la analiza reală de rezistență",
+      "cat": "BIM",
+      "platform": "Coursera",
+      "level": "intro",
+      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Twinmotion: setup rapid pentru randări",
+      "cat": "GIS",
+      "platform": "Articol",
+      "level": "mediu",
+      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Obsidian ca al doilea creier pentru arhitecți",
+      "cat": "SIM",
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Zotero — organizarea bibliografiei de cercetare",
+      "cat": "FAB",
+      "platform": "Udemy",
+      "level": "intro",
+      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "POE: evaluarea post-ocupare explicată",
+      "cat": "VIZ",
+      "platform": "Coursera",
+      "level": "mediu",
+      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "GH avansat: data trees fără dureri de cap",
+      "cat": "MC",
+      "platform": "Articol",
+      "level": "avansat",
+      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Honeybee pentru simulare de lumină naturală",
+      "cat": "AI",
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Fabricație laser — toleranțe și materiale",
+      "cat": "CER",
+      "platform": "Udemy",
+      "level": "mediu",
+      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Agenți AI pentru fluxuri de birou de arhitectură",
+      "cat": "EBD",
+      "platform": "Coursera",
+      "level": "avansat",
+      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Karamba topologic — optimizare de material",
+      "cat": "REZ",
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Modelare energetică EnergyPlus pas cu pas",
+      "cat": "FF",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "ArchiCAD teamwork — coordonare eficientă",
+      "cat": "PUD",
+      "platform": "Udemy",
+      "level": "avansat",
+      "desc": "Resursă practică despre proiectare urbană digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Parametric facades from scratch",
+      "cat": "GH",
+      "platform": "Coursera",
+      "level": "intro",
+      "desc": "Resursă practică despre grasshopper, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Introducere în IFC și coordonare BIM",
+      "cat": "BIM",
+      "platform": "Articol",
+      "level": "mediu",
+      "desc": "Resursă practică despre bim, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Analiza umbririi urbane cu QGIS",
+      "cat": "GIS",
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Resursă practică despre gis, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Simulare termică cu Ladybug + Honeybee",
+      "cat": "SIM",
+      "platform": "Udemy",
+      "level": "intro",
+      "desc": "Resursă practică despre simulare energetică, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Unfolding pentru CNC — ghid complet",
+      "cat": "FAB",
+      "platform": "Coursera",
+      "level": "mediu",
+      "desc": "Resursă practică despre fabricație digitală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "AI rendering: de la schiță la imagine finală",
+      "cat": "VIZ",
+      "platform": "Articol",
+      "level": "avansat",
+      "desc": "Resursă practică despre vizualizare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Algoritmi generativi pentru planuri",
+      "cat": "MC",
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Resursă practică despre modelare computațională, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Prompting eficient pentru concepte arhitecturale",
+      "cat": "AI",
+      "platform": "Udemy",
+      "level": "mediu",
+      "desc": "Resursă practică despre ai și fluxuri de lucru, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Metodologie SLR cu PRISMA",
+      "cat": "CER",
+      "platform": "Coursera",
+      "level": "avansat",
+      "desc": "Resursă practică despre cercetare, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Neuroarhitectură: ce spune cercetarea",
+      "cat": "EBD",
+      "platform": "Articol",
+      "level": "intro",
+      "desc": "Resursă practică despre evidence-based design, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Consolidare seismică — principii de bază",
+      "cat": "REZ",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Resursă practică despre reziliență structurală, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    },
+    {
+      "title": "Kangaroo pentru form finding structural",
+      "cat": "FF",
+      "platform": "Udemy",
+      "level": "avansat",
+      "desc": "Resursă practică despre form finding, potrivită pentru cine vrea să aplice direct în proiecte reale.",
+      "url": ""
+    }
+  ]
+}

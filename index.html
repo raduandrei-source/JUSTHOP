@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>justhop — resurse digitale pentru arhitectură</title>
+<meta name="description" content="Cursuri, tutoriale video, articole și cărți despre uneltele digitale ale arhitectului, organizate pe discipline.">
+<meta name="theme-color" content="#F4F3EF">
+<script>
+  // tema se aplică înainte de randare, ca pagina să nu clipească
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('justhop-theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F3EF;
+    --surface: #FFFFFF;
+    --ink: #1C1C1C;
+    --border: #1C1C1C;
+    --accent: #1A56DB;
+    --accent-text: #1A56DB;
+    --muted: #6B6B6B;
+    --rule: #E6E4DD;
+    --shadow-rest: rgba(28,28,28,0.06);
+    --shadow-lift: rgba(28,28,28,0.14);
+
+    --header-h: 48px;
+    --bar-h: 41px;
+    --pad-x: 40px;
+    --wrap: 1280px;
+    --mono: 'Space Mono', monospace;
+  }
+  :root[data-theme="dark"] {
+    --bg: #121316;
+    --surface: #1A1B1F;
+    --ink: #F4F3EF;
+    --border: #F4F3EF;
+    --accent-text: #7FA2F0;
+    --muted: #9A9996;
+    --rule: #2C2D32;
+    --shadow-rest: rgba(244,243,239,0.06);
+    --shadow-lift: rgba(244,243,239,0.16);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: var(--header-h); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+
+  /* eticheta monospace: 11px, majuscule, spațiere 0.15em */
+  .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* container de 1280px, încadrat de linii verticale */
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  /* ---------- HEADER ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    height: var(--header-h);
+    display: flex;
+    align-items: stretch;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px 0 var(--pad-x);
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .logo { width: 28px; height: 28px; flex-shrink: 0; }
+  .logo .stroke { stroke: var(--ink); }
+  .brand-name { font-weight: 700; font-size: 17px; letter-spacing: -0.02em; line-height: 1; }
+  .brand-tag { font-family: var(--mono); font-size: 10px; color: var(--muted); line-height: 1; margin-top: 3px; }
+  nav { display: flex; }
+  nav a {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-left: 1px solid var(--border);
+    text-decoration: none;
+  }
+  nav a:hover, nav a[aria-current] { color: var(--accent-text); }
+  .theme-toggle {
+    width: var(--header-h);
+    border: none;
+    border-left: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    padding: 0;
+  }
+  .theme-toggle:hover { background: var(--bg); }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+  /* ---------- DISCIPLINE STRIP ---------- */
+  .disc-strip { background: var(--accent); color: #fff; }
+  .disc-strip .inner {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 calc(var(--pad-x) - 10px);
+  }
+  .disc-strip .inner::-webkit-scrollbar { display: none; }
+  .disc-strip button {
+    flex-shrink: 0;
+    height: 32px;
+    padding: 0 10px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .disc-strip button:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .disc-strip button.active { background: #fff; color: var(--accent); text-decoration: none; }
+
+  /* ---------- INTRO ---------- */
+  .intro { padding: 80px var(--pad-x); }
+  .intro h1 {
+    margin: 0;
+    max-width: 768px;
+    font-size: 60px;
+    line-height: 1.02;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+  }
+  .intro h1 em { font-style: normal; color: var(--accent-text); }
+  .intro p {
+    margin: 20px 0 0;
+    max-width: 576px;
+    font-size: 18px;
+    line-height: 1.625;
+    color: var(--muted);
+  }
+
+  /* ---------- BARA DE SECȚIUNE ---------- */
+  .section { border-top: 1px solid var(--border); }
+  .section-bar {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 30;
+    height: var(--bar-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 var(--pad-x);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .section-bar strong { color: var(--ink); font-weight: 400; }
+
+  /* ---------- ADĂUGATE SĂPTĂMÂNA ASTA ---------- */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .week-cell {
+    background: var(--bg);
+    padding: 24px var(--pad-x) 28px;
+    transition: background 0.15s ease;
+  }
+  .week-cell:hover { background: var(--surface); }
+  .week-cell .label { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+  .week-cell h3 { margin: 12px 0 0; font-size: 18px; line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; }
+
+  /* ---------- CĂUTARE ---------- */
+  .search-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+    padding: 0 var(--pad-x);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  .search-row .prompt { color: var(--accent-text); font-weight: 700; }
+  .search-row input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+  }
+  .search-row input::placeholder { color: var(--muted); }
+  .kbd {
+    border: 1px solid var(--muted);
+    color: var(--muted);
+    padding: 0 6px;
+    font-size: 11px;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .layout {
+    display: grid;
+    grid-template-columns: 256px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    padding: 32px var(--pad-x) 64px;
+  }
+
+  /* ---------- SIDEBAR (hârtie pe masă) ---------- */
+  .sidebar {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    padding: 16px 16px 8px;
+    position: sticky;
+    top: calc(var(--header-h) + var(--bar-h) + 24px);
+    max-height: calc(100vh - var(--header-h) - var(--bar-h) - 48px);
+    overflow-y: auto;
+    box-shadow: 2px 2px 0 var(--shadow-rest);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .sidebar:hover {
+    box-shadow: 4px 5px 0 var(--shadow-lift);
+    transform: translate(-1px, -2px);
+  }
+  .sidebar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .reset {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--accent-text);
+  }
+  .reset[hidden] { display: none; }
+  .cat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 2px;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    background: none;
+    font-size: 14px;
+    line-height: 1.3;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cat-item:last-child { border-bottom: none; }
+  .cat-item:hover { color: var(--accent-text); }
+  .cat-item.active { font-weight: 700; }
+  .dot { width: 10px; height: 10px; flex-shrink: 0; }
+  [data-theme="dark"] .dot { outline: 1px solid var(--muted); }
+  .cat-count { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; }
+
+  /* ---------- CARDURI ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    box-shadow: 2px 2px 0 var(--shadow-rest);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    text-decoration: none;
+  }
+  .card:hover {
+    box-shadow: 4px 6px 0 var(--shadow-lift);
+    transform: translate(-1px, -3px);
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--muted);
+  }
+  .card-head .platform { margin-left: auto; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #fff;
+    padding: 2px 6px;
+  }
+  .cat-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card-body { padding: 20px 24px 24px; flex: 1; }
+  .card-title { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 500; letter-spacing: -0.02em; }
+  .card-desc { margin: 8px 0 0; font-size: 14px; line-height: 1.57; color: var(--muted); }
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 24px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+  }
+  .card:hover .card-meta .arrow { color: var(--accent-text); }
+
+  .sentinel { text-align: center; padding: 40px 0 0; color: var(--muted); }
+
+  /* ---------- SUBSOL ---------- */
+  .site-footer { border-top: 1px solid var(--border); }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+  .footer-grid > div { background: var(--bg); padding: 32px; }
+  .footer-grid > .footer-brand { padding: var(--pad-x); }
+  .footer-brand .brand { padding: 0; }
+  .footer-brand p { margin: 20px 0 0; max-width: 360px; font-size: 14px; line-height: 1.6; color: var(--muted); }
+  .footer-brand .motto { margin-top: 12px; font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .footer-grid h4 { margin: 0 0 16px; font-weight: 400; color: var(--muted); }
+  .footer-grid ul { list-style: none; margin: 0; padding: 0; }
+  .footer-grid li { font-size: 14px; line-height: 1.4; margin-bottom: 10px; }
+  .footer-grid li a, .footer-grid li button {
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+  }
+  .footer-grid li a:hover, .footer-grid li button:hover { color: var(--accent-text); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px var(--pad-x);
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid > .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 860px) {
+    :root { --pad-x: 24px; }
+    .intro { padding: 56px var(--pad-x); }
+    .intro h1 { font-size: 40px; }
+    .intro p { font-size: 16px; }
+    .week-grid { grid-template-columns: 1fr; }
+    .layout { grid-template-columns: 1fr; padding-top: 24px; }
+    .sidebar { position: static; max-height: 240px; }
+    .sidebar:hover { transform: none; }
+    .kbd { display: none; }
+  }
+  @media (max-width: 600px) {
+    nav { display: none; }
+    .brand-tag { display: none; }
+    .section-bar .hide-sm { display: none; }
+    .footer-bottom { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#" aria-label="justhop — acasă">
+      <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+        <g transform="rotate(12 50 45)">
+          <polygon points="50,12 78,28 50,44 22,28" fill="#1A56DB"/>
+          <polygon class="stroke" points="22,28 50,44 50,74 22,58" fill="none" stroke-width="4"/>
+          <polygon class="stroke" points="78,28 50,44 50,74 78,58" fill="none" stroke-width="4"/>
+          <polygon class="stroke" points="50,12 78,28 50,44 22,28" fill="none" stroke-width="4"/>
+        </g>
+        <line class="stroke" x1="8" y1="70" x2="22" y2="60" stroke-width="4"/>
+        <line class="stroke" x1="14" y1="80" x2="28" y2="70" stroke-width="4"/>
+        <line class="stroke" x1="20" y1="90" x2="34" y2="80" stroke-width="4"/>
+      </svg>
+      <span>
+        <span class="brand-name" style="display:block">justhop</span>
+        <span class="brand-tag" style="display:block">nevermindthe.name</span>
+      </span>
+    </a>
+    <nav class="label">
+      <a href="#resurse" aria-current="page">Resurse</a>
+      <a href="#">Newsletter</a>
+      <a href="#">Despre</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Comută tema închisă" title="Comută tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="8" height="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="disc-strip">
+  <div class="inner label" id="discStrip"></div>
+</div>
+
+<div class="wrap">
+  <section class="intro">
+    <h1>Resurse digitale pentru <em>arhitectură.</em></h1>
+    <p>Cursuri, tutoriale video, articole și cărți despre uneltele digitale ale arhitectului, organizate pe cele 13 discipline ale planului de învățământ 2026–2032. Selectate manual, actualizate în fiecare vineri.</p>
+  </section>
+
+  <section class="section" id="saptamana">
+    <div class="section-bar label">
+      <strong>Adăugate săptămâna asta</strong>
+      <span class="hide-sm">actualizat vinerea</span>
+    </div>
+    <div class="week-grid" id="weekGrid"></div>
+  </section>
+
+  <section class="section" id="resurse">
+    <div class="section-bar label">
+      <strong>Resurse</strong>
+      <span id="searchMeta">se încarcă...</span>
+    </div>
+    <label class="search-row">
+      <span class="prompt">&gt;</span>
+      <input id="searchInput" type="text" placeholder="caută titlu, unealtă, categorie..." autocomplete="off">
+      <span class="kbd" aria-hidden="true">/</span>
+    </label>
+
+    <div class="layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-head label">
+          <span>Categorii</span>
+          <button class="reset label" id="resetCats" type="button" hidden>resetează</button>
+        </div>
+        <div id="catList"></div>
+      </aside>
+
+      <main>
+        <div class="grid" id="grid"></div>
+        <div class="sentinel label" id="sentinel">se încarcă resursele...</div>
+      </main>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#" aria-label="justhop — acasă">
+          <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+            <g transform="rotate(12 50 45)">
+              <polygon points="50,12 78,28 50,44 22,28" fill="#1A56DB"/>
+              <polygon class="stroke" points="22,28 50,44 50,74 22,58" fill="none" stroke-width="4"/>
+              <polygon class="stroke" points="78,28 50,44 50,74 78,58" fill="none" stroke-width="4"/>
+              <polygon class="stroke" points="50,12 78,28 50,44 22,28" fill="none" stroke-width="4"/>
+            </g>
+            <line class="stroke" x1="8" y1="70" x2="22" y2="60" stroke-width="4"/>
+            <line class="stroke" x1="14" y1="80" x2="28" y2="70" stroke-width="4"/>
+            <line class="stroke" x1="20" y1="90" x2="34" y2="80" stroke-width="4"/>
+          </svg>
+          <span class="brand-name">justhop</span>
+        </a>
+        <p>Agregator de resurse digitale pentru arhitectură, pentru oricine sare de la un tool digital la altul.</p>
+        <p class="motto">just hop, nevermind the name.</p>
+      </div>
+      <div>
+        <h4 class="label">Discipline</h4>
+        <ul id="footerCats"></ul>
+      </div>
+      <div>
+        <h4 class="label">Platforme</h4>
+        <ul>
+          <li><button type="button" data-q="youtube">YouTube</button></li>
+          <li><button type="button" data-q="udemy">Udemy</button></li>
+          <li><button type="button" data-q="coursera">Coursera</button></li>
+          <li><button type="button" data-q="articol">Articole</button></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="label">Newsletter</h4>
+        <ul>
+          <li>Resursele noi, vineri seara.</li>
+          <li><a href="#">Abonează-te →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="label">Despre</h4>
+        <ul>
+          <li><a href="#">Despre proiect</a></li>
+          <li><a href="#">Cum alegem resursele</a></li>
+          <li><a href="#">Propune o resursă</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom label">
+      <span>© 2026 justhop</span>
+      <span>justhop.nevermindthe.name</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ---------- TEMĂ ---------- */
+  const THEME_KEY = 'justhop-theme';
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  function setTheme(t, persist) {
+    document.documentElement.dataset.theme = t;
+    themeMeta.content = t === 'dark' ? '#121316' : '#F4F3EF';
+    const btn = document.getElementById('themeToggle');
+    btn.setAttribute('aria-label', t === 'dark' ? 'Comută tema deschisă' : 'Comută tema închisă');
+    if (persist) {
+      try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+    }
+  }
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
+  });
+
+  // fără alegere salvată, urmăm setarea sistemului
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    let saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (err) {}
+    if (!saved) setTheme(e.matches ? 'dark' : 'light', false);
+  });
+  setTheme(document.documentElement.dataset.theme, false);
+
+  /* ---------- DATE ---------- */
+  let categories = [];
+  let catById = {};
+  let pool = [];
+
+  let activeCats = new Set();
+  const batchSize = 12;
+  let shown = 0;
+  let currentResults = [];
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  function tokenize(q) {
+    return q.toLowerCase().trim().split(/\s+/).filter(Boolean);
+  }
+
+  function score(item, tokens) {
+    if (tokens.length === 0) return 1;
+    const haystack = (item.title + ' ' + item.cat.id + ' ' + item.cat.name + ' ' + item.platform + ' ' + item.desc).toLowerCase();
+    let matched = 0;
+    tokens.forEach(t => { if (haystack.includes(t)) matched++; });
+    return matched; // 0 = fara match, altfel scor crescator cu nr de tokene gasite
+  }
+
+  function toggleCat(id) {
+    if (activeCats.has(id)) activeCats.delete(id); else activeCats.add(id);
+    applyFilters();
+  }
+
+  function renderCats() {
+    const list = document.getElementById('catList');
+    list.innerHTML = '';
+    categories.forEach(c => {
+      const count = pool.filter(p => p.cat.id === c.id).length;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cat-item' + (activeCats.has(c.id) ? ' active' : '');
+      btn.setAttribute('aria-pressed', activeCats.has(c.id));
+      btn.innerHTML = `<span class="dot" style="background:${c.color}"></span>${esc(c.name)}<span class="cat-count">${count}</span>`;
+      btn.onclick = () => toggleCat(c.id);
+      list.appendChild(btn);
+    });
+    document.getElementById('resetCats').hidden = activeCats.size === 0;
+    document.querySelectorAll('#discStrip button').forEach(b => {
+      b.classList.toggle('active', activeCats.has(b.dataset.cat));
+      b.setAttribute('aria-pressed', activeCats.has(b.dataset.cat));
+    });
+  }
+
+  function renderDiscStrip() {
+    const strip = document.getElementById('discStrip');
+    strip.innerHTML = categories.map(c => `<button type="button" data-cat="${c.id}">${c.id} · ${esc(c.name)}</button>`).join('');
+    strip.querySelectorAll('button').forEach(b => b.onclick = () => toggleCat(b.dataset.cat));
+  }
+
+  function renderFooterCats() {
+    const ul = document.getElementById('footerCats');
+    ul.innerHTML = categories.map(c => `<li><button type="button" data-cat="${c.id}">${esc(c.name)}</button></li>`).join('');
+    ul.querySelectorAll('button').forEach(b => b.onclick = () => {
+      activeCats = new Set([b.dataset.cat]);
+      applyFilters();
+      document.getElementById('resurse').scrollIntoView();
+    });
+  }
+
+  function renderWeek(week) {
+    document.getElementById('weekGrid').innerHTML = week.map(w => {
+      const c = catById[w.cat];
+      return `
+        <div class="week-cell">
+          <div class="label"><span class="tag" style="background:${c.color}">${c.id}</span><span>${esc(w.platform)}</span></div>
+          <h3>${esc(w.title)}</h3>
+        </div>`;
+    }).join('');
+  }
+
+  function applyFilters() {
+    const q = document.getElementById('searchInput').value;
+    const tokens = tokenize(q);
+    let results = pool.filter(p => activeCats.size === 0 || activeCats.has(p.cat.id));
+    results = results
+      .map(p => ({ item: p, s: score(p, tokens) }))
+      .filter(r => r.s > 0)
+      .sort((a, b) => b.s - a.s)
+      .map(r => r.item);
+
+    currentResults = results;
+    shown = 0;
+    document.getElementById('grid').innerHTML = '';
+    document.getElementById('searchMeta').textContent = tokens.length
+      ? `${results.length} rezultate pentru "${q.trim()}"`
+      : `${results.length} afișate`;
+    renderCats();
+    loadMore();
+  }
+
+  function loadMore() {
+    const grid = document.getElementById('grid');
+    const next = currentResults.slice(shown, shown + batchSize);
+    next.forEach(p => {
+      const card = document.createElement(p.url ? 'a' : 'article');
+      card.className = 'card';
+      if (p.url) {
+        card.href = p.url;
+        card.target = '_blank';
+        card.rel = 'noopener';
+      }
+      card.innerHTML = `
+        <div class="card-head label">
+          <span class="tag" style="background:${p.cat.color}">${p.cat.id}</span>
+          <span class="cat-name">${esc(p.cat.name)}</span>
+          <span class="platform">${esc(p.platform)}</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">${esc(p.title)}</h3>
+          <p class="card-desc">${esc(p.desc)}</p>
+        </div>
+        <div class="card-meta label">
+          <span>${esc(p.level)}</span>
+          <span class="arrow">→</span>
+        </div>`;
+      grid.appendChild(card);
+    });
+    shown += next.length;
+    document.getElementById('sentinel').textContent = shown >= currentResults.length
+      ? (currentResults.length ? 'ai ajuns la capăt — atât avem deocamdată' : 'nicio resursă nu se potrivește')
+      : 'se încarcă mai multe resurse...';
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && shown < currentResults.length) loadMore();
+    });
+  }, { rootMargin: '200px' });
+
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', applyFilters);
+  document.getElementById('resetCats').addEventListener('click', () => { activeCats.clear(); applyFilters(); });
+  document.querySelectorAll('.footer-grid [data-q]').forEach(b => b.onclick = () => {
+    searchInput.value = b.dataset.q;
+    applyFilters();
+    document.getElementById('resurse').scrollIntoView();
+  });
+
+  // „/" mută focusul în căutare
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  fetch('data/resources.json')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(data => {
+      categories = data.categories;
+      catById = Object.fromEntries(categories.map(c => [c.id, c]));
+      pool = data.resources
+        .filter(r => catById[r.cat])
+        .map(r => ({ ...r, cat: catById[r.cat] }));
+      renderDiscStrip();
+      renderFooterCats();
+      renderWeek(data.week || []);
+      applyFilters();
+      observer.observe(document.getElementById('sentinel'));
+    })
+    .catch(() => {
+      document.getElementById('searchMeta').textContent = 'eroare';
+      document.getElementById('sentinel').textContent = 'nu am putut încărca data/resources.json — deschide pagina printr-un server, nu direct din fișier';
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>justhop — resurse digitale pentru arhitectură</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F3EF;
+    --surface: #FFFFFF;
+    --border: #1C1C1C;
+    --accent: #1A56DB;
+    --muted: #6B6B6B;
+    --ink: #1C1C1C;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .mono { font-family: 'Space Mono', monospace; }
+
+  /* ---------- HEADER ---------- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    border-bottom: 1.5px solid var(--border);
+    background: var(--surface);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand svg { width: 34px; height: 34px; }
+  .brand-name { font-weight: 700; font-size: 19px; letter-spacing: -0.3px; }
+  .brand-tag { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; margin-top: 1px; }
+  nav a {
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+    margin-left: 22px;
+    font-family: 'Space Mono', monospace;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* ---------- DISCIPLINE STRIP ---------- */
+  .disc-strip {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 11.5px;
+    padding: 8px 28px;
+    white-space: nowrap;
+    overflow-x: auto;
+    display: flex;
+    gap: 22px;
+  }
+  .disc-strip span { opacity: 0.9; }
+  .disc-strip span:hover { opacity: 1; text-decoration: underline; cursor: pointer; }
+
+  /* ---------- SEARCH / FILTER BAR ---------- */
+  .toolbar {
+    padding: 18px 28px 6px;
+  }
+  .search-row {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    padding: 10px 14px;
+    gap: 8px;
+    max-width: 560px;
+  }
+  .search-row .prompt { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 700; }
+  .search-row input {
+    border: none;
+    outline: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    flex: 1;
+    background: transparent;
+    color: var(--ink);
+  }
+  .search-meta { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+  /* ---------- LAYOUT ---------- */
+  .layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 18px 28px 40px;
+  }
+
+  /* ---------- SIDEBAR (paper on the desk) ---------- */
+  .sidebar {
+    width: 230px;
+    flex-shrink: 0;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    padding: 16px 16px 10px;
+    height: calc(100vh - 190px);
+    overflow-y: auto;
+    position: sticky;
+    top: 18px;
+    box-shadow: 2px 2px 0 rgba(28,28,28,0.06);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .sidebar:hover {
+    box-shadow: 4px 5px 0 rgba(28,28,28,0.12);
+    transform: translate(-1px, -2px);
+  }
+  .sidebar h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .cat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 4px;
+    font-size: 12.5px;
+    cursor: pointer;
+    border-bottom: 1px solid #EEECE6;
+  }
+  .cat-item:last-child { border-bottom: none; }
+  .cat-item:hover { color: var(--accent); }
+  .cat-item.active { font-weight: 700; }
+  .dot { width: 9px; height: 9px; flex-shrink: 0; }
+  .cat-count { margin-left: auto; font-family: 'Space Mono', monospace; font-size: 10.5px; color: var(--muted); }
+
+  /* ---------- MAIN ---------- */
+  main { flex: 1; min-width: 0; }
+
+  .week-strip {
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 26px;
+    overflow-x: auto;
+  }
+  .week-strip .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: #999;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .week-item {
+    font-size: 12.5px;
+    flex-shrink: 0;
+    border-left: 2px solid var(--accent);
+    padding-left: 8px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    padding: 0;
+    position: relative;
+    box-shadow: 2px 2px 0 rgba(28,28,28,0.05);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    cursor: pointer;
+  }
+  .card:hover {
+    box-shadow: 4px 6px 0 rgba(28,28,28,0.14);
+    transform: translate(-1px, -3px);
+  }
+  .card-thumb {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 8px;
+  }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: #fff;
+    padding: 3px 7px;
+    font-weight: 700;
+  }
+  .card-body { padding: 12px 14px 14px; }
+  .card-title { font-size: 13.5px; font-weight: 700; margin: 0 0 6px; line-height: 1.3; }
+  .card-desc { font-size: 11.5px; color: var(--muted); line-height: 1.4; margin: 0 0 10px; }
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    border-top: 1px solid #EEECE6;
+    padding-top: 8px;
+  }
+
+  .sentinel { text-align: center; padding: 30px 0; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); }
+
+  @media (max-width: 720px) {
+    .layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; max-height: 220px; position: static; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <svg viewBox="0 0 100 100">
+      <g transform="rotate(12 50 45)">
+        <polygon points="50,12 78,28 50,44 22,28" fill="#1A56DB"/>
+        <polygon points="22,28 50,44 50,74 22,58" fill="none" stroke="#1C1C1C" stroke-width="4"/>
+        <polygon points="78,28 50,44 50,74 78,58" fill="none" stroke="#1C1C1C" stroke-width="4"/>
+        <polygon points="50,12 78,28 50,44 22,28" fill="none" stroke="#1C1C1C" stroke-width="4"/>
+      </g>
+      <line x1="8" y1="70" x2="22" y2="60" stroke="#1C1C1C" stroke-width="4"/>
+      <line x1="14" y1="80" x2="28" y2="70" stroke="#1C1C1C" stroke-width="4"/>
+      <line x1="20" y1="90" x2="34" y2="80" stroke="#1C1C1C" stroke-width="4"/>
+    </svg>
+    <div>
+      <div class="brand-name">justhop</div>
+      <div class="brand-tag">nevermindthe.name</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#">resurse</a>
+    <a href="#">newsletter</a>
+    <a href="#">despre</a>
+  </nav>
+</header>
+
+<div class="disc-strip mono" id="discStrip"></div>
+
+<div class="toolbar">
+  <div class="search-row">
+    <span class="prompt">&gt;</span>
+    <input id="searchInput" type="text" placeholder="FILTRARE: caută titlu, unealtă, categorie...">
+  </div>
+  <div class="search-meta" id="searchMeta">se afișează toate resursele</div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <h3>CATEGORII</h3>
+    <div id="catList"></div>
+  </aside>
+
+  <main>
+    <div class="week-strip mono">
+      <span class="label">ADĂUGATE&nbsp;SĂPT.&nbsp;ASTA →</span>
+      <div class="week-item">Parametric Roof Optimization — Grasshopper + Karamba</div>
+      <div class="week-item">QGIS pentru analiza de umbrire urbană</div>
+      <div class="week-item">Prompting pentru schițe conceptuale AI</div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="sentinel" id="sentinel">se încarcă mai multe resurse...</div>
+  </main>
+</div>
+
+<script>
+  const categories = [
+    { id: 'GH', name: 'Grasshopper', color: '#1A56DB' },
+    { id: 'BIM', name: 'BIM', color: '#0F6E56' },
+    { id: 'GIS', name: 'GIS', color: '#7C3AED' },
+    { id: 'SIM', name: 'Simulare energetică', color: '#0E7490' },
+    { id: 'FAB', name: 'Fabricație digitală', color: '#BE123C' },
+    { id: 'VIZ', name: 'Vizualizare', color: '#374151' },
+    { id: 'MC', name: 'Modelare computațională', color: '#4C1D95' },
+    { id: 'AI', name: 'AI și fluxuri de lucru', color: '#B45309' },
+    { id: 'CER', name: 'Cercetare', color: '#78716C' },
+    { id: 'EBD', name: 'Evidence-Based Design', color: '#065F46' },
+    { id: 'REZ', name: 'Reziliență structurală', color: '#9A3412' },
+    { id: 'FF', name: 'Form Finding', color: '#166534' },
+    { id: 'PUD', name: 'Proiectare urbană digitală', color: '#1E3A5F' },
+  ];
+
+  const titles = [
+    'Parametric facades from scratch', 'Introducere în IFC și coordonare BIM',
+    'Analiza umbririi urbane cu QGIS', 'Simulare termică cu Ladybug + Honeybee',
+    'Unfolding pentru CNC — ghid complet', 'AI rendering: de la schiță la imagine finală',
+    'Algoritmi generativi pentru planuri', 'Prompting eficient pentru concepte arhitecturale',
+    'Metodologie SLR cu PRISMA', 'Neuroarhitectură: ce spune cercetarea',
+    'Consolidare seismică — principii de bază', 'Kangaroo pentru form finding structural',
+    'Python spațial pentru date urbane deschise', 'Revit către IFC fără pierderi de date',
+    'De la Karamba la analiza reală de rezistență', 'Twinmotion: setup rapid pentru randări',
+    'Obsidian ca al doilea creier pentru arhitecți', 'Zotero — organizarea bibliografiei de cercetare',
+    'POE: evaluarea post-ocupare explicată', 'GH avansat: data trees fără dureri de cap',
+    'Honeybee pentru simulare de lumină naturală', 'Fabricație laser — toleranțe și materiale',
+    'Agenți AI pentru fluxuri de birou de arhitectură', 'Karamba topologic — optimizare de material',
+    'Modelare energetică EnergyPlus pas cu pas', 'ArchiCAD teamwork — coordonare eficientă',
+  ];
+
+  // generăm un pool mare de resurse mock combinând titluri + categorii
+  const pool = [];
+  for (let i = 0; i < 90; i++) {
+    const cat = categories[i % categories.length];
+    const title = titles[i % titles.length];
+    pool.push({
+      title: title,
+      cat: cat,
+      platform: ['YouTube', 'Udemy', 'Coursera', 'Articol'][i % 4],
+      level: ['intro', 'mediu', 'avansat'][i % 3],
+      desc: 'Resursă practică despre ' + cat.name.toLowerCase() + ', potrivită pentru cine vrea să aplice direct în proiecte reale.',
+    });
+  }
+
+  let activeCats = new Set();
+  let batchSize = 12;
+  let shown = 0;
+  let currentResults = pool;
+
+  function tokenize(q) {
+    return q.toLowerCase().trim().split(/\s+/).filter(Boolean);
+  }
+
+  function score(item, tokens) {
+    if (tokens.length === 0) return 1;
+    const haystack = (item.title + ' ' + item.cat.name + ' ' + item.platform + ' ' + item.desc).toLowerCase();
+    let matched = 0;
+    tokens.forEach(t => { if (haystack.includes(t)) matched++; });
+    return matched; // 0 = fara match, altfel scor crescator cu nr de tokene gasite
+  }
+
+  function renderCats() {
+    const list = document.getElementById('catList');
+    list.innerHTML = '';
+    categories.forEach(c => {
+      const count = pool.filter(p => p.cat.id === c.id).length;
+      const div = document.createElement('div');
+      div.className = 'cat-item' + (activeCats.has(c.id) ? ' active' : '');
+      div.innerHTML = `<span class="dot" style="background:${c.color}"></span>${c.name}<span class="cat-count">${count}</span>`;
+      div.onclick = () => {
+        if (activeCats.has(c.id)) activeCats.delete(c.id); else activeCats.add(c.id);
+        applyFilters();
+      };
+      list.appendChild(div);
+    });
+  }
+
+  function renderDiscStrip() {
+    const strip = document.getElementById('discStrip');
+    strip.innerHTML = categories.map(c => `<span>${c.id} · ${c.name}</span>`).join('');
+  }
+
+  function applyFilters() {
+    const q = document.getElementById('searchInput').value;
+    const tokens = tokenize(q);
+    let results = pool.filter(p => activeCats.size === 0 || activeCats.has(p.cat.id));
+    results = results
+      .map(p => ({ item: p, s: score(p, tokens) }))
+      .filter(r => r.s > 0)
+      .sort((a, b) => b.s - a.s)
+      .map(r => r.item);
+
+    currentResults = results;
+    shown = 0;
+    document.getElementById('grid').innerHTML = '';
+    const meta = document.getElementById('searchMeta');
+    meta.textContent = tokens.length
+      ? `${results.length} rezultate pentru "${q}"`
+      : `${results.length} resurse afișate`;
+    renderCats();
+    loadMore();
+  }
+
+  function loadMore() {
+    const grid = document.getElementById('grid');
+    const next = currentResults.slice(shown, shown + batchSize);
+    next.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-thumb" style="background:${p.cat.color}22">
+          <span class="tag" style="background:${p.cat.color}">${p.cat.id}</span>
+        </div>
+        <div class="card-body">
+          <p class="card-title">${p.title}</p>
+          <p class="card-desc">${p.desc}</p>
+          <div class="card-meta">
+            <span>${p.platform}</span>
+            <span>${p.level}</span>
+          </div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    shown += next.length;
+    const sentinel = document.getElementById('sentinel');
+    sentinel.textContent = shown >= currentResults.length
+      ? (currentResults.length ? 'ai ajuns la capăt — atât avem deocamdată' : 'nicio resursă nu se potrivește')
+      : 'se încarcă mai multe resurse...';
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && shown < currentResults.length) loadMore();
+    });
+  }, { rootMargin: '200px' });
+  observer.observe(document.getElementById('sentinel'));
+
+  document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+  renderDiscStrip();
+  renderCats();
+  applyFilters();
+</script>
+
+</body>
+</html>

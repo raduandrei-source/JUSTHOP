@@ -108,21 +108,70 @@ def details(c, lot, past):
     return text
 
 
+def columns(ws):
+    """Coloanele după antet, ca să meargă și pe fișiere mai vechi (fără Categorii / Software)."""
+    idx = {}
+    for c in range(1, ws.max_column + 1):
+        h = str(ws.cell(row=1, column=c).value or "").strip().lower()
+        if h == "nr": idx["nr"] = c
+        elif h == "accept": idx["accept"] = c
+        elif h.startswith("resurs"): idx["res"] = c
+        elif h == "categorii": idx["cats"] = c
+        elif h == "software": idx["soft"] = c
+        elif h == "detalii": idx["det"] = c
+    return idx
+
+
+def split_list(raw):
+    out = []
+    for x in re.split(r"[,;]+", str(raw or "")):
+        x = " ".join(x.split())
+        if x and x not in out:
+            out.append(x)
+    return out
+
+
+def sheet_software(path):
+    """Programele din foaia „Software” a unui Excel existent (inclusiv cele adăugate de utilizator)."""
+    if not os.path.exists(path):
+        return []
+    wb = load_workbook(path)
+    if "Software" not in wb.sheetnames:
+        return []
+    ws = wb["Software"]
+    return [str(ws.cell(row=r, column=1).value).strip() for r in range(2, ws.max_row + 1)
+            if ws.cell(row=r, column=1).value and str(ws.cell(row=r, column=1).value).strip()]
+
+
+def all_software():
+    """Toate programele cunoscute: din resursele publicate și din toate loturile, cele mai folosite primele."""
+    counts = {}
+    for r in load_json(os.path.join(ROOT, "data", "resources.json"))["resources"]:
+        for s in r.get("software", []):
+            counts[s] = counts.get(s, 0) + 1
+    for p in glob.glob(os.path.join(ROOT, "data", "loturi", "*.json")):
+        for c in load_json(p)["candidates"]:
+            for s in c.get("software", []):
+                counts.setdefault(s, 0)
+    return sorted(counts, key=lambda s: (-counts[s], s.lower()))
+
+
 def old_choices(path):
-    """Alegerile din fișierul existent: {url: (accept, cats)}; layout vechi (fără Categorii) sau nou."""
+    """Alegerile din fișierul existent: {url: (accept, cats, software)}; merge și pe layouturi mai vechi."""
     if not os.path.exists(path):
         return {}
-    ws = load_workbook(path).active
-    has_cats = (ws["D1"].value or "").strip().lower() == "categorii"
+    ws = load_workbook(path).worksheets[0]
+    col = columns(ws)
     out = {}
     for row in range(2, ws.max_row + 1):
-        c = ws.cell(row=row, column=3)
+        c = ws.cell(row=row, column=col.get("res", 3))
         url = c.hyperlink.target if c.hyperlink else None
         if not url:
             continue
-        acc = ws.cell(row=row, column=2).value
-        cats = ws.cell(row=row, column=4).value if has_cats else None
-        out[url] = (acc, cats)
+        acc = ws.cell(row=row, column=col.get("accept", 2)).value
+        cats = ws.cell(row=row, column=col["cats"]).value if "cats" in col else None
+        soft = ws.cell(row=row, column=col["soft"]).value if "soft" in col else None
+        out[url] = (acc, cats, soft)
     return out
 
 
@@ -139,7 +188,7 @@ def export(lot_path, out_path):
 
     thin = Side(style="thin", color="BDBDBD")
     border = Border(bottom=thin)
-    headers = ["Nr", "Accept", "Resursă (click = deschide linkul)", "Categorii", "Detalii"]
+    headers = ["Nr", "Accept", "Resursă (click = deschide linkul)", "Categorii", "Software", "Detalii"]
     for c, h in enumerate(headers, 1):
         cell = ws.cell(row=1, column=c, value=h)
         cell.font = Font(name=F, bold=True, color="FFFFFF", size=10)
@@ -148,17 +197,21 @@ def export(lot_path, out_path):
     ws.row_dimensions[1].height = 24
     ws["B1"].comment = Comment("Da sau Nu din lista derulantă. Galben = nehotărât.", "justhop")
     ws["D1"].comment = Comment("Coduri separate prin virgulă, prima = categoria principală (max. 3). Ex: GH, SIM", "justhop")
-    for col, w in {"A": 5, "B": 9, "C": 58, "D": 14, "E": 74}.items():
+    ws["E1"].comment = Comment("Programele despre care e resursa, separate prin virgulă. Ex: Rhino, Grasshopper. Un program nou apare singur în caseta de pe site.", "justhop")
+    for col, w in {"A": 5, "B": 9, "C": 46, "D": 12, "E": 22, "F": 62}.items():
         ws.column_dimensions[col].width = w
 
     for i, c in enumerate(lot["candidates"], 2):
         accept = c.get("accept") or c.get("suggest")
         cats = ", ".join(c["cats"])
+        soft = ", ".join(c.get("software", []))
         if c["url"] in kept:  # alegerile tale din fișier au prioritate față de sugestiile mele
-            acc, kc = kept[c["url"]]
+            acc, kc, ks = kept[c["url"]]
             accept = acc if acc in ("Da", "Nu") else None  # și o celulă golită de tine rămâne goală
             if kc:
                 cats = kc
+            if ks is not None:
+                soft = ks
         flagged_text = details(c, lot, past)
         title = c["title"] + ("" if c["platform"] == "YouTube" else f" [{c['platform']}]")
 
@@ -166,18 +219,21 @@ def export(lot_path, out_path):
         b = ws.cell(row=i, column=2, value=accept)
         t = ws.cell(row=i, column=3, value=title)
         k = ws.cell(row=i, column=4, value=cats)
-        e = ws.cell(row=i, column=5, value=flagged_text)
+        s = ws.cell(row=i, column=5, value=soft or None)
+        e = ws.cell(row=i, column=6, value=flagged_text)
         t.hyperlink = c["url"]
         t.font = Font(name=F, size=10, color="0563C1", underline="single")
         a.font = Font(name=F, size=10, bold=True)
         b.font = Font(name=F, size=11, bold=True)
         k.font = Font(name="Consolas", size=10, bold=True)
+        s.font = Font(name=F, size=9)
         e.font = Font(name=F, size=9, color="333333")
         a.alignment = b.alignment = k.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
-        t.alignment = e.alignment = Alignment(wrap_text=True, vertical="center")
-        for cell in (a, b, t, k, e):
+        t.alignment = e.alignment = s.alignment = Alignment(wrap_text=True, vertical="center")
+        for cell in (a, b, t, k, s, e):
             cell.border = border
-        lines = max(math.ceil(len(title) / 62), sum(math.ceil(len(p) / 88) for p in flagged_text.split("\n")))
+        lines = max(math.ceil(len(title) / 50), math.ceil(len(soft) / 22) if soft else 1,
+                    sum(math.ceil(len(p) / 74) for p in flagged_text.split("\n")))
         ws.row_dimensions[i].height = max(22, lines * 13 + 8)
 
     last = len(lot["candidates"]) + 1
@@ -196,6 +252,36 @@ def export(lot_path, out_path):
     dvc.showErrorMessage = True
     ws.add_data_validation(dvc)
     dvc.add(f"D2:D{val_last}")
+
+    # dropdown pentru Software: lista vine din foaia „Software”; același stil, poți scrie mai multe programe cu virgulă
+    dvs = DataValidation(type="list", formula1="ListaSoftware", allow_blank=True, errorStyle="information")
+    dvs.errorTitle = "Program nou sau mai multe programe?"
+    dvs.error = "Valoarea nu e în listă. E în regulă dacă e un program nou sau mai multe, separate prin virgulă (ex. Rhino, Grasshopper): apare singur în caseta de pe site."
+    dvs.showErrorMessage = True
+    ws.add_data_validation(dvs)
+    dvs.add(f"E2:E{val_last}")
+
+    # foaia Software: lista programelor (cele existente + cele adăugate de tine aici)
+    soft_names = sheet_software(out_path)
+    seen_s = {x.lower() for x in soft_names}
+    soft_names += [s_ for s_ in all_software() if s_.lower() not in seen_s]
+    ss = wb.create_sheet("Software")
+    hc = ss.cell(row=1, column=1, value="Program")
+    hc.font = Font(name=F, bold=True, color="FFFFFF", size=10)
+    hc.fill = PatternFill("solid", fgColor="1C1C1C")
+    for r_, name in enumerate(soft_names, 2):
+        ss.cell(row=r_, column=1, value=name).font = Font(name=F, size=10)
+    ss.column_dimensions["A"].width = 34
+    ss.column_dimensions["C"].width = 70
+    sn_ = ss.cell(row=1, column=3, value=(
+        "Lista programelor din caseta de pe site. Un program nou nu trebuie adăugat aici ca să apară pe site: "
+        "e destul să-l scrii în coloana Software a unei resurse. Lista de aici doar alimentează dropdown-ul."))
+    sn_.font = Font(name=F, size=9, italic=True, color="555555")
+    sn_.alignment = Alignment(wrap_text=True, vertical="top")
+    ss.row_dimensions[1].height = 48
+    ss.freeze_panes = "A2"
+    wb.defined_names["ListaSoftware"] = DefinedName(
+        "ListaSoftware", attr_text="OFFSET(Software!$A$2,0,0,COUNTA(Software!$A$2:$A$400),1)")
 
     # foaia Categorii: editabilă; păstrează rândurile adăugate de tine chiar dacă nu au ajuns încă pe site
     sheet_rows = sheet_categories(out_path)
@@ -231,7 +317,7 @@ def export(lot_path, out_path):
     ws.conditional_formatting.add(rng, CellIsRule(operator="equal", formula=['"Nu"'], fill=PatternFill("solid", bgColor="FFC7CE", fgColor="FFC7CE"), font=Font(name=F, bold=True, color="9C0006")))
     ws.conditional_formatting.add(rng, FormulaRule(formula=["LEN(B2)=0"], fill=PatternFill("solid", bgColor="FFEB9C", fgColor="FFEB9C")))
     ws.freeze_panes = "A2"
-    ws.auto_filter.ref = f"A1:E{last}"
+    ws.auto_filter.ref = f"A1:F{last}"
     ws.page_setup.orientation = "landscape"
     ws.page_setup.fitToWidth = 1
     ws.page_setup.fitToHeight = 0
@@ -244,6 +330,7 @@ def export(lot_path, out_path):
         ("Cum completezi", None),
         ("Accept", "Da sau Nu din lista derulantă. Galben = nehotărât, verde = Da, roșu = Nu."),
         ("Categorii", "Alegi din dropdown sau scrii coduri separate prin virgulă; prima e categoria principală, maximum 3. O resursă apare la toate categoriile trecute. Lista codurilor e în foaia „Categorii”, unde poți adăuga și categorii noi."),
+        ("Software", "Programele despre care e tutorialul (Rhino, Grasshopper, QGIS…), separate prin virgulă. Alegi din dropdown sau scrii unul nou: apare singur în caseta „Software” de pe site, fără nimic în plus. Lasă gol pentru prelegeri sau materiale fără un program anume."),
         ("Nr", "Numărul din lot; rămâne fix. Îl folosești când ceri „scoate nr 12 din " + f"{d}.{m}.{y}" + "”."),
         ("Link nou", "Lipește linkul în coloana „Resursă”, pe un rând nou sub tabel, lasă restul gol și spune-mi „actualizează”. "
                      "Completez titlul, durata, autorul, categoriile și descrierea, apoi o public."),
@@ -268,13 +355,15 @@ def read(xlsx_path, lot_path, cats_out=None):
     sheet = sheet_categories(xlsx_path)
     valid = set(known) | {c["id"] for c in sheet}  # codurile din foaie sunt valide chiar înainte de sincronizare
     ws = load_workbook(xlsx_path).worksheets[0]
-    has_cats = (ws["D1"].value or "").strip().lower() == "categorii"
+    col = columns(ws)
+    has_cats = "cats" in col
     by_n = {c["n"]: c for c in lot["candidates"]}
-    report = {"updated": 0, "da": 0, "nu": 0, "undecided": 0, "newLinks": [], "badCats": [], "unknownNr": []}
+    known_soft = {s.lower(): s for s in all_software()}
+    report = {"updated": 0, "da": 0, "nu": 0, "undecided": 0, "newLinks": [], "badCats": [], "unknownNr": [], "newSoftware": []}
     for row in range(2, ws.max_row + 1):
-        nr = ws.cell(row=row, column=1).value
-        title_cell = ws.cell(row=row, column=3)
-        acc = ws.cell(row=row, column=2).value
+        nr = ws.cell(row=row, column=col.get("nr", 1)).value
+        title_cell = ws.cell(row=row, column=col.get("res", 3))
+        acc = ws.cell(row=row, column=col.get("accept", 2)).value
         acc = acc.strip().capitalize() if isinstance(acc, str) and acc.strip() else None
         if nr is None:
             val = title_cell.value
@@ -289,13 +378,19 @@ def read(xlsx_path, lot_path, cats_out=None):
         report["updated"] += 1
         report["da" if c["accept"] == "Da" else "nu" if c["accept"] == "Nu" else "undecided"] += 1
         if has_cats:
-            raw = ws.cell(row=row, column=4).value or ""
+            raw = ws.cell(row=row, column=col["cats"]).value or ""
             codes = [x for x in re.split(r"[,;/\s]+", str(raw).upper()) if x]
             bad = [x for x in codes if x not in valid]
             if bad or not codes:
                 report["badCats"].append({"nr": nr, "valoare": raw})
             else:
                 c["cats"] = codes
+        if "soft" in col:
+            names = split_list(ws.cell(row=row, column=col["soft"]).value)
+            c["software"] = [known_soft.get(n.lower(), n) for n in names]    # se aliniază la scrierea deja folosită
+            for n in names:
+                if n.lower() not in known_soft and n not in report["newSoftware"]:
+                    report["newSoftware"].append(n)
     with open(lot_path, "w", encoding="utf-8") as f:
         json.dump(lot, f, ensure_ascii=False, indent=2)
         f.write("\n")

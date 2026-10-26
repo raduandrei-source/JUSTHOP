@@ -34,6 +34,30 @@ const lotPath = iso => path.join(LOTURI, `${iso}.json`);
 const sorted = list => [...list].sort((a, b) => b.added.localeCompare(a.added) || a.n - b.n);
 const catIds = new Set(data.categories.map(c => c.id));
 
+// Software: programele despre care e resursa (ex. Rhino, Grasshopper, QGIS). Lista din casetă de pe site se
+// generează automat din aceste câmpuri, deci un program nou apare singur. Numele se aliniază la cele existente
+// (fără diferențe de majuscule sau spații), ca „rhino" și „Rhino" să nu devină două categorii.
+function knownSoftware() {
+  const map = new Map();
+  const add = s => { if (s && !map.has(s.toLowerCase())) map.set(s.toLowerCase(), s); };
+  data.resources.forEach(r => (r.software || []).forEach(add));
+  for (const f of fs.existsSync(LOTURI) ? fs.readdirSync(LOTURI) : []) {
+    readJson(path.join(LOTURI, f)).candidates.forEach(c => (c.software || []).forEach(add));
+  }
+  return map;
+}
+function normSoftware(list) {
+  const known = knownSoftware();
+  const out = [];
+  for (const raw of Array.isArray(list) ? list : []) {
+    const s = String(raw).trim().replace(/\s+/g, ' ');
+    if (!s) continue;
+    const canon = known.get(s.toLowerCase()) || s;
+    if (!out.includes(canon)) out.push(canon);
+  }
+  return out;
+}
+
 function checkCats(c) {
   if (!Array.isArray(c.cats) || !c.cats.length) throw new Error(`Fără categorii: ${c.title}`);
   const bad = c.cats.filter(x => !catIds.has(x));
@@ -47,7 +71,7 @@ function toResource(c, date) {
   }
   checkCats(c);
   const r = {
-    title: c.title, cats: c.cats, platform: c.platform, level: c.level, desc: c.desc, url: c.url,
+    title: c.title, cats: c.cats, software: normSoftware(c.software), platform: c.platform, level: c.level, desc: c.desc, url: c.url,
     author: c.author || null, authorUrl: c.authorUrl || null, added: date, n: c.n,
   };
   return r;
@@ -68,15 +92,19 @@ if (cmd === 'list') {
   const toAdd = lot.candidates.filter(c => c.accept === 'Da' &&
     !data.resources.some(r => r.added === lot.date && r.n === c.n));
   const undecided = lot.candidates.filter(c => !c.accept).length;
+  const swBefore = new Set(data.resources.flatMap(r => r.software || []));
   const added = toAdd.map(c => toResource(c, lot.date));
   data.resources.push(...added);
   save();
   console.log(`${added.length} resurse adăugate la ${toRo(lot.date)} (nr: ${added.map(r => r.n).join(', ') || '—'}).`);
+  const swNew = [...new Set(added.flatMap(r => r.software))].filter(s => !swBefore.has(s));
+  if (swNew.length) console.log(`Programe noi în casetă: ${swNew.join(', ')}`);
   if (undecided) console.log(`${undecided} candidate fără decizie, neadăugate.`);
 } else if (cmd === 'new-candidate') {
   const date = toIso(args[0]);
   const c = readJson(args[1]);
   checkCats(c);
+  c.software = normSoftware(c.software);
   const file = lotPath(date);
   const lot = fs.existsSync(file) ? readJson(file) : { date, candidates: [] };
   const n = Math.max(0, ...lot.candidates.map(x => x.n), ...data.resources.filter(r => r.added === date).map(r => r.n)) + 1;
@@ -115,6 +143,14 @@ if (cmd === 'list') {
     .sort((x, y) => y.da - x.da || y.rate - x.rate || x.a.localeCompare(y.a));
   rows.forEach(r => console.log(`${String(r.da).padStart(2)} Da / ${r.nu} Nu  (${String(r.rate).padStart(3)}%)  ${r.a}`));
   if (!rows.length) console.log('Nicio decizie înregistrată încă.');
+} else if (cmd === 'software') {
+  // programele din casetă, cu numărul de resurse publicate pentru fiecare
+  const counts = {};
+  data.resources.forEach(r => (r.software || []).forEach(s => { counts[s] = (counts[s] || 0) + 1; }));
+  const rows = Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  rows.forEach(([s, n]) => console.log(`${String(n).padStart(3)}  ${s}`));
+  const none = data.resources.filter(r => !(r.software || []).length).length;
+  console.log(`\n${rows.length} programe; ${none} resurse fără program.`);
 } else if (cmd === 'sync-categories') {
   // fișier: [{id, name, color}] în ordinea din foaia „Categorii” a Excelului (scris de lot_excel.py read ... <fișier>)
   const rows = readJson(args[0]);
@@ -155,6 +191,6 @@ if (cmd === 'list') {
   save();
   console.log(`${before - data.resources.length} resurse de test scoase.`);
 } else {
-  console.log('Comenzi: list [data] | publish-lot lot.json | new-candidate <data> c.json | remove <data> <n...> | autori [min] | sync-categories cat.json | remove-test');
+  console.log('Comenzi: list [data] | publish-lot lot.json | new-candidate <data> c.json | remove <data> <n...> | autori [min] | software | sync-categories cat.json | remove-test');
   process.exit(cmd ? 1 : 0);
 }

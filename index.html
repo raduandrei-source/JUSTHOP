@@ -52,7 +52,7 @@
     color-scheme: dark;
   }
 
-$1
+  * { box-sizing: border-box; }
   html { scroll-padding-top: var(--header-h); }
   body {
     margin: 0;
@@ -171,28 +171,56 @@ $1
     padding: 80px var(--pad-x);
   }
 
-  /* lista „ultimele adăugate": text mic, spălăcit; la hover revine textul și culoarea categoriei */
-  .latest { min-width: 0; padding-top: 8px; }
-  .latest-head { margin: 0 0 10px; color: var(--muted); }
-  .latest ul { list-style: none; margin: 0; padding: 0; }
-  .latest li a, .latest li .item {
+  /* caseta „Software": programele din tutoriale, pe pagini; deasupra ei rotița derulează pe orizontală */
+  .soft { min-width: 0; padding-top: 8px; }
+  .soft-head { display: flex; justify-content: space-between; margin: 0 0 10px; color: var(--muted); }
+  .soft-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    min-height: 228px;
+    margin-left: -8px;                 /* fiecare pagină are 8px spațiu în față: marginea paginii următoare nu mai poate „sângera" */
+    width: calc(100% + 8px);
+  }
+  .soft-track::-webkit-scrollbar { display: none; }
+  .soft-page { flex: 0 0 100%; min-width: 0; padding-left: 8px; scroll-snap-align: start; display: flex; flex-direction: column; align-items: stretch; }
+  .soft-item {
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
     padding: 5px 0;
+    border: none;
+    background: none;
     font-family: var(--mono);
     font-size: 11px;
     line-height: 1.4;
     letter-spacing: 0.04em;
     text-align: left;
-    text-decoration: none;
     color: var(--muted);
+    cursor: pointer;
     transition: color 0.15s ease;
   }
-  .latest .item-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .latest .tag { width: 38px; flex-shrink: 0; text-align: center; opacity: 0.4; transition: opacity 0.15s ease; }
-  .latest li a:hover { color: var(--ink); }
-  .latest li a:hover .tag { opacity: 1; }
+  .soft-item::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--muted);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .soft-item:hover { color: var(--ink); }
+  .soft-item:hover::before { border-color: var(--ink); }
+  .soft-item.active { color: var(--ink); font-weight: 700; }
+  .soft-item.active::before { background: var(--accent-text); border-color: var(--accent-text); }
+  .soft-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .soft-count { flex-shrink: 0; font-size: 10px; font-weight: 400; color: var(--muted); }
+  .soft-dots { display: flex; justify-content: flex-start; gap: 9px; margin-top: 14px; min-height: 10px; }
+  .soft-dot { width: 8px; height: 8px; padding: 0; border: 1.5px solid var(--muted); border-radius: 50%; background: transparent; cursor: pointer; }
+  .soft-dot:hover { border-color: var(--ink); }
+  .soft-dot[aria-current="true"] { background: var(--ink); border-color: var(--ink); }
   .intro h1 {
     margin: 0;
     max-width: 768px;
@@ -373,6 +401,18 @@ $1
   }
   .cat-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .tags { display: flex; gap: 3px; flex-shrink: 0; }
+  .card-soft { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0 0; }
+  .sw-chip, .sw-more {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    padding: 1px 6px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+  }
+  .sw-chip { cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease; }
+  .sw-chip:hover { color: var(--accent-text); border-color: var(--accent-text); }
   .card-author {
     margin: 12px 0 0;
     font-family: var(--mono);
@@ -565,9 +605,10 @@ $1
       <h1>Resurse digitale pentru <em>arhitectură.</em></h1>
       <p>Un hub de resurse digitale pentru învățare și cercetare în arhitectură: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe <span id="catCount">13</span> discipline. Selectate manual, actualizate în fiecare vineri.</p>
     </div>
-    <aside class="latest" aria-label="Ultimele adăugate">
-      <div class="latest-head label">Ultimele adăugate</div>
-      <ul id="latestList"></ul>
+    <aside class="soft" id="soft" aria-label="Software din tutoriale">
+      <div class="soft-head label"><span>Software</span><span id="softCount"></span></div>
+      <div class="soft-track" id="softTrack"></div>
+      <div class="soft-dots" id="softDots" role="group" aria-label="Pagini software"></div>
     </aside>
   </section>
 
@@ -740,6 +781,7 @@ $1
 
   let activeCats = new Set();
   let activeAuthors = new Set();
+  let activeSoftware = new Set();
   const batchSize = 12;
   let shown = 0;
   let currentResults = [];
@@ -759,7 +801,7 @@ $1
 
   function score(item, tokens) {
     if (tokens.length === 0) return 1;
-    const haystack = (item.title + ' ' + item.cats.map(c => c.id + ' ' + c.name).join(' ') + ' ' + (item.author || '') + ' ' + item.platform + ' ' + item.desc).toLowerCase();
+    const haystack = (item.title + ' ' + item.cats.map(c => c.id + ' ' + c.name).join(' ') + ' ' + (item.author || '') + ' ' + (item.software || []).join(' ') + ' ' + item.platform + ' ' + item.desc).toLowerCase();
     let matched = 0;
     tokens.forEach(t => { if (haystack.includes(t)) matched++; });
     return matched; // 0 = fara match, altfel scor crescator cu nr de tokene gasite
@@ -811,7 +853,8 @@ $1
       btn.onclick = () => toggleCat(c.id);
       list.appendChild(btn);
     });
-    document.getElementById('resetCats').hidden = activeCats.size === 0 && activeAuthors.size === 0;
+    document.getElementById('resetCats').hidden = activeCats.size === 0 && activeAuthors.size === 0 && activeSoftware.size === 0;
+    updateSoftwareActive();
     renderAuthors();
     document.querySelectorAll('#discStrip button').forEach(b => {
       b.classList.toggle('active', activeCats.has(b.dataset.cat));
@@ -831,6 +874,7 @@ $1
     ul.querySelectorAll('button').forEach(b => b.onclick = () => {
       activeCats = new Set([b.dataset.cat]);
       activeAuthors.clear();
+      activeSoftware.clear();
       applyFilters();
       document.getElementById('resurse').scrollIntoView();
     });
@@ -916,17 +960,96 @@ $1
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
   }
 
-  // ultimele 8 resurse adăugate (cele mai noi primele), în dreapta titlului
-  function renderLatest() {
-    const latest = [...pool].sort((a, b) => b.added.localeCompare(a.added) || b.n - a.n).slice(0, 8);
-    document.getElementById('latestList').innerHTML = latest.map(p => {
-      const c = p.cats[0];
-      const inner = `<span class="tag" style="background:${c.color}">${c.id}</span><span class="item-title">${esc(p.title)}</span>`;
-      return p.url
-        ? `<li><a href="${esc(p.url)}" target="_blank" rel="noopener" title="${esc(p.title)}">${inner}</a></li>`
-        : `<li><span class="item" title="${esc(p.title)}">${inner}</span></li>`;
-    }).join('');
+  /* ---------- CASETA „SOFTWARE" ---------- */
+  const SOFT_PER_PAGE = 8;
+  const softZone = document.getElementById('soft');
+  const softTrack = document.getElementById('softTrack');
+  const softDots = document.getElementById('softDots');
+  let softPage = 0, softPages = 1, softLock = 0;
+
+  function toggleSoftware(name) {
+    if (activeSoftware.has(name)) activeSoftware.delete(name); else activeSoftware.add(name);
+    applyFilters();
   }
+
+  function updateSoftwareActive() {
+    softTrack.querySelectorAll('.soft-item').forEach(b => {
+      const on = activeSoftware.has(b.dataset.sw);
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on);
+    });
+  }
+
+  function updateSoftDots() {
+    softDots.querySelectorAll('.soft-dot').forEach((d, i) => d.setAttribute('aria-current', i === softPage ? 'true' : 'false'));
+  }
+
+  function goSoftPage(i, smooth = true) {
+    softPage = Math.max(0, Math.min(softPages - 1, i));
+    softTrack.scrollTo({ left: softPage * softTrack.clientWidth, behavior: smooth ? 'smooth' : 'auto' });
+    updateSoftDots();
+  }
+
+  // programele vin din câmpul „software" al resurselor: un program nou apare singur, cu pagini și puncte
+  function renderSoftware() {
+    const counts = {};
+    pool.forEach(p => (p.software || []).forEach(s => { counts[s] = (counts[s] || 0) + 1; }));
+    const names = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+    softPages = Math.max(1, Math.ceil(names.length / SOFT_PER_PAGE));
+    const perPage = Math.ceil(names.length / softPages);        // pagini egale, fără o ultimă pagină cu un singur program
+    softTrack.innerHTML = '';
+    for (let i = 0; i < softPages; i++) {
+      const page = document.createElement('div');
+      page.className = 'soft-page';
+      names.slice(i * perPage, (i + 1) * perPage).forEach(n => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'soft-item';
+        b.dataset.sw = n;
+        b.innerHTML = `<span class="soft-name">${esc(n)}</span><span class="soft-count">${counts[n]}</span>`;
+        b.onclick = () => toggleSoftware(n);
+        page.appendChild(b);
+      });
+      softTrack.appendChild(page);
+    }
+    softDots.innerHTML = '';
+    if (softPages > 1) {
+      for (let i = 0; i < softPages; i++) {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'soft-dot';
+        d.setAttribute('aria-label', `Pagina ${i + 1} din ${softPages}`);
+        d.onclick = () => goSoftPage(i);
+        softDots.appendChild(d);
+      }
+    }
+    document.getElementById('softCount').textContent = names.length + (names.length === 1 ? ' program' : ' programe');
+    softPage = 0;
+    softTrack.scrollLeft = 0;
+    updateSoftDots();
+    updateSoftwareActive();
+  }
+
+  // pagina curentă urmărește derularea (și pe touch / trackpad orizontal)
+  softTrack.addEventListener('scroll', () => {
+    const i = Math.round(softTrack.scrollLeft / Math.max(1, softTrack.clientWidth));
+    if (i !== softPage) { softPage = i; updateSoftDots(); }
+  }, { passive: true });
+  window.addEventListener('resize', () => goSoftPage(softPage, false));
+
+  // rotița, deasupra casetei: o pagină pe gest; la capete (prima/ultima pagină) pagina de pe site derulează mai departe
+  softZone.addEventListener('wheel', e => {
+    if (softPages <= 1 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    const d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    if (Math.abs(d) < 2) return;
+    const now = Date.now();
+    if (now < softLock) { e.preventDefault(); return; }        // gest în curs: nu derula și pagina
+    const next = softPage + (d > 0 ? 1 : -1);
+    if (next < 0 || next >= softPages) return;                 // capăt: lasă derularea verticală normală
+    e.preventDefault();
+    softLock = now + 600;
+    goSoftPage(next);
+  }, { passive: false });
 
   // „săptămâna asta" = resursele din ultimele 7 zile față de cel mai recent lot (primele 3)
   function renderWeek() {
@@ -950,7 +1073,8 @@ $1
     // categorii: se potrivește dacă resursa are CEL PUȚIN una dintre cele alese; autori: la fel; cele două filtre se combină
     let results = pool.filter(p =>
       (activeCats.size === 0 || p.cats.some(c => activeCats.has(c.id))) &&
-      (activeAuthors.size === 0 || activeAuthors.has(p.author)));
+      (activeAuthors.size === 0 || activeAuthors.has(p.author)) &&
+      (activeSoftware.size === 0 || (p.software || []).some(s => activeSoftware.has(s))));
     results = results
       .map(p => ({ item: p, s: score(p, tokens) }))
       .filter(r => r.s > 0)
@@ -999,6 +1123,7 @@ $1
         <div class="card-body">
           <h3 class="card-title">${esc(p.title)}</h3>
           <p class="card-desc">${esc(p.desc)}</p>
+          ${(p.software || []).length ? `<div class="card-soft">${p.software.slice(0, 3).map(s => `<span class="sw-chip" data-sw="${esc(s)}">${esc(s)}</span>`).join('')}${p.software.length > 3 ? `<span class="sw-more">+${p.software.length - 3}</span>` : ''}</div>` : ''}
           ${p.author ? `<p class="card-author">de <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span></p>` : ''}
         </div>
         <div class="card-meta label">
@@ -1021,9 +1146,11 @@ $1
 
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', applyFilters);
-  document.getElementById('resetCats').addEventListener('click', () => { activeCats.clear(); activeAuthors.clear(); applyFilters(); });
-  // click pe numele autorului dintr-un card = filtrează după autor (fără să deschidă linkul cardului)
+  document.getElementById('resetCats').addEventListener('click', () => { activeCats.clear(); activeAuthors.clear(); activeSoftware.clear(); applyFilters(); });
+  // click pe autor sau pe un program dintr-un card = filtrează (fără să deschidă linkul cardului)
   document.getElementById('grid').addEventListener('click', e => {
+    const sw = e.target.closest('.sw-chip');
+    if (sw) { e.preventDefault(); e.stopPropagation(); toggleSoftware(sw.dataset.sw); return; }
     const a = e.target.closest('.author-link');
     if (!a) return;
     e.preventDefault();
@@ -1059,7 +1186,7 @@ $1
       renderFooterCats();
       renderNewsletterCats();
       renderWeek();
-      renderLatest();
+      renderSoftware();
       applyFilters();
       observer.observe(document.getElementById('sentinel'));
       if (location.hash === '#newsletter' || justConfirmed) goNewsletter();

@@ -79,7 +79,11 @@
       "author": "Gediminas Kirdeikis",
       "authorUrl": "https://www.youtube.com/@DesignGoBrr",
       "added": "2026-10-25",
-      "n": 1
+      "n": 1,
+      "software": [
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "A beginner's guide to Data Trees in Grasshopper with practical Exercises",
@@ -93,7 +97,11 @@
       "author": "Learn Grasshopper",
       "authorUrl": "https://www.youtube.com/@learngrasshopper",
       "added": "2026-10-25",
-      "n": 2
+      "n": 2,
+      "software": [
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "Lunchbox Grasshopper Tutorial | Parametric Facade | Rhino",
@@ -107,7 +115,12 @@
       "author": "architutors",
       "authorUrl": "https://www.youtube.com/@architutors",
       "added": "2026-10-25",
-      "n": 3
+      "n": 3,
+      "software": [
+        "Grasshopper",
+        "Rhino",
+        "Lunchbox"
+      ]
     },
     {
       "title": "How to Tween Curves in Pufferfish for Grasshopper",
@@ -122,7 +135,12 @@
       "author": "The Different Design",
       "authorUrl": "https://www.youtube.com/@grasshoppertutorials",
       "added": "2026-10-25",
-      "n": 4
+      "n": 4,
+      "software": [
+        "Grasshopper",
+        "Rhino",
+        "Pufferfish"
+      ]
     },
     {
       "title": "Autodesk Revit - Full Beginner Course | Complete Project - Start to finish",
@@ -136,7 +154,10 @@
       "author": "Balkan Architect",
       "authorUrl": "https://www.youtube.com/@balkanarchitect",
       "added": "2026-10-25",
-      "n": 6
+      "n": 6,
+      "software": [
+        "Revit"
+      ]
     },
     {
       "title": "ArchiCAD Full Course — Beginners to Advanced (2026)",
@@ -150,7 +171,10 @@
       "author": "Arch Guide",
       "authorUrl": "https://www.youtube.com/@archguide",
       "added": "2026-10-25",
-      "n": 7
+      "n": 7,
+      "software": [
+        "ArchiCAD"
+      ]
     },
     {
       "title": "Why the openBIM Workflow Matters (And How It Works)",
@@ -164,7 +188,10 @@
       "author": "buildingSMART International",
       "authorUrl": "https://www.youtube.com/@buildingSMARTInternational",
       "added": "2026-10-25",
-      "n": 8
+      "n": 8,
+      "software": [
+        "IFC"
+      ]
     },
     {
       "title": "Revit & Navisworks Coordination Workflow: The Complete Guide to Clash Detection",
@@ -178,7 +205,11 @@
       "author": "BIM & Tonic",
       "authorUrl": "https://www.youtube.com/@BIMTonicLive",
       "added": "2026-10-25",
-      "n": 9
+      "n": 9,
+      "software": [
+        "Revit",
+        "Navisworks"
+      ]
     },
     {
       "title": "Speckle: Ultimate BIM 3D Data Platform?",
@@ -192,7 +223,10 @@
       "author": "Balkan Architect",
       "authorUrl": "https://www.youtube.com/@balkanarchitect",
       "added": "2026-10-25",
-      "n": 10
+      "n": 10,
+      "software": [
+        "Speckle"
+      ]
     },
     {
       "title": "Create stunning Urban Maps with QGIS and the QuickOSM Plugin",
@@ -207,7 +241,11 @@
       "author": "Open Source for Architects",
       "authorUrl": "https://www.youtube.com/@opensourceforarchitects",
       "added": "2026-10-25",
-      "n": 12
+      "n": 12,
+      "software": [
+        "QGIS",
+        "OpenStreetMap"
+      ]
     },
     {
       "title": "Introduction to QGIS (Full Course, Ad-Free)",
@@ -221,7 +259,10 @@
       "author": "Spatial Thoughts",
       "authorUrl": "https://www.youtube.com/@SpatialThoughts",
       "added": "2026-10-25",
-      "n": 13
+      "n": 13,
+      "software": [
+        "QGIS"
+      ]
     },
     {
       "title": "Geospatial Python - Full Course for Beginners with Geopandas",
@@ -235,7 +276,11 @@
       "author": "Matt Forrest",
       "authorUrl": "https://www.youtube.com/@MattForrest",
       "added": "2026-10-25",
-      "n": 14
+      "n": 14,
+      "software": [
+        "Python",
+        "GeoPandas"
+      ]
     },
     {
       "title": "A short guide to Copernicus Browser",
@@ -249,7 +294,10 @@
       "author": "Copernicus Data Space Ecosystem",
       "authorUrl": "https://www.youtube.com/@copernicusdataspaceecosystem",
       "added": "2026-10-25",
-      "n": 15
+      "n": 15,
+      "software": [
+        "Copernicus"
+      ]
     },
     {
       "title": "Automating GIS Processes 2026 (AutoGIS)",
@@ -264,7 +312,12 @@
       "author": "University of Helsinki",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 16
+      "n": 16,
+      "software": [
+        "Python",
+        "GeoPandas",
+        "OSMnx"
+      ]
     },
     {
       "title": "#1 The Ultimate Ladybug Course | Environmental Analysis in Rhino3D and Grasshopper",
@@ -279,7 +332,12 @@
       "author": "Philipp Galvan Design",
       "authorUrl": "https://www.youtube.com/@PhilippGalvanDesign",
       "added": "2026-10-25",
-      "n": 17
+      "n": 17,
+      "software": [
+        "Ladybug Tools",
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "#23 Ladybug 1.8 Tutorial: Outdoor Comfort and 3D models",
@@ -294,7 +352,12 @@
       "author": "Philipp Galvan Design",
       "authorUrl": "https://www.youtube.com/@PhilippGalvanDesign",
       "added": "2026-10-25",
-      "n": 18
+      "n": 18,
+      "software": [
+        "Ladybug Tools",
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "Ladybug Grasshopper Tutorial Sun Hour and Radiation Analysis",
@@ -309,7 +372,12 @@
       "author": "DesignWise",
       "authorUrl": "https://www.youtube.com/@IDesignWise",
       "added": "2026-10-25",
-      "n": 20
+      "n": 20,
+      "software": [
+        "Ladybug Tools",
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "01 - Grasshopper Unroll Surface and Labelling - Part 2",
@@ -324,7 +392,11 @@
       "author": "TU Darmstadt",
       "authorUrl": "https://www.youtube.com/@digitaldesignunit",
       "added": "2026-10-25",
-      "n": 23
+      "n": 23,
+      "software": [
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "Nesting in Rhino 8 with OpenNest, Elefront and byRhinoGadget",
@@ -338,7 +410,11 @@
       "author": "mvelentzas",
       "authorUrl": "https://www.youtube.com/@mvelentzas",
       "added": "2026-10-25",
-      "n": 24
+      "n": 24,
+      "software": [
+        "Rhino",
+        "OpenNest"
+      ]
     },
     {
       "title": "3D Printing from Revit | Snapmaker Artisan 3D printer for Architects",
@@ -353,7 +429,10 @@
       "author": "Balkan Architect",
       "authorUrl": "https://www.youtube.com/@balkanarchitect",
       "added": "2026-10-25",
-      "n": 25
+      "n": 25,
+      "software": [
+        "Revit"
+      ]
     },
     {
       "title": "EP 25 | ArchiTech Office Tours | ICD: Part 1: Computational Timber & Robotic Construction",
@@ -368,7 +447,8 @@
       "author": "ArchiTech Network",
       "authorUrl": "https://www.youtube.com/@architech.network",
       "added": "2026-10-25",
-      "n": 26
+      "n": 26,
+      "software": []
     },
     {
       "title": "Rhino Tutorial: Model a Wooden Bench from Scratch + CNC Fabrication Workflow",
@@ -382,7 +462,10 @@
       "author": "RhinoByHossein",
       "authorUrl": "https://www.youtube.com/@RhinoByHossein",
       "added": "2026-10-25",
-      "n": 27
+      "n": 27,
+      "software": [
+        "Rhino"
+      ]
     },
     {
       "title": "How to Prepare Your File for Laser Cutting",
@@ -396,7 +479,12 @@
       "author": "UT Austin School of Architecture",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 28
+      "n": 28,
+      "software": [
+        "Rhino",
+        "AutoCAD",
+        "Illustrator"
+      ]
     },
     {
       "title": "Twinmotion for Architecture - 2024 Full Beginner Course",
@@ -410,7 +498,10 @@
       "author": "Gediminas Kirdeikis",
       "authorUrl": "https://www.youtube.com/@DesignGoBrr",
       "added": "2026-10-25",
-      "n": 29
+      "n": 29,
+      "software": [
+        "Twinmotion"
+      ]
     },
     {
       "title": "D5 Render Full Beginner Tutorial!",
@@ -424,7 +515,10 @@
       "author": "Show It Better",
       "authorUrl": "https://www.youtube.com/@ShowItBetter",
       "added": "2026-10-25",
-      "n": 30
+      "n": 30,
+      "software": [
+        "D5 Render"
+      ]
     },
     {
       "title": "Complete Beginner's Guide to Blender for Architecture",
@@ -438,7 +532,10 @@
       "author": "My 3D POV",
       "authorUrl": "https://www.youtube.com/@My3D_POV",
       "added": "2026-10-25",
-      "n": 31
+      "n": 31,
+      "software": [
+        "Blender"
+      ]
     },
     {
       "title": "The Best Render Settings for V-Ray 7 Explained | V-Ray for SketchUp",
@@ -452,7 +549,11 @@
       "author": "Educk",
       "authorUrl": "https://www.youtube.com/@educkorg",
       "added": "2026-10-25",
-      "n": 32
+      "n": 32,
+      "software": [
+        "V-Ray",
+        "SketchUp"
+      ]
     },
     {
       "title": "Site Analysis Using Illustrator Tutorial",
@@ -467,7 +568,10 @@
       "author": "Surviving Architecture",
       "authorUrl": "https://www.youtube.com/@SurvivingArchitecture",
       "added": "2026-10-25",
-      "n": 33
+      "n": 33,
+      "software": [
+        "Illustrator"
+      ]
     },
     {
       "title": "Enscape - Rendering, Animation and Visualization",
@@ -481,7 +585,10 @@
       "author": "Ghasem Ariyani",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 34
+      "n": 34,
+      "software": [
+        "Enscape"
+      ]
     },
     {
       "title": "How to use Script Editor in Rhino 8: Introduction Course",
@@ -496,7 +603,11 @@
       "author": "Urban Decoders",
       "authorUrl": "https://www.youtube.com/@Urban_Decoders",
       "added": "2026-10-25",
-      "n": 35
+      "n": 35,
+      "software": [
+        "Rhino",
+        "Python"
+      ]
     },
     {
       "title": "Multi-Objective Optimization with Octopus | Tiny House Challenge 02",
@@ -511,7 +622,12 @@
       "author": "Philipp Galvan Design",
       "authorUrl": "https://www.youtube.com/@PhilippGalvanDesign",
       "added": "2026-10-25",
-      "n": 36
+      "n": 36,
+      "software": [
+        "Grasshopper",
+        "Rhino",
+        "Octopus"
+      ]
     },
     {
       "title": "Optimizing Tower Design with Grasshopper: Generative Design & Views with Wallacei",
@@ -526,7 +642,12 @@
       "author": "Computational Design SA",
       "authorUrl": "https://www.youtube.com/@ComputationalDesignSA",
       "added": "2026-10-25",
-      "n": 37
+      "n": 37,
+      "software": [
+        "Grasshopper",
+        "Rhino",
+        "Wallacei"
+      ]
     },
     {
       "title": "Culebra Behaviors V1.0",
@@ -541,7 +662,12 @@
       "author": "DesignMorphine",
       "authorUrl": "https://www.youtube.com/@DesignMorphine",
       "added": "2026-10-25",
-      "n": 38
+      "n": 38,
+      "software": [
+        "Grasshopper",
+        "Rhino",
+        "Culebra"
+      ]
     },
     {
       "title": "Grasshopper Scripting: Python",
@@ -556,7 +682,11 @@
       "author": "McNeel",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 39
+      "n": 39,
+      "software": [
+        "Grasshopper",
+        "Python"
+      ]
     },
     {
       "title": "Stable Diffusion + ControlNET in Architecture",
@@ -571,7 +701,11 @@
       "author": "ArchViz",
       "authorUrl": "https://www.youtube.com/@ArchViz007",
       "added": "2026-10-25",
-      "n": 40
+      "n": 40,
+      "software": [
+        "Stable Diffusion",
+        "ControlNet"
+      ]
     },
     {
       "title": "AI Plugin for Grasshopper We've Been Waiting For",
@@ -586,7 +720,12 @@
       "author": "How to Rhino",
       "authorUrl": "https://www.youtube.com/@HowtoRhino",
       "added": "2026-10-25",
-      "n": 41
+      "n": 41,
+      "software": [
+        "Grasshopper",
+        "Rhino",
+        "Raven"
+      ]
     },
     {
       "title": "Midjourney for Architects: Advanced Workflow Guide for photorealistic images",
@@ -601,7 +740,10 @@
       "author": "Show It Better",
       "authorUrl": "https://www.youtube.com/@ShowItBetter",
       "added": "2026-10-25",
-      "n": 42
+      "n": 42,
+      "software": [
+        "Midjourney"
+      ]
     },
     {
       "title": "Architects Are Switching to Claude | Here's Why - FULL Guide",
@@ -615,7 +757,10 @@
       "author": "Urban Decoders",
       "authorUrl": "https://www.youtube.com/@Urban_Decoders",
       "added": "2026-10-25",
-      "n": 43
+      "n": 43,
+      "software": [
+        "Claude"
+      ]
     },
     {
       "title": "Generative AI models for different steps in architectural design: A literature review",
@@ -630,7 +775,8 @@
       "author": "Frontiers of Architectural Research",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 44
+      "n": 44,
+      "software": []
     },
     {
       "title": "How To Conduct A Systematic Review and Write-Up in 7 Steps (Using PRISMA, PICO and AI)",
@@ -644,7 +790,8 @@
       "author": "Dr Amina Yonis",
       "authorUrl": "https://www.youtube.com/@DrAminaYonis",
       "added": "2026-10-25",
-      "n": 45
+      "n": 45,
+      "software": []
     },
     {
       "title": "How To Use Zotero (Including Zotero Connector) - Full Tutorial With Examples",
@@ -658,7 +805,10 @@
       "author": "Grad Coach",
       "authorUrl": "https://www.youtube.com/@GradCoach",
       "added": "2026-10-25",
-      "n": 46
+      "n": 46,
+      "software": [
+        "Zotero"
+      ]
     },
     {
       "title": "Obsidian Note-Taking System for Academics & Students - Full Tutorial & Demo",
@@ -672,7 +822,10 @@
       "author": "The Effortless Academic",
       "authorUrl": "https://www.youtube.com/@effortlessacademic",
       "added": "2026-10-25",
-      "n": 47
+      "n": 47,
+      "software": [
+        "Obsidian"
+      ]
     },
     {
       "title": "Architectural Research: Formal (and Functional)",
@@ -686,7 +839,8 @@
       "author": "Patrik Schumacher",
       "authorUrl": "https://www.youtube.com/@patrikschumacher2844",
       "added": "2026-10-25",
-      "n": 48
+      "n": 48,
+      "software": []
     },
     {
       "title": "Understanding Research Methods",
@@ -700,7 +854,8 @@
       "author": "University of London / SOAS",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 49
+      "n": 49,
+      "software": []
     },
     {
       "title": "How Neuro-Architecture will change your well-being | Fiona Beenkens | TEDxGeneva",
@@ -714,7 +869,8 @@
       "author": "TEDx Talks",
       "authorUrl": "https://www.youtube.com/@TEDx",
       "added": "2026-10-25",
-      "n": 51
+      "n": 51,
+      "software": []
     },
     {
       "title": "Restorative Cities: Urban Design for Mental Health and Wellbeing",
@@ -729,7 +885,8 @@
       "author": "IHCD Learning",
       "authorUrl": "https://www.youtube.com/@IHCDLearning",
       "added": "2026-10-25",
-      "n": 52
+      "n": 52,
+      "software": []
     },
     {
       "title": "How Architecture Shapes Our Brain – Neuroscience & Architecture Panel | Talks 21",
@@ -743,7 +900,8 @@
       "author": "Talks 21",
       "authorUrl": "https://www.youtube.com/@kareljanecek21",
       "added": "2026-10-25",
-      "n": 53
+      "n": 53,
+      "software": []
     },
     {
       "title": "Karamba3D Tidbits #52 Introduction to Shells",
@@ -758,7 +916,12 @@
       "author": "Karamba3D",
       "authorUrl": "https://www.youtube.com/@karamba3d",
       "added": "2026-10-25",
-      "n": 55
+      "n": 55,
+      "software": [
+        "Karamba3D",
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "Karamba3d for Grasshopper 2D - Analysis of Frame Structures",
@@ -773,7 +936,12 @@
       "author": "Diego Apellániz",
       "authorUrl": "https://www.youtube.com/@DiegoApell%C3%A1niz",
       "added": "2026-10-25",
-      "n": 56
+      "n": 56,
+      "software": [
+        "Karamba3D",
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "Basics in Earthquake Engineering & Seismic Design – Part 1 of 4",
@@ -787,7 +955,8 @@
       "author": "Structural Analysis",
       "authorUrl": "https://www.youtube.com/@Structural.Analysis",
       "added": "2026-10-25",
-      "n": 57
+      "n": 57,
+      "software": []
     },
     {
       "title": "Seismic Irregularities: Soft Story to Shear Walls",
@@ -801,7 +970,8 @@
       "author": "Young Architect",
       "authorUrl": "https://www.youtube.com/@Youngarchitect",
       "added": "2026-10-25",
-      "n": 58
+      "n": 58,
+      "software": []
     },
     {
       "title": "Welcome to Karamba3D | Karamba3D v3 (manual)",
@@ -816,7 +986,11 @@
       "author": "Karamba3D",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 59
+      "n": 59,
+      "software": [
+        "Karamba3D",
+        "Grasshopper"
+      ]
     },
     {
       "title": "Catenary Structures - Kangaroo 2 in Grasshopper",
@@ -831,7 +1005,12 @@
       "author": "mōtus",
       "authorUrl": "https://www.youtube.com/@motus406",
       "added": "2026-10-25",
-      "n": 60
+      "n": 60,
+      "software": [
+        "Kangaroo",
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "Modeling Tensile Structures in Rhino using Kangaroo 2 _Part 1: Anchor Points",
@@ -846,7 +1025,12 @@
       "author": "PH Studio",
       "authorUrl": "https://www.youtube.com/@PH.Studio",
       "added": "2026-10-25",
-      "n": 61
+      "n": 61,
+      "software": [
+        "Kangaroo",
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "Finding Form by Pressure Effect (Grasshopper + Kangaroo2)",
@@ -861,7 +1045,12 @@
       "author": "davttv",
       "authorUrl": "https://www.youtube.com/@davttv_Archstudio",
       "added": "2026-10-25",
-      "n": 62
+      "n": 62,
+      "software": [
+        "Kangaroo",
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "RhinoVAULT – Tutorial",
@@ -876,7 +1065,11 @@
       "author": "Block Research Group, ETH Zürich",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 64
+      "n": 64,
+      "software": [
+        "RhinoVAULT",
+        "Rhino"
+      ]
     },
     {
       "title": "Grasshopper Isovist Tutorial",
@@ -891,7 +1084,11 @@
       "author": "Paracourse",
       "authorUrl": "https://www.youtube.com/@paracourse",
       "added": "2026-10-25",
-      "n": 65
+      "n": 65,
+      "software": [
+        "Grasshopper",
+        "Rhino"
+      ]
     },
     {
       "title": "3D Urban Modelling with CityEngine",
@@ -905,7 +1102,10 @@
       "author": "Esri Canada",
       "authorUrl": "https://www.youtube.com/@esricanadahighereducationr7164",
       "added": "2026-10-25",
-      "n": 66
+      "n": 66,
+      "software": [
+        "CityEngine"
+      ]
     },
     {
       "title": "How Walkable Is Your City? Analyzing Urban Access with Python & OSM | #30DayMapChallenge (14/30)",
@@ -920,7 +1120,11 @@
       "author": "Milan's Data Stories",
       "authorUrl": "https://www.youtube.com/@milanjanosov",
       "added": "2026-10-25",
-      "n": 67
+      "n": 67,
+      "software": [
+        "Python",
+        "OpenStreetMap"
+      ]
     },
     {
       "title": "VIDEO 2 - Space Syntax (Part 2): Using DepthMapX",
@@ -934,7 +1138,10 @@
       "author": "Dynamic Modelling of Cities",
       "authorUrl": "https://www.youtube.com/@dynamicmodellingofcities9002",
       "added": "2026-10-25",
-      "n": 68
+      "n": 68,
+      "software": [
+        "depthmapX"
+      ]
     },
     {
       "title": "Urban Network Analysis (UNA) Toolbox for Rhino3D",
@@ -949,7 +1156,11 @@
       "author": "MIT City Form Lab",
       "authorUrl": null,
       "added": "2026-10-25",
-      "n": 69
+      "n": 69,
+      "software": [
+        "Urban Network Analysis",
+        "Rhino"
+      ]
     }
   ]
 }

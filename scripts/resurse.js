@@ -109,7 +109,9 @@ if (cmd === 'list') {
   const file = lotPath(date);
   const lot = fs.existsSync(file) ? readJson(file) : { date, candidates: [] };
   const n = Math.max(0, ...lot.candidates.map(x => x.n), ...data.resources.filter(r => r.added === date).map(r => r.n)) + 1;
-  lot.candidates.push({ ...c, n, accept: 'Da', manual: true });
+  // implicit: link lipit de proprietar (accept Da, manual). O propunere din exterior (source: "propunere") intră cu accept gol, ca să decizi tu.
+  const fromOutside = c.source === 'propunere';
+  lot.candidates.push({ ...c, n, accept: fromOutside ? (c.accept || null) : 'Da', manual: !fromOutside });
   writeJson(file, lot);
   console.log(`Candidat adăugat în lotul ${toRo(date)} cu nr ${n}.`);
 } else if (cmd === 'remove') {

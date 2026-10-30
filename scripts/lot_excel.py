@@ -93,6 +93,17 @@ def details(c, lot, past):
     if c["platform"] != "YouTube":
         bits.append(c["platform"])
     text = " · ".join(bits)
+    # proveniență: căutate de mine = fără marcaj; lipite de tine = ✎; trimise prin formular = 👤 (și rând albastru)
+    if c.get("source") == "propunere":
+        who = c.get("proposedBy") or "anonim"
+        head = f"👤 PROPUNERE din exterior, de {who}"
+        if c.get("proposerNote"):
+            head += f"\n„{c['proposerNote']}”"
+        if c.get("catSuggestion"):
+            head += f"\nDisciplină sugerată (lipsește din listă): {c['catSuggestion']}"
+        text = head + "\n" + text
+    elif c.get("manual"):
+        text = "✎ adăugat de tine\n" + text
     if c.get("flag"):
         text += "\n⚠ " + c["flag"]
     if c.get("author"):
@@ -232,6 +243,9 @@ def export(lot_path, out_path):
         t.alignment = e.alignment = s.alignment = Alignment(wrap_text=True, vertical="center")
         for cell in (a, b, t, k, s, e):
             cell.border = border
+        if c.get("source") == "propunere":
+            for cell in (a, e):
+                cell.fill = PatternFill("solid", fgColor="DCE8FF")
         lines = max(math.ceil(len(title) / 50), math.ceil(len(soft) / 22) if soft else 1,
                     sum(math.ceil(len(p) / 74) for p in flagged_text.split("\n")))
         ws.row_dimensions[i].height = max(22, lines * 13 + 8)
@@ -335,6 +349,7 @@ def export(lot_path, out_path):
         ("Link nou", "Lipește linkul în coloana „Resursă”, pe un rând nou sub tabel, lasă restul gol și spune-mi „actualizează”. "
                      "Completez titlul, durata, autorul, categoriile și descrierea, apoi o public."),
         ("⚠ / ↪", "⚠ = rezervă (sponsor, plătit, dată neconfirmată). ↪ = alte resurse ale aceluiași autor."),
+        ("Proveniență", "Fără marcaj = căutată de mine. ✎ = adăugată de tine (link lipit). 👤 + celule albastre în Nr și Detalii = propunere trimisă prin formularul de pe site; în Detalii vezi cine a propus și nota lui."),
     ]
     for r, (a_, b_) in enumerate(rows, 1):
         ca = lg.cell(row=r, column=1, value=a_)

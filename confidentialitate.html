@@ -13,6 +13,13 @@
       t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
     document.documentElement.dataset.theme = t;
+    // aceeași alegere de limbă ca pe pagina principală: ?lang=, apoi ce e salvat, apoi limba browserului
+    var l = new URLSearchParams(location.search).get('lang');
+    if (l === 'en' || l === 'ro') { try { localStorage.setItem('justhop-lang', l); } catch (e) {} }
+    else { try { l = localStorage.getItem('justhop-lang'); } catch (e) {} }
+    if (l !== 'en' && l !== 'ro') l = (navigator.language || 'ro').toLowerCase().indexOf('ro') === 0 ? 'ro' : 'en';
+    document.documentElement.lang = l;
+    document.title = l === 'en' ? 'Privacy policy — justhop' : 'Politica de confidențialitate — justhop';
   })();
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -22,8 +29,13 @@
   * { box-sizing: border-box; }
   body { margin:0; background:var(--bg); color:var(--ink); font-family:'Space Grotesk', sans-serif; font-size:16px; line-height:1.65; }
   .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; border-left: 1px solid var(--line); border-right: 1px solid var(--line); min-height: 100vh; }
+  .top { display:flex; justify-content:space-between; align-items:center; }
   .back { font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; }
   .back:hover { color: var(--accent-text); }
+  .lang { font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--muted); border:1px solid var(--line); background:transparent; padding:4px 10px; cursor:pointer; }
+  .lang:hover { color: var(--accent-text); }
+  html[lang="ro"] .lang [data-l="ro"], html[lang="en"] .lang [data-l="en"] { color: var(--accent-text); font-weight: 700; }
+  html[lang="en"] [data-lang="ro"], html[lang="ro"] [data-lang="en"] { display: none; }
   h1 { margin: 24px 0 8px; font-size: 40px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 500; }
   h2 { margin: 36px 0 8px; font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
   p, li { color: var(--muted); }
@@ -36,46 +48,104 @@
 </head>
 <body>
 <div class="wrap">
-  <a class="back" href="/">← justhop</a>
-  <h1>Politica de confidențialitate</h1>
-  <p class="meta">Ultima actualizare: 30.10.2026</p>
+  <div class="top">
+    <a class="back" href="/">← justhop</a>
+    <button class="lang" id="langToggle" type="button" aria-label="Switch language"><span data-l="ro">RO</span> / <span data-l="en">EN</span></button>
+  </div>
 
-  <h2>Cine prelucrează datele</h2>
-  <p>Operatorul datelor este <strong>Radu Andrei</strong>, care administrează justhop. Contact pentru orice întrebare despre datele tale: <a href="mailto:radu.and3@gmail.com">radu.and3@gmail.com</a>.</p>
+  <div data-lang="ro">
+    <h1>Politica de confidențialitate</h1>
+    <p class="meta">Ultima actualizare: 30.10.2026</p>
 
-  <h2>Ce date colectăm</h2>
-  <p>Doar dacă te abonezi la newsletter:</p>
-  <ul>
-    <li><strong>adresa de email</strong>;</li>
-    <li><strong>disciplinele</strong> și <strong>frecvența</strong> (săptămânal sau lunar) pe care le alegi;</li>
-    <li><strong>ziua abonării</strong>, folosită ca să împărțim trimiterile pe zile;</li>
-    <li>data și ora confirmării abonării, păstrate în jurnalul serviciului de trimitere, ca dovadă a acordului tău.</li>
-  </ul>
-  <p>Doar dacă propui o resursă, prin formularul Google:</p>
-  <ul>
-    <li><strong>adresa de email</strong> a contului Google cu care te autentifici (necesară ca să putem limita abuzurile);</li>
-    <li>linkul propus, disciplinele, programele și nota pe care le completezi;</li>
-    <li><strong>numele</strong> pe care alegi să îl afișăm, dacă îl completezi.</li>
-  </ul>
-  <p>Site-ul nu folosește cookie-uri de urmărire sau de publicitate. În browser se păstrează doar preferința pentru tema zi / noapte, care nu pleacă de pe dispozitivul tău.</p>
+    <h2>Cine prelucrează datele</h2>
+    <p>Operatorul datelor este <strong>Radu Andrei</strong>, care administrează justhop. Contact pentru orice întrebare despre datele tale: <a href="mailto:radu.and3@gmail.com">radu.and3@gmail.com</a>.</p>
 
-  <h2>De ce și pe ce bază</h2>
-  <p>Adresa de la propuneri o folosim doar ca să verificăm propunerea și să te putem contacta; nu apare niciodată pe site (se afișează, dacă vrei, doar numele pe care l-ai ales, ca „propus de …”).</p>
-  <p>Folosim datele de la abonare doar ca să îți trimitem emailuri cu resurse noi din categoriile alese. Baza legală este <strong>acordul tău</strong> (art. 6 alin. 1 lit. a din GDPR), exprimat prin bifa din formular și confirmat prin linkul primit pe email. Nu vindem datele și nu le folosim pentru alte scopuri.</p>
+    <h2>Ce date colectăm</h2>
+    <p>Doar dacă te abonezi la newsletter:</p>
+    <ul>
+      <li><strong>adresa de email</strong>;</li>
+      <li><strong>disciplinele</strong> și <strong>frecvența</strong> (săptămânal sau lunar) pe care le alegi;</li>
+      <li><strong>ziua abonării</strong>, folosită ca să împărțim trimiterile pe zile;</li>
+      <li>data și ora confirmării abonării, păstrate în jurnalul serviciului de trimitere, ca dovadă a acordului tău.</li>
+    </ul>
+    <p>Doar dacă propui o resursă, prin formularul Google:</p>
+    <ul>
+      <li><strong>adresa de email</strong> a contului Google cu care te autentifici (necesară ca să putem limita abuzurile);</li>
+      <li>linkul propus, disciplinele, programele și nota pe care le completezi;</li>
+      <li><strong>numele</strong> pe care alegi să îl afișăm, dacă îl completezi.</li>
+    </ul>
+    <p>Site-ul nu folosește cookie-uri de urmărire sau de publicitate. În browser se păstrează doar preferința pentru tema zi / noapte și pentru limbă, care nu pleacă de pe dispozitivul tău.</p>
 
-  <h2>Cine mai are acces la ele</h2>
-  <ul>
-    <li><strong>Brevo</strong> (Franța, UE) trimite emailurile și păstrează lista de abonați, ca persoană împuternicită.</li>
-    <li><strong>Google</strong> (Forms și Sheets) primește propunerile și adresa contului tău, ca persoană împuternicită.</li>
-    <li><strong>Vercel Inc.</strong> (SUA) găzduiește site-ul și rulează funcția care primește formularul; în acest context adresa ta de email și adresa IP de la care trimiți cererea trec prin serverele lui. Transferul către SUA se face pe baza clauzelor contractuale standard ale Uniunii Europene, conform <a href="https://vercel.com/legal/dpa" rel="noopener">acordului de prelucrare a datelor publicat de Vercel</a>.</li>
-  </ul>
+    <h2>De ce și pe ce bază</h2>
+    <p>Adresa de la propuneri o folosim doar ca să verificăm propunerea și să te putem contacta; nu apare niciodată pe site (se afișează, dacă vrei, doar numele pe care l-ai ales, ca „propus de …”).</p>
+    <p>Folosim datele de la abonare doar ca să îți trimitem emailuri cu resurse noi din categoriile alese. Baza legală este <strong>acordul tău</strong> (art. 6 alin. 1 lit. a din GDPR), exprimat prin bifa din formular și confirmat prin linkul primit pe email. Nu vindem datele și nu le folosim pentru alte scopuri.</p>
 
-  <h2>Cât timp le păstrăm</h2>
-  <p>Cât timp ești abonat. Când te dezabonezi (linkul din orice email), nu mai primești mesaje, iar adresa ta este ștearsă automat și definitiv din lista de trimitere după 10 zile. După ștergere nu păstrăm nicio dată despre tine.</p>
-  <p>Propunerile: adresa de email asociată unei propuneri se șterge din foaia de calcul în cel mult 30 de zile după ce am decis dacă o publicăm. Numele afișat pe site rămâne cât timp resursa e publicată; îl poți cere șters oricând.</p>
+    <h2>Cine mai are acces la ele</h2>
+    <ul>
+      <li><strong>Brevo</strong> (Franța, UE) trimite emailurile și păstrează lista de abonați, ca persoană împuternicită.</li>
+      <li><strong>Google</strong> (Forms și Sheets) primește propunerile și adresa contului tău, ca persoană împuternicită.</li>
+      <li><strong>Vercel Inc.</strong> (SUA) găzduiește site-ul și rulează funcția care primește formularul; în acest context adresa ta de email și adresa IP de la care trimiți cererea trec prin serverele lui. Transferul către SUA se face pe baza clauzelor contractuale standard ale Uniunii Europene, conform <a href="https://vercel.com/legal/dpa" rel="noopener">acordului de prelucrare a datelor publicat de Vercel</a>.</li>
+    </ul>
 
-  <h2>Drepturile tale</h2>
-  <p>Poți cere oricând accesul la date, corectarea, ștergerea, restricționarea prelucrării sau portabilitatea lor, și poți retrage acordul fără să afecteze trimiterile de până atunci. Scrie-mi la <a href="mailto:radu.and3@gmail.com">radu.and3@gmail.com</a>. Ai dreptul să depui o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href="https://www.dataprotection.ro" rel="noopener">www.dataprotection.ro</a>.</p>
+    <h2>Cât timp le păstrăm</h2>
+    <p>Cât timp ești abonat. Când te dezabonezi (linkul din orice email), nu mai primești mesaje, iar adresa ta este ștearsă automat și definitiv din lista de trimitere după 10 zile. După ștergere nu păstrăm nicio dată despre tine.</p>
+    <p>Propunerile: adresa de email asociată unei propuneri se șterge din foaia de calcul în cel mult 30 de zile după ce am decis dacă o publicăm. Numele afișat pe site rămâne cât timp resursa e publicată; îl poți cere șters oricând.</p>
+
+    <h2>Drepturile tale</h2>
+    <p>Poți cere oricând accesul la date, corectarea, ștergerea, restricționarea prelucrării sau portabilitatea lor, și poți retrage acordul fără să afecteze trimiterile de până atunci. Scrie-mi la <a href="mailto:radu.and3@gmail.com">radu.and3@gmail.com</a>. Ai dreptul să depui o plângere la Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP), <a href="https://www.dataprotection.ro" rel="noopener">www.dataprotection.ro</a>.</p>
+  </div>
+
+  <div data-lang="en">
+    <h1>Privacy policy</h1>
+    <p class="meta">Last updated: 30.10.2026</p>
+
+    <h2>Who processes the data</h2>
+    <p>The data controller is <strong>Radu Andrei</strong>, who runs justhop. For any question about your data, contact <a href="mailto:radu.and3@gmail.com">radu.and3@gmail.com</a>.</p>
+
+    <h2>What data we collect</h2>
+    <p>Only if you subscribe to the newsletter:</p>
+    <ul>
+      <li>your <strong>email address</strong>;</li>
+      <li>the <strong>disciplines</strong> and the <strong>frequency</strong> (weekly or monthly) you choose;</li>
+      <li>the <strong>day you subscribed</strong>, used to spread the sending across days;</li>
+      <li>the date and time you confirmed your subscription, kept in the sending service’s log as proof of your consent.</li>
+    </ul>
+    <p>Only if you suggest a resource through the Google form:</p>
+    <ul>
+      <li>the <strong>email address</strong> of the Google account you sign in with (needed so we can limit abuse);</li>
+      <li>the link you suggest, the disciplines, the programs and the note you fill in;</li>
+      <li>the <strong>name</strong> you choose to have shown, if you fill it in.</li>
+    </ul>
+    <p>The site does not use tracking or advertising cookies. The browser only stores your day / night theme and language preferences, which never leave your device.</p>
+
+    <h2>Why and on what basis</h2>
+    <p>We use the address from suggestions only to review the suggestion and to be able to contact you; it never appears on the site (if you want, only the name you chose is shown, as “suggested by …”).</p>
+    <p>We use the subscription data only to send you emails with new resources from the categories you chose. The legal basis is <strong>your consent</strong> (Article 6(1)(a) GDPR), given by ticking the box in the form and confirmed through the link you receive by email. We do not sell the data and do not use it for any other purpose.</p>
+
+    <h2>Who else has access to it</h2>
+    <ul>
+      <li><strong>Brevo</strong> (France, EU) sends the emails and keeps the subscriber list, as a data processor.</li>
+      <li><strong>Google</strong> (Forms and Sheets) receives the suggestions and your account address, as a data processor.</li>
+      <li><strong>Vercel Inc.</strong> (USA) hosts the site and runs the function that receives the form; in this context your email address and the IP address you send the request from pass through its servers. The transfer to the USA is based on the European Union’s standard contractual clauses, under <a href="https://vercel.com/legal/dpa" rel="noopener">the data processing agreement published by Vercel</a>.</li>
+    </ul>
+
+    <h2>How long we keep it</h2>
+    <p>For as long as you are subscribed. When you unsubscribe (the link in any email) you stop receiving messages, and your address is automatically and permanently deleted from the mailing list after 10 days. After deletion we keep no data about you.</p>
+    <p>Suggestions: the email address linked to a suggestion is deleted from the spreadsheet within 30 days of my deciding whether to publish it. The name shown on the site stays for as long as the resource is published; you can ask for it to be removed at any time.</p>
+
+    <h2>Your rights</h2>
+    <p>You can ask at any time for access to your data, its correction, erasure, restriction of processing or portability, and you can withdraw your consent without affecting the sending done until then. Write to me at <a href="mailto:radu.and3@gmail.com">radu.and3@gmail.com</a>. You have the right to lodge a complaint with the Romanian National Supervisory Authority for Personal Data Processing (ANSPDCP), <a href="https://www.dataprotection.ro" rel="noopener">www.dataprotection.ro</a>, or with your local data protection authority.</p>
+  </div>
 </div>
+<script>
+  document.getElementById('langToggle').addEventListener('click', function () {
+    var next = document.documentElement.lang === 'ro' ? 'en' : 'ro';
+    document.documentElement.lang = next;
+    document.title = next === 'en' ? 'Privacy policy — justhop' : 'Politica de confidențialitate — justhop';
+    try { localStorage.setItem('justhop-lang', next); } catch (e) {}
+    var u = new URL(location.href);
+    if (u.searchParams.has('lang')) { u.searchParams.delete('lang'); history.replaceState(null, '', u.pathname + u.search + u.hash); }
+  });
+</script>
 </body>
 </html>

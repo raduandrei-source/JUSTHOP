@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-30",
+  "candidates": [
+    {
+      "platform": "YouTube",
+      "software": [
+        "SketchUp"
+      ],
+      "rating": null,
+      "flag": null,
+      "suggest": "Da",
+      "cats": [
+        "VIZ"
+      ],
+      "title": "Getting Started with SketchUp Pro 2025! (BEGINNERS START HERE!)",
+      "url": "https://www.youtube.com/watch?v=hGOUc8i-TxA",
+      "level": "intro",
+      "desc": "Primii pași în SketchUp Pro 2025: interfața, instrumentele de bază și cum modelezi primele volume. Autorul oferă și un ghid gratuit cu scurtături de tastatură.",
+      "author": "TheSketchUpEssentials",
+      "authorUrl": "https://www.youtube.com/@Thesketchupessentials",
+      "min": 21,
+      "views": 359723,
+      "pub": "2025-04-03",
+      "n": 1,
+      "accept": "Da",
+      "manual": false
+    },
+    {
+      "platform": "YouTube",
+      "software": [
+        "SketchUp"
+      ],
+      "rating": null,
+      "flag": null,
+      "suggest": "Da",
+      "cats": [
+        "VIZ"
+      ],
+      "title": "Sketchup for Beginners - 2D Floor Plan to 3D Model",
+      "url": "https://www.youtube.com/watch?v=tkLfb-fuMSM",
+      "level": "intro",
+      "desc": "Pornești de la un plan 2D și construiești modelul 3D al clădirii în SketchUp, pas cu pas. Aproape o oră și jumătate, potrivit pentru începători.",
+      "author": "Melos Azemi",
+      "authorUrl": "https://www.youtube.com/@MelosAzemi",
+      "min": 88,
+      "views": 364444,
+      "pub": "2024-07-02",
+      "n": 2,
+      "accept": "Da",
+      "manual": false
+    },
+    {
+      "platform": "YouTube",
+      "software": [
+        "SketchUp"
+      ],
+      "rating": null,
+      "flag": null,
+      "suggest": "Da",
+      "cats": [
+        "VIZ"
+      ],
+      "title": "House Modeling in Sketchup 2024 (Sketchup Tutorial)",
+      "url": "https://www.youtube.com/watch?v=93Oq2GIYqrc",
+      "level": "mediu",
+      "desc": "Modelezi o casă întreagă în SketchUp 2024, de la volum la detalii, într-un tutorial de aproape o oră care arată un flux de lucru complet.",
+      "author": "architutors",
+      "authorUrl": "https://www.youtube.com/@architutors",
+      "min": 54,
+      "views": 23734,
+      "pub": "2024-06-17",
+      "n": 3,
+      "accept": "Da",
+      "manual": false
+    },
+    {
+      "platform": "YouTube",
+      "software": [
+        "SketchUp"
+      ],
+      "rating": null,
+      "flag": null,
+      "suggest": "Da",
+      "cats": [
+        "VIZ"
+      ],
+      "title": "How Does a LayOut Pro Create Incredible Drawings",
+      "url": "https://www.youtube.com/watch?v=9BUZT3gUTe0",
+      "level": "mediu",
+      "desc": "Echipa SketchUp analizează ce face un set de desene LayOut să arate bine și clar și cum compui planșe de prezentare pornind din modelul 3D.",
+      "author": "Trimble SketchUp",
+      "authorUrl": "https://www.youtube.com/@SketchUp",
+      "min": 13,
+      "views": 60840,
+      "pub": "2025-03-20",
+      "n": 4,
+      "accept": "Da",
+      "manual": false
+    },
+    {
+      "platform": "YouTube",
+      "software": [
+        "SketchUp"
+      ],
+      "rating": null,
+      "flag": null,
+      "suggest": "Da",
+      "cats": [
+        "MC",
+        "VIZ"
+      ],
+      "title": "The ULTIMATE GUIDE to Dynamic Components in SketchUp!",
+      "url": "https://www.youtube.com/watch?v=zowFoEVIqLQ",
+      "level": "avansat",
+      "desc": "Ghid despre componentele dinamice din SketchUp: componente care se adaptează automat la dimensiuni și opțiuni, un prim pas spre modelare parametrică în SketchUp.",
+      "author": "TheSketchUpEssentials",
+      "authorUrl": "https://www.youtube.com/@Thesketchupessentials",
+      "min": 14,
+      "views": 18607,
+      "pub": "2025-09-03",
+      "n": 5,
+      "accept": "Da",
+      "manual": false
+    },
+    {
+      "cats": [
+        "VIZ"
+      ],
+      "title": "Spirula Studio and Blender - Gaussian Splatting - Fast and Easy",
+      "url": "https://youtu.be/oTFqhdmBTZ8",
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Cum folosești Spirula Studio ca să creezi un Gaussian Splat și apoi îl imporți în Blender 5.3. Scurt (5 minute) și la obiect.",
+      "author": "Nicko16",
+      "authorUrl": "https://www.youtube.com/@Nicko16",
+      "min": 5,
+      "views": 26650,
+      "pub": "2026-10-14",
+      "rating": null,
+      "flag": null,
+      "suggest": null,
+      "software": [
+        "Spirula Studio",
+        "Blender"
+      ],
+      "source": "propunere",
+      "proposedBy": null,
+      "n": 6,
+      "accept": null,
+      "manual": false
+    }
+  ]
+}

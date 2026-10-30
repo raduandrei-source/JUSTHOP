@@ -1161,6 +1161,92 @@
         "Urban Network Analysis",
         "Rhino"
       ]
+    },
+    {
+      "title": "Getting Started with SketchUp Pro 2025! (BEGINNERS START HERE!)",
+      "cats": [
+        "VIZ"
+      ],
+      "software": [
+        "SketchUp"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Primii pași în SketchUp Pro 2025: interfața, instrumentele de bază și cum modelezi primele volume. Autorul oferă și un ghid gratuit cu scurtături de tastatură.",
+      "url": "https://www.youtube.com/watch?v=hGOUc8i-TxA",
+      "author": "TheSketchUpEssentials",
+      "authorUrl": "https://www.youtube.com/@Thesketchupessentials",
+      "added": "2026-10-30",
+      "n": 1
+    },
+    {
+      "title": "Sketchup for Beginners - 2D Floor Plan to 3D Model",
+      "cats": [
+        "VIZ"
+      ],
+      "software": [
+        "SketchUp"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Pornești de la un plan 2D și construiești modelul 3D al clădirii în SketchUp, pas cu pas. Aproape o oră și jumătate, potrivit pentru începători.",
+      "url": "https://www.youtube.com/watch?v=tkLfb-fuMSM",
+      "author": "Melos Azemi",
+      "authorUrl": "https://www.youtube.com/@MelosAzemi",
+      "added": "2026-10-30",
+      "n": 2
+    },
+    {
+      "title": "House Modeling in Sketchup 2024 (Sketchup Tutorial)",
+      "cats": [
+        "VIZ"
+      ],
+      "software": [
+        "SketchUp"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Modelezi o casă întreagă în SketchUp 2024, de la volum la detalii, într-un tutorial de aproape o oră care arată un flux de lucru complet.",
+      "url": "https://www.youtube.com/watch?v=93Oq2GIYqrc",
+      "author": "architutors",
+      "authorUrl": "https://www.youtube.com/@architutors",
+      "added": "2026-10-30",
+      "n": 3
+    },
+    {
+      "title": "How Does a LayOut Pro Create Incredible Drawings",
+      "cats": [
+        "VIZ"
+      ],
+      "software": [
+        "SketchUp"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Echipa SketchUp analizează ce face un set de desene LayOut să arate bine și clar și cum compui planșe de prezentare pornind din modelul 3D.",
+      "url": "https://www.youtube.com/watch?v=9BUZT3gUTe0",
+      "author": "Trimble SketchUp",
+      "authorUrl": "https://www.youtube.com/@SketchUp",
+      "added": "2026-10-30",
+      "n": 4
+    },
+    {
+      "title": "The ULTIMATE GUIDE to Dynamic Components in SketchUp!",
+      "cats": [
+        "MC",
+        "VIZ"
+      ],
+      "software": [
+        "SketchUp"
+      ],
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Ghid despre componentele dinamice din SketchUp: componente care se adaptează automat la dimensiuni și opțiuni, un prim pas spre modelare parametrică în SketchUp.",
+      "url": "https://www.youtube.com/watch?v=zowFoEVIqLQ",
+      "author": "TheSketchUpEssentials",
+      "authorUrl": "https://www.youtube.com/@Thesketchupessentials",
+      "added": "2026-10-30",
+      "n": 5
     }
   ]
 }

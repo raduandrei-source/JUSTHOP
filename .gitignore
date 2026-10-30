@@ -15,3 +15,6 @@ desktop.ini
 
 # liste de lucru pentru acceptarea resurselor
 lot-*.xlsx
+
+# imagini si surse pentru postari pe retele sociale (nu se publica pe site)
+social/

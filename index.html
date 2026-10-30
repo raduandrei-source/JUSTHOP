@@ -1125,6 +1125,7 @@
           <p class="card-desc">${esc(p.desc)}</p>
           ${(p.software || []).length ? `<div class="card-soft">${p.software.slice(0, 3).map(s => `<span class="sw-chip" data-sw="${esc(s)}">${esc(s)}</span>`).join('')}${p.software.length > 3 ? `<span class="sw-more">+${p.software.length - 3}</span>` : ''}</div>` : ''}
           ${p.author ? `<p class="card-author">de <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span></p>` : ''}
+          ${p.proposedBy ? `<p class="card-author">propus de ${esc(p.proposedBy)}</p>` : ''}
         </div>
         <div class="card-meta label">
           <span>${esc(p.level)}</span>

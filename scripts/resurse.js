@@ -74,6 +74,7 @@ function toResource(c, date) {
     title: c.title, cats: c.cats, software: normSoftware(c.software), platform: c.platform, level: c.level, desc: c.desc, url: c.url,
     author: c.author || null, authorUrl: c.authorUrl || null, added: date, n: c.n,
   };
+  if (c.proposedBy) r.proposedBy = String(c.proposedBy).replace(/\s+/g, ' ').trim().slice(0, 60);   // numele ales de cel care a propus, niciodată emailul
   return r;
 }
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>justhop — resurse digitale pentru arhitectură</title>
-<meta name="description" content="Hub de resurse digitale pentru învățare și cercetare în arhitectură: cursuri, tutoriale video, articole și cărți, organizate pe discipline.">
+<title>justhop — resurse digitale pentru arhitectură și urbanism</title>
+<meta name="description" content="Hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism: cursuri, tutoriale video, articole și cărți, organizate pe discipline.">
 <meta name="theme-color" content="#F4F3EF">
 <script>
   // tema se aplică înainte de randare, ca pagina să nu clipească
@@ -128,6 +128,24 @@
     place-items: center;
     padding: 0;
   }
+  .lang-toggle {
+    border: none;
+    border-left: 1px solid var(--line);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .lang-toggle:hover { background: var(--bg); }
+  .lang-toggle .sep { opacity: 0.5; }
+  html[lang="ro"] .lang-toggle [data-l="ro"],
+  html[lang="en"] .lang-toggle [data-l="en"] { color: var(--accent-text); font-weight: 700; }
   .theme-toggle:hover { background: var(--bg); }
   .theme-toggle svg { width: 18px; height: 18px; }
   .theme-toggle .icon-sun { display: none; }
@@ -566,7 +584,7 @@
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="#" aria-label="justhop — acasă">
+    <a class="brand" href="#" aria-label="justhop — acasă" data-i18n-attr="aria-label:brandAria">
       <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
         <g transform="rotate(12 50 45)">
           <polygon points="50,12 78,28 50,44 22,28" fill="#1A56DB"/>
@@ -584,11 +602,12 @@
       </span>
     </a>
     <nav class="label">
-      <a href="#resurse" aria-current="page">Resurse</a>
-      <a href="#newsletter">Newsletter</a>
-      <a href="#">Despre</a>
+      <a href="#resurse" aria-current="page" data-i18n="navResources">Resurse</a>
+      <a href="#newsletter" data-i18n="navNewsletter">Newsletter</a>
+      <a href="#" data-i18n="navAbout">Despre</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Comută tema închisă" title="Comută tema">
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English" title="English"><span data-l="ro">RO</span><span class="sep">/</span><span data-l="en">EN</span></button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Comută tema închisă" data-i18n-attr="title:themeTitle" title="Comută tema">
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="8" height="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
     </button>
@@ -602,88 +621,88 @@
 <div class="wrap">
   <section class="intro">
     <div class="intro-main">
-      <h1>Resurse digitale pentru <em>arhitectură.</em></h1>
-      <p>Un hub de resurse digitale pentru învățare și cercetare în arhitectură: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe <span id="catCount">13</span> discipline. Selectate manual, actualizate în fiecare vineri.</p>
+      <h1 data-i18n-html="h1">Resurse digitale pentru <em>arhitectură și urbanism.</em></h1>
+      <p data-i18n-html="intro">Un hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe 13 discipline. Selectate manual, actualizate în fiecare vineri.</p>
     </div>
-    <aside class="soft" id="soft" aria-label="Software din tutoriale">
+    <aside class="soft" id="soft" aria-label="Software din tutoriale" data-i18n-attr="aria-label:softAria">
       <div class="soft-head label"><span>Software</span><span id="softCount"></span></div>
       <div class="soft-track" id="softTrack"></div>
-      <div class="soft-dots" id="softDots" role="group" aria-label="Pagini software"></div>
+      <div class="soft-dots" id="softDots" role="group" aria-label="Pagini software" data-i18n-attr="aria-label:softPagesAria"></div>
     </aside>
   </section>
 
   <section class="section" id="saptamana">
     <div class="section-bar label">
-      <strong>Adăugate săptămâna asta</strong>
-      <span class="hide-sm">actualizat vinerea</span>
+      <strong data-i18n="weekTitle">Adăugate săptămâna asta</strong>
+      <span class="hide-sm" data-i18n="weekNote">actualizat vinerea</span>
     </div>
     <div class="week-grid" id="weekGrid"></div>
   </section>
 
   <section class="section" id="resurse">
     <div class="section-bar label">
-      <strong>Resurse</strong>
-      <span id="searchMeta">se încarcă...</span>
+      <strong data-i18n="resourcesTitle">Resurse</strong>
+      <span id="searchMeta" data-i18n="loading">se încarcă...</span>
     </div>
     <label class="search-row">
       <span class="prompt">&gt;</span>
-      <input id="searchInput" type="text" placeholder="caută titlu, unealtă, categorie..." autocomplete="off">
+      <input id="searchInput" type="text" placeholder="caută titlu, unealtă, categorie..." data-i18n-attr="placeholder:searchPlaceholder" autocomplete="off">
       <span class="kbd" aria-hidden="true">/</span>
     </label>
 
     <div class="layout">
       <aside class="sidebar" id="sidebar">
         <div class="sidebar-head label">
-          <span>Categorii</span>
-          <button class="reset label" id="resetCats" type="button" hidden>resetează</button>
+          <span data-i18n="categories">Categorii</span>
+          <button class="reset label" id="resetCats" type="button" data-i18n="reset" hidden>resetează</button>
         </div>
         <div id="catList"></div>
         <div class="sidebar-head label sidebar-sub" id="authorHead" hidden>
-          <span>Autori</span>
+          <span data-i18n="authors">Autori</span>
         </div>
         <div id="authorList"></div>
       </aside>
 
       <main>
         <div class="grid" id="grid"></div>
-        <div class="sentinel label" id="sentinel">se încarcă resursele...</div>
+        <div class="sentinel label" id="sentinel" data-i18n="loadingResources">se încarcă resursele...</div>
       </main>
     </div>
   </section>
 
   <section class="section" id="newsletter">
     <div class="section-bar label">
-      <strong>Newsletter</strong>
-      <span class="hide-sm">gratuit · te dezabonezi oricând</span>
+      <strong data-i18n="navNewsletter">Newsletter</strong>
+      <span class="hide-sm" data-i18n="nlBarNote">gratuit · te dezabonezi oricând</span>
     </div>
     <div class="nl">
       <div class="nl-text">
-        <h2>Resursele noi, direct în email.</h2>
-        <p>Alegi disciplinele care te interesează și cât de des vrei emailul: săptămânal sau lunar. Primești doar resursele noi din categoriile bifate.</p>
-        <p class="nl-done" id="nlDone" hidden>Abonarea ta e confirmată. Mulțumim!</p>
+        <h2 data-i18n="nlTitle">Resursele noi, direct în email.</h2>
+        <p data-i18n="nlText">Alegi disciplinele care te interesează și cât de des vrei emailul: săptămânal sau lunar. Primești doar resursele noi din categoriile bifate.</p>
+        <p class="nl-done" id="nlDone" data-i18n="nlDone" hidden>Abonarea ta e confirmată. Mulțumim!</p>
       </div>
       <form class="nl-form" id="nlForm" novalidate>
         <label class="nl-field">
           <span class="label">Email</span>
-          <input type="email" id="nlEmail" name="email" autocomplete="email" placeholder="nume@exemplu.ro">
+          <input type="email" id="nlEmail" name="email" autocomplete="email" placeholder="nume@exemplu.ro" data-i18n-attr="placeholder:nlEmailPlaceholder">
         </label>
         <fieldset>
-          <legend class="label">Ce te interesează <span class="nl-hint">(nimic bifat = toate)</span></legend>
+          <legend class="label" data-i18n-html="nlInterests">Ce te interesează <span class="nl-hint">(nimic bifat = toate)</span></legend>
           <div class="nl-cats" id="nlCats"></div>
         </fieldset>
         <fieldset>
-          <legend class="label">Cât de des</legend>
+          <legend class="label" data-i18n="nlHowOften">Cât de des</legend>
           <div class="nl-freq">
-            <label><input type="radio" name="frequency" value="saptamanal" checked> săptămânal</label>
-            <label><input type="radio" name="frequency" value="lunar"> lunar</label>
+            <label><input type="radio" name="frequency" value="saptamanal" checked> <span data-i18n="nlWeekly">săptămânal</span></label>
+            <label><input type="radio" name="frequency" value="lunar"> <span data-i18n="nlMonthly">lunar</span></label>
           </div>
         </fieldset>
         <input class="nl-trap" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="nl-consent">
           <input type="checkbox" id="nlConsent">
-          <span>Sunt de acord să primesc emailuri cu resurse noi de la justhop. Datele mele sunt folosite doar pentru asta și mă pot dezabona oricând. <a href="confidentialitate.html" target="_blank" rel="noopener">Politica de confidențialitate</a></span>
+          <span data-i18n-html="nlConsent">Sunt de acord să primesc emailuri cu resurse noi de la justhop. Datele mele sunt folosite doar pentru asta și mă pot dezabona oricând. <a href="confidentialitate.html" target="_blank" rel="noopener">Politica de confidențialitate</a></span>
         </label>
-        <button class="nl-submit" type="submit" id="nlSubmit">Abonează-mă</button>
+        <button class="nl-submit" type="submit" id="nlSubmit" data-i18n="nlSubmit">Abonează-mă</button>
         <p class="nl-status" id="nlStatus" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -694,7 +713,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="#" aria-label="justhop — acasă">
+        <a class="brand" href="#" aria-label="justhop — acasă" data-i18n-attr="aria-label:brandAria">
           <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
             <g transform="rotate(12 50 45)">
               <polygon points="50,12 78,28 50,44 22,28" fill="#1A56DB"/>
@@ -708,35 +727,35 @@
           </svg>
           <span class="brand-name">justhop</span>
         </a>
-        <p>Hub de resurse digitale pentru învățare și cercetare în arhitectură, pentru oricine sare de la un tool digital la altul.</p>
+        <p data-i18n="footerAbout">Hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism, pentru oricine sare de la un tool digital la altul.</p>
         <p class="motto">just hop, nevermind the name.</p>
       </div>
       <div>
-        <h4 class="label">Discipline</h4>
+        <h4 class="label" data-i18n="footerDisciplines">Discipline</h4>
         <ul id="footerCats"></ul>
       </div>
       <div>
-        <h4 class="label">Platforme</h4>
+        <h4 class="label" data-i18n="footerPlatforms">Platforme</h4>
         <ul>
           <li><button type="button" data-q="youtube">YouTube</button></li>
           <li><button type="button" data-q="udemy">Udemy</button></li>
           <li><button type="button" data-q="coursera">Coursera</button></li>
-          <li><button type="button" data-q="articol">Articole</button></li>
+          <li><button type="button" data-q="articol" id="footerArticles" data-i18n="footerArticles">Articole</button></li>
         </ul>
       </div>
       <div>
-        <h4 class="label">Newsletter</h4>
+        <h4 class="label" data-i18n="navNewsletter">Newsletter</h4>
         <ul>
-          <li>Resursele noi, vineri seara.</li>
-          <li><a href="#newsletter">Abonează-te →</a></li>
+          <li data-i18n="footerNlLine">Resursele noi, vineri seara.</li>
+          <li><a href="#newsletter" data-i18n="footerSubscribe">Abonează-te →</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="label">Despre</h4>
+        <h4 class="label" data-i18n="navAbout">Despre</h4>
         <ul>
-          <li><a href="#">Despre proiect</a></li>
-          <li><a href="#">Cum alegem resursele</a></li>
-          <li><a href="https://forms.gle/Zkxz1MV7XMR9nkS39" rel="noopener" target="_blank">Propune o resursă</a></li>
+          <li><a href="#" data-i18n="footerAboutProject">Despre proiect</a></li>
+          <li><a href="#" data-i18n="footerHow">Cum alegem resursele</a></li>
+          <li><a href="https://forms.gle/Zkxz1MV7XMR9nkS39" rel="noopener" target="_blank" data-i18n="footerSuggest">Propune o resursă</a></li>
         </ul>
       </div>
     </div>
@@ -748,15 +767,103 @@
 </footer>
 
 <script>
+  /* ---------- LIMBĂ (RO / EN) ---------- */
+  // Textul din HTML e în română (și ce se vede fără JavaScript); elementele cu data-i18n / data-i18n-html / data-i18n-attr
+  // își iau textul de aici. Descrierile resurselor și numele disciplinelor vin din data/resources.json (descEn, nameEn).
+  const I18N = {
+    ro: {
+      title: 'justhop — resurse digitale pentru arhitectură și urbanism',
+      metaDesc: 'Hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism: cursuri, tutoriale video, articole și cărți, organizate pe discipline.',
+      brandAria: 'justhop — acasă', themeTitle: 'Comută tema', themeToDark: 'Comută tema închisă', themeToLight: 'Comută tema deschisă',
+      langAria: 'Switch to English', langTitle: 'English',
+      navResources: 'Resurse', navNewsletter: 'Newsletter', navAbout: 'Despre',
+      h1: 'Resurse digitale pentru <em>arhitectură și urbanism.</em>',
+      intro: 'Un hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe {n} discipline. Selectate manual, actualizate în fiecare vineri.',
+      softAria: 'Software din tutoriale', softPagesAria: 'Pagini software', softPage: 'Pagina {i} din {n}', programOne: 'program', programMany: 'programe',
+      weekTitle: 'Adăugate săptămâna asta', weekNote: 'actualizat vinerea',
+      resourcesTitle: 'Resurse', loading: 'se încarcă...', searchPlaceholder: 'caută titlu, unealtă, categorie...',
+      categories: 'Categorii', reset: 'resetează', authors: 'Autori',
+      shown: '{n} afișate', resultsFor: '{n} rezultate pentru "{q}"',
+      loadingResources: 'se încarcă resursele...', loadingMore: 'se încarcă mai multe resurse...', endReached: 'ai ajuns la capăt — atât avem deocamdată', noMatch: 'nicio resursă nu se potrivește',
+      resOne: 'resursă', resMany: 'resurse', by: 'de', suggestedBy: 'propus de',
+      level_intro: 'intro', level_mediu: 'mediu', level_avansat: 'avansat', platform_Articol: 'Articol',
+      nlBarNote: 'gratuit · te dezabonezi oricând', nlTitle: 'Resursele noi, direct în email.',
+      nlText: 'Alegi disciplinele care te interesează și cât de des vrei emailul: săptămânal sau lunar. Primești doar resursele noi din categoriile bifate.',
+      nlDone: 'Abonarea ta e confirmată. Mulțumim!', nlEmailPlaceholder: 'nume@exemplu.ro',
+      nlInterests: 'Ce te interesează <span class="nl-hint">(nimic bifat = toate)</span>', nlHowOften: 'Cât de des', nlWeekly: 'săptămânal', nlMonthly: 'lunar',
+      nlConsent: 'Sunt de acord să primesc emailuri cu resurse noi de la justhop. Datele mele sunt folosite doar pentru asta și mă pot dezabona oricând. <a href="confidentialitate.html" target="_blank" rel="noopener">Politica de confidențialitate</a>',
+      nlSubmit: 'Abonează-mă', nlEmailInvalid: 'Scrie o adresă de email validă.', nlConsentNeeded: 'Bifează acordul pentru primirea emailurilor.',
+      nlSending: 'Se trimite...', nlOkDefault: 'Verifică-ți emailul și confirmă abonarea.', nlErrDefault: 'Abonarea nu e disponibilă acum. Încearcă din nou mai târziu.',
+      nlNetErr: 'Nu am putut trimite cererea. Verifică conexiunea și încearcă din nou.',
+      footerAbout: 'Hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism, pentru oricine sare de la un tool digital la altul.',
+      footerDisciplines: 'Discipline', footerPlatforms: 'Platforme', footerArticles: 'Articole', footerArticlesQ: 'articol',
+      footerNlLine: 'Resursele noi, vineri seara.', footerSubscribe: 'Abonează-te →',
+      footerAboutProject: 'Despre proiect', footerHow: 'Cum alegem resursele', footerSuggest: 'Propune o resursă',
+      loadError: 'eroare', loadErrorDetail: 'nu am putut încărca data/resources.json — deschide pagina printr-un server, nu direct din fișier',
+    },
+    en: {
+      title: 'justhop — digital resources for architecture and urban planning',
+      metaDesc: 'A hub of digital resources for learning and research in architecture and urban planning: courses, video tutorials, articles and books, organized by discipline.',
+      brandAria: 'justhop — home', themeTitle: 'Switch theme', themeToDark: 'Switch to dark theme', themeToLight: 'Switch to light theme',
+      langAria: 'Comută pe română', langTitle: 'Română',
+      navResources: 'Resources', navNewsletter: 'Newsletter', navAbout: 'About',
+      h1: 'Digital resources for <em>architecture and urban planning.</em>',
+      intro: 'A hub of digital resources for learning and research in architecture and urban planning: courses, video tutorials, articles and books about digital tools, organized into {n} disciplines. Hand-picked, updated every Friday.',
+      softAria: 'Software used in tutorials', softPagesAria: 'Software pages', softPage: 'Page {i} of {n}', programOne: 'program', programMany: 'programs',
+      weekTitle: 'Added this week', weekNote: 'updated on Fridays',
+      resourcesTitle: 'Resources', loading: 'loading...', searchPlaceholder: 'search title, tool, category...',
+      categories: 'Categories', reset: 'reset', authors: 'Authors',
+      shown: '{n} shown', resultsFor: '{n} results for "{q}"',
+      loadingResources: 'loading resources...', loadingMore: 'loading more resources...', endReached: 'you’ve reached the end — that’s all for now', noMatch: 'no resource matches',
+      resOne: 'resource', resMany: 'resources', by: 'by', suggestedBy: 'suggested by',
+      level_intro: 'beginner', level_mediu: 'intermediate', level_avansat: 'advanced', platform_Articol: 'Article',
+      nlBarNote: 'free · unsubscribe anytime', nlTitle: 'New resources, straight to your inbox.',
+      nlText: 'Pick the disciplines you care about and how often you want the email: weekly or monthly. You only get new resources from the categories you tick.',
+      nlDone: 'Your subscription is confirmed. Thank you!', nlEmailPlaceholder: 'name@example.com',
+      nlInterests: 'What interests you <span class="nl-hint">(nothing ticked = all)</span>', nlHowOften: 'How often', nlWeekly: 'weekly', nlMonthly: 'monthly',
+      nlConsent: 'I agree to receive emails with new resources from justhop. My data is used only for that and I can unsubscribe anytime. <a href="confidentialitate.html?lang=en" target="_blank" rel="noopener">Privacy policy</a>',
+      nlSubmit: 'Subscribe', nlEmailInvalid: 'Enter a valid email address.', nlConsentNeeded: 'Tick the box to agree to receive emails.',
+      nlSending: 'Sending...', nlOkDefault: 'Check your email and confirm your subscription.', nlErrDefault: 'Subscribing is not available right now. Please try again later.',
+      nlNetErr: 'We couldn’t send the request. Check your connection and try again.',
+      footerAbout: 'A hub of digital resources for learning and research in architecture and urban planning, for anyone who hops from one digital tool to another.',
+      footerDisciplines: 'Disciplines', footerPlatforms: 'Platforms', footerArticles: 'Articles', footerArticlesQ: 'article',
+      footerNlLine: 'New resources, Friday evening.', footerSubscribe: 'Subscribe →',
+      footerAboutProject: 'About the project', footerHow: 'How we choose resources', footerSuggest: 'Suggest a resource',
+      loadError: 'error', loadErrorDetail: 'could not load data/resources.json — open the page through a server, not directly from the file',
+    },
+  };
+
+  const LANG_KEY = 'justhop-lang';
+  function detectLang() {
+    const q = new URLSearchParams(location.search).get('lang');       // ?lang=en în linkuri partajate; se păstrează
+    if (q === 'en' || q === 'ro') { try { localStorage.setItem(LANG_KEY, q); } catch (e) {} return q; }
+    let saved = null;
+    try { saved = localStorage.getItem(LANG_KEY); } catch (e) {}
+    if (saved === 'en' || saved === 'ro') return saved;
+    return (navigator.language || 'ro').toLowerCase().startsWith('ro') ? 'ro' : 'en';
+  }
+  let lang = detectLang();
+  const t = (k, vars) => {
+    let s = I18N[lang][k] !== undefined ? I18N[lang][k] : (I18N.ro[k] !== undefined ? I18N.ro[k] : k);
+    if (vars) for (const v in vars) s = s.split('{' + v + '}').join(vars[v]);
+    return s;
+  };
+  const catName = c => (lang === 'en' && c.nameEn) ? c.nameEn : c.name;
+  const descOf = p => (lang === 'en' && p.descEn) ? p.descEn : p.desc;
+  const levelOf = l => I18N[lang]['level_' + l] || l;
+  const platformOf = p => I18N[lang]['platform_' + p] || p;
+
   /* ---------- TEMĂ ---------- */
   const THEME_KEY = 'justhop-theme';
   const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  const themeLabel = th => (th === 'dark' ? I18N[lang].themeToLight : I18N[lang].themeToDark);
 
   function setTheme(t, persist) {
     document.documentElement.dataset.theme = t;
     themeMeta.content = t === 'dark' ? '#121316' : '#F4F3EF';
     const btn = document.getElementById('themeToggle');
-    btn.setAttribute('aria-label', t === 'dark' ? 'Comută tema deschisă' : 'Comută tema închisă');
+    btn.setAttribute('aria-label', themeLabel(t));
     if (persist) {
       try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
     }
@@ -801,7 +908,8 @@
 
   function score(item, tokens) {
     if (tokens.length === 0) return 1;
-    const haystack = (item.title + ' ' + item.cats.map(c => c.id + ' ' + c.name).join(' ') + ' ' + (item.author || '') + ' ' + (item.software || []).join(' ') + ' ' + item.platform + ' ' + item.desc).toLowerCase();
+    // căutarea ține cont de ambele limbi: descrierea și numele disciplinei în română și în engleză
+    const haystack = (item.title + ' ' + item.cats.map(c => c.id + ' ' + c.name + ' ' + (c.nameEn || '')).join(' ') + ' ' + (item.author || '') + ' ' + (item.software || []).join(' ') + ' ' + item.platform + ' ' + platformOf(item.platform) + ' ' + item.desc + ' ' + (item.descEn || '')).toLowerCase();
     let matched = 0;
     tokens.forEach(t => { if (haystack.includes(t)) matched++; });
     return matched; // 0 = fara match, altfel scor crescator cu nr de tokene gasite
@@ -849,7 +957,7 @@
       btn.type = 'button';
       btn.className = 'cat-item' + (activeCats.has(c.id) ? ' active' : '');
       btn.setAttribute('aria-pressed', activeCats.has(c.id));
-      btn.innerHTML = `<span class="dot" style="background:${c.color}"></span>${esc(c.name)}<span class="cat-count">${count}</span>`;
+      btn.innerHTML = `<span class="dot" style="background:${c.color}"></span>${esc(catName(c))}<span class="cat-count">${count}</span>`;
       btn.onclick = () => toggleCat(c.id);
       list.appendChild(btn);
     });
@@ -864,13 +972,13 @@
 
   function renderDiscStrip() {
     const strip = document.getElementById('discStrip');
-    strip.innerHTML = categories.map(c => `<button type="button" data-cat="${c.id}">${c.id} · ${esc(c.name)}</button>`).join('');
+    strip.innerHTML = categories.map(c => `<button type="button" data-cat="${c.id}">${c.id} · ${esc(catName(c))}</button>`).join('');
     strip.querySelectorAll('button').forEach(b => b.onclick = () => toggleCat(b.dataset.cat));
   }
 
   function renderFooterCats() {
     const ul = document.getElementById('footerCats');
-    ul.innerHTML = categories.map(c => `<li><button type="button" data-cat="${c.id}">${esc(c.name)}</button></li>`).join('');
+    ul.innerHTML = categories.map(c => `<li><button type="button" data-cat="${c.id}">${esc(catName(c))}</button></li>`).join('');
     ul.querySelectorAll('button').forEach(b => b.onclick = () => {
       activeCats = new Set([b.dataset.cat]);
       activeAuthors.clear();
@@ -882,8 +990,10 @@
 
   // newsletter: disciplinele din formular vin din aceleași date ca restul paginii
   function renderNewsletterCats() {
-    document.getElementById('nlCats').innerHTML = categories.map(c =>
-      `<label><input type="checkbox" value="${c.id}"><span class="dot" style="background:${c.color}"></span>${esc(c.name)}</label>`
+    const box = document.getElementById('nlCats');
+    const checked = new Set([...box.querySelectorAll('input:checked')].map(i => i.value));   // schimbarea limbii nu șterge bifele
+    box.innerHTML = categories.map(c =>
+      `<label><input type="checkbox" value="${c.id}"${checked.has(c.id) ? ' checked' : ''}><span class="dot" style="background:${c.color}"></span>${esc(catName(c))}</label>`
     ).join('');
   }
 
@@ -894,28 +1004,28 @@
     const btn = document.getElementById('nlSubmit');
     const say = (cls, msg) => { status.className = 'nl-status ' + cls; status.textContent = msg; };
     const email = document.getElementById('nlEmail').value.trim();
-    if (!email || !document.getElementById('nlEmail').validity.valid) return say('err', 'Scrie o adresă de email validă.');
-    if (!document.getElementById('nlConsent').checked) return say('err', 'Bifează acordul pentru primirea emailurilor.');
+    if (!email || !document.getElementById('nlEmail').validity.valid) return say('err', t('nlEmailInvalid'));
+    if (!document.getElementById('nlConsent').checked) return say('err', t('nlConsentNeeded'));
     const categories = [...nlForm.querySelectorAll('#nlCats input:checked')].map(i => i.value);
     const frequency = nlForm.querySelector('input[name="frequency"]:checked').value;
     btn.disabled = true;
-    say('', 'Se trimite...');
+    say('', t('nlSending'));
     try {
       const r = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ email, categories, frequency, consent: true, website: nlForm.elements.website.value }),
+        body: JSON.stringify({ email, categories, frequency, consent: true, lang, website: nlForm.elements.website.value }),
       });
       let j = {};
       try { j = await r.json(); } catch (err) { /* răspuns fără JSON */ }
       if (r.ok && j.ok) {
-        say('ok', j.message || 'Verifică-ți emailul și confirmă abonarea.');
+        say('ok', j.message || t('nlOkDefault'));
         document.getElementById('nlEmail').value = '';
       } else {
-        say('err', j.error || 'Abonarea nu e disponibilă acum. Încearcă din nou mai târziu.');
+        say('err', j.error || t('nlErrDefault'));
       }
     } catch (err) {
-      say('err', 'Nu am putut trimite cererea. Verifică conexiunea și încearcă din nou.');
+      say('err', t('nlNetErr'));
     } finally {
       btn.disabled = false;
     }
@@ -1018,12 +1128,12 @@
         const d = document.createElement('button');
         d.type = 'button';
         d.className = 'soft-dot';
-        d.setAttribute('aria-label', `Pagina ${i + 1} din ${softPages}`);
+        d.setAttribute('aria-label', t('softPage', { i: i + 1, n: softPages }));
         d.onclick = () => goSoftPage(i);
         softDots.appendChild(d);
       }
     }
-    document.getElementById('softCount').textContent = names.length + (names.length === 1 ? ' program' : ' programe');
+    document.getElementById('softCount').textContent = names.length + ' ' + t(names.length === 1 ? 'programOne' : 'programMany');
     softPage = 0;
     softTrack.scrollLeft = 0;
     updateSoftDots();
@@ -1061,7 +1171,7 @@
       const open = p.url ? `<a class="week-cell" href="${esc(p.url)}" target="_blank" rel="noopener">` : '<div class="week-cell">';
       const close = p.url ? '</a>' : '</div>';
       return `${open}
-          <div class="label"><span class="tags">${tags}</span><span>${esc(p.platform)}</span><span style="margin-left:auto">${fmtDate(p.added)}</span></div>
+          <div class="label"><span class="tags">${tags}</span><span>${esc(platformOf(p.platform))}</span><span style="margin-left:auto">${fmtDate(p.added)}</span></div>
           <h3>${esc(p.title)}</h3>
         ${close}`;
     }).join('');
@@ -1089,8 +1199,8 @@
     results.forEach(r => { dateCounts[r.added] = (dateCounts[r.added] || 0) + 1; });
     document.getElementById('grid').innerHTML = '';
     document.getElementById('searchMeta').textContent = tokens.length
-      ? `${results.length} rezultate pentru "${q.trim()}"`
-      : `${results.length} afișate`;
+      ? t('resultsFor', { n: results.length, q: q.trim() })
+      : t('shown', { n: results.length });
     renderCats();
     loadMore();
   }
@@ -1104,7 +1214,7 @@
         const head = document.createElement('div');
         head.className = 'date-head label';
         const count = dateCounts[p.added];
-        head.innerHTML = `<strong>${fmtDate(p.added)}</strong><span>${count} ${count === 1 ? 'resursă' : 'resurse'}</span>`;
+        head.innerHTML = `<strong>${fmtDate(p.added)}</strong><span>${count} ${t(count === 1 ? 'resOne' : 'resMany')}</span>`;
         grid.appendChild(head);
       }
       const card = document.createElement(p.url ? 'a' : 'article');
@@ -1117,26 +1227,26 @@
       card.innerHTML = `
         <div class="card-head label">
           <span class="tags">${p.cats.map(c => `<span class="tag" style="background:${c.color}">${c.id}</span>`).join('')}</span>
-          <span class="cat-name">${esc(p.cats[0].name)}${p.cats.length > 1 ? ' +' + (p.cats.length - 1) : ''}</span>
-          <span class="platform">${esc(p.platform)}</span>
+          <span class="cat-name">${esc(catName(p.cats[0]))}${p.cats.length > 1 ? ' +' + (p.cats.length - 1) : ''}</span>
+          <span class="platform">${esc(platformOf(p.platform))}</span>
         </div>
         <div class="card-body">
           <h3 class="card-title">${esc(p.title)}</h3>
-          <p class="card-desc">${esc(p.desc)}</p>
+          <p class="card-desc">${esc(descOf(p))}</p>
           ${(p.software || []).length ? `<div class="card-soft">${p.software.slice(0, 3).map(s => `<span class="sw-chip" data-sw="${esc(s)}">${esc(s)}</span>`).join('')}${p.software.length > 3 ? `<span class="sw-more">+${p.software.length - 3}</span>` : ''}</div>` : ''}
-          ${p.author ? `<p class="card-author">de <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span></p>` : ''}
-          ${p.proposedBy ? `<p class="card-author">propus de ${esc(p.proposedBy)}</p>` : ''}
+          ${p.author ? `<p class="card-author">${t('by')} <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span></p>` : ''}
+          ${p.proposedBy ? `<p class="card-author">${t('suggestedBy')} ${esc(p.proposedBy)}</p>` : ''}
         </div>
         <div class="card-meta label">
-          <span>${esc(p.level)}</span>
+          <span>${esc(levelOf(p.level))}</span>
           <span>${fmtDate(p.added)} #${p.n}</span>
         </div>`;
       grid.appendChild(card);
     });
     shown += next.length;
     document.getElementById('sentinel').textContent = shown >= currentResults.length
-      ? (currentResults.length ? 'ai ajuns la capăt — atât avem deocamdată' : 'nicio resursă nu se potrivește')
-      : 'se încarcă mai multe resurse...';
+      ? t(currentResults.length ? 'endReached' : 'noMatch')
+      : t('loadingMore');
   }
 
   const observer = new IntersectionObserver((entries) => {
@@ -1172,6 +1282,42 @@
     }
   });
 
+  // textele fixe din pagină (cele cu data-i18n*), titlul, descrierea și butoanele care depind de limbă
+  function setStaticText() {
+    document.documentElement.lang = lang;
+    document.title = t('title');
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.content = t('metaDesc');
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml, { n: categories.length || 13 }); });
+    document.querySelectorAll('[data-i18n-attr]').forEach(el => el.dataset.i18nAttr.split(';').forEach(pair => {
+      const [attr, key] = pair.split(':');
+      el.setAttribute(attr, t(key));
+    }));
+    const lb = document.getElementById('langToggle');
+    lb.setAttribute('aria-label', t('langAria'));
+    lb.title = t('langTitle');
+    document.getElementById('footerArticles').dataset.q = t('footerArticlesQ');
+    document.getElementById('themeToggle').setAttribute('aria-label', themeLabel(document.documentElement.dataset.theme));
+  }
+
+  function applyLang(next) {
+    lang = next;
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    // alegerea făcută cu butonul trece înaintea unui ?lang= vechi din adresă
+    const u = new URL(location.href);
+    if (u.searchParams.has('lang')) { u.searchParams.delete('lang'); history.replaceState(null, '', u.pathname + u.search + u.hash); }
+    setStaticText();
+    if (pool.length) {
+      const keep = shown, page = softPage;
+      renderDiscStrip(); renderFooterCats(); renderNewsletterCats(); renderWeek(); renderSoftware(); goSoftPage(page, false);
+      applyFilters();
+      while (shown < keep && shown < currentResults.length) loadMore();   // aceeași porțiune din grilă, ca pagina să nu sară
+    }
+  }
+  document.getElementById('langToggle').addEventListener('click', () => applyLang(lang === 'ro' ? 'en' : 'ro'));
+  setStaticText();
+
   fetch('data/resources.json')
     .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(data => {
@@ -1181,7 +1327,7 @@
         .map(r => ({ ...r, cats: (r.cats || []).map(id => catById[id]).filter(Boolean) }))
         .filter(r => r.cats.length)
         .sort((a, b) => b.added.localeCompare(a.added) || a.n - b.n);
-      document.getElementById('catCount').textContent = categories.length;
+      setStaticText();     // numărul de discipline din introducere
       renderDiscStrip();
       setupStrip();
       renderFooterCats();
@@ -1193,8 +1339,8 @@
       if (location.hash === '#newsletter' || justConfirmed) goNewsletter();
     })
     .catch(() => {
-      document.getElementById('searchMeta').textContent = 'eroare';
-      document.getElementById('sentinel').textContent = 'nu am putut încărca data/resources.json — deschide pagina printr-un server, nu direct din fișier';
+      document.getElementById('searchMeta').textContent = t('loadError');
+      document.getElementById('sentinel').textContent = t('loadErrorDetail');
     });
 </script>
 

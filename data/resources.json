@@ -3,67 +3,80 @@
     {
       "id": "GH",
       "name": "Grasshopper",
-      "color": "#1A56DB"
+      "color": "#1A56DB",
+      "nameEn": "Grasshopper"
     },
     {
       "id": "BIM",
       "name": "BIM",
-      "color": "#0F6E56"
+      "color": "#0F6E56",
+      "nameEn": "BIM"
     },
     {
       "id": "GIS",
       "name": "GIS",
-      "color": "#7C3AED"
+      "color": "#7C3AED",
+      "nameEn": "GIS"
     },
     {
       "id": "SIM",
       "name": "Simulare energetică",
-      "color": "#0E7490"
+      "color": "#0E7490",
+      "nameEn": "Energy simulation"
     },
     {
       "id": "FAB",
       "name": "Fabricație digitală",
-      "color": "#BE123C"
+      "color": "#BE123C",
+      "nameEn": "Digital fabrication"
     },
     {
       "id": "VIZ",
       "name": "Vizualizare",
-      "color": "#374151"
+      "color": "#374151",
+      "nameEn": "Visualization"
     },
     {
       "id": "MC",
       "name": "Modelare computațională",
-      "color": "#4C1D95"
+      "color": "#4C1D95",
+      "nameEn": "Computational modelling"
     },
     {
       "id": "AI",
       "name": "AI și fluxuri de lucru",
-      "color": "#B45309"
+      "color": "#B45309",
+      "nameEn": "AI and workflows"
     },
     {
       "id": "CER",
       "name": "Cercetare",
-      "color": "#78716C"
+      "color": "#78716C",
+      "nameEn": "Research"
     },
     {
       "id": "EBD",
       "name": "Evidence-Based Design",
-      "color": "#065F46"
+      "color": "#065F46",
+      "nameEn": "Evidence-Based Design"
     },
     {
       "id": "REZ",
       "name": "Reziliență structurală",
-      "color": "#9A3412"
+      "color": "#9A3412",
+      "nameEn": "Structural resilience"
     },
     {
       "id": "FF",
       "name": "Form Finding",
-      "color": "#166534"
+      "color": "#166534",
+      "nameEn": "Form finding"
     },
     {
       "id": "PUD",
       "name": "Proiectare urbană digitală",
-      "color": "#1E3A5F"
+      "color": "#1E3A5F",
+      "nameEn": "Digital urban design"
     }
   ],
   "resources": [
@@ -83,7 +96,8 @@
       "software": [
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "A complete course of almost 12 hours that takes you from zero to your first parametric models in Rhino + Grasshopper, component by component."
     },
     {
       "title": "A beginner's guide to Data Trees in Grasshopper with practical Exercises",
@@ -101,7 +115,8 @@
       "software": [
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "Explains the logic of data trees in Grasshopper and reinforces it with practical exercises; useful exactly when simple lists are no longer enough."
     },
     {
       "title": "Lunchbox Grasshopper Tutorial | Parametric Facade | Rhino",
@@ -120,7 +135,8 @@
         "Grasshopper",
         "Rhino",
         "Lunchbox"
-      ]
+      ],
+      "descEn": "You build a parametric facade with the Lunchbox plugin and control the panels with an attractor point; a short, accessible tutorial."
     },
     {
       "title": "How to Tween Curves in Pufferfish for Grasshopper",
@@ -140,7 +156,8 @@
         "Grasshopper",
         "Rhino",
         "Pufferfish"
-      ]
+      ],
+      "descEn": "You use Tween from Pufferfish to generate families of curves between two shapes, then apply the same logic to a toolpath for 3D printing."
     },
     {
       "title": "Autodesk Revit - Full Beginner Course | Complete Project - Start to finish",
@@ -157,7 +174,8 @@
       "n": 6,
       "software": [
         "Revit"
-      ]
+      ],
+      "descEn": "A complete Revit course for beginners: you model a project from scratch, from walls and floors to sheets and documentation."
     },
     {
       "title": "ArchiCAD Full Course — Beginners to Advanced (2026)",
@@ -174,7 +192,8 @@
       "n": 7,
       "software": [
         "ArchiCAD"
-      ]
+      ],
+      "descEn": "An ArchiCAD course from zero to advanced: plans, sections, facades and the sheets used in practice, on the current version of the software."
     },
     {
       "title": "Why the openBIM Workflow Matters (And How It Works)",
@@ -191,7 +210,8 @@
       "n": 8,
       "software": [
         "IFC"
-      ]
+      ],
+      "descEn": "buildingSMART’s technical director explains the openBIM workflow: IFC, the buildingSMART Data Dictionary and validating models exchanged between programs."
     },
     {
       "title": "Revit & Navisworks Coordination Workflow: The Complete Guide to Clash Detection",
@@ -209,7 +229,8 @@
       "software": [
         "Revit",
         "Navisworks"
-      ]
+      ],
+      "descEn": "The complete BIM coordination workflow: you export models from Revit to Navisworks, run clash detection and manage the conflicts found."
     },
     {
       "title": "Speckle: Ultimate BIM 3D Data Platform?",
@@ -226,7 +247,8 @@
       "n": 10,
       "software": [
         "Speckle"
-      ]
+      ],
+      "descEn": "A practical introduction to the Speckle platform: you exchange BIM models and data between different programs and work as a team on shared versions."
     },
     {
       "title": "Create stunning Urban Maps with QGIS and the QuickOSM Plugin",
@@ -245,7 +267,8 @@
       "software": [
         "QGIS",
         "OpenStreetMap"
-      ]
+      ],
+      "descEn": "You download OpenStreetMap data with QuickOSM and make urban maps in QGIS, from layers to the final composition, explained for architects."
     },
     {
       "title": "Introduction to QGIS (Full Course, Ad-Free)",
@@ -262,7 +285,8 @@
       "n": 13,
       "software": [
         "QGIS"
-      ]
+      ],
+      "descEn": "A complete QGIS course from zero: mapping, spatial data processing and spatial analysis, with practical step-by-step exercises."
     },
     {
       "title": "Geospatial Python - Full Course for Beginners with Geopandas",
@@ -280,7 +304,8 @@
       "software": [
         "Python",
         "GeoPandas"
-      ]
+      ],
+      "descEn": "An introduction to geospatial Python with GeoPandas: you read, filter, join and visualize vector data, starting from zero."
     },
     {
       "title": "A short guide to Copernicus Browser",
@@ -297,7 +322,8 @@
       "n": 15,
       "software": [
         "Copernicus"
-      ]
+      ],
+      "descEn": "A short guide to the Copernicus Browser: you find, view and download free Sentinel satellite imagery for analysing a site."
     },
     {
       "title": "Automating GIS Processes 2026 (AutoGIS)",
@@ -317,7 +343,8 @@
         "Python",
         "GeoPandas",
         "OSMnx"
-      ]
+      ],
+      "descEn": "An open course from the University of Helsinki: GeoPandas, spatial queries, maps and street-network analysis with OSMnx and networkx."
     },
     {
       "title": "#1 The Ultimate Ladybug Course | Environmental Analysis in Rhino3D and Grasshopper",
@@ -337,7 +364,8 @@
         "Ladybug Tools",
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "The first episode of a Ladybug Tools course: you set up weather data and understand how environmental analysis works in Grasshopper."
     },
     {
       "title": "#23 Ladybug 1.8 Tutorial: Outdoor Comfort and 3D models",
@@ -357,7 +385,8 @@
         "Ladybug Tools",
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "Outdoor thermal comfort analysis (UTCI) with Ladybug Tools on 3D models, step by step, including how to interpret the results."
     },
     {
       "title": "Ladybug Grasshopper Tutorial Sun Hour and Radiation Analysis",
@@ -377,7 +406,8 @@
         "Ladybug Tools",
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "You run sun-hours and solar-radiation analyses with Ladybug in Grasshopper to evaluate how much sun a project gets."
     },
     {
       "title": "01 - Grasshopper Unroll Surface and Labelling - Part 2",
@@ -396,7 +426,8 @@
       "software": [
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "A TU Darmstadt university course (Digital Fabrication Basics): you unroll surfaces in Grasshopper and label the parts for fabrication."
     },
     {
       "title": "Nesting in Rhino 8 with OpenNest, Elefront and byRhinoGadget",
@@ -414,7 +445,8 @@
       "software": [
         "Rhino",
         "OpenNest"
-      ]
+      ],
+      "descEn": "How to nest parts automatically on sheets in Rhino 8 with the free plugins OpenNest, Elefront and byRhinoGadget, for cutting."
     },
     {
       "title": "3D Printing from Revit | Snapmaker Artisan 3D printer for Architects",
@@ -432,7 +464,8 @@
       "n": 25,
       "software": [
         "Revit"
-      ]
+      ],
+      "descEn": "How to take a model from Revit to a 3D-printed maquette: export, file preparation and printing on an office printer."
     },
     {
       "title": "EP 25 | ArchiTech Office Tours | ICD: Part 1: Computational Timber & Robotic Construction",
@@ -448,7 +481,8 @@
       "authorUrl": "https://www.youtube.com/@architech.network",
       "added": "2026-10-25",
       "n": 26,
-      "software": []
+      "software": [],
+      "descEn": "A visit to ICD, University of Stuttgart: how computational design connects to the robotic construction of timber structures."
     },
     {
       "title": "Rhino Tutorial: Model a Wooden Bench from Scratch + CNC Fabrication Workflow",
@@ -465,7 +499,8 @@
       "n": 27,
       "software": [
         "Rhino"
-      ]
+      ],
+      "descEn": "You model a wooden bench in Rhino starting from a 2D drawing and prepare it for CNC milling, with the full workflow down to the parts."
     },
     {
       "title": "How to Prepare Your File for Laser Cutting",
@@ -484,7 +519,8 @@
         "Rhino",
         "AutoCAD",
         "Illustrator"
-      ]
+      ],
+      "descEn": "The UT Austin architecture school’s guide: how to prepare lines in Rhino, AutoCAD or Illustrator for laser cutting, on coloured layers, at Z = 0."
     },
     {
       "title": "Twinmotion for Architecture - 2024 Full Beginner Course",
@@ -501,7 +537,8 @@
       "n": 29,
       "software": [
         "Twinmotion"
-      ]
+      ],
+      "descEn": "A complete Twinmotion course for architects, from importing the model to materials, light, context and final renders."
     },
     {
       "title": "D5 Render Full Beginner Tutorial!",
@@ -518,7 +555,8 @@
       "n": 30,
       "software": [
         "D5 Render"
-      ]
+      ],
+      "descEn": "A complete introduction to D5 Render: interface, materials, lighting, assets and export settings for architectural renders."
     },
     {
       "title": "Complete Beginner's Guide to Blender for Architecture",
@@ -535,7 +573,8 @@
       "n": 31,
       "software": [
         "Blender"
-      ]
+      ],
+      "descEn": "A starter guide to Blender for architecture: navigation, modelling, materials and first renders, step by step, with no prior experience."
     },
     {
       "title": "The Best Render Settings for V-Ray 7 Explained | V-Ray for SketchUp",
@@ -553,7 +592,8 @@
       "software": [
         "V-Ray",
         "SketchUp"
-      ]
+      ],
+      "descEn": "The V-Ray 7 render settings for SketchUp explained one by one: what each does, what is worth changing and how to balance quality against time."
     },
     {
       "title": "Site Analysis Using Illustrator Tutorial",
@@ -571,7 +611,8 @@
       "n": 33,
       "software": [
         "Illustrator"
-      ]
+      ],
+      "descEn": "How to draw site-analysis diagrams in Illustrator: layers, symbols, colours and graphic hierarchy for presentation boards."
     },
     {
       "title": "Enscape - Rendering, Animation and Visualization",
@@ -588,7 +629,8 @@
       "n": 34,
       "software": [
         "Enscape"
-      ]
+      ],
+      "descEn": "A Udemy Enscape course: installation, navigation, materials, assets, renders, animations and EXE export for presenting projects."
     },
     {
       "title": "How to use Script Editor in Rhino 8: Introduction Course",
@@ -607,7 +649,8 @@
       "software": [
         "Rhino",
         "Python"
-      ]
+      ],
+      "descEn": "An introduction to the Script Editor in Rhino 8: how to create, run and organize CPython scripts directly in Rhino, with no external setup."
     },
     {
       "title": "Multi-Objective Optimization with Octopus | Tiny House Challenge 02",
@@ -627,7 +670,8 @@
         "Grasshopper",
         "Rhino",
         "Octopus"
-      ]
+      ],
+      "descEn": "Compares Galapagos and Octopus on a tiny-house study and shows how to run a multi-objective optimization in Grasshopper, with pros and cons."
     },
     {
       "title": "Optimizing Tower Design with Grasshopper: Generative Design & Views with Wallacei",
@@ -647,7 +691,8 @@
         "Grasshopper",
         "Rhino",
         "Wallacei"
-      ]
+      ],
+      "descEn": "An almost one-hour presentation: a generative-design study for a tower, optimizing the form by views with Wallacei in Grasshopper."
     },
     {
       "title": "Culebra Behaviors V1.0",
@@ -667,7 +712,8 @@
         "Grasshopper",
         "Rhino",
         "Culebra"
-      ]
+      ],
+      "descEn": "A 3-hour DesignMorphine webinar on agent-based design with Culebra in Grasshopper: agent behaviours and forms generated from their trails."
     },
     {
       "title": "Grasshopper Scripting: Python",
@@ -686,7 +732,8 @@
       "software": [
         "Grasshopper",
         "Python"
-      ]
+      ],
+      "descEn": "McNeel’s official guide to the Python 3 component in Grasshopper: inputs/outputs, type hints, SDK mode, debugging and PyPI packages."
     },
     {
       "title": "Stable Diffusion + ControlNET in Architecture",
@@ -705,7 +752,8 @@
       "software": [
         "Stable Diffusion",
         "ControlNet"
-      ]
+      ],
+      "descEn": "How to use ControlNet on top of Stable Diffusion to turn sketches, massing and lines into controlled architectural images."
     },
     {
       "title": "AI Plugin for Grasshopper We've Been Waiting For",
@@ -725,7 +773,8 @@
         "Grasshopper",
         "Rhino",
         "Raven"
-      ]
+      ],
+      "descEn": "A hands-on test of the Raven plugin, which brings an LLM straight into the Grasshopper canvas and builds parametric definitions from prompts."
     },
     {
       "title": "Midjourney for Architects: Advanced Workflow Guide for photorealistic images",
@@ -743,7 +792,8 @@
       "n": 42,
       "software": [
         "Midjourney"
-      ]
+      ],
+      "descEn": "An advanced Midjourney workflow for photorealistic concept images in architecture, from prompt to refined variants."
     },
     {
       "title": "Architects Are Switching to Claude | Here's Why - FULL Guide",
@@ -760,7 +810,8 @@
       "n": 43,
       "software": [
         "Claude"
-      ]
+      ],
+      "descEn": "An introductory guide to using Claude, an LLM, in the day-to-day work of an architecture office, with workflow examples."
     },
     {
       "title": "Generative AI models for different steps in architectural design: A literature review",
@@ -776,7 +827,8 @@
       "authorUrl": null,
       "added": "2026-10-25",
       "n": 44,
-      "software": []
+      "software": [],
+      "descEn": "A review of generative models (diffusion, 3D, foundation models) applied across the design stages, from massing to plan and facade."
     },
     {
       "title": "How To Conduct A Systematic Review and Write-Up in 7 Steps (Using PRISMA, PICO and AI)",
@@ -791,7 +843,8 @@
       "authorUrl": "https://www.youtube.com/@DrAminaYonis",
       "added": "2026-10-25",
       "n": 45,
-      "software": []
+      "software": [],
+      "descEn": "The 7 steps of a systematic literature review, with a PICO question, a PRISMA diagram and AI tools, through to the final write-up."
     },
     {
       "title": "How To Use Zotero (Including Zotero Connector) - Full Tutorial With Examples",
@@ -808,7 +861,8 @@
       "n": 46,
       "software": [
         "Zotero"
-      ]
+      ],
+      "descEn": "A complete Zotero tutorial with the Zotero Connector: you save sources from the browser, organize them and generate citations and a bibliography automatically."
     },
     {
       "title": "Obsidian Note-Taking System for Academics & Students - Full Tutorial & Demo",
@@ -825,7 +879,8 @@
       "n": 47,
       "software": [
         "Obsidian"
-      ]
+      ],
+      "descEn": "A complete note-taking system in Obsidian for research: linked notes, literature review and faster article writing."
     },
     {
       "title": "Architectural Research: Formal (and Functional)",
@@ -840,7 +895,8 @@
       "authorUrl": "https://www.youtube.com/@patrikschumacher2844",
       "added": "2026-10-25",
       "n": 48,
-      "software": []
+      "software": [],
+      "descEn": "A lecture at the Faculty of Architecture in Belgrade on what research in architecture means, on its formal and functional dimensions."
     },
     {
       "title": "Understanding Research Methods",
@@ -855,7 +911,8 @@
       "authorUrl": null,
       "added": "2026-10-25",
       "n": 49,
-      "software": []
+      "software": [],
+      "descEn": "An introductory course on the fundamentals of postgraduate research: how to frame a research project and choose methods."
     },
     {
       "title": "How Neuro-Architecture will change your well-being | Fiona Beenkens | TEDxGeneva",
@@ -870,7 +927,8 @@
       "authorUrl": "https://www.youtube.com/@TEDx",
       "added": "2026-10-25",
       "n": 51,
-      "software": []
+      "software": [],
+      "descEn": "The basic principles of neuroarchitecture: how the built environment stresses us and what role architects play in mental health."
     },
     {
       "title": "Restorative Cities: Urban Design for Mental Health and Wellbeing",
@@ -886,7 +944,8 @@
       "authorUrl": "https://www.youtube.com/@IHCDLearning",
       "added": "2026-10-25",
       "n": 52,
-      "software": []
+      "software": [],
+      "descEn": "A webinar on Restorative Cities: how noise, crowding and lack of light affect mental health, and what urban design can do."
     },
     {
       "title": "How Architecture Shapes Our Brain – Neuroscience & Architecture Panel | Talks 21",
@@ -901,7 +960,8 @@
       "authorUrl": "https://www.youtube.com/@kareljanecek21",
       "added": "2026-10-25",
       "n": 53,
-      "software": []
+      "software": [],
+      "descEn": "A panel with an architect, a circadian-rhythm expert and a neuroscientist on how the space you are in influences your brain."
     },
     {
       "title": "Karamba3D Tidbits #52 Introduction to Shells",
@@ -921,7 +981,8 @@
         "Karamba3D",
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "A first step with curved shells in Karamba3D: cross-sections, materials, load types and reading the analysis results."
     },
     {
       "title": "Karamba3d for Grasshopper 2D - Analysis of Frame Structures",
@@ -941,7 +1002,8 @@
         "Karamba3D",
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "Frame-structure analysis with Karamba3D in Grasshopper, explaining the statics concepts behind it, with downloadable course files."
     },
     {
       "title": "Basics in Earthquake Engineering & Seismic Design – Part 1 of 4",
@@ -956,7 +1018,8 @@
       "authorUrl": "https://www.youtube.com/@Structural.Analysis",
       "added": "2026-10-25",
       "n": 57,
-      "software": []
+      "software": [],
+      "descEn": "Part one of a series on the basics of earthquake engineering and seismic design, following the principles of Eurocode 8 and other codes."
     },
     {
       "title": "Seismic Irregularities: Soft Story to Shear Walls",
@@ -971,7 +1034,8 @@
       "authorUrl": "https://www.youtube.com/@Youngarchitect",
       "added": "2026-10-25",
       "n": 58,
-      "software": []
+      "software": [],
+      "descEn": "Seismic irregularities explained for architects: from the soft story to shear walls."
     },
     {
       "title": "Welcome to Karamba3D | Karamba3D v3 (manual)",
@@ -990,7 +1054,8 @@
       "software": [
         "Karamba3D",
         "Grasshopper"
-      ]
+      ],
+      "descEn": "The official Karamba3D v3 manual: installation, your first structural analysis model in Grasshopper and the complete component reference."
     },
     {
       "title": "Catenary Structures - Kangaroo 2 in Grasshopper",
@@ -1010,7 +1075,8 @@
         "Kangaroo",
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "The basics of Kangaroo2 explained on a catenary curve and a shell: anchors, goals, the solver and how you reach the equilibrium shape."
     },
     {
       "title": "Modeling Tensile Structures in Rhino using Kangaroo 2 _Part 1: Anchor Points",
@@ -1030,7 +1096,8 @@
         "Kangaroo",
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "Part one of a series on tensioned membranes in Kangaroo 2: you model a membrane on anchor points and control the tension."
     },
     {
       "title": "Finding Form by Pressure Effect (Grasshopper + Kangaroo2)",
@@ -1050,7 +1117,8 @@
         "Kangaroo",
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "You use the Pressure goal in Kangaroo2 to simulate inflated, balloon-like or pneumatic forms based on physical laws."
     },
     {
       "title": "RhinoVAULT – Tutorial",
@@ -1069,7 +1137,8 @@
       "software": [
         "RhinoVAULT",
         "Rhino"
-      ]
+      ],
+      "descEn": "The official RhinoVAULT tutorial (ETH Zürich): you find the form of a vault in pure compression with form and force diagrams, step by step."
     },
     {
       "title": "Grasshopper Isovist Tutorial",
@@ -1088,7 +1157,8 @@
       "software": [
         "Grasshopper",
         "Rhino"
-      ]
+      ],
+      "descEn": "You build an isovist analysis in Grasshopper starting from obstacles, useful for evaluating visibility in urban and interior spaces."
     },
     {
       "title": "3D Urban Modelling with CityEngine",
@@ -1105,7 +1175,8 @@
       "n": 66,
       "software": [
         "CityEngine"
-      ]
+      ],
+      "descEn": "An Esri webinar on CityEngine: procedural 3D city modelling, basic urban analysis and sharing the model."
     },
     {
       "title": "How Walkable Is Your City? Analyzing Urban Access with Python & OSM | #30DayMapChallenge (14/30)",
@@ -1124,7 +1195,8 @@
       "software": [
         "Python",
         "OpenStreetMap"
-      ]
+      ],
+      "descEn": "You calculate in Python, with OpenStreetMap data, how walkable a city is, in a 15-minute-city style analysis."
     },
     {
       "title": "VIDEO 2 - Space Syntax (Part 2): Using DepthMapX",
@@ -1141,7 +1213,8 @@
       "n": 68,
       "software": [
         "depthmapX"
-      ]
+      ],
+      "descEn": "Space syntax with depthmapX: you import the map, run the analysis and read the connectivity and integration results for urban space."
     },
     {
       "title": "Urban Network Analysis (UNA) Toolbox for Rhino3D",
@@ -1160,7 +1233,8 @@
       "software": [
         "Urban Network Analysis",
         "Rhino"
-      ]
+      ],
+      "descEn": "The UNA Toolbox documentation (MIT City Form Lab) for Rhino: accessibility, pedestrian flows and urban network analysis, with video tutorials."
     },
     {
       "title": "Getting Started with SketchUp Pro 2025! (BEGINNERS START HERE!)",
@@ -1177,7 +1251,8 @@
       "author": "TheSketchUpEssentials",
       "authorUrl": "https://www.youtube.com/@Thesketchupessentials",
       "added": "2026-10-30",
-      "n": 1
+      "n": 1,
+      "descEn": "First steps in SketchUp Pro 2025: the interface, the basic tools and how to model your first volumes. The author also offers a free keyboard-shortcuts guide."
     },
     {
       "title": "Sketchup for Beginners - 2D Floor Plan to 3D Model",
@@ -1194,7 +1269,8 @@
       "author": "Melos Azemi",
       "authorUrl": "https://www.youtube.com/@MelosAzemi",
       "added": "2026-10-30",
-      "n": 2
+      "n": 2,
+      "descEn": "You start from a 2D plan and build the building’s 3D model in SketchUp, step by step. Almost an hour and a half, suited to beginners."
     },
     {
       "title": "House Modeling in Sketchup 2024 (Sketchup Tutorial)",
@@ -1211,7 +1287,8 @@
       "author": "architutors",
       "authorUrl": "https://www.youtube.com/@architutors",
       "added": "2026-10-30",
-      "n": 3
+      "n": 3,
+      "descEn": "You model a whole house in SketchUp 2024, from massing to details, in a tutorial of almost an hour that shows a complete workflow."
     },
     {
       "title": "How Does a LayOut Pro Create Incredible Drawings",
@@ -1228,7 +1305,8 @@
       "author": "Trimble SketchUp",
       "authorUrl": "https://www.youtube.com/@SketchUp",
       "added": "2026-10-30",
-      "n": 4
+      "n": 4,
+      "descEn": "The SketchUp team looks at what makes a set of LayOut drawings look good and clear, and how to compose presentation sheets from the 3D model."
     },
     {
       "title": "The ULTIMATE GUIDE to Dynamic Components in SketchUp!",
@@ -1246,7 +1324,8 @@
       "author": "TheSketchUpEssentials",
       "authorUrl": "https://www.youtube.com/@Thesketchupessentials",
       "added": "2026-10-30",
-      "n": 5
+      "n": 5,
+      "descEn": "A guide to dynamic components in SketchUp: components that adapt automatically to sizes and options, a first step towards parametric modelling in SketchUp."
     }
   ]
 }

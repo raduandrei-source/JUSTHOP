@@ -53,6 +53,13 @@ const brevo = (status, body = {}) => { global.fetch = async (url, opt) => { call
     assert.ok(Number.isInteger(b.attributes.ZIUA) && b.attributes.ZIUA >= 0 && b.attributes.ZIUA <= 6);
   });
 
+  await run('mesajele de eroare urmează limba cerută (en / implicit ro)', async () => {
+    const en = await call({ body: { ...good, email: 'ana@', lang: 'en' }, ...fresh() });
+    assert.equal(en.body.error, 'That email address doesn’t look valid.');
+    const ro = await call({ body: { ...good, email: 'ana@' }, ...fresh() });
+    assert.equal(ro.body.error, 'Adresa de email nu pare validă.');
+  });
+
   await run('nicio categorie -> TOATE', async () => {
     calls = []; brevo(201);
     await call({ body: { ...good, categories: [] }, ...fresh() });

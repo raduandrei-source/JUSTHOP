@@ -23,7 +23,8 @@
       "pub": "2025-04-03",
       "n": 1,
       "accept": "Da",
-      "manual": false
+      "manual": false,
+      "descEn": "First steps in SketchUp Pro 2025: the interface, the basic tools and how to model your first volumes. The author also offers a free keyboard-shortcuts guide."
     },
     {
       "platform": "YouTube",
@@ -47,7 +48,8 @@
       "pub": "2024-07-02",
       "n": 2,
       "accept": "Da",
-      "manual": false
+      "manual": false,
+      "descEn": "You start from a 2D plan and build the building’s 3D model in SketchUp, step by step. Almost an hour and a half, suited to beginners."
     },
     {
       "platform": "YouTube",
@@ -71,7 +73,8 @@
       "pub": "2024-06-17",
       "n": 3,
       "accept": "Da",
-      "manual": false
+      "manual": false,
+      "descEn": "You model a whole house in SketchUp 2024, from massing to details, in a tutorial of almost an hour that shows a complete workflow."
     },
     {
       "platform": "YouTube",
@@ -95,7 +98,8 @@
       "pub": "2025-03-20",
       "n": 4,
       "accept": "Da",
-      "manual": false
+      "manual": false,
+      "descEn": "The SketchUp team looks at what makes a set of LayOut drawings look good and clear, and how to compose presentation sheets from the 3D model."
     },
     {
       "platform": "YouTube",
@@ -120,7 +124,8 @@
       "pub": "2025-09-03",
       "n": 5,
       "accept": "Da",
-      "manual": false
+      "manual": false,
+      "descEn": "A guide to dynamic components in SketchUp: components that adapt automatically to sizes and options, a first step towards parametric modelling in SketchUp."
     },
     {
       "cats": [
@@ -147,7 +152,8 @@
       "proposedBy": null,
       "n": 6,
       "accept": null,
-      "manual": false
+      "manual": false,
+      "descEn": "How to use Spirula Studio to create a Gaussian Splat and then import it into Blender 5.3. Short (5 minutes) and to the point."
     }
   ]
 }

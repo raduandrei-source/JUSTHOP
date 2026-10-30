@@ -66,12 +66,13 @@ function checkCats(c) {
 }
 
 function toResource(c, date) {
-  for (const k of ['title', 'platform', 'level', 'desc', 'url']) {
+  // descEn = descrierea în engleză; site-ul are comutator RO/EN, deci fiecare resursă nouă se scrie în ambele limbi
+  for (const k of ['title', 'platform', 'level', 'desc', 'descEn', 'url']) {
     if (!c[k]) throw new Error(`Lipsește "${k}" la: ${c.title || JSON.stringify(c)}`);
   }
   checkCats(c);
   const r = {
-    title: c.title, cats: c.cats, software: normSoftware(c.software), platform: c.platform, level: c.level, desc: c.desc, url: c.url,
+    title: c.title, cats: c.cats, software: normSoftware(c.software), platform: c.platform, level: c.level, desc: c.desc, descEn: c.descEn, url: c.url,
     author: c.author || null, authorUrl: c.authorUrl || null, added: date, n: c.n,
   };
   if (c.proposedBy) r.proposedBy = String(c.proposedBy).replace(/\s+/g, ' ').trim().slice(0, 60);   // numele ales de cel care a propus, niciodată emailul
@@ -178,7 +179,7 @@ if (cmd === 'list') {
       const c = { id: r.id, name: r.name, color };
       data.categories.push(c);
       out.push(c);
-      log.push(`nouă: ${c.id} · ${c.name} ${c.color}${r.color ? '' : ' (culoare aleasă automat)'}`);
+      log.push(`nouă: ${c.id} · ${c.name} ${c.color}${r.color ? '' : ' (culoare aleasă automat)'} — de adăugat „nameEn” (numele în engleză) în data/resources.json`);
     }
   }
   // ordinea din foaie; categoriile lipsite din foaie rămân la coadă (nu se șterg automat, ca să nu piardă resurse)

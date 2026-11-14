@@ -1344,6 +1344,24 @@
       "authorUrl": "https://www.youtube.com/@linkingyourthinking",
       "added": "2026-11-14",
       "n": 1
+    },
+    {
+      "title": "Obsidian in 24 Minutes",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Obsidian"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Prezentare rapidă a Obsidian: cum funcționează aplicația, cum îți organizezi notițele și cum o folosești ca parte dintr-un flux digital personal de documentare și lucru cu AI.",
+      "descEn": "A quick overview of Obsidian: how the app works, how to organise your notes and how to use it as part of a personal digital workflow for documentation and working with AI.",
+      "url": "https://www.youtube.com/watch?v=4Hvkv_I8QDE",
+      "author": "Tina Huang",
+      "authorUrl": "https://www.youtube.com/@TinaHuang1",
+      "added": "2026-11-14",
+      "n": 2
     }
   ]
 }

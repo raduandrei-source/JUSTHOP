@@ -24,6 +24,30 @@
       "n": 1,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "Obsidian in 24 Minutes",
+      "url": "https://www.youtube.com/watch?v=4Hvkv_I8QDE",
+      "author": "Tina Huang",
+      "authorUrl": "https://www.youtube.com/@TinaHuang1",
+      "min": 25,
+      "views": 1114553,
+      "pub": "2026-09-17",
+      "level": "intro",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Obsidian"
+      ],
+      "rating": null,
+      "flag": "Conține segment sponsorizat (GenMail by Genspark)",
+      "desc": "Prezentare rapidă a Obsidian: cum funcționează aplicația, cum îți organizezi notițele și cum o folosești ca parte dintr-un flux digital personal de documentare și lucru cu AI.",
+      "descEn": "A quick overview of Obsidian: how the app works, how to organise your notes and how to use it as part of a personal digital workflow for documentation and working with AI.",
+      "n": 2,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

@@ -1416,6 +1416,25 @@
       "authorUrl": "https://www.youtube.com/@TechWithTim",
       "added": "2026-11-14",
       "n": 5
+    },
+    {
+      "title": "How To Build The Best AI Second Brain (Claude Code + Obsidian)",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Obsidian",
+        "Claude"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Construiești un „al doilea creier” cu Obsidian și Claude: notițele salvate sunt clasate și legate automat, iar întrebările primesc răspuns din propriile note. Se configurează fără cod, cu aplicația Claude desktop și un template gata făcut.",
+      "descEn": "You build a “second brain” with Obsidian and Claude: saved notes are filed and linked automatically, and questions are answered from your own notes. It is set up without code, using the Claude desktop app and a ready-made template.",
+      "url": "https://www.youtube.com/watch?v=O1pad4kwWew",
+      "author": "Automance",
+      "authorUrl": "https://www.youtube.com/@Automance",
+      "added": "2026-11-14",
+      "n": 6
     }
   ]
 }

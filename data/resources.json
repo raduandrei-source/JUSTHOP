@@ -1435,6 +1435,24 @@
       "authorUrl": "https://www.youtube.com/@Automance",
       "added": "2026-11-14",
       "n": 6
+    },
+    {
+      "title": "Blender 5.4: OpenPBR 1.1 vs. The Principled BSDF (The Complete Guide)",
+      "cats": [
+        "VIZ"
+      ],
+      "software": [
+        "Blender"
+      ],
+      "platform": "YouTube",
+      "level": "avansat",
+      "desc": "Ghid despre OpenPBR 1.1, noul standard de materiale din Blender 5.4, comparat cu Principled BSDF: bază, specular, transmisie, subsurface scattering, strat de acoperire și emisie.",
+      "descEn": "A guide to OpenPBR 1.1, the new material standard in Blender 5.4, compared with the Principled BSDF: base, specular, transmission, subsurface scattering, coat and emission.",
+      "url": "https://www.youtube.com/watch?v=TV4ejiLeg0k",
+      "author": "Christopher 3D",
+      "authorUrl": "https://www.youtube.com/@christopher3d475",
+      "added": "2026-11-14",
+      "n": 7
     }
   ]
 }

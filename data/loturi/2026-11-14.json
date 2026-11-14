@@ -96,6 +96,30 @@
       "n": 4,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "Everything New in Hermes Agent (Full Setup Guide)",
+      "url": "https://www.youtube.com/watch?v=S8fc9na4pA8",
+      "author": "Tech With Tim",
+      "authorUrl": "https://www.youtube.com/@TechWithTim",
+      "min": 42,
+      "views": 79907,
+      "pub": "2026-10-27",
+      "level": "mediu",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Hermes Agent"
+      ],
+      "rating": null,
+      "flag": "Conține link-uri afiliate/sponsorizate (Hostinger, Wispr Flow); subiect general de AI, nu specific arhitecturii",
+      "desc": "Ghid de instalare și configurare pentru Hermes Agent, cu noutățile recente: rulare pe un server 24/7, aplicația desktop, sarcini programate și mai mulți agenți care lucrează împreună.",
+      "descEn": "A setup guide for Hermes Agent with the latest features: running it on a server 24/7, the desktop app, scheduled jobs and several agents working together.",
+      "n": 5,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

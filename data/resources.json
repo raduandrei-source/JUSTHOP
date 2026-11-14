@@ -1398,6 +1398,24 @@
       "authorUrl": "https://www.youtube.com/@TinaHuang1",
       "added": "2026-11-14",
       "n": 4
+    },
+    {
+      "title": "Everything New in Hermes Agent (Full Setup Guide)",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Hermes Agent"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Ghid de instalare și configurare pentru Hermes Agent, cu noutățile recente: rulare pe un server 24/7, aplicația desktop, sarcini programate și mai mulți agenți care lucrează împreună.",
+      "descEn": "A setup guide for Hermes Agent with the latest features: running it on a server 24/7, the desktop app, scheduled jobs and several agents working together.",
+      "url": "https://www.youtube.com/watch?v=S8fc9na4pA8",
+      "author": "Tech With Tim",
+      "authorUrl": "https://www.youtube.com/@TechWithTim",
+      "added": "2026-11-14",
+      "n": 5
     }
   ]
 }

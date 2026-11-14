@@ -5,8 +5,14 @@
       "n": 1,
       "title": "Refiner",
       "url": "https://github.com/MiniDraco/refiner",
-      "cats": ["AI", "MC"],
-      "software": ["Python", "MeshLab"],
+      "cats": [
+        "AI",
+        "MC"
+      ],
+      "software": [
+        "Python",
+        "MeshLab"
+      ],
       "author": "MiniDraco",
       "license": "none",
       "desc": "Unealtă Python în linie de comandă care transformă nori de puncte zgomotoși (din generatoare 3D cu AI precum Hunyuan3D sau TripoSR, din fotogrametrie sau scanări) în mesh-uri curate din quad-uri, bune de editat, de desfăcut UV și de subdivizat. Reconstruiește suprafața cu Screened Poisson, elimină insulele și reface topologia, în două niveluri: fast și clean. Rulează pe procesor, fără placă video și fără Blender.",
@@ -17,6 +23,32 @@
         "result": "ok",
         "note": "Zip identic cu repo-ul de pe GitHub (26/26 fișiere). 3 scripturi Python scurte, fără acces la rețea, fără comenzi de sistem, fără cod ascuns; citesc și scriu doar fișierele 3D date ca argument. Dependențe de pe PyPI: pymeshlab, numpy, matplotlib. Repo nou (iunie 2026, un singur commit) și fără licență.",
         "noteEn": "Zip identical to the GitHub repo (26/26 files). 3 short Python scripts, no network access, no system commands, no hidden code; they only read and write the 3D files passed as arguments. PyPI dependencies: pymeshlab, numpy, matplotlib. New repo (June 2026, a single commit) with no license."
+      }
+    },
+    {
+      "n": 2,
+      "title": "Point Cloud Visualizer 0.9",
+      "url": "https://github.com/uhlik/bpy#point-cloud-visualizer-for-blender-280",
+      "cats": [
+        "VIZ",
+        "MC"
+      ],
+      "software": [
+        "Blender"
+      ],
+      "author": "Jakub Uhlik",
+      "license": "GPL-2.0",
+      "desc": "Addon de Blender care afișează în viewport nori de puncte colorați din fișiere PLY, fără să-i transforme în mesh. Îi poți filtra, edita, randa, converti în mesh sau particule și exporta; poate și genera puncte pe suprafața unui obiect. Versiunea gratuită de pe GitHub e veche (0.9.x, gândită pentru Blender 2.80–2.81) și nu mai e întreținută; versiunea actuală, 2.0+, e plătită, pe Blender Market.",
+      "descEn": "A Blender addon that displays colored point clouds from PLY files in the viewport, without turning them into a mesh. You can filter, edit, render, convert them to a mesh or particles and export them; it can also generate points on an object's surface. The free GitHub version is old (0.9.x, made for Blender 2.80–2.81) and no longer maintained; the current 2.0+ version is paid, on Blender Market.",
+      "added": "2026-11-14",
+      "status": "testat",
+      "tested": {
+        "date": "2026-11-14"
+      },
+      "security": {
+        "result": "ok",
+        "note": "Verificat fișierul addonului direct de pe GitHub (space_view3d_point_cloud_visualizer.py, ~10.900 rânduri). Fără acces la rețea, fără comenzi de sistem, fără exec/eval sau cod ascuns; singurele scrieri pe disc sunt exporturile PLY alese de utilizator. Licență GPL-2.0+, autor cunoscut, repo din 2014 cu peste 1.000 de stele.",
+        "noteEn": "Checked the addon file straight from GitHub (space_view3d_point_cloud_visualizer.py, ~10,900 lines). No network access, no system commands, no exec/eval or hidden code; the only disk writes are PLY exports the user chooses. GPL-2.0+ license, known author, repo since 2014 with over 1,000 stars."
       }
     }
   ]

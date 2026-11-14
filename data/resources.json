@@ -1380,6 +1380,24 @@
       "authorUrl": "https://www.youtube.com/@codehead01",
       "added": "2026-11-14",
       "n": 3
+    },
+    {
+      "title": "Hermes Agent Fundamentals In 29 Minutes",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Hermes Agent"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Bazele Hermes Agent, agent AI open-source: alegerea hardware-ului, descărcarea și configurarea, funcțiile principale, sistemul de memorie și folosirea cu modele AI open-source.",
+      "descEn": "The fundamentals of Hermes Agent, an open-source AI agent: hardware choices, download and setup, main features, the memory system and using it with open-source AI models.",
+      "url": "https://www.youtube.com/watch?v=5_N84t1rUU0",
+      "author": "Tina Huang",
+      "authorUrl": "https://www.youtube.com/@TinaHuang1",
+      "added": "2026-11-14",
+      "n": 4
     }
   ]
 }

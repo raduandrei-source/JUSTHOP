@@ -596,7 +596,7 @@
       st_testat: 'testat', st_netestat: 'netestat', st_respins: 'respins',
       shown: '{n} afișate', resultsFor: '{n} rezultate pentru "{q}"',
       loadingPlugins: 'se încarcă...', loadingMore: 'se încarcă mai multe...', endReached: 'ai ajuns la capăt', noMatch: 'niciun plugin nu se potrivește',
-      empty: 'niciun plugin încă', one: 'plugin', many: 'pluginuri', by: 'de', license: 'licență',
+      empty: 'niciun plugin încă', one: 'plugin', many: 'pluginuri', by: 'de', license: 'licență', noLicense: 'fără licență',
       testedOn: 'testat {d}', rejectedOn: 'respins {d}',
       sec_ok: 'cod: ok', sec_atentie: 'cod: atenție', sec_nefacut: 'cod: neverificat',
       loadError: 'eroare', loadErrorDetail: 'nu am putut încărca data/plugins.json — deschide pagina printr-un server, nu direct din fișier',
@@ -615,7 +615,7 @@
       st_testat: 'tested', st_netestat: 'not tested', st_respins: 'rejected',
       shown: '{n} shown', resultsFor: '{n} results for "{q}"',
       loadingPlugins: 'loading...', loadingMore: 'loading more...', endReached: 'you’ve reached the end', noMatch: 'no plugin matches',
-      empty: 'no plugins yet', one: 'plugin', many: 'plugins', by: 'by', license: 'license',
+      empty: 'no plugins yet', one: 'plugin', many: 'plugins', by: 'by', license: 'license', noLicense: 'no license',
       testedOn: 'tested {d}', rejectedOn: 'rejected {d}',
       sec_ok: 'code: ok', sec_atentie: 'code: caution', sec_nefacut: 'code: not reviewed',
       loadError: 'error', loadErrorDetail: 'could not load data/plugins.json — open the page through a server, not directly from the file',
@@ -905,6 +905,8 @@
       }
       const st = statusOf(p);
       const url = safeUrl(p.url);
+      // "license": "none" = repo fără licență (codul nu e, legal, liber de folosit)
+      const lic = !p.license ? '' : p.license === 'none' ? esc(t('noLicense')) : `${t('license')} ${esc(p.license)}`;
       const card = document.createElement(url ? 'a' : 'article');
       card.className = 'card is-' + st;
       if (url) { card.href = url; card.target = '_blank'; card.rel = 'noopener noreferrer'; }
@@ -919,7 +921,7 @@
           ${url ? `<p class="card-repo">${esc(repoOf(url))}</p>` : ''}
           <p class="card-desc">${esc(descOf(p) || '')}</p>
           ${(p.software || []).length ? `<div class="card-soft">${p.software.slice(0, 4).map(s => `<span class="sw-chip" data-sw="${esc(s)}">${esc(s)}</span>`).join('')}${p.software.length > 4 ? `<span class="sw-more">+${p.software.length - 4}</span>` : ''}</div>` : ''}
-          ${p.author ? `<p class="card-author">${t('by')} <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span>${p.license ? ` · ${t('license')} ${esc(p.license)}` : ''}</p>` : (p.license ? `<p class="card-author">${t('license')} ${esc(p.license)}</p>` : '')}
+          ${p.author ? `<p class="card-author">${t('by')} <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span>${lic ? ` · ${lic}` : ''}</p>` : (lic ? `<p class="card-author">${lic}</p>` : '')}
           ${testLine(p, st)}
         </div>
         <div class="card-meta label">

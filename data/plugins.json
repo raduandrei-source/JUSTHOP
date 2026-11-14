@@ -1,4 +1,23 @@
 {
   "categories": [],
-  "plugins": []
+  "plugins": [
+    {
+      "n": 1,
+      "title": "Refiner",
+      "url": "https://github.com/MiniDraco/refiner",
+      "cats": ["AI", "MC"],
+      "software": ["Python", "MeshLab"],
+      "author": "MiniDraco",
+      "license": "none",
+      "desc": "Unealtă Python în linie de comandă care transformă nori de puncte zgomotoși (din generatoare 3D cu AI precum Hunyuan3D sau TripoSR, din fotogrametrie sau scanări) în mesh-uri curate din quad-uri, bune de editat, de desfăcut UV și de subdivizat. Reconstruiește suprafața cu Screened Poisson, elimină insulele și reface topologia, în două niveluri: fast și clean. Rulează pe procesor, fără placă video și fără Blender.",
+      "descEn": "A command-line Python tool that turns noisy point clouds (from AI 3D generators such as Hunyuan3D or TripoSR, photogrammetry or scans) into clean quad meshes you can edit, UV-unwrap and subdivide. It rebuilds the surface with Screened Poisson, removes stray islands and retopologizes, in two tiers: fast and clean. Runs on the CPU, no GPU and no Blender needed.",
+      "added": "2026-11-14",
+      "status": "netestat",
+      "security": {
+        "result": "ok",
+        "note": "Zip identic cu repo-ul de pe GitHub (26/26 fișiere). 3 scripturi Python scurte, fără acces la rețea, fără comenzi de sistem, fără cod ascuns; citesc și scriu doar fișierele 3D date ca argument. Dependențe de pe PyPI: pymeshlab, numpy, matplotlib. Repo nou (iunie 2026, un singur commit) și fără licență.",
+        "noteEn": "Zip identical to the GitHub repo (26/26 files). 3 short Python scripts, no network access, no system commands, no hidden code; they only read and write the 3D files passed as arguments. PyPI dependencies: pymeshlab, numpy, matplotlib. New repo (June 2026, a single commit) with no license."
+      }
+    }
+  ]
 }

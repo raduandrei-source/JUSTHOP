@@ -264,7 +264,8 @@
   .latest .label .when { margin-left: auto; }
   .latest h3 { margin: 10px 0 0; font-size: 18px; line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; }
   .intro .latest p { margin: 6px 0 0; max-width: none; font-size: 14px; line-height: 1.55; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .hop-cube { position: absolute; right: 18px; top: -24px; width: 44px; height: 44px; pointer-events: none; z-index: 2; overflow: visible; transform-origin: 50% 100%; }
+  /* implicit pe colțul cardului; pe ecrane late JS îl mută la mijloc între titlu și card (placeCube) */
+  .hop-cube { position: absolute; right: 18px; top: -48px; width: 88px; height: 88px; pointer-events: none; z-index: 2; overflow: visible; transform-origin: 50% 100%; }
   .hop-cube .stroke { stroke: var(--ink); }
   .hop-cube.hop { animation: cube-hop 0.65s ease-in-out 1; }
   .hop-cube.loop { animation: cube-loop 2.4s ease-in-out infinite; }
@@ -272,14 +273,14 @@
   @keyframes cube-hop {
     0%   { transform: translateY(0) scale(1, 1); }
     15%  { transform: translateY(0) scale(1.18, 0.8); }
-    45%  { transform: translateY(-15px) scale(0.9, 1.15); }
+    45%  { transform: translateY(-30px) scale(0.9, 1.15); }
     80%  { transform: translateY(0) scale(1.14, 0.86); }
     100% { transform: translateY(0) scale(1, 1); }
   }
   @keyframes cube-loop {
     0%, 100% { transform: translateY(0) scale(1, 1); }
     22%  { transform: translateY(0) scale(1.18, 0.8); }
-    38%, 54% { transform: translateY(-13px) scale(0.9, 1.15); }
+    38%, 54% { transform: translateY(-26px) scale(0.9, 1.15); }
     70%  { transform: translateY(0) scale(1.14, 0.86); }
     80%  { transform: translateY(0) scale(0.97, 1.04); }
   }
@@ -669,6 +670,7 @@
     :root { --pad-x: 24px; }
     .intro { grid-template-columns: 1fr; gap: 32px; padding: 56px var(--pad-x) 112px; min-height: 0; }
     .latest { width: auto; }
+    .hop-cube { width: 56px; height: 56px; top: -32px; }
     .soft-track { grid-auto-columns: calc((100% - 16px) / 2); }
     .intro h1 { font-size: 40px; }
     .intro p { font-size: 16px; }
@@ -1246,6 +1248,7 @@
       <h3>${esc(p.title)}</h3>
       <p>${esc(lang === 'en' ? (p.descEn || p.desc) : p.desc)}</p>`;
     box.hidden = false;
+    placeCube();   // titlul și cardul se pot schimba (limbă, text): cubul se repoziționează
   }
 
   // cubul sare: ?cub=a => doar pe card (în buclă cât ții mouse-ul acolo); altfel (b) la fiecare element clicabil
@@ -1267,6 +1270,26 @@
       if (el && !el.contains(e.relatedTarget)) hop();
     });
   }
+
+  // pe ecrane late cubul stă la mijloc între titlu (capătul textului) și cardul „Nou", la înălțimea centrului cardului;
+  // dacă nu e loc (sau pe mobil) rămâne pe colțul cardului
+  const introSide = document.querySelector('.intro-side');
+  function placeCube() {
+    hopCube.style.left = hopCube.style.top = hopCube.style.right = '';
+    if (latestBox.hidden || window.innerWidth <= 860) return;
+    const range = document.createRange();
+    range.selectNodeContents(document.querySelector('.intro h1'));
+    const titleRight = Math.max(...[...range.getClientRects()].map(r => r.right));
+    const card = latestBox.getBoundingClientRect(), side = introSide.getBoundingClientRect(), s = parseFloat(getComputedStyle(hopCube).width);   // SVG n-are offsetWidth
+    const room = card.left - titleRight;
+    if (room < s + 16) return;
+    hopCube.style.right = 'auto';
+    hopCube.style.left = Math.round(titleRight + room / 2 - s / 2 - side.left) + 'px';
+    hopCube.style.top = Math.round(card.top + card.height / 2 - s / 2 - side.top) + 'px';
+  }
+  window.addEventListener('resize', placeCube);
+  window.addEventListener('load', placeCube);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeCube);
 
   // „săptămâna asta" = resursele din ultimele 7 zile față de cel mai recent lot (primele 3)
   function renderWeek() {

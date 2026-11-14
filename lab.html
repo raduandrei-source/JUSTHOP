@@ -155,7 +155,7 @@
   [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
   /* ---------- BANDA DE CATEGORII: roșie în lab; doar cele folosite, crește singură ---------- */
-  .disc-strip { background: var(--lab); color: #fff; min-height: 32px; }
+  .disc-strip { background: var(--bg); color: var(--lab-text); box-shadow: inset 0 -1px 0 var(--line); min-height: 32px; }
   .disc-strip .inner {
     max-width: var(--wrap);
     margin: 0 auto;
@@ -171,12 +171,12 @@
     padding: 0 10px;
     border: none;
     background: transparent;
-    color: #fff;
+    color: var(--lab-text);
     cursor: pointer;
     white-space: nowrap;
   }
   .disc-strip button:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .disc-strip button.active { background: #fff; color: var(--lab); text-decoration: none; }
+  .disc-strip button.active { background: var(--lab); color: #fff; text-decoration: none; }
 
   /* ---------- INTRO ---------- */
   .intro {

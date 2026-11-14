@@ -157,7 +157,7 @@
   [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
   /* ---------- DISCIPLINE STRIP ---------- */
-  .disc-strip { background: var(--accent); color: #fff; }
+  .disc-strip { background: var(--bg); color: var(--accent-text); box-shadow: inset 0 -1px 0 var(--line); }
   /* disciplinele curg încet pe bandă; pauză la hover / focus; fără mișcare => derulare ca înainte */
   .disc-strip .inner { overflow: hidden; }   /* pe toată lățimea ecranului: textul nu mai e tăiat la marginea coloanei de 1280px */
   .strip-track { display: flex; width: max-content; animation: strip-flow var(--strip-dur, 90s) linear infinite; }
@@ -174,12 +174,12 @@
     padding: 0 10px;
     border: none;
     background: transparent;
-    color: #fff;
+    color: var(--accent-text);
     cursor: pointer;
     white-space: nowrap;
   }
   .disc-strip button:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .disc-strip button.active { background: #fff; color: var(--accent); text-decoration: none; }
+  .disc-strip button.active { background: var(--accent); color: #fff; text-decoration: none; }
 
   /* ---------- INTRO ---------- */
   .intro {

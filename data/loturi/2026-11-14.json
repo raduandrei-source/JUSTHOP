@@ -48,6 +48,30 @@
       "n": 2,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "Hermes Agent Explained In 5 Minutes",
+      "url": "https://www.youtube.com/watch?v=9GpWELm3_XI",
+      "author": "CodeHead",
+      "authorUrl": "https://www.youtube.com/@codehead01",
+      "min": 5,
+      "views": 455653,
+      "pub": "2026-05-23",
+      "level": "intro",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Hermes Agent"
+      ],
+      "rating": null,
+      "flag": "Conține link-uri afiliate/sponsorizate (Hostinger, CodeCrafters, Scrimba); subiect general de AI, nu specific arhitecturii",
+      "desc": "Prezentare în 5 minute a Hermes Agent, un agent AI open-source de la Nous Research: ce îl face special, instalarea, sistemul de skill-uri și pentru cine e potrivit.",
+      "descEn": "A 5-minute overview of Hermes Agent, an open-source AI agent from Nous Research: what makes it special, installation, the skill system and who it is for.",
+      "n": 3,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

@@ -1362,6 +1362,24 @@
       "authorUrl": "https://www.youtube.com/@TinaHuang1",
       "added": "2026-11-14",
       "n": 2
+    },
+    {
+      "title": "Hermes Agent Explained In 5 Minutes",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Hermes Agent"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Prezentare în 5 minute a Hermes Agent, un agent AI open-source de la Nous Research: ce îl face special, instalarea, sistemul de skill-uri și pentru cine e potrivit.",
+      "descEn": "A 5-minute overview of Hermes Agent, an open-source AI agent from Nous Research: what makes it special, installation, the skill system and who it is for.",
+      "url": "https://www.youtube.com/watch?v=9GpWELm3_XI",
+      "author": "CodeHead",
+      "authorUrl": "https://www.youtube.com/@codehead01",
+      "added": "2026-11-14",
+      "n": 3
     }
   ]
 }

@@ -1326,6 +1326,24 @@
       "added": "2026-10-30",
       "n": 5,
       "descEn": "A guide to dynamic components in SketchUp: components that adapt automatically to sizes and options, a first step towards parametric modelling in SketchUp."
+    },
+    {
+      "title": "Obsidian Canvas",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Obsidian"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Introducere în Obsidian Canvas, pânza vizuală a aplicației: aranjezi notițe, imagini și idei pe un spațiu liber și le legi între ele, ca parte a unui flux digital de gândire și documentare.",
+      "descEn": "An introduction to Obsidian Canvas, the app's visual board: you arrange notes, images and ideas on a free space and link them together, as part of a digital workflow for thinking and documentation.",
+      "url": "https://www.youtube.com/watch?v=vLBd_ADeKIw",
+      "author": "Linking Your Thinking with Nick Milo",
+      "authorUrl": "https://www.youtube.com/@linkingyourthinking",
+      "added": "2026-11-14",
+      "n": 1
     }
   ]
 }

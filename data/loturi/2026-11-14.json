@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-14",
+  "candidates": [
+    {
+      "platform": "YouTube",
+      "title": "Obsidian Canvas",
+      "url": "https://www.youtube.com/watch?v=vLBd_ADeKIw",
+      "author": "Linking Your Thinking with Nick Milo",
+      "authorUrl": "https://www.youtube.com/@linkingyourthinking",
+      "min": 30,
+      "views": 360938,
+      "pub": "2022-12-08",
+      "level": "intro",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "Obsidian"
+      ],
+      "rating": null,
+      "flag": null,
+      "desc": "Introducere în Obsidian Canvas, pânza vizuală a aplicației: aranjezi notițe, imagini și idei pe un spațiu liber și le legi între ele, ca parte a unui flux digital de gândire și documentare.",
+      "descEn": "An introduction to Obsidian Canvas, the app's visual board: you arrange notes, images and ideas on a free space and link them together, as part of a digital workflow for thinking and documentation.",
+      "n": 1,
+      "accept": "Da",
+      "manual": true
+    }
+  ]
+}

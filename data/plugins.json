@@ -50,6 +50,30 @@
         "note": "Verificat fișierul addonului direct de pe GitHub (space_view3d_point_cloud_visualizer.py, ~10.900 rânduri). Fără acces la rețea, fără comenzi de sistem, fără exec/eval sau cod ascuns; singurele scrieri pe disc sunt exporturile PLY alese de utilizator. Licență GPL-2.0+, autor cunoscut, repo din 2014 cu peste 1.000 de stele.",
         "noteEn": "Checked the addon file straight from GitHub (space_view3d_point_cloud_visualizer.py, ~10,900 lines). No network access, no system commands, no exec/eval or hidden code; the only disk writes are PLY exports the user chooses. GPL-2.0+ license, known author, repo since 2014 with over 1,000 stars."
       }
+    },
+    {
+      "n": 3,
+      "title": "Spirula Studio",
+      "url": "https://github.com/harry7557558/spirula-studio",
+      "cats": [
+        "VIZ",
+        "MC"
+      ],
+      "software": [
+        "Vulkan",
+        "CUDA"
+      ],
+      "author": "harry7557558",
+      "license": "GPL-3.0",
+      "desc": "Aplicație desktop (Windows, Linux, macOS) care face modele 3D Gaussian Splatting din fotografii sau video: extrage cadrele, calculează pozițiile camerelor, maschează cu AI, antrenează splat-ul și scoate un mesh texturat, totul într-un singur program, fără Python sau COLMAP instalate separat. Merge pe plăci video NVIDIA, AMD, Intel și Apple și suportă camere fisheye și 360°. Nu e plugin: rezultatele (PLY, mesh) se importă apoi în Blender, Rhino etc.",
+      "descEn": "A desktop app (Windows, Linux, macOS) that builds 3D Gaussian Splatting models from photos or video: it extracts frames, solves camera poses, masks with AI, trains the splat and outputs a textured mesh, all in one program, with no separate Python or COLMAP install. Runs on NVIDIA, AMD, Intel and Apple GPUs and supports fisheye and 360° cameras. Not a plugin: the results (PLY, mesh) are then imported into Blender, Rhino, etc.",
+      "added": "2026-11-14",
+      "status": "netestat",
+      "security": {
+        "result": "ok",
+        "note": "Proiect C++ mare (~1.900 de fișiere sursă), verificat țintit, nu integral. Ce face pe rețea: descarcă la cerere modele AI de pe HuggingFace / ModelScope prin curl, cu verificare SHA-256; în timpul antrenării pornește un viewer web pe un port deschis și în rețeaua locală (doar citire, rute fixe). Nu am găsit verificări de update, raportări sau comenzi ascunse. Licență GPL-3.0, autor activ, peste 2.400 de stele, commituri zilnice. Binarele din Releases nu pot fi comparate cu sursa.",
+        "noteEn": "Large C++ project (~1,900 source files), reviewed selectively, not in full. Network use: downloads AI models on demand from HuggingFace / ModelScope via curl, with SHA-256 checks; during training it starts a web viewer on a port open to the local network (read-only, fixed routes). No update checks, reporting or hidden commands found. GPL-3.0 license, active author, over 2,400 stars, daily commits. The Releases binaries cannot be matched against the source."
+      }
     }
   ]
 }

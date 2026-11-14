@@ -105,6 +105,10 @@
     text-decoration: none;
     margin-right: auto;
   }
+  .brand a { text-decoration: none; }
+  .brand-home { display: flex; }
+  .lab-dot { padding: 4px 4px; margin: -4px -4px; transition: color 0.15s ease; }
+  .lab-dot:hover, .lab-dot:focus-visible { color: #D92D20; }
   .logo { width: 28px; height: 28px; flex-shrink: 0; }
   .logo .stroke { stroke: var(--ink); }
   .brand-name { font-weight: 700; font-size: 17px; letter-spacing: -0.02em; line-height: 1; }
@@ -584,23 +588,26 @@
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="#" aria-label="justhop — acasă" data-i18n-attr="aria-label:brandAria">
-      <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
-        <g transform="rotate(12 50 45)">
-          <polygon points="50,12 78,28 50,44 22,28" fill="#1A56DB"/>
-          <polygon class="stroke" points="22,28 50,44 50,74 22,58" fill="none" stroke-width="4"/>
-          <polygon class="stroke" points="78,28 50,44 50,74 78,58" fill="none" stroke-width="4"/>
-          <polygon class="stroke" points="50,12 78,28 50,44 22,28" fill="none" stroke-width="4"/>
-        </g>
-        <line class="stroke" x1="8" y1="70" x2="22" y2="60" stroke-width="4"/>
-        <line class="stroke" x1="14" y1="80" x2="28" y2="70" stroke-width="4"/>
-        <line class="stroke" x1="20" y1="90" x2="34" y2="80" stroke-width="4"/>
-      </svg>
+    <!-- punctul de după „justhop" e linkul discret către lab.html -->
+    <div class="brand">
+      <a class="brand-home" href="#" aria-label="justhop — acasă" data-i18n-attr="aria-label:brandAria">
+        <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+          <g transform="rotate(12 50 45)">
+            <polygon points="50,12 78,28 50,44 22,28" fill="#1A56DB"/>
+            <polygon class="stroke" points="22,28 50,44 50,74 22,58" fill="none" stroke-width="4"/>
+            <polygon class="stroke" points="78,28 50,44 50,74 78,58" fill="none" stroke-width="4"/>
+            <polygon class="stroke" points="50,12 78,28 50,44 22,28" fill="none" stroke-width="4"/>
+          </g>
+          <line class="stroke" x1="8" y1="70" x2="22" y2="60" stroke-width="4"/>
+          <line class="stroke" x1="14" y1="80" x2="28" y2="70" stroke-width="4"/>
+          <line class="stroke" x1="20" y1="90" x2="34" y2="80" stroke-width="4"/>
+        </svg>
+      </a>
       <span>
-        <span class="brand-name" style="display:block">justhop</span>
+        <span class="brand-name" style="display:block"><a href="#" tabindex="-1">justhop</a><a class="lab-dot" href="lab.html" aria-label="lab" title="lab">.</a></span>
         <span class="brand-tag" style="display:block">nevermindthe.name</span>
       </span>
-    </a>
+    </div>
     <nav class="label">
       <a href="#resurse" aria-current="page" data-i18n="navResources">Resurse</a>
       <a href="#newsletter" data-i18n="navNewsletter">Newsletter</a>

@@ -1,5 +1,19 @@
 {
   "crons": [
     { "path": "/api/cleanup", "schedule": "0 3 * * *" }
+  ],
+  "headers": [
+    {
+      "source": "/lab",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/lab.html",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/data/plugins.json",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    }
   ]
 }

@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>justhop.lab — pluginuri în test</title>
+<meta name="description" content="Arhivă de pluginuri și unelte de pe GitHub, notate pe măsură ce sunt testate.">
+<!-- pagină nelistată: nu apare în meniu și nu se indexează (vezi și header-ul X-Robots-Tag din vercel.json) -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F4F3EF">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('justhop-theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F3EF;
+    --surface: #FFFFFF;
+    --ink: #1C1C1C;
+    --border: #1C1C1C;
+    --accent: #1A56DB;
+    --accent-text: #1A56DB;
+    --lab: #D92D20;            /* roșul lab-ului: fața cubului, „.lab", capsula „netestat" */
+    --lab-text: #D92D20;
+    --ok: #15803D;             /* verde „testat" */
+    --ok-text: #15803D;
+    --muted: #6B6B6B;
+    --rule: #E6E4DD;
+    --line: #CDCCC8;
+    --shadow-rest: rgba(28,28,28,0.06);
+    --shadow-lift: rgba(28,28,28,0.14);
+
+    --header-h: 48px;
+    --bar-h: 41px;
+    --pad-x: 40px;
+    --wrap: 1280px;
+    --mono: 'Space Mono', monospace;
+  }
+  :root[data-theme="dark"] {
+    --bg: #121316;
+    --surface: #1A1B1F;
+    --ink: #F4F3EF;
+    --border: #F4F3EF;
+    --accent-text: #7FA2F0;
+    --lab-text: #F0756B;
+    --ok-text: #5BC27F;
+    --muted: #9A9996;
+    --rule: #2C2D32;
+    --line: #3B3B3D;
+    --shadow-rest: rgba(244,243,239,0.06);
+    --shadow-lift: rgba(244,243,239,0.16);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: var(--header-h); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+  a { color: inherit; }
+  button { font: inherit; color: inherit; }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.5;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+  }
+
+  /* ---------- HEADER ---------- */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner { height: var(--header-h); display: flex; align-items: stretch; }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 24px 0 var(--pad-x);
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .logo { width: 28px; height: 28px; flex-shrink: 0; }
+  .logo .stroke { stroke: var(--ink); }
+  .brand-name { font-weight: 700; font-size: 17px; letter-spacing: -0.02em; line-height: 1; }
+  .brand-name .lab { color: var(--lab-text); }
+  .brand-tag { font-family: var(--mono); font-size: 10px; color: var(--muted); line-height: 1; margin-top: 3px; }
+  nav { display: flex; }
+  nav a {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-left: 1px solid var(--line);
+    text-decoration: none;
+  }
+  nav a:hover { color: var(--accent-text); }
+  .theme-toggle {
+    width: var(--header-h);
+    border: none;
+    border-left: 1px solid var(--line);
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    padding: 0;
+  }
+  .lang-toggle {
+    border: none;
+    border-left: 1px solid var(--line);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+  .lang-toggle:hover { background: var(--bg); }
+  .lang-toggle .sep { opacity: 0.5; }
+  html[lang="ro"] .lang-toggle [data-l="ro"],
+  html[lang="en"] .lang-toggle [data-l="en"] { color: var(--accent-text); font-weight: 700; }
+  .theme-toggle:hover { background: var(--bg); }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+  /* ---------- BANDA DE CATEGORII: roșie în lab; doar cele folosite, crește singură ---------- */
+  .disc-strip { background: var(--lab); color: #fff; min-height: 32px; }
+  .disc-strip .inner {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 calc(var(--pad-x) - 10px);
+  }
+  .disc-strip .inner::-webkit-scrollbar { display: none; }
+  .disc-strip button {
+    flex-shrink: 0;
+    height: 32px;
+    padding: 0 10px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .disc-strip button:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .disc-strip button.active { background: #fff; color: var(--lab); text-decoration: none; }
+
+  /* ---------- INTRO ---------- */
+  .intro {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 56px;
+    align-items: start;
+    padding: 80px var(--pad-x);
+  }
+  .intro h1 {
+    margin: 0;
+    max-width: 768px;
+    font-size: 60px;
+    line-height: 1.02;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+  }
+  .intro h1 em { font-style: normal; color: var(--lab-text); }
+  .intro p {
+    margin: 20px 0 0;
+    max-width: 576px;
+    font-size: 18px;
+    line-height: 1.625;
+    color: var(--muted);
+  }
+  .intro .warn {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+    border-left: 3px solid var(--lab-text);
+    padding-left: 12px;
+  }
+
+  /* caseta „Software", la fel ca pe pagina principală */
+  .soft { min-width: 0; padding-top: 8px; }
+  .soft-head { display: flex; justify-content: space-between; margin: 0 0 10px; color: var(--muted); }
+  .soft-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    min-height: 228px;
+    margin-left: -8px;
+    width: calc(100% + 8px);
+  }
+  .soft-track::-webkit-scrollbar { display: none; }
+  .soft-page { flex: 0 0 100%; min-width: 0; padding-left: 8px; scroll-snap-align: start; display: flex; flex-direction: column; align-items: stretch; }
+  .soft-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 5px 0;
+    border: none;
+    background: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .soft-item::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--muted);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .soft-item:hover { color: var(--ink); }
+  .soft-item:hover::before { border-color: var(--ink); }
+  .soft-item.active { color: var(--ink); font-weight: 700; }
+  .soft-item.active::before { background: var(--accent-text); border-color: var(--accent-text); }
+  .soft-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .soft-count { flex-shrink: 0; font-size: 10px; font-weight: 400; color: var(--muted); }
+  .soft-dots { display: flex; justify-content: flex-start; gap: 9px; margin-top: 14px; min-height: 10px; }
+  .soft-dot { width: 8px; height: 8px; padding: 0; border: 1.5px solid var(--muted); border-radius: 50%; background: transparent; cursor: pointer; }
+  .soft-dot:hover { border-color: var(--ink); }
+  .soft-dot[aria-current="true"] { background: var(--ink); border-color: var(--ink); }
+
+  /* ---------- BARA DE SECȚIUNE ---------- */
+  .section { border-top: 1px solid var(--line); }
+  .section-bar {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 30;
+    height: var(--bar-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 var(--pad-x);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .section-bar strong { color: var(--ink); font-weight: 400; }
+
+  /* ---------- CĂUTARE ---------- */
+  .search-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+    padding: 0 var(--pad-x);
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  .search-row .prompt { color: var(--lab-text); font-weight: 700; }
+  .search-row input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+  }
+  .search-row input::placeholder { color: var(--muted); }
+  .kbd { border: 1px solid var(--muted); color: var(--muted); padding: 0 6px; font-size: 11px; }
+
+  /* ---------- LAYOUT ---------- */
+  .layout {
+    display: grid;
+    grid-template-columns: 256px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    padding: 32px var(--pad-x) 64px;
+  }
+  .sidebar {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    padding: 16px 16px 8px;
+    position: sticky;
+    top: calc(var(--header-h) + var(--bar-h) + 24px);
+    max-height: calc(100vh - var(--header-h) - var(--bar-h) - 48px);
+    overflow-y: auto;
+    box-shadow: 2px 2px 0 var(--shadow-rest);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .sidebar:hover { box-shadow: 4px 5px 0 var(--shadow-lift); transform: translate(-1px, -2px); }
+  .sidebar-head { display: flex; justify-content: space-between; align-items: center; color: var(--muted); margin-bottom: 8px; }
+  .sidebar-sub { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  .sidebar-sub[hidden] { display: none; }
+  .reset { border: none; background: none; padding: 0; cursor: pointer; color: var(--accent-text); }
+  .reset[hidden] { display: none; }
+  .cat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 2px;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+    background: none;
+    font-size: 14px;
+    line-height: 1.3;
+    text-align: left;
+    cursor: pointer;
+  }
+  .cat-item:last-child { border-bottom: none; }
+  .cat-item:hover { color: var(--accent-text); }
+  .cat-item.active { font-weight: 700; }
+  .dot { width: 10px; height: 10px; flex-shrink: 0; }
+  [data-theme="dark"] .dot { outline: 1px solid var(--muted); }
+  .cat-count { margin-left: auto; font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; }
+
+  /* ---------- CAPSULE DE STARE ---------- */
+  /* singurul element rotunjit: capsula trebuie să se distingă de etichetele pătrate ale categoriilor */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 4px 9px;
+    border-radius: 999px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .pill.testat { background: var(--ok); }
+  .pill.netestat { background: var(--lab); }
+  .pill.respins { background: transparent; color: var(--muted); border: 1.5px solid var(--muted); padding: 2.5px 7.5px; }
+  .cat-item .pill { font-size: 9px; padding: 3px 7px; }
+  .cat-item .pill.respins { padding: 1.5px 5.5px; }
+
+  /* ---------- CARDURI ---------- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    box-shadow: 2px 2px 0 var(--shadow-rest);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    text-decoration: none;
+  }
+  .card:hover { box-shadow: 4px 6px 0 var(--shadow-lift); transform: translate(-1px, -3px); }
+  .card.is-respins { opacity: 0.7; }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--muted);
+  }
+  .card-head .pill { margin-left: auto; }
+  .tag { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.05em; color: #fff; padding: 2px 6px; }
+  .tags { display: flex; gap: 3px; flex-shrink: 0; }
+  .cat-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card-body { padding: 20px 24px 24px; flex: 1; }
+  .card-title { margin: 0; font-size: 20px; line-height: 1.3; font-weight: 500; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+  .card-repo { margin: 4px 0 0; font-family: var(--mono); font-size: 11px; color: var(--muted); overflow-wrap: anywhere; }
+  .card-desc { margin: 10px 0 0; font-size: 14px; line-height: 1.57; color: var(--muted); }
+  .card-soft { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0 0; }
+  .sw-chip, .sw-more {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    padding: 1px 6px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+  }
+  .sw-chip { cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease; }
+  .sw-chip:hover { color: var(--accent-text); border-color: var(--accent-text); }
+  .card-author { margin: 12px 0 0; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .author-link { cursor: pointer; border-bottom: 1px solid var(--rule); }
+  .author-link:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
+  .card-test {
+    margin: 14px 0 0;
+    padding-left: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .card-test.testat { border-left: 3px solid var(--ok-text); }
+  .card-test.respins { border-left: 3px solid var(--muted); }
+  .card-test .when { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: var(--muted); }
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 24px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+  }
+  .sec-ok { color: var(--ok-text); }
+  .sec-atentie { color: var(--lab-text); }
+
+  .date-head {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-top: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+  }
+  .date-head:first-child { margin-top: 0; }
+  .date-head strong { color: var(--ink); font-weight: 700; }
+  .sentinel { text-align: center; padding: 40px 0 0; color: var(--muted); }
+
+  /* ---------- SUBSOL ---------- */
+  .site-footer { border-top: 1px solid var(--line); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px var(--pad-x);
+    color: var(--muted);
+  }
+  .footer-bottom a { text-decoration: none; }
+  .footer-bottom a:hover { color: var(--accent-text); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    :root { --pad-x: 24px; }
+    .intro { grid-template-columns: 1fr; gap: 32px; padding: 56px var(--pad-x); }
+    .intro h1 { font-size: 40px; }
+    .intro p { font-size: 16px; }
+    .soft-track { min-height: 0; }
+    .layout { grid-template-columns: 1fr; padding-top: 24px; }
+    .sidebar { position: static; max-height: 300px; }
+    .sidebar:hover { transform: none; }
+    .kbd { display: none; }
+  }
+  @media (max-width: 600px) {
+    nav { display: none; }
+    .brand-tag { display: none; }
+    .section-bar .hide-sm { display: none; }
+    .footer-bottom { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./" aria-label="justhop — înapoi la resurse" data-i18n-attr="aria-label:brandAria">
+      <!-- același logo, cu fața de sus roșie: doar negru și roșu -->
+      <svg class="logo" viewBox="0 0 100 100" aria-hidden="true">
+        <g transform="rotate(12 50 45)">
+          <polygon points="50,12 78,28 50,44 22,28" fill="#D92D20"/>
+          <polygon class="stroke" points="22,28 50,44 50,74 22,58" fill="none" stroke-width="4"/>
+          <polygon class="stroke" points="78,28 50,44 50,74 78,58" fill="none" stroke-width="4"/>
+          <polygon class="stroke" points="50,12 78,28 50,44 22,28" fill="none" stroke-width="4"/>
+        </g>
+        <line class="stroke" x1="8" y1="70" x2="22" y2="60" stroke-width="4"/>
+        <line class="stroke" x1="14" y1="80" x2="28" y2="70" stroke-width="4"/>
+        <line class="stroke" x1="20" y1="90" x2="34" y2="80" stroke-width="4"/>
+      </svg>
+      <span>
+        <span class="brand-name" style="display:block">justhop<span class="lab">.lab</span></span>
+        <span class="brand-tag" style="display:block">nevermindthe.name</span>
+      </span>
+    </a>
+    <nav class="label">
+      <a href="./" data-i18n="navBack">← Resurse</a>
+    </nav>
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English" title="English"><span data-l="ro">RO</span><span class="sep">/</span><span data-l="en">EN</span></button>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Comută tema închisă" data-i18n-attr="title:themeTitle" title="Comută tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="8" height="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="disc-strip">
+  <div class="inner label" id="discStrip"></div>
+</div>
+
+<div class="wrap">
+  <section class="intro">
+    <div>
+      <h1 data-i18n-html="h1">Pluginuri și unelte, <em>în laborator.</em></h1>
+      <p data-i18n="intro">Arhivă de pluginuri și unelte găsite pe GitHub, fiecare cu un rezumat scurt despre ce face. Starea se schimbă pe măsură ce sunt testate.</p>
+      <p class="warn" data-i18n="warn">Nu sunt recomandări. Un plugin netestat poate să nu funcționeze sau să nu fie sigur, iar o verificare a codului reduce riscul, dar nu îl elimină. Instalezi pe propria răspundere.</p>
+    </div>
+    <aside class="soft" id="soft" aria-label="Software" data-i18n-attr="aria-label:softAria">
+      <div class="soft-head label"><span>Software</span><span id="softCount"></span></div>
+      <div class="soft-track" id="softTrack"></div>
+      <div class="soft-dots" id="softDots" role="group"></div>
+    </aside>
+  </section>
+
+  <section class="section" id="pluginuri">
+    <div class="section-bar label">
+      <strong data-i18n="pluginsTitle">Pluginuri</strong>
+      <span id="searchMeta" data-i18n="loading">se încarcă...</span>
+    </div>
+    <label class="search-row">
+      <span class="prompt">&gt;</span>
+      <input id="searchInput" type="text" placeholder="caută nume, software, categorie..." data-i18n-attr="placeholder:searchPlaceholder" autocomplete="off">
+      <span class="kbd" aria-hidden="true">/</span>
+    </label>
+
+    <div class="layout">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-head label">
+          <span data-i18n="status">Stare</span>
+          <button class="reset label" id="resetAll" type="button" data-i18n="reset" hidden>resetează</button>
+        </div>
+        <div id="statusList"></div>
+        <div class="sidebar-head label sidebar-sub" id="catHead">
+          <span data-i18n="categories">Categorii</span>
+        </div>
+        <div id="catList"></div>
+        <div class="sidebar-head label sidebar-sub" id="authorHead" hidden>
+          <span data-i18n="authors">Autori</span>
+        </div>
+        <div id="authorList"></div>
+      </aside>
+
+      <main>
+        <div class="grid" id="grid"></div>
+        <div class="sentinel label" id="sentinel" data-i18n="loadingPlugins">se încarcă...</div>
+      </main>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap footer-bottom label">
+    <span>© 2026 justhop.lab</span>
+    <a href="./" data-i18n="footerBack">justhop.nevermindthe.name</a>
+  </div>
+</footer>
+
+<script>
+  /* ---------- LIMBĂ ---------- */
+  const I18N = {
+    ro: {
+      title: 'justhop.lab — pluginuri în test',
+      brandAria: 'justhop — înapoi la resurse', themeTitle: 'Comută tema', themeToDark: 'Comută tema închisă', themeToLight: 'Comută tema deschisă',
+      langAria: 'Switch to English', langTitle: 'English',
+      navBack: '← Resurse', footerBack: 'justhop.nevermindthe.name',
+      h1: 'Pluginuri și unelte, <em>în laborator.</em>',
+      intro: 'Arhivă de pluginuri și unelte găsite pe GitHub, fiecare cu un rezumat scurt despre ce face. Starea se schimbă pe măsură ce sunt testate.',
+      warn: 'Nu sunt recomandări. Un plugin netestat poate să nu funcționeze sau să nu fie sigur, iar o verificare a codului reduce riscul, dar nu îl elimină. Instalezi pe propria răspundere.',
+      softAria: 'Software', softPage: 'Pagina {i} din {n}', programOne: 'program', programMany: 'programe',
+      pluginsTitle: 'Pluginuri', loading: 'se încarcă...', searchPlaceholder: 'caută nume, software, categorie...',
+      status: 'Stare', categories: 'Categorii', reset: 'resetează', authors: 'Autori',
+      st_testat: 'testat', st_netestat: 'netestat', st_respins: 'respins',
+      shown: '{n} afișate', resultsFor: '{n} rezultate pentru "{q}"',
+      loadingPlugins: 'se încarcă...', loadingMore: 'se încarcă mai multe...', endReached: 'ai ajuns la capăt', noMatch: 'niciun plugin nu se potrivește',
+      empty: 'niciun plugin încă', one: 'plugin', many: 'pluginuri', by: 'de', license: 'licență',
+      testedOn: 'testat {d}', rejectedOn: 'respins {d}',
+      sec_ok: 'cod: ok', sec_atentie: 'cod: atenție', sec_nefacut: 'cod: neverificat',
+      loadError: 'eroare', loadErrorDetail: 'nu am putut încărca data/plugins.json — deschide pagina printr-un server, nu direct din fișier',
+    },
+    en: {
+      title: 'justhop.lab — plugins under test',
+      brandAria: 'justhop — back to resources', themeTitle: 'Switch theme', themeToDark: 'Switch to dark theme', themeToLight: 'Switch to light theme',
+      langAria: 'Comută pe română', langTitle: 'Română',
+      navBack: '← Resources', footerBack: 'justhop.nevermindthe.name',
+      h1: 'Plugins and tools, <em>in the lab.</em>',
+      intro: 'An archive of plugins and tools found on GitHub, each with a short summary of what it does. The status changes as they get tested.',
+      warn: 'These are not recommendations. An untested plugin may not work or may not be safe, and a code review lowers the risk but does not remove it. Install at your own risk.',
+      softAria: 'Software', softPage: 'Page {i} of {n}', programOne: 'program', programMany: 'programs',
+      pluginsTitle: 'Plugins', loading: 'loading...', searchPlaceholder: 'search name, software, category...',
+      status: 'Status', categories: 'Categories', reset: 'reset', authors: 'Authors',
+      st_testat: 'tested', st_netestat: 'not tested', st_respins: 'rejected',
+      shown: '{n} shown', resultsFor: '{n} results for "{q}"',
+      loadingPlugins: 'loading...', loadingMore: 'loading more...', endReached: 'you’ve reached the end', noMatch: 'no plugin matches',
+      empty: 'no plugins yet', one: 'plugin', many: 'plugins', by: 'by', license: 'license',
+      testedOn: 'tested {d}', rejectedOn: 'rejected {d}',
+      sec_ok: 'code: ok', sec_atentie: 'code: caution', sec_nefacut: 'code: not reviewed',
+      loadError: 'error', loadErrorDetail: 'could not load data/plugins.json — open the page through a server, not directly from the file',
+    },
+  };
+
+  const LANG_KEY = 'justhop-lang';
+  function detectLang() {
+    const q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'ro') { try { localStorage.setItem(LANG_KEY, q); } catch (e) {} return q; }
+    let saved = null;
+    try { saved = localStorage.getItem(LANG_KEY); } catch (e) {}
+    if (saved === 'en' || saved === 'ro') return saved;
+    return (navigator.language || 'ro').toLowerCase().startsWith('ro') ? 'ro' : 'en';
+  }
+  let lang = detectLang();
+  const t = (k, vars) => {
+    let s = I18N[lang][k] !== undefined ? I18N[lang][k] : (I18N.ro[k] !== undefined ? I18N.ro[k] : k);
+    if (vars) for (const v in vars) s = s.split('{' + v + '}').join(vars[v]);
+    return s;
+  };
+  const catName = c => (lang === 'en' && c.nameEn) ? c.nameEn : c.name;
+  const descOf = p => (lang === 'en' && p.descEn) ? p.descEn : p.desc;
+  const noteOf = x => (lang === 'en' && x.noteEn) ? x.noteEn : x.note;
+
+  /* ---------- TEMĂ ---------- */
+  const THEME_KEY = 'justhop-theme';
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const themeLabel = th => (th === 'dark' ? I18N[lang].themeToLight : I18N[lang].themeToDark);
+  function setTheme(th, persist) {
+    document.documentElement.dataset.theme = th;
+    themeMeta.content = th === 'dark' ? '#121316' : '#F4F3EF';
+    document.getElementById('themeToggle').setAttribute('aria-label', themeLabel(th));
+    if (persist) { try { localStorage.setItem(THEME_KEY, th); } catch (e) {} }
+  }
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', true);
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    let saved = null;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (err) {}
+    if (!saved) setTheme(e.matches ? 'dark' : 'light', false);
+  });
+  setTheme(document.documentElement.dataset.theme, false);
+
+  /* ---------- DATE ---------- */
+  // Categoriile vin din disciplinele din data/resources.json, plus cele proprii din data/plugins.json.
+  // Pe pagină apar doar cele folosite de cel puțin un plugin; un cod nou apare singur (gri, dacă nu e definit).
+  const STATUSES = ['testat', 'netestat', 'respins'];
+  let categories = [];
+  let pool = [];
+  let activeCats = new Set(), activeAuthors = new Set(), activeSoftware = new Set(), activeStatus = new Set();
+  const batchSize = 12;
+  let shown = 0, currentResults = [];
+  let byDate = true, lastDate = null, dateCounts = {};
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmtDate = iso => String(iso).split('-').reverse().join('.');
+  const statusOf = p => STATUSES.includes(p.status) ? p.status : 'netestat';
+  const pill = st => `<span class="pill ${st}">${esc(t('st_' + st))}</span>`;
+  // „github.com/autor/repo", fără https://
+  const repoOf = url => { try { const u = new URL(url); return (u.host + u.pathname).replace(/\/$/, ''); } catch (e) { return ''; } };
+  const safeUrl = url => /^https?:\/\//i.test(url || '') ? url : '';
+
+  function tokenize(q) { return q.toLowerCase().trim().split(/\s+/).filter(Boolean); }
+
+  function score(item, tokens) {
+    if (tokens.length === 0) return 1;
+    const st = statusOf(item);
+    const haystack = [
+      item.title, item.url, item.author, item.license, item.desc, item.descEn,
+      item.cats.map(c => c.id + ' ' + c.name + ' ' + (c.nameEn || '')).join(' '),
+      (item.software || []).join(' '), st, I18N.ro['st_' + st], I18N.en['st_' + st],
+    ].filter(Boolean).join(' ').toLowerCase();
+    let matched = 0;
+    tokens.forEach(tk => { if (haystack.includes(tk)) matched++; });
+    return matched;
+  }
+
+  const toggle = (set, v) => { if (set.has(v)) set.delete(v); else set.add(v); applyFilters(); };
+
+  function renderStatus() {
+    const counts = {};
+    pool.forEach(p => { const s = statusOf(p); counts[s] = (counts[s] || 0) + 1; });
+    const list = document.getElementById('statusList');
+    list.innerHTML = '';
+    STATUSES.forEach(s => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cat-item' + (activeStatus.has(s) ? ' active' : '');
+      btn.setAttribute('aria-pressed', activeStatus.has(s));
+      btn.innerHTML = `${pill(s)}<span class="cat-count">${counts[s] || 0}</span>`;
+      btn.onclick = () => toggle(activeStatus, s);
+      list.appendChild(btn);
+    });
+  }
+
+  function renderCats() {
+    const list = document.getElementById('catList');
+    list.innerHTML = '';
+    document.getElementById('catHead').hidden = categories.length === 0;
+    categories.forEach(c => {
+      const count = pool.filter(p => p.cats.some(x => x.id === c.id)).length;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cat-item' + (activeCats.has(c.id) ? ' active' : '');
+      btn.setAttribute('aria-pressed', activeCats.has(c.id));
+      btn.innerHTML = `<span class="dot" style="background:${esc(c.color)}"></span>${esc(catName(c))}<span class="cat-count">${count}</span>`;
+      btn.onclick = () => toggle(activeCats, c.id);
+      list.appendChild(btn);
+    });
+    document.querySelectorAll('#discStrip button').forEach(b => {
+      b.classList.toggle('active', activeCats.has(b.dataset.cat));
+      b.setAttribute('aria-pressed', activeCats.has(b.dataset.cat));
+    });
+  }
+
+  function renderAuthors() {
+    const counts = {};
+    pool.forEach(p => { if (p.author) counts[p.author] = (counts[p.author] || 0) + 1; });
+    const names = Object.keys(counts)
+      .filter(a => counts[a] >= 2 || activeAuthors.has(a))
+      .sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))
+      .slice(0, 15);
+    document.getElementById('authorHead').hidden = names.length === 0;
+    const list = document.getElementById('authorList');
+    list.innerHTML = '';
+    names.forEach(a => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'cat-item' + (activeAuthors.has(a) ? ' active' : '');
+      btn.setAttribute('aria-pressed', activeAuthors.has(a));
+      btn.innerHTML = `${esc(a)}<span class="cat-count">${counts[a]}</span>`;
+      btn.onclick = () => toggle(activeAuthors, a);
+      list.appendChild(btn);
+    });
+  }
+
+  function renderSidebar() {
+    renderStatus();
+    renderCats();
+    renderAuthors();
+    updateSoftwareActive();
+    document.getElementById('resetAll').hidden = !(activeCats.size || activeAuthors.size || activeSoftware.size || activeStatus.size);
+  }
+
+  function renderDiscStrip() {
+    const strip = document.getElementById('discStrip');
+    strip.innerHTML = categories.map(c => `<button type="button" data-cat="${esc(c.id)}">${esc(c.id)} · ${esc(catName(c))}</button>`).join('');
+    strip.querySelectorAll('button').forEach(b => b.onclick = () => toggle(activeCats, b.dataset.cat));
+  }
+
+  /* ---------- CASETA „SOFTWARE" (aceeași logică: un program nou apare singur) ---------- */
+  const SOFT_PER_PAGE = 8;
+  const softZone = document.getElementById('soft');
+  const softTrack = document.getElementById('softTrack');
+  const softDots = document.getElementById('softDots');
+  let softPage = 0, softPages = 1, softLock = 0;
+
+  function updateSoftwareActive() {
+    softTrack.querySelectorAll('.soft-item').forEach(b => {
+      const on = activeSoftware.has(b.dataset.sw);
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on);
+    });
+  }
+  function updateSoftDots() {
+    softDots.querySelectorAll('.soft-dot').forEach((d, i) => d.setAttribute('aria-current', i === softPage ? 'true' : 'false'));
+  }
+  function goSoftPage(i, smooth = true) {
+    softPage = Math.max(0, Math.min(softPages - 1, i));
+    softTrack.scrollTo({ left: softPage * softTrack.clientWidth, behavior: smooth ? 'smooth' : 'auto' });
+    updateSoftDots();
+  }
+  function renderSoftware() {
+    const counts = {};
+    pool.forEach(p => (p.software || []).forEach(s => { counts[s] = (counts[s] || 0) + 1; }));
+    const names = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
+    softPages = Math.max(1, Math.ceil(names.length / SOFT_PER_PAGE));
+    const perPage = Math.ceil(names.length / softPages);
+    softTrack.innerHTML = '';
+    for (let i = 0; i < softPages; i++) {
+      const page = document.createElement('div');
+      page.className = 'soft-page';
+      names.slice(i * perPage, (i + 1) * perPage).forEach(n => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'soft-item';
+        b.dataset.sw = n;
+        b.innerHTML = `<span class="soft-name">${esc(n)}</span><span class="soft-count">${counts[n]}</span>`;
+        b.onclick = () => toggle(activeSoftware, n);
+        page.appendChild(b);
+      });
+      softTrack.appendChild(page);
+    }
+    softDots.innerHTML = '';
+    if (softPages > 1) {
+      for (let i = 0; i < softPages; i++) {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'soft-dot';
+        d.setAttribute('aria-label', t('softPage', { i: i + 1, n: softPages }));
+        d.onclick = () => goSoftPage(i);
+        softDots.appendChild(d);
+      }
+    }
+    document.getElementById('softCount').textContent = names.length + ' ' + t(names.length === 1 ? 'programOne' : 'programMany');
+    softPage = 0;
+    softTrack.scrollLeft = 0;
+    updateSoftDots();
+    updateSoftwareActive();
+  }
+  softTrack.addEventListener('scroll', () => {
+    const i = Math.round(softTrack.scrollLeft / Math.max(1, softTrack.clientWidth));
+    if (i !== softPage) { softPage = i; updateSoftDots(); }
+  }, { passive: true });
+  window.addEventListener('resize', () => goSoftPage(softPage, false));
+  softZone.addEventListener('wheel', e => {
+    if (softPages <= 1 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    const d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    if (Math.abs(d) < 2) return;
+    const now = Date.now();
+    if (now < softLock) { e.preventDefault(); return; }
+    const next = softPage + (d > 0 ? 1 : -1);
+    if (next < 0 || next >= softPages) return;
+    e.preventDefault();
+    softLock = now + 600;
+    goSoftPage(next);
+  }, { passive: false });
+
+  /* ---------- FILTRE ȘI GRILĂ ---------- */
+  function applyFilters() {
+    const q = document.getElementById('searchInput').value;
+    const tokens = tokenize(q);
+    let results = pool.filter(p =>
+      (activeStatus.size === 0 || activeStatus.has(statusOf(p))) &&
+      (activeCats.size === 0 || p.cats.some(c => activeCats.has(c.id))) &&
+      (activeAuthors.size === 0 || activeAuthors.has(p.author)) &&
+      (activeSoftware.size === 0 || (p.software || []).some(s => activeSoftware.has(s))));
+    results = results
+      .map(p => ({ item: p, s: score(p, tokens) }))
+      .filter(r => r.s > 0)
+      .sort((a, b) => b.s - a.s)
+      .map(r => r.item);
+
+    currentResults = results;
+    shown = 0;
+    byDate = tokens.length === 0;
+    lastDate = null;
+    dateCounts = {};
+    results.forEach(r => { dateCounts[r.added] = (dateCounts[r.added] || 0) + 1; });
+    document.getElementById('grid').innerHTML = '';
+    document.getElementById('searchMeta').textContent = tokens.length
+      ? t('resultsFor', { n: results.length, q: q.trim() })
+      : t('shown', { n: results.length });
+    renderSidebar();
+    loadMore();
+  }
+
+  function testLine(p, st) {
+    const x = p.tested;
+    if (!x || st === 'netestat') return '';
+    const when = [x.date ? t(st === 'respins' ? 'rejectedOn' : 'testedOn', { d: fmtDate(x.date) }) : '', x.on || ''].filter(Boolean).join(' · ');
+    const note = noteOf(x);
+    if (!when && !note) return '';
+    return `<p class="card-test ${st}">${when ? `<span class="when">${esc(when)}</span>` : ''}${note ? esc(note) : ''}</p>`;
+  }
+
+  function secLine(p) {
+    const r = p.security && p.security.result;
+    const key = r === 'ok' || r === 'atentie' ? r : 'nefacut';
+    const note = p.security && noteOf(p.security);
+    return `<span class="sec-${key}"${note ? ` title="${esc(note)}"` : ''}>${esc(t('sec_' + key))}</span>`;
+  }
+
+  function loadMore() {
+    const grid = document.getElementById('grid');
+    const next = currentResults.slice(shown, shown + batchSize);
+    next.forEach(p => {
+      if (byDate && p.added !== lastDate) {
+        lastDate = p.added;
+        const head = document.createElement('div');
+        head.className = 'date-head label';
+        const count = dateCounts[p.added];
+        head.innerHTML = `<strong>${fmtDate(p.added)}</strong><span>${count} ${t(count === 1 ? 'one' : 'many')}</span>`;
+        grid.appendChild(head);
+      }
+      const st = statusOf(p);
+      const url = safeUrl(p.url);
+      const card = document.createElement(url ? 'a' : 'article');
+      card.className = 'card is-' + st;
+      if (url) { card.href = url; card.target = '_blank'; card.rel = 'noopener noreferrer'; }
+      const cats = p.cats.length
+        ? `<span class="tags">${p.cats.map(c => `<span class="tag" style="background:${esc(c.color)}">${esc(c.id)}</span>`).join('')}</span>
+           <span class="cat-name">${esc(catName(p.cats[0]))}${p.cats.length > 1 ? ' +' + (p.cats.length - 1) : ''}</span>`
+        : '';
+      card.innerHTML = `
+        <div class="card-head label">${cats}${pill(st)}</div>
+        <div class="card-body">
+          <h3 class="card-title">${esc(p.title)}</h3>
+          ${url ? `<p class="card-repo">${esc(repoOf(url))}</p>` : ''}
+          <p class="card-desc">${esc(descOf(p) || '')}</p>
+          ${(p.software || []).length ? `<div class="card-soft">${p.software.slice(0, 4).map(s => `<span class="sw-chip" data-sw="${esc(s)}">${esc(s)}</span>`).join('')}${p.software.length > 4 ? `<span class="sw-more">+${p.software.length - 4}</span>` : ''}</div>` : ''}
+          ${p.author ? `<p class="card-author">${t('by')} <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span>${p.license ? ` · ${t('license')} ${esc(p.license)}` : ''}</p>` : (p.license ? `<p class="card-author">${t('license')} ${esc(p.license)}</p>` : '')}
+          ${testLine(p, st)}
+        </div>
+        <div class="card-meta label">
+          ${secLine(p)}
+          <span>${fmtDate(p.added)} #${esc(p.n)}</span>
+        </div>`;
+      grid.appendChild(card);
+    });
+    shown += next.length;
+    document.getElementById('sentinel').textContent = !pool.length ? t('empty')
+      : shown >= currentResults.length ? t(currentResults.length ? 'endReached' : 'noMatch')
+      : t('loadingMore');
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting && shown < currentResults.length) loadMore(); });
+  }, { rootMargin: '200px' });
+
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', applyFilters);
+  document.getElementById('resetAll').addEventListener('click', () => {
+    activeCats.clear(); activeAuthors.clear(); activeSoftware.clear(); activeStatus.clear(); applyFilters();
+  });
+  document.getElementById('grid').addEventListener('click', e => {
+    const sw = e.target.closest('.sw-chip');
+    if (sw) { e.preventDefault(); e.stopPropagation(); toggle(activeSoftware, sw.dataset.sw); return; }
+    const a = e.target.closest('.author-link');
+    if (!a) return;
+    e.preventDefault();
+    e.stopPropagation();
+    toggle(activeAuthors, a.dataset.author);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  function setStaticText() {
+    document.documentElement.lang = lang;
+    document.title = t('title');
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+    document.querySelectorAll('[data-i18n-attr]').forEach(el => el.dataset.i18nAttr.split(';').forEach(pair => {
+      const [attr, key] = pair.split(':');
+      el.setAttribute(attr, t(key));
+    }));
+    const lb = document.getElementById('langToggle');
+    lb.setAttribute('aria-label', t('langAria'));
+    lb.title = t('langTitle');
+    document.getElementById('themeToggle').setAttribute('aria-label', themeLabel(document.documentElement.dataset.theme));
+  }
+  function applyLang(next) {
+    lang = next;
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+    const u = new URL(location.href);
+    if (u.searchParams.has('lang')) { u.searchParams.delete('lang'); history.replaceState(null, '', u.pathname + u.search + u.hash); }
+    setStaticText();
+    const keep = shown, page = softPage;
+    renderDiscStrip(); renderSoftware(); goSoftPage(page, false);
+    applyFilters();
+    while (shown < keep && shown < currentResults.length) loadMore();
+  }
+  document.getElementById('langToggle').addEventListener('click', () => applyLang(lang === 'ro' ? 'en' : 'ro'));
+  setStaticText();
+
+  const getJson = url => fetch(url).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  Promise.all([getJson('data/plugins.json'), getJson('data/resources.json').catch(() => ({ categories: [] }))])
+    .then(([lab, res]) => {
+      const defs = {};
+      const order = [];
+      [...(res.categories || []), ...(lab.categories || [])].forEach(c => {
+        if (!defs[c.id]) order.push(c.id);
+        defs[c.id] = { ...defs[c.id], ...c };
+      });
+      const plugins = (lab.plugins || []).filter(p => p && p.title);
+      const used = new Set();
+      plugins.forEach(p => (p.cats || []).forEach(id => used.add(id)));
+      used.forEach(id => { if (!defs[id]) { defs[id] = { id, name: id, color: '#6B6B6B' }; order.push(id); } });
+      categories = order.filter(id => used.has(id)).map(id => defs[id]);
+      pool = plugins
+        .map(p => ({ ...p, cats: (p.cats || []).map(id => defs[id]).filter(Boolean) }))
+        .sort((a, b) => String(b.added).localeCompare(String(a.added)) || (a.n || 0) - (b.n || 0));
+      renderDiscStrip();
+      renderSoftware();
+      applyFilters();
+      observer.observe(document.getElementById('sentinel'));
+    })
+    .catch(() => {
+      document.getElementById('searchMeta').textContent = t('loadError');
+      document.getElementById('sentinel').textContent = t('loadErrorDetail');
+    });
+</script>
+
+</body>
+</html>

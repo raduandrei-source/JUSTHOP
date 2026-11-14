@@ -519,15 +519,15 @@
   .to-list:focus-visible, .to-top:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
   .to-top {
     position: fixed;
-    right: 24px;
+    right: var(--top-right, 12px);   /* JS: la mijlocul spațiului dintre marginea ferestrei și chenarul paginii */
     bottom: 24px;
     z-index: 40;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 1.5px solid var(--border);
-    background: var(--surface);
-    color: var(--ink);
+    border: 1.5px solid var(--ink);
+    background: var(--ink);
+    color: var(--bg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -535,7 +535,7 @@
     gap: 1px;
     padding: 0;
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 0.1em;
     cursor: pointer;
     opacity: 0;
@@ -543,7 +543,7 @@
     transform: translateY(8px);
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
-  .to-top svg { width: 14px; height: 14px; }
+  .to-top svg { width: 12px; height: 12px; }
   .to-top.show { opacity: 1; visibility: visible; transform: none; }
   .to-top:hover { background: var(--lab); border-color: var(--lab); color: #fff; }
 
@@ -1110,6 +1110,15 @@
   const updateToTop = () => toTop.classList.toggle('show', window.scrollY > introBox.offsetTop + introBox.offsetHeight * 0.6);
   window.addEventListener('scroll', updateToTop, { passive: true });
   updateToTop();
+  // TOP stă la mijlocul marginii din dreapta (între fereastră și chenarul de 1280px); pe ecrane înguste, la 12px
+  const pageFrame = document.querySelector('.wrap');
+  function placeToTop() {
+    const gutter = document.documentElement.clientWidth - pageFrame.getBoundingClientRect().right;
+    const right = gutter >= toTop.offsetWidth + 16 ? (gutter - toTop.offsetWidth) / 2 : 12;
+    document.documentElement.style.setProperty('--top-right', right + 'px');
+  }
+  window.addEventListener('resize', placeToTop);
+  placeToTop();
 </script>
 
 </body>

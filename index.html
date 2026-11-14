@@ -158,19 +158,16 @@
 
   /* ---------- DISCIPLINE STRIP ---------- */
   .disc-strip { background: var(--accent); color: #fff; }
-  .disc-strip .inner {
-    max-width: var(--wrap);
-    margin: 0 auto;
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 calc(var(--pad-x) - 10px);
+  /* disciplinele curg încet pe bandă; pauză la hover / focus; fără mișcare => derulare ca înainte */
+  .disc-strip .inner { overflow: hidden; }   /* pe toată lățimea ecranului: textul nu mai e tăiat la marginea coloanei de 1280px */
+  .strip-track { display: flex; width: max-content; animation: strip-flow var(--strip-dur, 90s) linear infinite; }
+  .disc-strip .inner:hover .strip-track, .disc-strip .inner:focus-within .strip-track { animation-play-state: paused; }
+  @keyframes strip-flow { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .disc-strip .inner { overflow-x: auto; scrollbar-width: none; padding: 0 calc(var(--pad-x) - 10px); }
+    .strip-track { animation: none; }
+    .strip-track [data-dup] { display: none; }
   }
-  .disc-strip .inner::-webkit-scrollbar { display: none; }
-  /* estompare la margini când mai sunt categorii de văzut; fără să crească banda */
-  .disc-strip .inner.fade-r { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 44px), transparent); }
-  .disc-strip .inner.fade-l { -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to left, #000 calc(100% - 44px), transparent); }
-  .disc-strip .inner.fade-l.fade-r { -webkit-mask-image: linear-gradient(to right, transparent, #000 44px, #000 calc(100% - 44px), transparent); mask-image: linear-gradient(to right, transparent, #000 44px, #000 calc(100% - 44px), transparent); }
   .disc-strip button {
     flex-shrink: 0;
     height: 32px;
@@ -187,33 +184,41 @@
   /* ---------- INTRO ---------- */
   .intro {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 56px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);   /* dreapta: trei coloane de software */
+    gap: 48px;
     align-items: start;
-    padding: 80px var(--pad-x);
+    align-content: center;
+    position: relative;
+    padding: clamp(32px, 7vh, 80px) var(--pad-x) 104px;   /* jos: loc pentru butonul rotund */
+    /* primul ecran se termină exact sub bara „Adăugate săptămâna asta": header 49 + bandă 32 + bară 42 */
+    min-height: min(calc(100svh - 123px), 880px);
   }
 
   /* caseta „Software": programele din tutoriale, pe pagini; deasupra ei rotița derulează pe orizontală */
-  .soft { min-width: 0; padding-top: 8px; }
-  .soft-head { display: flex; justify-content: space-between; margin: 0 0 10px; color: var(--muted); }
+  .intro-main { align-self: end; }   /* titlul + descrierea coboară: descrierea se termină în dreptul listei de software */
+  .intro-side { position: relative; min-width: 0; padding-top: 8px; }
+  .soft { min-width: 0; margin-top: 28px; }
+  .soft-head { display: flex; justify-content: space-between; margin: 0 0 8px; color: var(--muted); }
   .soft-track {
-    display: flex;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 32px) / 3);   /* exact trei coloane; derularea se oprește mereu pe o coloană întreagă */
+    column-gap: 16px;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    scroll-snap-type: x proximity;
     overscroll-behavior-x: contain;
-    min-height: 228px;
-    margin-left: -8px;                 /* fiecare pagină are 8px spațiu în față: marginea paginii următoare nu mai poate „sângera" */
-    width: calc(100% + 8px);
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+    padding-bottom: 8px;
   }
-  .soft-track::-webkit-scrollbar { display: none; }
-  .soft-page { flex: 0 0 100%; min-width: 0; padding-left: 8px; scroll-snap-align: start; display: flex; flex-direction: column; align-items: stretch; }
   .soft-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 100%;
-    padding: 5px 0;
+    min-width: 0;
+    scroll-snap-align: start;
+    padding: 3px 0;
     border: none;
     background: none;
     font-family: var(--mono);
@@ -239,10 +244,46 @@
   .soft-item.active::before { background: var(--accent-text); border-color: var(--accent-text); }
   .soft-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .soft-count { flex-shrink: 0; font-size: 10px; font-weight: 400; color: var(--muted); }
-  .soft-dots { display: flex; justify-content: flex-start; gap: 9px; margin-top: 14px; min-height: 10px; }
-  .soft-dot { width: 8px; height: 8px; padding: 0; border: 1.5px solid var(--muted); border-radius: 50%; background: transparent; cursor: pointer; }
-  .soft-dot:hover { border-color: var(--ink); }
-  .soft-dot[aria-current="true"] { background: var(--ink); border-color: var(--ink); }
+
+  /* cardul cu ultima postare + cubul care sare */
+  .latest {
+    display: block;
+    position: relative;
+    width: calc((100% - 32px) / 3 * 2 + 16px);   /* deasupra ultimelor două coloane de software */
+    margin-left: auto;
+    padding: 14px 16px 16px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    box-shadow: 2px 2px 0 var(--shadow-rest);
+    text-decoration: none;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .latest:hover { box-shadow: 4px 6px 0 var(--shadow-lift); transform: translate(-1px, -3px); }
+  .latest[hidden] { display: none; }
+  .latest .label { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+  .latest .label .when { margin-left: auto; }
+  .latest h3 { margin: 10px 0 0; font-size: 18px; line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; }
+  .intro .latest p { margin: 6px 0 0; max-width: none; font-size: 14px; line-height: 1.55; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .hop-cube { position: absolute; right: 18px; top: -24px; width: 44px; height: 44px; pointer-events: none; z-index: 2; overflow: visible; transform-origin: 50% 100%; }
+  .hop-cube .stroke { stroke: var(--ink); }
+  .hop-cube.hop { animation: cube-hop 0.65s ease-in-out 1; }
+  .hop-cube.loop { animation: cube-loop 2.4s ease-in-out infinite; }
+  /* se turtește înainte de plecare, se întinde în aer, se turtește la aterizare (origine la bază: „sol" sub cub) */
+  @keyframes cube-hop {
+    0%   { transform: translateY(0) scale(1, 1); }
+    15%  { transform: translateY(0) scale(1.18, 0.8); }
+    45%  { transform: translateY(-15px) scale(0.9, 1.15); }
+    80%  { transform: translateY(0) scale(1.14, 0.86); }
+    100% { transform: translateY(0) scale(1, 1); }
+  }
+  @keyframes cube-loop {
+    0%, 100% { transform: translateY(0) scale(1, 1); }
+    22%  { transform: translateY(0) scale(1.18, 0.8); }
+    38%, 54% { transform: translateY(-13px) scale(0.9, 1.15); }
+    70%  { transform: translateY(0) scale(1.14, 0.86); }
+    80%  { transform: translateY(0) scale(0.97, 1.04); }
+  }
+  @media (prefers-reduced-motion: reduce) { .hop-cube.hop, .hop-cube.loop { animation: none; } }
   .intro h1 {
     margin: 0;
     max-width: 768px;
@@ -558,6 +599,67 @@
     color: var(--muted);
   }
 
+
+  /* butonul rotund de jos: duce la listă, cu bara ei lipită exact sub header; TOP: înapoi sus */
+  .to-list {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .to-list .ring {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    transition: transform 0.15s ease;
+  }
+  .to-list .ring svg, .to-top svg { width: 18px; height: 18px; }
+  .to-list:hover { color: var(--ink); }
+  .to-list:hover .ring { transform: translateY(3px); }
+  .to-list:focus-visible, .to-top:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .to-top {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 40;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    padding: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .to-top svg { width: 14px; height: 14px; }
+  .to-top.show { opacity: 1; visibility: visible; transform: none; }
+  .to-top:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 1024px) {
     .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -565,7 +667,9 @@
   }
   @media (max-width: 860px) {
     :root { --pad-x: 24px; }
-    .intro { grid-template-columns: 1fr; gap: 32px; padding: 56px var(--pad-x); }
+    .intro { grid-template-columns: 1fr; gap: 32px; padding: 56px var(--pad-x) 112px; min-height: 0; }
+    .latest { width: auto; }
+    .soft-track { grid-auto-columns: calc((100% - 16px) / 2); }
     .intro h1 { font-size: 40px; }
     .intro p { font-size: 16px; }
     .week-grid { grid-template-columns: 1fr; }
@@ -585,6 +689,7 @@
 </style>
 </head>
 <body>
+<button class="to-top" id="toTop" type="button" aria-label="Înapoi sus" data-i18n-attr="aria-label:toTopAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 20V5M5 12l7-7 7 7"/></svg><span>TOP</span></button>
 
 <header class="site-header">
   <div class="wrap header-inner">
@@ -631,11 +736,25 @@
       <h1 data-i18n-html="h1">Resurse digitale pentru <em>arhitectură și urbanism.</em></h1>
       <p data-i18n-html="intro">Un hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe 13 discipline. Selectate manual, actualizate în fiecare vineri.</p>
     </div>
-    <aside class="soft" id="soft" aria-label="Software din tutoriale" data-i18n-attr="aria-label:softAria">
-      <div class="soft-head label"><span>Software</span><span id="softCount"></span></div>
-      <div class="soft-track" id="softTrack"></div>
-      <div class="soft-dots" id="softDots" role="group" aria-label="Pagini software" data-i18n-attr="aria-label:softPagesAria"></div>
-    </aside>
+    <div class="intro-side">
+      <svg class="hop-cube" id="hopCube" viewBox="0 0 100 100" aria-hidden="true">
+        <g transform="rotate(12 50 45)">
+          <polygon points="50,12 78,28 50,44 22,28" fill="#1A56DB"/>
+          <polygon class="stroke" points="22,28 50,44 50,74 22,58" fill="none" stroke-width="5"/>
+          <polygon class="stroke" points="78,28 50,44 50,74 78,58" fill="none" stroke-width="5"/>
+          <polygon class="stroke" points="50,12 78,28 50,44 22,28" fill="none" stroke-width="5"/>
+        </g>
+      </svg>
+      <a class="latest" id="latest" hidden target="_blank" rel="noopener"></a>
+      <aside class="soft" id="soft" aria-label="Software din tutoriale" data-i18n-attr="aria-label:softAria">
+        <div class="soft-head label"><span>Software</span><span id="softCount"></span></div>
+        <div class="soft-track" id="softTrack"></div>
+      </aside>
+    </div>
+    <button class="to-list" id="toList" type="button" aria-label="Mergi la resurse" data-i18n-attr="aria-label:toListAria">
+      <span class="label" data-i18n="toList">Resurse</span>
+      <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 4v15M5 12l7 7 7-7"/></svg></span>
+    </button>
   </section>
 
   <section class="section" id="saptamana">
@@ -786,8 +905,8 @@
       navResources: 'Resurse', navNewsletter: 'Newsletter', navAbout: 'Despre',
       h1: 'Resurse digitale pentru <em>arhitectură și urbanism.</em>',
       intro: 'Un hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe {n} discipline. Selectate manual, actualizate în fiecare vineri.',
-      softAria: 'Software din tutoriale', softPagesAria: 'Pagini software', softPage: 'Pagina {i} din {n}', programOne: 'program', programMany: 'programe',
-      weekTitle: 'Adăugate săptămâna asta', weekNote: 'actualizat vinerea',
+      softAria: 'Software din tutoriale', latestNew: 'Nou', programOne: 'program', programMany: 'programe',
+      weekTitle: 'Adăugate săptămâna asta', toList: 'Resurse', toListAria: 'Mergi la resurse', toTopAria: 'Înapoi sus', weekNote: 'actualizat vinerea',
       resourcesTitle: 'Resurse', loading: 'se încarcă...', searchPlaceholder: 'caută titlu, unealtă, categorie...',
       categories: 'Categorii', reset: 'resetează', authors: 'Autori',
       shown: '{n} afișate', resultsFor: '{n} rezultate pentru "{q}"',
@@ -816,8 +935,8 @@
       navResources: 'Resources', navNewsletter: 'Newsletter', navAbout: 'About',
       h1: 'Digital resources for <em>architecture and urban planning.</em>',
       intro: 'A hub of digital resources for learning and research in architecture and urban planning: courses, video tutorials, articles and books about digital tools, organized into {n} disciplines. Hand-picked, updated every Friday.',
-      softAria: 'Software used in tutorials', softPagesAria: 'Software pages', softPage: 'Page {i} of {n}', programOne: 'program', programMany: 'programs',
-      weekTitle: 'Added this week', weekNote: 'updated on Fridays',
+      softAria: 'Software used in tutorials', latestNew: 'New', programOne: 'program', programMany: 'programs',
+      weekTitle: 'Added this week', toList: 'Resources', toListAria: 'Go to resources', toTopAria: 'Back to top', weekNote: 'updated on Fridays',
       resourcesTitle: 'Resources', loading: 'loading...', searchPlaceholder: 'search title, tool, category...',
       categories: 'Categories', reset: 'reset', authors: 'Authors',
       shown: '{n} shown', resultsFor: '{n} results for "{q}"',
@@ -979,7 +1098,11 @@
 
   function renderDiscStrip() {
     const strip = document.getElementById('discStrip');
-    strip.innerHTML = categories.map(c => `<button type="button" data-cat="${c.id}">${c.id} · ${esc(catName(c))}</button>`).join('');
+    const btns = categories.map(c => `<button type="button" data-cat="${c.id}">${c.id} · ${esc(catName(c))}</button>`).join('');
+    // al doilea set e copia care închide bucla; cititoarele de ecran și tastatura îl sar
+    const dup = categories.map(c => `<button type="button" data-cat="${c.id}" data-dup tabindex="-1" aria-hidden="true">${c.id} · ${esc(catName(c))}</button>`).join('');
+    strip.innerHTML = `<div class="strip-track">${btns}${dup}</div>`;
+    strip.querySelector('.strip-track').style.setProperty('--strip-dur', Math.max(40, categories.length * 7) + 's');
     strip.querySelectorAll('button').forEach(b => b.onclick = () => toggleCat(b.dataset.cat));
   }
 
@@ -1053,36 +1176,9 @@
   const justConfirmed = new URLSearchParams(location.search).get('abonat') === '1';
   if (justConfirmed) document.getElementById('nlDone').hidden = false;
 
-  // banda albastră: deasupra ei, rotița mouse-ului derulează pe orizontală; margini estompate cât mai e de văzut
-  function setupStrip() {
-    const strip = document.getElementById('discStrip');
-    const update = () => {
-      const max = strip.scrollWidth - strip.clientWidth;
-      strip.classList.toggle('fade-l', strip.scrollLeft > 4);
-      strip.classList.toggle('fade-r', strip.scrollLeft < max - 4);
-    };
-    strip.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    strip.addEventListener('wheel', e => {
-      const max = strip.scrollWidth - strip.clientWidth;
-      if (max <= 0 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // deja orizontal sau nimic de derulat
-      const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
-      const atStart = strip.scrollLeft <= 0 && dy < 0;
-      const atEnd = strip.scrollLeft >= max - 1 && dy > 0;
-      if (atStart || atEnd) return; // la capete lăsăm pagina să deruleze normal
-      e.preventDefault();
-      strip.scrollLeft += dy;
-    }, { passive: false });
-    update();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
-  }
-
   /* ---------- CASETA „SOFTWARE" ---------- */
-  const SOFT_PER_PAGE = 8;
   const softZone = document.getElementById('soft');
   const softTrack = document.getElementById('softTrack');
-  const softDots = document.getElementById('softDots');
-  let softPage = 0, softPages = 1, softLock = 0;
 
   function toggleSoftware(name) {
     if (activeSoftware.has(name)) activeSoftware.delete(name); else activeSoftware.add(name);
@@ -1097,76 +1193,80 @@
     });
   }
 
-  function updateSoftDots() {
-    softDots.querySelectorAll('.soft-dot').forEach((d, i) => d.setAttribute('aria-current', i === softPage ? 'true' : 'false'));
-  }
-
-  function goSoftPage(i, smooth = true) {
-    softPage = Math.max(0, Math.min(softPages - 1, i));
-    softTrack.scrollTo({ left: softPage * softTrack.clientWidth, behavior: smooth ? 'smooth' : 'auto' });
-    updateSoftDots();
-  }
-
-  // programele vin din câmpul „software" al resurselor: un program nou apare singur, cu pagini și puncte
+  // programele vin din câmpul „software" al resurselor: un program nou apare singur, în coloana următoare
   function renderSoftware() {
     const counts = {};
     pool.forEach(p => (p.software || []).forEach(s => { counts[s] = (counts[s] || 0) + 1; }));
     const names = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b));
-    softPages = Math.max(1, Math.ceil(names.length / SOFT_PER_PAGE));
-    const perPage = Math.ceil(names.length / softPages);        // pagini egale, fără o ultimă pagină cu un singur program
     softTrack.innerHTML = '';
-    for (let i = 0; i < softPages; i++) {
-      const page = document.createElement('div');
-      page.className = 'soft-page';
-      names.slice(i * perPage, (i + 1) * perPage).forEach(n => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'soft-item';
-        b.dataset.sw = n;
-        b.innerHTML = `<span class="soft-name">${esc(n)}</span><span class="soft-count">${counts[n]}</span>`;
-        b.onclick = () => toggleSoftware(n);
-        page.appendChild(b);
-      });
-      softTrack.appendChild(page);
-    }
-    softDots.innerHTML = '';
-    if (softPages > 1) {
-      for (let i = 0; i < softPages; i++) {
-        const d = document.createElement('button');
-        d.type = 'button';
-        d.className = 'soft-dot';
-        d.setAttribute('aria-label', t('softPage', { i: i + 1, n: softPages }));
-        d.onclick = () => goSoftPage(i);
-        softDots.appendChild(d);
-      }
-    }
+    names.forEach(n => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'soft-item';
+      b.dataset.sw = n;
+      b.title = n;
+      b.innerHTML = `<span class="soft-name">${esc(n)}</span><span class="soft-count">${counts[n]}</span>`;
+      b.onclick = () => toggleSoftware(n);
+      softTrack.appendChild(b);
+    });
     document.getElementById('softCount').textContent = names.length + ' ' + t(names.length === 1 ? 'programOne' : 'programMany');
-    softPage = 0;
     softTrack.scrollLeft = 0;
-    updateSoftDots();
     updateSoftwareActive();
   }
 
-  // pagina curentă urmărește derularea (și pe touch / trackpad orizontal)
-  softTrack.addEventListener('scroll', () => {
-    const i = Math.round(softTrack.scrollLeft / Math.max(1, softTrack.clientWidth));
-    if (i !== softPage) { softPage = i; updateSoftDots(); }
-  }, { passive: true });
-  window.addEventListener('resize', () => goSoftPage(softPage, false));
-
-  // rotița, deasupra casetei: o pagină pe gest; la capete (prima/ultima pagină) pagina de pe site derulează mai departe
-  softZone.addEventListener('wheel', e => {
-    if (softPages <= 1 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-    const d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
-    if (Math.abs(d) < 2) return;
-    const now = Date.now();
-    if (now < softLock) { e.preventDefault(); return; }        // gest în curs: nu derula și pagina
-    const next = softPage + (d > 0 ? 1 : -1);
-    if (next < 0 || next >= softPages) return;                 // capăt: lasă derularea verticală normală
+  // rotița deasupra listei mută lista cu o coloană pe gest; la capete pagina derulează mai departe
+  let softLock = 0;
+  softTrack.addEventListener('wheel', e => {
+    const max = softTrack.scrollWidth - softTrack.clientWidth;
+    if (max <= 0 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    const dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+    if (Math.abs(dy) < 2) return;
+    if ((softTrack.scrollLeft <= 0 && dy < 0) || (softTrack.scrollLeft >= max - 1 && dy > 0)) return;
     e.preventDefault();
-    softLock = now + 600;
-    goSoftPage(next);
+    const now = Date.now();
+    if (now < softLock) return;                     // gest în curs: nu sări mai multe coloane deodată
+    softLock = now + 280;
+    const first = softTrack.querySelector('.soft-item');
+    const step = (first ? first.offsetWidth : softTrack.clientWidth / 3) + parseFloat(getComputedStyle(softTrack).columnGap || 0);  // o coloană + spațiul dintre coloane
+    const col = Math.round(softTrack.scrollLeft / step) + (dy > 0 ? 1 : -1);
+    softTrack.scrollTo({ left: Math.max(0, Math.min(max, col * step)), behavior: 'smooth' });
   }, { passive: false });
+
+  /* ---------- CARDUL „NOU" ȘI CUBUL ---------- */
+  // ultima postare = resursa cu cel mai mare număr din cel mai nou lot
+  function renderLatest() {
+    const box = document.getElementById('latest');
+    if (!pool.length) { box.hidden = true; return; }
+    const day = pool[0].added;
+    const p = pool.filter(r => r.added === day).reduce((a, b) => (b.n > a.n ? b : a));
+    const tags = p.cats.map(c => `<span class="tag" style="background:${c.color}">${c.id}</span>`).join('');
+    if (p.url) box.href = p.url; else box.removeAttribute('href');
+    box.innerHTML = `
+      <div class="label"><span class="tags">${tags}</span><span>${esc(platformOf(p.platform))}</span><span class="when">${t('latestNew')} · ${fmtDate(p.added)}</span></div>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(lang === 'en' ? (p.descEn || p.desc) : p.desc)}</p>`;
+    box.hidden = false;
+  }
+
+  // cubul sare: ?cub=a => doar pe card (în buclă cât ții mouse-ul acolo); altfel (b) la fiecare element clicabil
+  const hopCube = document.getElementById('hopCube');
+  const cubeMode = new URLSearchParams(location.search).get('cub') === 'a' ? 'a' : 'b';
+  function hop() {
+    hopCube.classList.remove('hop');
+    void hopCube.getBoundingClientRect();
+    hopCube.classList.add('hop');
+  }
+  const latestBox = document.getElementById('latest');
+  latestBox.addEventListener('mouseenter', () => {
+    if (cubeMode === 'a') hopCube.classList.add('loop'); else hop();
+  });
+  latestBox.addEventListener('mouseleave', () => hopCube.classList.remove('loop'));
+  if (cubeMode === 'b') {
+    document.addEventListener('mouseover', e => {
+      const el = e.target.closest && e.target.closest('.disc-strip button, .soft-item, .to-list');
+      if (el && !el.contains(e.relatedTarget)) hop();
+    });
+  }
 
   // „săptămâna asta" = resursele din ultimele 7 zile față de cel mai recent lot (primele 3)
   function renderWeek() {
@@ -1316,8 +1416,8 @@
     if (u.searchParams.has('lang')) { u.searchParams.delete('lang'); history.replaceState(null, '', u.pathname + u.search + u.hash); }
     setStaticText();
     if (pool.length) {
-      const keep = shown, page = softPage;
-      renderDiscStrip(); renderFooterCats(); renderNewsletterCats(); renderWeek(); renderSoftware(); goSoftPage(page, false);
+      const keep = shown;
+      renderDiscStrip(); renderFooterCats(); renderNewsletterCats(); renderWeek(); renderLatest(); renderSoftware();
       applyFilters();
       while (shown < keep && shown < currentResults.length) loadMore();   // aceeași porțiune din grilă, ca pagina să nu sară
     }
@@ -1336,10 +1436,10 @@
         .sort((a, b) => b.added.localeCompare(a.added) || a.n - b.n);
       setStaticText();     // numărul de discipline din introducere
       renderDiscStrip();
-      setupStrip();
       renderFooterCats();
       renderNewsletterCats();
       renderWeek();
+      renderLatest();
       renderSoftware();
       applyFilters();
       observer.observe(document.getElementById('sentinel'));
@@ -1349,6 +1449,22 @@
       document.getElementById('searchMeta').textContent = t('loadError');
       document.getElementById('sentinel').textContent = t('loadErrorDetail');
     });
+
+  /* ---------- BUTOANELE „LA LISTĂ" ȘI „TOP" ---------- */
+  // coborâre lină până la listă: bara ei ajunge exact sub header, fără bandă ruptă între ele
+  const siteHeader = document.querySelector('.site-header');
+  const noMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('toList').addEventListener('click', () => {
+    const el = document.getElementById('resurse');
+    const y = el.getBoundingClientRect().top + window.scrollY - (siteHeader.offsetHeight - 1);
+    window.scrollTo({ top: Math.round(y), behavior: noMotion ? 'auto' : 'smooth' });
+  });
+  const toTop = document.getElementById('toTop');
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: noMotion ? 'auto' : 'smooth' }));
+  const introBox = document.querySelector('.intro');
+  const updateToTop = () => toTop.classList.toggle('show', window.scrollY > introBox.offsetTop + introBox.offsetHeight * 0.6);
+  window.addEventListener('scroll', updateToTop, { passive: true });
+  updateToTop();
 </script>
 
 </body>

@@ -1,0 +1,402 @@
+{
+  "_info": "Lista 1 (goals) = ce bifează vizitatorul; lista 2 (steps) = piesele din care se compune răspunsul. Pașii aleși se pun în ordinea câmpului order, fără dubluri; între doi pași consecutivi site-ul arată formatele comune (out al primului ∩ in al celui de-al doilea). Programele din steps.software se iau din data/software.json (link, licență); tutorialele se caută automat în resources.json după software.",
+  "goals": [
+    {
+      "id": "harta-curatare",
+      "group": "Hărți vechi și imagini",
+      "groupEn": "Old maps and images",
+      "label": "Curăț și restaurez o hartă sau o imagine scanată",
+      "labelEn": "Clean up and restore a scanned map or image",
+      "steps": [
+        "scanare",
+        "restaurare"
+      ]
+    },
+    {
+      "id": "harta-georef",
+      "group": "Hărți vechi și imagini",
+      "groupEn": "Old maps and images",
+      "label": "Așez o hartă veche pe coordonate reale (georeferențiere)",
+      "labelEn": "Place an old map on real coordinates (georeferencing)",
+      "steps": [
+        "scanare",
+        "georeferentiere"
+      ]
+    },
+    {
+      "id": "harta-vector",
+      "group": "Hărți vechi și imagini",
+      "groupEn": "Old maps and images",
+      "label": "Vectorizez o hartă: străzi, clădiri, parcele",
+      "labelEn": "Vectorize a map: streets, buildings, plots",
+      "steps": [
+        "scanare",
+        "georeferentiere",
+        "vectorizare-gis"
+      ]
+    },
+    {
+      "id": "harta-cad",
+      "group": "Hărți vechi și imagini",
+      "groupEn": "Old maps and images",
+      "label": "Duc desenul în CAD (DWG / DXF / Rhino)",
+      "labelEn": "Take the drawing into CAD (DWG / DXF / Rhino)",
+      "steps": [
+        "export-cad"
+      ]
+    },
+    {
+      "id": "harta-publicare",
+      "group": "Hărți vechi și imagini",
+      "groupEn": "Old maps and images",
+      "label": "Public harta: planșă PDF, imagine sau pagină web",
+      "labelEn": "Publish the map: PDF sheet, image or web page",
+      "steps": [
+        "publicare-harta"
+      ]
+    },
+    {
+      "id": "osm-date",
+      "group": "Analiză urbană",
+      "groupEn": "Urban analysis",
+      "label": "Descarc străzi și clădiri din OpenStreetMap",
+      "labelEn": "Download streets and buildings from OpenStreetMap",
+      "steps": [
+        "date-osm"
+      ]
+    },
+    {
+      "id": "osm-retea",
+      "group": "Analiză urbană",
+      "groupEn": "Urban analysis",
+      "label": "Analizez rețeaua de străzi și accesibilitatea pietonală",
+      "labelEn": "Analyse the street network and walkability",
+      "steps": [
+        "date-osm",
+        "analiza-retea"
+      ]
+    },
+    {
+      "id": "osm-harta",
+      "group": "Analiză urbană",
+      "groupEn": "Urban analysis",
+      "label": "Fac o hartă urbană ilustrativă",
+      "labelEn": "Make an illustrative urban map",
+      "steps": [
+        "date-osm",
+        "publicare-harta"
+      ]
+    },
+    {
+      "id": "randare",
+      "group": "Vizualizare",
+      "groupEn": "Visualization",
+      "label": "Randez un model 3D",
+      "labelEn": "Render a 3D model",
+      "steps": [
+        "randare-blender"
+      ]
+    },
+    {
+      "id": "imagine-ai",
+      "group": "Vizualizare",
+      "groupEn": "Visualization",
+      "label": "Generez sau editez imagini cu AI",
+      "labelEn": "Generate or edit images with AI",
+      "steps": [
+        "imagini-ai"
+      ]
+    },
+    {
+      "id": "bibliografie",
+      "group": "Cercetare și automatizare",
+      "groupEn": "Research and automation",
+      "label": "Organizez bibliografia și citările",
+      "labelEn": "Organise references and citations",
+      "steps": [
+        "zotero"
+      ]
+    },
+    {
+      "id": "raport",
+      "group": "Cercetare și automatizare",
+      "groupEn": "Research and automation",
+      "label": "Scriu un memoriu sau un raport, cu tabele și prezentare",
+      "labelEn": "Write a report, with spreadsheets and slides",
+      "steps": [
+        "documente-office"
+      ]
+    },
+    {
+      "id": "agent-ai",
+      "group": "Cercetare și automatizare",
+      "groupEn": "Research and automation",
+      "label": "Automatizez sarcini repetitive cu un agent AI",
+      "labelEn": "Automate repetitive tasks with an AI agent",
+      "steps": [
+        "agent-ai"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "scanare",
+      "order": 10,
+      "title": "Scanează sau fotografiază originalul",
+      "titleEn": "Scan or photograph the original",
+      "text": "300–600 dpi, fără compresie (TIFF sau PNG). Păstrează o copie neatinsă a scanării: pe ea faci georeferențierea și desenul precis.",
+      "textEn": "300–600 dpi, uncompressed (TIFF or PNG). Keep an untouched copy of the scan: use it for georeferencing and precise drawing.",
+      "software": [],
+      "in": [],
+      "out": [
+        "TIFF",
+        "PNG",
+        "JPG"
+      ]
+    },
+    {
+      "id": "restaurare",
+      "order": 15,
+      "title": "Curăță și restaurează imaginea",
+      "titleEn": "Clean up and restore the image",
+      "text": "Pete, culori decolorate, zone rupte. Cu ArtCraft descrii în cuvinte ce să repare. Atenție: AI-ul poate inventa detalii, deci versiunea restaurată e pentru prezentare, nu pentru măsurători.",
+      "textEn": "Stains, faded colours, torn areas. In ArtCraft you describe in words what to fix. Careful: AI can invent details, so the restored version is for presentation, not for measuring.",
+      "software": [
+        "ArtCraft"
+      ],
+      "in": [
+        "PNG",
+        "JPG",
+        "TIFF"
+      ],
+      "out": [
+        "PNG",
+        "JPG"
+      ]
+    },
+    {
+      "id": "georeferentiere",
+      "order": 20,
+      "title": "Georeferențiază harta",
+      "titleEn": "Georeference the map",
+      "text": "În QGIS, Georeferencer: pui puncte de control pe locuri care există și azi (intersecții, biserici, colțuri de clădiri) și alegi sistemul de coordonate; pentru România, de obicei Stereo 70 (EPSG:3844). Rezultatul e o imagine care se așază singură pe hartă.",
+      "textEn": "In QGIS, Georeferencer: place control points on features that still exist (crossroads, churches, building corners) and choose the coordinate system; for Romania, usually Stereo 70 (EPSG:3844). The result is an image that lands in place on the map.",
+      "software": [
+        "QGIS"
+      ],
+      "in": [
+        "TIFF",
+        "PNG",
+        "JPG"
+      ],
+      "out": [
+        "GeoTIFF"
+      ]
+    },
+    {
+      "id": "vectorizare-gis",
+      "order": 30,
+      "title": "Vectorizează în GIS",
+      "titleEn": "Vectorize in GIS",
+      "text": "Desenezi peste harta georeferențiată straturi separate: străzi (linii), clădiri și parcele (poligoane), cu atribute (an, funcție). Vectorizarea automată merge doar pe zone curate, de o singură culoare.",
+      "textEn": "Draw separate layers over the georeferenced map: streets (lines), buildings and plots (polygons), with attributes (year, use). Automatic vectorizing only works on clean, single-colour areas.",
+      "software": [
+        "QGIS"
+      ],
+      "in": [
+        "GeoTIFF"
+      ],
+      "out": [
+        "GeoPackage",
+        "Shapefile",
+        "GeoJSON",
+        "DXF"
+      ]
+    },
+    {
+      "id": "date-osm",
+      "order": 25,
+      "title": "Descarcă datele din OpenStreetMap",
+      "titleEn": "Download the OpenStreetMap data",
+      "text": "În QGIS cu pluginul QuickOSM, sau din Python cu OSMnx. Alegi zona și ce vrei: străzi, clădiri, spații verzi.",
+      "textEn": "In QGIS with the QuickOSM plugin, or from Python with OSMnx. Choose the area and what you need: streets, buildings, green spaces.",
+      "software": [
+        "QGIS",
+        "OSMnx"
+      ],
+      "in": [],
+      "out": [
+        "GeoPackage",
+        "GeoJSON",
+        "Shapefile"
+      ]
+    },
+    {
+      "id": "analiza-retea",
+      "order": 40,
+      "title": "Analizează rețeaua de străzi",
+      "titleEn": "Analyse the street network",
+      "text": "Cu OSMnx și GeoPandas: distanțe de mers pe jos, izocrone, conectivitate. Rezultatele se întorc în QGIS pentru hartă.",
+      "textEn": "With OSMnx and GeoPandas: walking distances, isochrones, connectivity. Results go back to QGIS for mapping.",
+      "software": [
+        "Python",
+        "OSMnx",
+        "GeoPandas"
+      ],
+      "in": [
+        "GeoPackage",
+        "GeoJSON"
+      ],
+      "out": [
+        "GeoPackage",
+        "GeoJSON",
+        "CSV"
+      ]
+    },
+    {
+      "id": "export-cad",
+      "order": 50,
+      "title": "Exportă în CAD",
+      "titleEn": "Export to CAD",
+      "text": "Din QGIS: Proiect > Import/Export > Exportă proiectul în DXF. Coordonatele rămân reale (în metri), deci desenul se suprapune cu alte planuri. Deschizi DXF-ul în AutoCAD sau Rhino și salvezi ca DWG / 3DM.",
+      "textEn": "From QGIS: Project > Import/Export > Export Project to DXF. Coordinates stay real (in metres), so the drawing overlays other plans. Open the DXF in AutoCAD or Rhino and save as DWG / 3DM.",
+      "software": [
+        "QGIS",
+        "AutoCAD",
+        "Rhino"
+      ],
+      "in": [
+        "GeoPackage",
+        "Shapefile",
+        "GeoJSON",
+        "DXF"
+      ],
+      "out": [
+        "DXF",
+        "DWG",
+        "3DM"
+      ]
+    },
+    {
+      "id": "publicare-harta",
+      "order": 70,
+      "title": "Pregătește harta pentru publicare",
+      "titleEn": "Prepare the map for publishing",
+      "text": "În QGIS, Layout: planșă cu titlu, scară, nord și sursă, exportată PDF, PNG sau SVG. Pentru web, pluginul qgis2web face o pagină interactivă.",
+      "textEn": "In QGIS, Layout: a sheet with title, scale bar, north arrow and source, exported as PDF, PNG or SVG. For the web, the qgis2web plugin makes an interactive page.",
+      "software": [
+        "QGIS"
+      ],
+      "in": [
+        "GeoTIFF",
+        "GeoPackage",
+        "Shapefile",
+        "GeoJSON",
+        "PNG",
+        "JPG"
+      ],
+      "out": [
+        "PDF",
+        "PNG",
+        "SVG",
+        "HTML"
+      ]
+    },
+    {
+      "id": "randare-blender",
+      "order": 60,
+      "title": "Randează în Blender",
+      "titleEn": "Render in Blender",
+      "text": "Importă modelul (OBJ, FBX sau glTF din Rhino, SketchUp ori Revit), pune materiale și lumină, randează cu Cycles sau Eevee.",
+      "textEn": "Import the model (OBJ, FBX or glTF from Rhino, SketchUp or Revit), add materials and light, render with Cycles or Eevee.",
+      "software": [
+        "Blender"
+      ],
+      "in": [
+        "OBJ",
+        "FBX",
+        "glTF"
+      ],
+      "out": [
+        "PNG",
+        "EXR",
+        "MP4"
+      ]
+    },
+    {
+      "id": "imagini-ai",
+      "order": 65,
+      "title": "Generează sau editează imagini cu AI",
+      "titleEn": "Generate or edit images with AI",
+      "text": "În ArtCraft pornești de la o schiță, o randare sau o fotografie și descrii ce să schimbe. Bun pentru variante rapide de atmosferă și materiale.",
+      "textEn": "In ArtCraft you start from a sketch, render or photo and describe what to change. Good for quick variations of mood and materials.",
+      "software": [
+        "ArtCraft"
+      ],
+      "in": [
+        "PNG",
+        "JPG"
+      ],
+      "out": [
+        "PNG",
+        "JPG",
+        "MP4"
+      ]
+    },
+    {
+      "id": "zotero",
+      "order": 80,
+      "title": "Organizează sursele în Zotero",
+      "titleEn": "Organise sources in Zotero",
+      "text": "Salvezi articole și cărți din browser cu Zotero Connector, le pui în colecții și inserezi citări în Word sau LibreOffice în stilul cerut.",
+      "textEn": "Save articles and books from the browser with Zotero Connector, sort them into collections and insert citations in Word or LibreOffice in the required style.",
+      "software": [
+        "Zotero"
+      ],
+      "in": [
+        "PDF"
+      ],
+      "out": [
+        "BibTeX",
+        "RIS",
+        "DOCX"
+      ]
+    },
+    {
+      "id": "agent-ai",
+      "order": 85,
+      "title": "Pune un agent AI la treabă",
+      "titleEn": "Put an AI agent to work",
+      "text": "Hermes Agent rulează pe calculatorul tău și poate face pași repetitivi: redenumit și sortat fișiere, rezumat documente, rulat scripturi. Verifică ce face înainte să-i dai acces la foldere importante.",
+      "textEn": "Hermes Agent runs on your computer and can handle repetitive steps: renaming and sorting files, summarising documents, running scripts. Check what it does before giving it access to important folders.",
+      "software": [
+        "Hermes Agent"
+      ],
+      "in": [],
+      "out": []
+    },
+    {
+      "id": "documente-office",
+      "order": 85,
+      "title": "Scrie memoriul, tabelele și prezentarea",
+      "titleEn": "Write the report, spreadsheets and slides",
+      "text": "Textul, tabelele de calcul și prezentarea, într-o suită open-source compatibilă cu Word, Excel și PowerPoint; la final exporți PDF pentru predare.",
+      "textEn": "The text, spreadsheets and presentation in an open-source suite compatible with Word, Excel and PowerPoint; export a PDF at the end for submission.",
+      "software": [
+        "OnlyOffice"
+      ],
+      "in": [
+        "DOCX",
+        "XLSX",
+        "PPTX",
+        "CSV"
+      ],
+      "out": [
+        "DOCX",
+        "XLSX",
+        "PPTX",
+        "PDF"
+      ]
+    }
+  ]
+}

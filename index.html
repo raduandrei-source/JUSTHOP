@@ -264,6 +264,63 @@
   .latest .label .when { margin-left: auto; }
   .latest h3 { margin: 10px 0 0; font-size: 18px; line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; }
   .intro .latest p { margin: 6px 0 0; max-width: none; font-size: 14px; line-height: 1.55; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* caseta „Workflow sugerat" folosește forma cardului „Nou" */
+  .helper { font: inherit; color: inherit; text-align: left; cursor: pointer; }
+  .helper .h3 { display: block; margin: 10px 0 0; font-size: 20px; line-height: 1.3; font-weight: 500; letter-spacing: -0.015em; }
+  .helper .p { display: block; margin: 6px 0 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
+  .helper .when { color: var(--accent-text); }
+  .help-mark { display: inline-grid; place-items: center; width: 16px; height: 16px; background: var(--accent); color: #fff; font-weight: 700; letter-spacing: 0; }
+  .helper:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+
+  /* fereastra de workflow: bife în stânga, răspunsul compus în dreapta */
+  dialog.wf {
+    width: min(1040px, calc(100vw - 32px));
+    max-height: calc(100vh - 48px);
+    padding: 0;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    color: var(--ink);
+    box-shadow: 6px 8px 0 var(--shadow-lift);
+  }
+  dialog.wf[open] { display: flex; flex-direction: column; }
+  dialog.wf::backdrop { background: rgba(28, 28, 28, 0.4); }
+  .wf-head { display: flex; align-items: center; gap: 16px; padding: 0 0 0 24px; height: 48px; flex-shrink: 0; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .wf-head strong { font-weight: 400; }
+  .wf-head .wf-sub { color: var(--muted); }
+  .wf-close { margin-left: auto; width: 48px; height: 100%; border: none; border-left: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 22px; line-height: 1; }
+  .wf-close:hover { background: var(--bg); }
+  .wf-body { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); min-height: 0; flex: 1; }
+  .wf-goals, .wf-result { overflow-y: auto; padding: 20px 24px 28px; }
+  .wf-goals { border-right: 1px solid var(--line); }
+  .wf-goals fieldset { border: 0; margin: 0 0 18px; padding: 0; }
+  .wf-goals legend { padding: 0; margin-bottom: 6px; color: var(--muted); }
+  .wf-goals label { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; font-size: 14px; line-height: 1.4; cursor: pointer; }
+  .wf-goals label:hover { color: var(--accent-text); }
+  .wf-goals input { accent-color: var(--accent-text); margin: 2px 0 0; flex-shrink: 0; }
+  .wf-empty { color: var(--muted); font-size: 14px; }
+  .wf-steps { list-style: none; margin: 0; padding: 0; }
+  .wf-step { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 12px; padding: 14px 16px 16px; background: var(--surface); border: 1.5px solid var(--border); }
+  .wf-n { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent-text); padding-top: 2px; }
+  .wf-step h4 { margin: 0; font-size: 17px; line-height: 1.35; font-weight: 500; }
+  .wf-step p { margin: 4px 0 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
+  .wf-progs { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; }
+  .wf-prog { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; }
+  .wf-prog a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .wf-prog a:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
+  .wf-lic { font-size: 10px; padding: 0 5px; border: 1px solid var(--rule); color: var(--muted); }
+  .wf-lic.oss { border-color: var(--accent-text); color: var(--accent-text); }
+  .wf-tuts { border: none; background: none; padding: 0; cursor: pointer; font: inherit; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+  .wf-tuts:hover { color: var(--accent-text); }
+  .wf-fmt { display: flex; align-items: center; gap: 10px; padding: 8px 0 8px 18px; color: var(--muted); }
+  .wf-fmt::before { content: '↓'; font-family: var(--mono); color: var(--accent-text); }
+  .wf-fmt.none::before { content: ''; }
+  .wf-note { margin: 18px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
+  @media (max-width: 860px) {
+    .wf-body { grid-template-columns: 1fr; overflow-y: auto; }
+    .wf-goals, .wf-result { overflow: visible; }
+    .wf-goals { border-right: none; border-bottom: 1px solid var(--line); }
+  }
   /* implicit pe colțul cardului; pe ecrane late JS îl mută la mijloc între titlu și card (placeCube) */
   .hop-cube { position: absolute; right: 18px; top: -48px; width: 88px; height: 88px; pointer-events: none; z-index: 2; overflow: visible; transform-origin: 50% 100%; }
   .hop-cube .stroke { stroke: var(--ink); }
@@ -709,6 +766,14 @@
 </style>
 </head>
 <body>
+<dialog class="wf" id="wf" aria-labelledby="wfHead">
+  <div class="wf-head label"><strong id="wfHead" data-i18n="wfLabel">Workflow sugerat</strong><span class="wf-sub hide-sm" data-i18n="wfSub">bifează în stânga, răspunsul apare în dreapta</span><button class="wf-close" id="wfClose" type="button" aria-label="Închide" data-i18n-attr="aria-label:wfClose">×</button></div>
+  <div class="wf-body">
+    <form class="wf-goals" id="wfGoals"></form>
+    <div class="wf-result" id="wfResult" aria-live="polite"></div>
+  </div>
+</dialog>
+
 <button class="to-top" id="toTop" type="button" aria-label="Înapoi sus" data-i18n-attr="aria-label:toTopAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 20V5M5 12l7-7 7 7"/></svg><span>TOP</span></button>
 
 <header class="site-header">
@@ -765,7 +830,12 @@
           <polygon class="stroke" points="50,12 78,28 50,44 22,28" fill="none" stroke-width="5"/>
         </g>
       </svg>
-      <a class="latest" id="latest" hidden target="_blank" rel="noopener"></a>
+      <!-- caseta „Workflow sugerat" (în locul cardului „Nou"): deschide fereastra cu bife; id-ul rămâne „latest" pentru cub -->
+      <button class="latest helper" id="latest" type="button" aria-haspopup="dialog">
+        <span class="label"><span class="help-mark" aria-hidden="true">?</span><span data-i18n="wfLabel">Workflow sugerat</span><span class="when" data-i18n="wfGo">alege →</span></span>
+        <span class="h3" data-i18n="wfTitle">Ce vrei să faci?</span>
+        <span class="p" data-i18n="wfText">Bifează ce ai de lucrat și îți propun programele, ordinea pașilor și formatele care trec de la un program la altul.</span>
+      </button>
       <aside class="soft" id="soft" aria-label="Software din tutoriale" data-i18n-attr="aria-label:softAria">
         <div class="soft-head label"><span>Software</span><span id="softCount"></span></div>
         <div class="soft-track" id="softTrack"></div>
@@ -927,6 +997,13 @@
       h1: 'Resurse digitale pentru <em>arhitectură și urbanism.</em>',
       intro: 'Un hub de resurse digitale pentru învățare și cercetare în arhitectură și urbanism: cursuri, tutoriale video, articole și cărți despre uneltele digitale, organizate pe {n} discipline. Selectate manual, actualizate în fiecare vineri.',
       softAria: 'Software din tutoriale', latestNew: 'Nou', programOne: 'program', programMany: 'programe',
+      wfLabel: 'Workflow sugerat', wfGo: 'alege →', wfTitle: 'Ce vrei să faci?',
+      wfText: 'Bifează ce ai de lucrat și îți propun programele, ordinea pașilor și formatele care trec de la un program la altul.',
+      wfSub: 'bifează în stânga, răspunsul apare în dreapta', wfClose: 'Închide', wfLoading: 'se încarcă...',
+      wfEmpty: 'Bifează în stânga unul sau mai multe lucruri pe care vrei să le faci. Pașii se pun singuri în ordine, fără dubluri.',
+      wfOss: 'open source', wfPaid: 'comercial', wfTutOne: '1 tutorial', wfTutMany: '{n} tutoriale',
+      wfNote: 'Între pași sunt formatele de fișier pe care le poate citi pasul următor. Linkurile duc la site-urile oficiale ale programelor.',
+      wfError: 'nu am putut încărca data/workflows.json',
       weekTitle: 'Adăugate săptămâna asta', toList: 'Resurse', toListAria: 'Mergi la resurse', toTopAria: 'Înapoi sus', weekNote: 'actualizat vinerea',
       resourcesTitle: 'Resurse', loading: 'se încarcă...', searchPlaceholder: 'caută titlu, unealtă, categorie...',
       categories: 'Categorii', reset: 'resetează', authors: 'Autori', oss: 'Open-source', ossTag: 'open-source',
@@ -957,6 +1034,13 @@
       h1: 'Digital resources for <em>architecture and urban planning.</em>',
       intro: 'A hub of digital resources for learning and research in architecture and urban planning: courses, video tutorials, articles and books about digital tools, organized into {n} disciplines. Hand-picked, updated every Friday.',
       softAria: 'Software used in tutorials', latestNew: 'New', programOne: 'program', programMany: 'programs',
+      wfLabel: 'Suggested workflow', wfGo: 'choose →', wfTitle: 'What do you want to do?',
+      wfText: 'Tick what you need to do and get the programs, the order of the steps and the file formats that pass from one program to the next.',
+      wfSub: 'tick on the left, the answer appears on the right', wfClose: 'Close', wfLoading: 'loading...',
+      wfEmpty: 'Tick one or more things you want to do on the left. The steps fall into order by themselves, without duplicates.',
+      wfOss: 'open source', wfPaid: 'commercial', wfTutOne: '1 tutorial', wfTutMany: '{n} tutorials',
+      wfNote: 'Between steps are the file formats the next step can read. Links go to the programs’ official websites.',
+      wfError: 'could not load data/workflows.json',
       weekTitle: 'Added this week', toList: 'Resources', toListAria: 'Go to resources', toTopAria: 'Back to top', weekNote: 'updated on Fridays',
       resourcesTitle: 'Resources', loading: 'loading...', searchPlaceholder: 'search title, tool, category...',
       categories: 'Categories', reset: 'reset', authors: 'Authors', oss: 'Open source', ossTag: 'open source',
@@ -1270,22 +1354,91 @@
     softTrack.scrollTo({ left: Math.max(0, Math.min(max, col * step)), behavior: 'smooth' });
   }, { passive: false });
 
-  /* ---------- CARDUL „NOU" ȘI CUBUL ---------- */
-  // ultima postare = resursa cu cel mai mare număr din cel mai nou lot
-  function renderLatest() {
-    const box = document.getElementById('latest');
-    if (!pool.length) { box.hidden = true; return; }
-    const day = pool[0].added;
-    const p = pool.filter(r => r.added === day).reduce((a, b) => (b.n > a.n ? b : a));
-    const tags = p.cats.map(c => `<span class="tag" style="background:${c.color}">${c.id}</span>`).join('');
-    if (p.url) box.href = p.url; else box.removeAttribute('href');
-    box.innerHTML = `
-      <div class="label"><span class="tags">${tags}</span><span>${esc(platformOf(p.platform))}</span><span class="when">${t('latestNew')} · ${fmtDate(p.added)}</span></div>
-      <h3>${esc(p.title)}</h3>
-      <p>${esc(lang === 'en' ? (p.descEn || p.desc) : p.desc)}</p>`;
-    box.hidden = false;
-    placeCube();   // titlul și cardul se pot schimba (limbă, text): cubul se repoziționează
+  /* ---------- CASETA „WORKFLOW SUGERAT" ---------- */
+  // lista 1 (goals) = bifele; lista 2 (steps) = piesele răspunsului; programele vin din data/software.json,
+  // tutorialele se numără din resources.json după câmpul software, deci cresc singure cu postările
+  let wfData = null, wfSoft = {}, wfLoad = null;
+  const wfDialog = document.getElementById('wf');
+  const wfGoalsBox = document.getElementById('wfGoals');
+  const wfResult = document.getElementById('wfResult');
+  const L = (o, k) => (lang === 'en' && o[k + 'En']) ? o[k + 'En'] : o[k];
+
+  function loadWorkflows() {
+    if (!wfLoad) {
+      wfLoad = Promise.all(['data/workflows.json', 'data/software.json'].map(u => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })))
+        .then(([wf, sw]) => { wfData = wf; wfSoft = Object.fromEntries((sw.programs || []).map(p => [p.name.toLowerCase(), p])); })
+        .catch(e => { wfLoad = null; throw e; });
+    }
+    return wfLoad;
   }
+
+  function renderWfGoals() {
+    if (!wfData) return;
+    const checked = new Set([...wfGoalsBox.querySelectorAll('input:checked')].map(i => i.value));
+    const groups = [];
+    wfData.goals.forEach(g => {
+      let grp = groups.find(x => x.key === g.group);
+      if (!grp) groups.push(grp = { key: g.group, name: L(g, 'group'), goals: [] });
+      grp.goals.push(g);
+    });
+    wfGoalsBox.innerHTML = groups.map(grp => `<fieldset><legend class="label">${esc(grp.name)}</legend>${grp.goals.map(g =>
+      `<label><input type="checkbox" value="${esc(g.id)}"${checked.has(g.id) ? ' checked' : ''}><span>${esc(L(g, 'label'))}</span></label>`).join('')}</fieldset>`).join('');
+  }
+
+  const tutCount = name => pool.filter(p => (p.software || []).some(s => s.toLowerCase() === name.toLowerCase())).length;
+
+  function progHtml(name) {
+    const p = wfSoft[name.toLowerCase()];
+    const n = tutCount(name);
+    const label = p && /^https?:\/\//.test(p.url || '') ? `<a href="${esc(p.url)}" target="_blank" rel="noopener" title="${esc(L(p, 'desc') || '')}">${esc(name)}</a>` : esc(name);
+    const lic = p ? `<span class="wf-lic${p.openSource ? ' oss' : ''}">${esc(t(p.openSource ? 'wfOss' : 'wfPaid'))}</span>` : '';
+    const tuts = n ? `<button type="button" class="wf-tuts" data-sw="${esc(name)}">${esc(n === 1 ? t('wfTutOne') : t('wfTutMany', { n }))}</button>` : '';
+    return `<span class="wf-prog">${label}${lic}${tuts}</span>`;
+  }
+
+  // pașii aleși, în ordinea câmpului order, fără dubluri; între doi pași: formatele comune (out ∩ in)
+  function renderWfResult() {
+    if (!wfData) return;
+    const ids = [...wfGoalsBox.querySelectorAll('input:checked')].map(i => i.value);
+    const want = new Set(wfData.goals.filter(g => ids.includes(g.id)).flatMap(g => g.steps));
+    const steps = wfData.steps.filter(s => want.has(s.id)).sort((a, b) => a.order - b.order);
+    if (!steps.length) { wfResult.innerHTML = `<p class="wf-empty">${esc(t('wfEmpty'))}</p>`; return; }
+    let html = '<ol class="wf-steps">';
+    steps.forEach((s, i) => {
+      if (i) {
+        const common = (steps[i - 1].out || []).filter(f => (s.in || []).includes(f));
+        html += `<li class="wf-fmt label${common.length ? '' : ' none'}">${esc(common.join(' · '))}</li>`;
+      }
+      html += `<li class="wf-step"><span class="wf-n">${String(i + 1).padStart(2, '0')}</span><div>
+        <h4>${esc(L(s, 'title'))}</h4><p>${esc(L(s, 'text'))}</p>
+        ${(s.software || []).length ? `<div class="wf-progs">${s.software.map(progHtml).join('')}</div>` : ''}</div></li>`;
+    });
+    wfResult.innerHTML = html + `</ol><p class="wf-note">${esc(t('wfNote'))}</p>`;
+  }
+
+  function renderWorkflow() { renderWfGoals(); renderWfResult(); }
+
+  function openWorkflow() {
+    if (!wfDialog.open) wfDialog.showModal();
+    if (wfData) return renderWorkflow();
+    wfResult.innerHTML = `<p class="wf-empty">${esc(t('wfLoading'))}</p>`;
+    loadWorkflows().then(renderWorkflow).catch(() => { wfResult.innerHTML = `<p class="wf-empty">${esc(t('wfError'))}</p>`; });
+  }
+  document.getElementById('latest').addEventListener('click', openWorkflow);
+  document.getElementById('wfClose').addEventListener('click', () => wfDialog.close());
+  wfDialog.addEventListener('click', e => { if (e.target === wfDialog) wfDialog.close(); });   // click pe fundalul întunecat
+  wfGoalsBox.addEventListener('change', renderWfResult);
+  // „n tutoriale" = închide fereastra și filtrează lista pe programul respectiv
+  wfResult.addEventListener('click', e => {
+    const b = e.target.closest('.wf-tuts');
+    if (!b) return;
+    wfDialog.close();
+    activeCats.clear(); activeAuthors.clear(); activeSoftware.clear();
+    activeSoftware.add(b.dataset.sw);
+    document.getElementById('searchInput').value = '';
+    applyFilters();
+    document.getElementById('toList').click();
+  });
 
   // cubul sare: ?cub=a => doar pe card (în buclă cât ții mouse-ul acolo); altfel (b) la fiecare element clicabil
   const hopCube = document.getElementById('hopCube');
@@ -1478,7 +1631,7 @@
     setStaticText();
     if (pool.length) {
       const keep = shown;
-      renderDiscStrip(); renderFooterCats(); renderNewsletterCats(); renderWeek(); renderLatest(); renderSoftware();
+      renderDiscStrip(); renderFooterCats(); renderNewsletterCats(); renderWeek(); renderSoftware(); renderWorkflow(); placeCube();
       applyFilters();
       while (shown < keep && shown < currentResults.length) loadMore();   // aceeași porțiune din grilă, ca pagina să nu sară
     }
@@ -1500,7 +1653,7 @@
       renderFooterCats();
       renderNewsletterCats();
       renderWeek();
-      renderLatest();
+      placeCube();
       renderSoftware();
       applyFilters();
       observer.observe(document.getElementById('sentinel'));

@@ -102,6 +102,13 @@ if (cmd === 'list') {
   console.log(`${added.length} resurse adăugate la ${toRo(lot.date)} (nr: ${added.map(r => r.n).join(', ') || '—'}).`);
   const swNew = [...new Set(added.flatMap(r => r.software))].filter(s => !swBefore.has(s));
   if (swNew.length) console.log(`Programe noi în casetă: ${swNew.join(', ')}`);
+  // caseta „Workflow sugerat" ia linkul și licența din data/software.json: programele fără fișă trebuie adăugate acolo
+  const swFile = path.join(ROOT, 'data', 'software.json');
+  if (fs.existsSync(swFile)) {
+    const have = new Set(readJson(swFile).programs.map(p => p.name.toLowerCase()));
+    const missing = [...new Set(added.flatMap(r => r.software))].filter(s => !have.has(s.toLowerCase()));
+    if (missing.length) console.log(`Fără fișă în data/software.json (de completat: link, licență, formate, workflow): ${missing.join(', ')}`);
+  }
   if (undecided) console.log(`${undecided} candidate fără decizie, neadăugate.`);
 } else if (cmd === 'new-candidate') {
   const date = toIso(args[0]);

@@ -1,0 +1,225 @@
+{
+  "_info": "Fișa programelor: link oficial, licență, descriere scurtă, formate. Numele trebuie scrise exact ca în câmpul software din resources.json. Folosită de caseta Workflow sugerat (data/workflows.json); numărul de tutoriale se calculează pe site din resources.json.",
+  "programs": [
+    {
+      "name": "QGIS",
+      "url": "https://qgis.org",
+      "openSource": true,
+      "license": "GPL-2.0",
+      "desc": "GIS desktop: hărți, georeferențiere, digitizare, analiză spațială. Alternativă gratuită la ArcGIS.",
+      "descEn": "Desktop GIS: maps, georeferencing, digitizing, spatial analysis. A free alternative to ArcGIS.",
+      "in": [
+        "TIFF",
+        "GeoTIFF",
+        "PNG",
+        "JPG",
+        "Shapefile",
+        "GeoPackage",
+        "GeoJSON",
+        "DXF",
+        "CSV"
+      ],
+      "out": [
+        "GeoTIFF",
+        "GeoPackage",
+        "Shapefile",
+        "GeoJSON",
+        "DXF",
+        "PDF",
+        "SVG",
+        "PNG"
+      ]
+    },
+    {
+      "name": "Blender",
+      "url": "https://www.blender.org",
+      "openSource": true,
+      "license": "GPL",
+      "desc": "Modelare 3D, randare, animație. Importă modele din CAD și GIS.",
+      "descEn": "3D modelling, rendering and animation. Imports models from CAD and GIS.",
+      "in": [
+        "OBJ",
+        "FBX",
+        "glTF",
+        "STL",
+        "PLY",
+        "SVG"
+      ],
+      "out": [
+        "PNG",
+        "EXR",
+        "MP4",
+        "OBJ",
+        "FBX",
+        "glTF"
+      ]
+    },
+    {
+      "name": "Python",
+      "url": "https://www.python.org",
+      "openSource": true,
+      "license": "PSF",
+      "desc": "Limbajul în care se scriu scripturile pentru GIS, analiză de date și automatizare.",
+      "descEn": "The language for GIS scripts, data analysis and automation.",
+      "in": [
+        "CSV",
+        "GeoJSON",
+        "GeoPackage",
+        "Shapefile"
+      ],
+      "out": [
+        "CSV",
+        "GeoJSON",
+        "GeoPackage",
+        "PNG"
+      ]
+    },
+    {
+      "name": "GeoPandas",
+      "url": "https://geopandas.org",
+      "openSource": true,
+      "license": "BSD-3-Clause",
+      "desc": "Bibliotecă Python pentru date geografice vectoriale: citește, filtrează, combină și salvează straturi.",
+      "descEn": "A Python library for vector geodata: read, filter, join and save layers.",
+      "in": [
+        "Shapefile",
+        "GeoPackage",
+        "GeoJSON",
+        "CSV"
+      ],
+      "out": [
+        "GeoPackage",
+        "GeoJSON",
+        "Shapefile",
+        "CSV"
+      ]
+    },
+    {
+      "name": "OSMnx",
+      "url": "https://osmnx.readthedocs.io",
+      "openSource": true,
+      "license": "MIT",
+      "desc": "Bibliotecă Python care descarcă străzi și clădiri din OpenStreetMap și analizează rețeaua de străzi.",
+      "descEn": "A Python library that downloads streets and buildings from OpenStreetMap and analyses street networks.",
+      "in": [],
+      "out": [
+        "GeoPackage",
+        "GeoJSON",
+        "Shapefile"
+      ]
+    },
+    {
+      "name": "Zotero",
+      "url": "https://www.zotero.org",
+      "openSource": true,
+      "license": "AGPL-3.0",
+      "desc": "Bibliografie: salvezi surse din browser, le organizezi și inserezi citări în Word sau LibreOffice.",
+      "descEn": "Reference manager: save sources from the browser, organise them and insert citations in Word or LibreOffice.",
+      "in": [
+        "PDF",
+        "BibTeX",
+        "RIS"
+      ],
+      "out": [
+        "BibTeX",
+        "RIS",
+        "DOCX"
+      ]
+    },
+    {
+      "name": "Hermes Agent",
+      "url": "https://hermes-agent.nousresearch.com",
+      "openSource": true,
+      "license": "MIT",
+      "desc": "Agent AI care rulează pe calculatorul tău și automatizează sarcini repetitive. Merge cu modele locale sau prin API.",
+      "descEn": "An AI agent that runs on your computer and automates repetitive tasks. Works with local models or through an API.",
+      "in": [],
+      "out": []
+    },
+    {
+      "name": "ArtCraft",
+      "url": "https://getartcraft.com",
+      "openSource": true,
+      "license": "Apache-2.0",
+      "desc": "Aplicație de creat și editat imagini și video cu AI: editare prin text, compoziție în 2D și 3D. Aplicația e open source; multe modele AI rulează prin servicii online.",
+      "descEn": "An app for creating and editing images and video with AI: text-based editing, 2D and 3D composition. The app is open source; many AI models run through online services.",
+      "in": [
+        "PNG",
+        "JPG"
+      ],
+      "out": [
+        "PNG",
+        "JPG",
+        "MP4"
+      ]
+    },
+    {
+      "name": "AutoCAD",
+      "url": "https://www.autodesk.com/products/autocad",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "CAD 2D/3D standard în birourile de proiectare.",
+      "descEn": "The standard 2D/3D CAD in design offices.",
+      "in": [
+        "DWG",
+        "DXF",
+        "PDF"
+      ],
+      "out": [
+        "DWG",
+        "DXF",
+        "PDF"
+      ]
+    },
+    {
+      "name": "Rhino",
+      "url": "https://www.rhino3d.com",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "Modelare 3D precisă (NURBS), cu Grasshopper inclus pentru design parametric.",
+      "descEn": "Precise 3D modelling (NURBS), with Grasshopper included for parametric design.",
+      "in": [
+        "3DM",
+        "DWG",
+        "DXF",
+        "OBJ",
+        "SVG",
+        "PDF"
+      ],
+      "out": [
+        "3DM",
+        "DWG",
+        "DXF",
+        "OBJ",
+        "FBX",
+        "PDF"
+      ]
+    },
+    {
+      "name": "OnlyOffice",
+      "url": "https://www.onlyoffice.com",
+      "openSource": true,
+      "license": "AGPL-3.0",
+      "desc": "Suită de birou open-source: documente, tabele, prezentări, PDF și formulare, compatibilă cu fișierele Microsoft Office. Funcțiile AI folosesc servicii externe, cu cheia ta.",
+      "descEn": "An open-source office suite: documents, spreadsheets, presentations, PDFs and forms, compatible with Microsoft Office files. The AI features use external services, with your own key.",
+      "in": [
+        "DOCX",
+        "XLSX",
+        "PPTX",
+        "ODT",
+        "ODS",
+        "ODP",
+        "PDF",
+        "CSV"
+      ],
+      "out": [
+        "DOCX",
+        "XLSX",
+        "PPTX",
+        "ODT",
+        "PDF",
+        "CSV"
+      ]
+    }
+  ]
+}

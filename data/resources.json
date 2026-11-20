@@ -77,6 +77,12 @@
       "name": "Proiectare urbană digitală",
       "color": "#1E3A5F",
       "nameEn": "Digital urban design"
+    },
+    {
+      "id": "OFC",
+      "name": "Office",
+      "color": "#86198F",
+      "nameEn": "Office"
     }
   ],
   "resources": [
@@ -1491,6 +1497,7 @@
     {
       "title": "I Replaced Microsoft Office With This Free Open-Source Alternative",
       "cats": [
+        "OFC",
         "AI"
       ],
       "software": [
@@ -1510,6 +1517,7 @@
     {
       "title": "ONLYOFFICE Docs with AI: Write, Edit, and Collaborate in One Place",
       "cats": [
+        "OFC",
         "AI"
       ],
       "software": [
@@ -1529,7 +1537,7 @@
     {
       "title": "Introducing ONLYOFFICE Docs 9.3 [Webinar]",
       "cats": [
-        "AI"
+        "OFC"
       ],
       "software": [
         "OnlyOffice"

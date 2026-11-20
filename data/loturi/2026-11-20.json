@@ -37,6 +37,7 @@
       "pub": "2026-01-24",
       "level": "intro",
       "cats": [
+        "OFC",
         "AI"
       ],
       "software": [
@@ -62,6 +63,7 @@
       "pub": "2026-02-18",
       "level": "mediu",
       "cats": [
+        "OFC",
         "AI"
       ],
       "software": [
@@ -87,7 +89,7 @@
       "pub": "2026-02-24",
       "level": "intro",
       "cats": [
-        "AI"
+        "OFC"
       ],
       "software": [
         "OnlyOffice"

@@ -71,7 +71,8 @@
       "descEn": "A 5-minute overview of Hermes Agent, an open-source AI agent from Nous Research: what makes it special, installation, the skill system and who it is for.",
       "n": 3,
       "accept": "Da",
-      "manual": true
+      "manual": true,
+      "oss": true
     },
     {
       "platform": "YouTube",
@@ -95,7 +96,8 @@
       "descEn": "The fundamentals of Hermes Agent, an open-source AI agent: hardware choices, download and setup, main features, the memory system and using it with open-source AI models.",
       "n": 4,
       "accept": "Da",
-      "manual": true
+      "manual": true,
+      "oss": true
     },
     {
       "platform": "YouTube",
@@ -119,7 +121,8 @@
       "descEn": "A setup guide for Hermes Agent with the latest features: running it on a server 24/7, the desktop app, scheduled jobs and several agents working together.",
       "n": 5,
       "accept": "Da",
-      "manual": true
+      "manual": true,
+      "oss": true
     },
     {
       "platform": "YouTube",
@@ -168,7 +171,8 @@
       "descEn": "A guide to OpenPBR 1.1, the new material standard in Blender 5.4, compared with the Principled BSDF: base, specular, transmission, subsurface scattering, coat and emission.",
       "n": 7,
       "accept": "Da",
-      "manual": true
+      "manual": true,
+      "oss": true
     }
   ]
 }

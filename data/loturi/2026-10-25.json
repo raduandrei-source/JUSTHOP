@@ -191,7 +191,8 @@
       "accept": "Da",
       "software": [
         "IFC"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 9,
@@ -238,7 +239,8 @@
       "accept": "Da",
       "software": [
         "Speckle"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 11,
@@ -286,7 +288,8 @@
       "software": [
         "QGIS",
         "OpenStreetMap"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 13,
@@ -309,7 +312,8 @@
       "accept": "Da",
       "software": [
         "QGIS"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 14,
@@ -333,7 +337,8 @@
       "software": [
         "Python",
         "GeoPandas"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 15,
@@ -382,7 +387,8 @@
         "Python",
         "GeoPandas",
         "OSMnx"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 17,
@@ -743,7 +749,8 @@
       "accept": "Da",
       "software": [
         "Blender"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 32,
@@ -967,7 +974,8 @@
       "software": [
         "Stable Diffusion",
         "ControlNet"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 41,
@@ -1106,7 +1114,8 @@
       "accept": "Da",
       "software": [
         "Zotero"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 47,
@@ -1598,7 +1607,8 @@
       "software": [
         "Python",
         "OpenStreetMap"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 68,
@@ -1621,7 +1631,8 @@
       "accept": "Da",
       "software": [
         "depthmapX"
-      ]
+      ],
+      "oss": true
     },
     {
       "n": 69,

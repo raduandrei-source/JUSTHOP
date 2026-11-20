@@ -477,6 +477,19 @@
   }
   .sw-chip { cursor: pointer; transition: color 0.15s ease, border-color 0.15s ease; }
   .sw-chip:hover { color: var(--accent-text); border-color: var(--accent-text); }
+  /* eticheta „open-source" de pe card: ca un program, dar cu contur albastru; click = filtrul Open-source */
+  .oss-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    padding: 1px 6px;
+    border: 1px solid var(--accent-text);
+    color: var(--accent-text);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .oss-tag:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
   .card-author {
     margin: 12px 0 0;
     font-family: var(--mono);
@@ -485,6 +498,10 @@
   }
   .author-link { cursor: pointer; border-bottom: 1px solid var(--rule); }
   .author-link:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
+  /* filtrul „Open-source": primul rând din „Categorii", cu pătrat gol în loc de culoare */
+  .oss-item .oss-mark { width: 10px; height: 10px; flex-shrink: 0; border: 1.5px solid var(--ink); }
+  .oss-item.active .oss-mark { background: var(--accent-text); border-color: var(--accent-text); }
+  #ossToggle .cat-item { border-bottom: 1px solid var(--line); }
   .sidebar-sub { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--rule); }
   .sidebar-sub[hidden] { display: none; }
   .card-body { padding: 20px 24px 24px; flex: 1; }
@@ -785,6 +802,7 @@
           <span data-i18n="categories">Categorii</span>
           <button class="reset label" id="resetCats" type="button" data-i18n="reset" hidden>resetează</button>
         </div>
+        <div id="ossToggle"></div>
         <div id="catList"></div>
         <div class="sidebar-head label sidebar-sub" id="authorHead" hidden>
           <span data-i18n="authors">Autori</span>
@@ -911,7 +929,7 @@
       softAria: 'Software din tutoriale', latestNew: 'Nou', programOne: 'program', programMany: 'programe',
       weekTitle: 'Adăugate săptămâna asta', toList: 'Resurse', toListAria: 'Mergi la resurse', toTopAria: 'Înapoi sus', weekNote: 'actualizat vinerea',
       resourcesTitle: 'Resurse', loading: 'se încarcă...', searchPlaceholder: 'caută titlu, unealtă, categorie...',
-      categories: 'Categorii', reset: 'resetează', authors: 'Autori',
+      categories: 'Categorii', reset: 'resetează', authors: 'Autori', oss: 'Open-source', ossTag: 'open-source',
       shown: '{n} afișate', resultsFor: '{n} rezultate pentru "{q}"',
       loadingResources: 'se încarcă resursele...', loadingMore: 'se încarcă mai multe resurse...', endReached: 'ai ajuns la capăt — atât avem deocamdată', noMatch: 'nicio resursă nu se potrivește',
       resOne: 'resursă', resMany: 'resurse', by: 'de', suggestedBy: 'propus de',
@@ -941,7 +959,7 @@
       softAria: 'Software used in tutorials', latestNew: 'New', programOne: 'program', programMany: 'programs',
       weekTitle: 'Added this week', toList: 'Resources', toListAria: 'Go to resources', toTopAria: 'Back to top', weekNote: 'updated on Fridays',
       resourcesTitle: 'Resources', loading: 'loading...', searchPlaceholder: 'search title, tool, category...',
-      categories: 'Categories', reset: 'reset', authors: 'Authors',
+      categories: 'Categories', reset: 'reset', authors: 'Authors', oss: 'Open source', ossTag: 'open source',
       shown: '{n} shown', resultsFor: '{n} results for "{q}"',
       loadingResources: 'loading resources...', loadingMore: 'loading more resources...', endReached: 'you’ve reached the end — that’s all for now', noMatch: 'no resource matches',
       resOne: 'resource', resMany: 'resources', by: 'by', suggestedBy: 'suggested by',
@@ -1018,6 +1036,7 @@
   let activeCats = new Set();
   let activeAuthors = new Set();
   let activeSoftware = new Set();
+  let ossOnly = false;   // filtrul „Open-source": doar resursele marcate oss
   const batchSize = 12;
   let shown = 0;
   let currentResults = [];
@@ -1038,7 +1057,7 @@
   function score(item, tokens) {
     if (tokens.length === 0) return 1;
     // căutarea ține cont de ambele limbi: descrierea și numele disciplinei în română și în engleză
-    const haystack = (item.title + ' ' + item.cats.map(c => c.id + ' ' + c.name + ' ' + (c.nameEn || '')).join(' ') + ' ' + (item.author || '') + ' ' + (item.software || []).join(' ') + ' ' + item.platform + ' ' + platformOf(item.platform) + ' ' + item.desc + ' ' + (item.descEn || '')).toLowerCase();
+    const haystack = (item.title + ' ' + item.cats.map(c => c.id + ' ' + c.name + ' ' + (c.nameEn || '')).join(' ') + ' ' + (item.author || '') + ' ' + (item.software || []).join(' ') + ' ' + item.platform + ' ' + platformOf(item.platform) + ' ' + item.desc + ' ' + (item.descEn || '') + (item.oss ? ' open-source open source opensource' : '')).toLowerCase();
     let matched = 0;
     tokens.forEach(t => { if (haystack.includes(t)) matched++; });
     return matched; // 0 = fara match, altfel scor crescator cu nr de tokene gasite
@@ -1077,7 +1096,23 @@
     });
   }
 
+  // „Open-source" apare în sidebar doar când există resurse marcate (sau când filtrul e activ)
+  function renderOss() {
+    const box = document.getElementById('ossToggle');
+    const count = pool.filter(p => p.oss).length;
+    box.innerHTML = '';
+    if (!count && !ossOnly) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'cat-item oss-item' + (ossOnly ? ' active' : '');
+    btn.setAttribute('aria-pressed', ossOnly);
+    btn.innerHTML = `<span class="oss-mark"></span>${esc(t('oss'))}<span class="cat-count">${count}</span>`;
+    btn.onclick = () => { ossOnly = !ossOnly; applyFilters(); };
+    box.appendChild(btn);
+  }
+
   function renderCats() {
+    renderOss();
     const list = document.getElementById('catList');
     list.innerHTML = '';
     categories.forEach(c => {
@@ -1090,7 +1125,7 @@
       btn.onclick = () => toggleCat(c.id);
       list.appendChild(btn);
     });
-    document.getElementById('resetCats').hidden = activeCats.size === 0 && activeAuthors.size === 0 && activeSoftware.size === 0;
+    document.getElementById('resetCats').hidden = activeCats.size === 0 && activeAuthors.size === 0 && activeSoftware.size === 0 && !ossOnly;
     updateSoftwareActive();
     renderAuthors();
     document.querySelectorAll('#discStrip button').forEach(b => {
@@ -1315,7 +1350,8 @@
     let results = pool.filter(p =>
       (activeCats.size === 0 || p.cats.some(c => activeCats.has(c.id))) &&
       (activeAuthors.size === 0 || activeAuthors.has(p.author)) &&
-      (activeSoftware.size === 0 || (p.software || []).some(s => activeSoftware.has(s))));
+      (activeSoftware.size === 0 || (p.software || []).some(s => activeSoftware.has(s))) &&
+      (!ossOnly || p.oss));
     results = results
       .map(p => ({ item: p, s: score(p, tokens) }))
       .filter(r => r.s > 0)
@@ -1364,7 +1400,7 @@
         <div class="card-body">
           <h3 class="card-title">${esc(p.title)}</h3>
           <p class="card-desc">${esc(descOf(p))}</p>
-          ${(p.software || []).length ? `<div class="card-soft">${p.software.slice(0, 3).map(s => `<span class="sw-chip" data-sw="${esc(s)}">${esc(s)}</span>`).join('')}${p.software.length > 3 ? `<span class="sw-more">+${p.software.length - 3}</span>` : ''}</div>` : ''}
+          ${(p.software || []).length || p.oss ? `<div class="card-soft">${p.oss ? `<span class="oss-tag">${esc(t('ossTag'))}</span>` : ''}${(p.software || []).slice(0, 3).map(s => `<span class="sw-chip" data-sw="${esc(s)}">${esc(s)}</span>`).join('')}${(p.software || []).length > 3 ? `<span class="sw-more">+${p.software.length - 3}</span>` : ''}</div>` : ''}
           ${p.author ? `<p class="card-author">${t('by')} <span class="author-link" data-author="${esc(p.author)}">${esc(p.author)}</span></p>` : ''}
           ${p.proposedBy ? `<p class="card-author">${t('suggestedBy')} ${esc(p.proposedBy)}</p>` : ''}
         </div>
@@ -1388,11 +1424,12 @@
 
   const searchInput = document.getElementById('searchInput');
   searchInput.addEventListener('input', applyFilters);
-  document.getElementById('resetCats').addEventListener('click', () => { activeCats.clear(); activeAuthors.clear(); activeSoftware.clear(); applyFilters(); });
+  document.getElementById('resetCats').addEventListener('click', () => { activeCats.clear(); activeAuthors.clear(); activeSoftware.clear(); ossOnly = false; applyFilters(); });
   // click pe autor sau pe un program dintr-un card = filtrează (fără să deschidă linkul cardului)
   document.getElementById('grid').addEventListener('click', e => {
     const sw = e.target.closest('.sw-chip');
     if (sw) { e.preventDefault(); e.stopPropagation(); toggleSoftware(sw.dataset.sw); return; }
+    if (e.target.closest('.oss-tag')) { e.preventDefault(); e.stopPropagation(); ossOnly = !ossOnly; applyFilters(); return; }
     const a = e.target.closest('.author-link');
     if (!a) return;
     e.preventDefault();

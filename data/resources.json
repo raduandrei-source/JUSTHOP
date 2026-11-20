@@ -211,7 +211,8 @@
       "software": [
         "IFC"
       ],
-      "descEn": "buildingSMART’s technical director explains the openBIM workflow: IFC, the buildingSMART Data Dictionary and validating models exchanged between programs."
+      "descEn": "buildingSMART’s technical director explains the openBIM workflow: IFC, the buildingSMART Data Dictionary and validating models exchanged between programs.",
+      "oss": true
     },
     {
       "title": "Revit & Navisworks Coordination Workflow: The Complete Guide to Clash Detection",
@@ -248,7 +249,8 @@
       "software": [
         "Speckle"
       ],
-      "descEn": "A practical introduction to the Speckle platform: you exchange BIM models and data between different programs and work as a team on shared versions."
+      "descEn": "A practical introduction to the Speckle platform: you exchange BIM models and data between different programs and work as a team on shared versions.",
+      "oss": true
     },
     {
       "title": "Create stunning Urban Maps with QGIS and the QuickOSM Plugin",
@@ -268,7 +270,8 @@
         "QGIS",
         "OpenStreetMap"
       ],
-      "descEn": "You download OpenStreetMap data with QuickOSM and make urban maps in QGIS, from layers to the final composition, explained for architects."
+      "descEn": "You download OpenStreetMap data with QuickOSM and make urban maps in QGIS, from layers to the final composition, explained for architects.",
+      "oss": true
     },
     {
       "title": "Introduction to QGIS (Full Course, Ad-Free)",
@@ -286,7 +289,8 @@
       "software": [
         "QGIS"
       ],
-      "descEn": "A complete QGIS course from zero: mapping, spatial data processing and spatial analysis, with practical step-by-step exercises."
+      "descEn": "A complete QGIS course from zero: mapping, spatial data processing and spatial analysis, with practical step-by-step exercises.",
+      "oss": true
     },
     {
       "title": "Geospatial Python - Full Course for Beginners with Geopandas",
@@ -305,7 +309,8 @@
         "Python",
         "GeoPandas"
       ],
-      "descEn": "An introduction to geospatial Python with GeoPandas: you read, filter, join and visualize vector data, starting from zero."
+      "descEn": "An introduction to geospatial Python with GeoPandas: you read, filter, join and visualize vector data, starting from zero.",
+      "oss": true
     },
     {
       "title": "A short guide to Copernicus Browser",
@@ -344,7 +349,8 @@
         "GeoPandas",
         "OSMnx"
       ],
-      "descEn": "An open course from the University of Helsinki: GeoPandas, spatial queries, maps and street-network analysis with OSMnx and networkx."
+      "descEn": "An open course from the University of Helsinki: GeoPandas, spatial queries, maps and street-network analysis with OSMnx and networkx.",
+      "oss": true
     },
     {
       "title": "#1 The Ultimate Ladybug Course | Environmental Analysis in Rhino3D and Grasshopper",
@@ -574,7 +580,8 @@
       "software": [
         "Blender"
       ],
-      "descEn": "A starter guide to Blender for architecture: navigation, modelling, materials and first renders, step by step, with no prior experience."
+      "descEn": "A starter guide to Blender for architecture: navigation, modelling, materials and first renders, step by step, with no prior experience.",
+      "oss": true
     },
     {
       "title": "The Best Render Settings for V-Ray 7 Explained | V-Ray for SketchUp",
@@ -753,7 +760,8 @@
         "Stable Diffusion",
         "ControlNet"
       ],
-      "descEn": "How to use ControlNet on top of Stable Diffusion to turn sketches, massing and lines into controlled architectural images."
+      "descEn": "How to use ControlNet on top of Stable Diffusion to turn sketches, massing and lines into controlled architectural images.",
+      "oss": true
     },
     {
       "title": "AI Plugin for Grasshopper We've Been Waiting For",
@@ -862,7 +870,8 @@
       "software": [
         "Zotero"
       ],
-      "descEn": "A complete Zotero tutorial with the Zotero Connector: you save sources from the browser, organize them and generate citations and a bibliography automatically."
+      "descEn": "A complete Zotero tutorial with the Zotero Connector: you save sources from the browser, organize them and generate citations and a bibliography automatically.",
+      "oss": true
     },
     {
       "title": "Obsidian Note-Taking System for Academics & Students - Full Tutorial & Demo",
@@ -1196,7 +1205,8 @@
         "Python",
         "OpenStreetMap"
       ],
-      "descEn": "You calculate in Python, with OpenStreetMap data, how walkable a city is, in a 15-minute-city style analysis."
+      "descEn": "You calculate in Python, with OpenStreetMap data, how walkable a city is, in a 15-minute-city style analysis.",
+      "oss": true
     },
     {
       "title": "VIDEO 2 - Space Syntax (Part 2): Using DepthMapX",
@@ -1214,7 +1224,8 @@
       "software": [
         "depthmapX"
       ],
-      "descEn": "Space syntax with depthmapX: you import the map, run the analysis and read the connectivity and integration results for urban space."
+      "descEn": "Space syntax with depthmapX: you import the map, run the analysis and read the connectivity and integration results for urban space.",
+      "oss": true
     },
     {
       "title": "Urban Network Analysis (UNA) Toolbox for Rhino3D",
@@ -1379,7 +1390,8 @@
       "author": "CodeHead",
       "authorUrl": "https://www.youtube.com/@codehead01",
       "added": "2026-11-14",
-      "n": 3
+      "n": 3,
+      "oss": true
     },
     {
       "title": "Hermes Agent Fundamentals In 29 Minutes",
@@ -1397,7 +1409,8 @@
       "author": "Tina Huang",
       "authorUrl": "https://www.youtube.com/@TinaHuang1",
       "added": "2026-11-14",
-      "n": 4
+      "n": 4,
+      "oss": true
     },
     {
       "title": "Everything New in Hermes Agent (Full Setup Guide)",
@@ -1415,7 +1428,8 @@
       "author": "Tech With Tim",
       "authorUrl": "https://www.youtube.com/@TechWithTim",
       "added": "2026-11-14",
-      "n": 5
+      "n": 5,
+      "oss": true
     },
     {
       "title": "How To Build The Best AI Second Brain (Claude Code + Obsidian)",
@@ -1452,7 +1466,8 @@
       "author": "Christopher 3D",
       "authorUrl": "https://www.youtube.com/@christopher3d475",
       "added": "2026-11-14",
-      "n": 7
+      "n": 7,
+      "oss": true
     }
   ]
 }

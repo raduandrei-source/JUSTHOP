@@ -75,6 +75,7 @@ function toResource(c, date) {
     title: c.title, cats: c.cats, software: normSoftware(c.software), platform: c.platform, level: c.level, desc: c.desc, descEn: c.descEn, url: c.url,
     author: c.author || null, authorUrl: c.authorUrl || null, added: date, n: c.n,
   };
+  if (c.oss) r.oss = true;   // resursă despre o unealtă open-source: apare și la filtrul „Open-source" de pe site
   if (c.proposedBy) r.proposedBy = String(c.proposedBy).replace(/\s+/g, ' ').trim().slice(0, 60);   // numele ales de cel care a propus, niciodată emailul
   return r;
 }

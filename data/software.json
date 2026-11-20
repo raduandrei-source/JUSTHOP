@@ -480,7 +480,13 @@
         "3DM",
         "CSV"
       ],
-      "host": "Rhino"
+      "host": "Rhino",
+      "req": {
+        "os": [
+          "win"
+        ],
+        "source": "https://www.food4rhino.com/en/app/karamba3d"
+      }
     },
     {
       "name": "Kangaroo",
@@ -859,7 +865,13 @@
         "CSV"
       ],
       "free": true,
-      "host": "Rhino"
+      "host": "Rhino",
+      "req": {
+        "os": [
+          "win"
+        ],
+        "source": "https://www.food4rhino.com/en/app/octopus"
+      }
     },
     {
       "name": "Wallacei",
@@ -876,7 +888,13 @@
         "CSV"
       ],
       "free": true,
-      "host": "Rhino"
+      "host": "Rhino",
+      "req": {
+        "os": [
+          "win"
+        ],
+        "source": "https://www.food4rhino.com/en/app/wallacei"
+      }
     },
     {
       "name": "Culebra",
@@ -891,7 +909,13 @@
       "out": [
         "3DM"
       ],
-      "host": "Rhino"
+      "host": "Rhino",
+      "req": {
+        "os": [
+          "win"
+        ],
+        "source": "https://www.food4rhino.com/en/app/culebra"
+      }
     },
     {
       "name": "Stable Diffusion",

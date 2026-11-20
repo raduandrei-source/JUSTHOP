@@ -620,7 +620,14 @@
   [data-theme="dark"] .wf-fit.warn { color: #F2B45A; }
   .wf-why { flex-basis: 100%; padding-left: 24px; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0; color: var(--muted); }
   .wf-prog.bad a.name, .wf-prog.bad > span.name { color: var(--muted); }
-  .wf-allbad { margin: 10px 0 0; font-size: 13px; color: var(--lab-text); }
+  /* niciun program din pas nu merge: triunghi roșu + text roșu */
+  .wf-allbad { display: flex; align-items: flex-start; gap: 10px; margin: 12px 0 0; padding: 10px 12px; border: 1.5px solid var(--lab-text); color: var(--lab-text); font-size: 14px; line-height: 1.45; font-weight: 500; }
+  .wf-allbad svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+  .wf-step.allbad { border-color: var(--lab-text); }
+  /* legenda semnelor, deasupra pașilor când profilul e activ */
+  .wf-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 14px; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+  .wf-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .wf-legend .wf-fit { width: auto; font-size: 13px; }
   .wf-fmt { display: flex; align-items: center; gap: 10px; padding: 8px 0 8px 18px; color: var(--muted); }
   .wf-fmt::before { content: '↓'; font-family: var(--mono); color: var(--lab-text); }
   .wf-fmt.none::before { content: ''; }
@@ -848,8 +855,10 @@
       hwRamMin: 'cere minimum {n} GB RAM', hwRamRec: 'recomandat {n} GB RAM, va merge mai greu', hwNeedsGpu: 'cere placă video dedicată',
       hwVramMin: 'cere minimum {n} GB memorie video', hwVramRec: 'recomandat {n} GB memorie video', hwFine: 'merge pe calculatorul tău',
       hwLevel_ok: 'merge', hwLevel_warn: 'merge greu', hwLevel_bad: 'nu merge',
-      hwAllBad: 'Niciun program din pasul ăsta nu merge bine pe calculatorul tău: caută o variantă online sau un calculator mai puternic.',
-      hwNote: 'Semnele ✓ ! ✗ vin din cerințele oficiale de sistem; programele fără semn nu au cerințe speciale sau nu le-am verificat încă.',
+      hwAllBad: 'Atenție: niciun program din pasul ăsta nu merge pe calculatorul tău. Caută o variantă online sau un alt calculator pentru pasul ăsta.',
+      hwNote: 'Semnele vin din cerințele oficiale de sistem ale producătorilor; la pluginuri, din cele ale programului-gazdă (Rhino) și din platformele declarate pe food4Rhino. Programele fără semn nu au cerințe speciale sau nu le-am verificat încă.',
+      hwLeg_ok: 'merge pe calculatorul tău', hwLeg_warn: 'merge, dar mai greu', hwLeg_bad: 'nu merge (motivul e dedesubt)',
+      hwNeedsGpuSoft: 'fără placă video dedicată merge, dar foarte încet', hwVramShared: 'cere {n} GB memorie video; placa integrată o ia din RAM, deci va merge mai greu',
       pluginsTitle: 'Pluginuri', toList: 'Pluginuri', toListAria: 'Mergi la pluginuri', toTopAria: 'Înapoi sus', loading: 'se încarcă...', searchPlaceholder: 'caută nume, software, categorie...',
       status: 'Stare', categories: 'Categorii', reset: 'resetează', authors: 'Autori',
       st_testat: 'testat', st_netestat: 'netestat', st_respins: 'respins',
@@ -884,8 +893,10 @@
       hwRamMin: 'needs at least {n} GB RAM', hwRamRec: '{n} GB RAM recommended, it will be slow', hwNeedsGpu: 'needs a dedicated graphics card',
       hwVramMin: 'needs at least {n} GB video memory', hwVramRec: '{n} GB video memory recommended', hwFine: 'runs on your computer',
       hwLevel_ok: 'runs', hwLevel_warn: 'runs slowly', hwLevel_bad: 'does not run',
-      hwAllBad: 'None of the programs in this step runs well on your computer: look for an online option or a more powerful machine.',
-      hwNote: 'The ✓ ! ✗ marks come from official system requirements; programs without a mark have no special requirements or have not been checked yet.',
+      hwAllBad: 'Warning: none of the programs in this step runs on your computer. Look for an online option or another machine for this step.',
+      hwNote: 'The marks come from the vendors’ official system requirements; for plugins, from the host program (Rhino) and the platforms listed on food4Rhino. Programs without a mark have no special requirements or have not been checked yet.',
+      hwLeg_ok: 'runs on your computer', hwLeg_warn: 'runs, but slowly', hwLeg_bad: 'does not run (reason below)',
+      hwNeedsGpuSoft: 'runs without a dedicated graphics card, but very slowly', hwVramShared: 'needs {n} GB video memory; integrated graphics borrow it from RAM, so it will be slow',
       pluginsTitle: 'Plugins', toList: 'Plugins', toListAria: 'Go to plugins', toTopAria: 'Back to top', loading: 'loading...', searchPlaceholder: 'search name, software, category...',
       status: 'Status', categories: 'Categories', reset: 'reset', authors: 'Authors',
       st_testat: 'tested', st_netestat: 'not tested', st_respins: 'rejected',
@@ -1153,16 +1164,18 @@
     let level = 'ok';
     const worse = l => { if (l === 'bad' || (l === 'warn' && level === 'ok')) level = l; };
     const os = hw.os.startsWith('mac') ? 'mac' : hw.os;
-    if (req.os && !req.os.includes(os)) { worse('bad'); why.push(t('hwNoOs', { os: t('hwOs_' + os) })); }
-    if (hw.os === 'mac-intel' && req.appleSiliconOnly) { worse('bad'); why.push(t('hwAppleOnly')); }
+    // sistemul nesuportat blochează tot: arătăm doar motivul ăsta
+    if (req.os && !req.os.includes(os)) return { level: 'bad', why: [t('hwNoOs', { os: t('hwOs_' + os) })] };
+    if (hw.os === 'mac-intel' && req.appleSiliconOnly) return { level: 'bad', why: [t('hwAppleOnly')] };
     if (req.ramMin && hw.ram < req.ramMin) { worse('bad'); why.push(t('hwRamMin', { n: req.ramMin })); }
     else if (req.ramRec && hw.ram < req.ramRec) { worse('warn'); why.push(t('hwRamRec', { n: req.ramRec })); }
     // VRAM: dedicată = cât ai ales; Apple Silicon = memorie unificată (aprox. 2/3 din RAM); integrată = împarte RAM-ul, fără VRAM proprie
     const vram = hw.gpu === 'dedicated' ? hw.vram : hw.gpu === 'apple' ? Math.floor(hw.ram * 0.66) : 0;
-    if (req.gpu === 'dedicated' && hw.gpu === 'integrated') { worse(req.gpuSoft ? 'warn' : 'bad'); why.push(t('hwNeedsGpu')); }
+    if (req.gpu === 'dedicated' && hw.gpu === 'integrated') { worse(req.gpuSoft ? 'warn' : 'bad'); why.push(t(req.gpuSoft ? 'hwNeedsGpuSoft' : 'hwNeedsGpu')); }
     else if (req.gpu !== 'none') {
-      if (req.vramMin && vram < req.vramMin) { worse(hw.gpu === 'integrated' ? 'warn' : 'bad'); why.push(t('hwVramMin', { n: req.vramMin })); }
-      else if (req.vramRec && vram < req.vramRec) { worse('warn'); why.push(t('hwVramRec', { n: req.vramRec })); }
+      // placa integrată n-are VRAM proprie: contează doar un minim declarat, iar „recomandat" nu se aplică
+      if (req.vramMin && vram < req.vramMin) { worse(hw.gpu === 'integrated' ? 'warn' : 'bad'); why.push(t(hw.gpu === 'integrated' ? 'hwVramShared' : 'hwVramMin', { n: req.vramMin })); }
+      else if (req.vramRec && vram < req.vramRec && hw.gpu !== 'integrated') { worse('warn'); why.push(t('hwVramRec', { n: req.vramRec })); }
     }
     if (level === 'ok' && !why.length) why.push(t('hwFine'));
     return { level, why };
@@ -1186,7 +1199,10 @@
 
   // cerințele: ale programului sau, la pluginuri, ale gazdei (Rhino, Stable Diffusion); pe Mac se aplică abaterile din req.mac
   function reqOf(p) {
-    const r = p && (p.req || (p.host && wfSoft[p.host.toLowerCase()] && wfSoft[p.host.toLowerCase()].req));
+    if (!p) return null;
+    const host = p.host && wfSoft[p.host.toLowerCase()];
+    // pluginul moștenește cerințele gazdei și le poate strânge (ex. Karamba3D: doar Windows, deși Rhino merge și pe Mac)
+    const r = host && host.req ? { ...host.req, ...(p.req || {}) } : p.req;
     if (!r) return null;
     return hw.os.startsWith('mac') && r.mac ? { ...r, ...r.mac } : r;
   }
@@ -1214,7 +1230,9 @@
     const steps = wfData.steps.filter(s => want.has(s.id)).sort((a, b) => a.order - b.order);
     if (!steps.length) { wfResult.innerHTML = `<p class="wf-empty">${esc(t('wfEmpty'))}</p>`; return; }
     const rank = { ok: 0, undefined: 1, warn: 2, bad: 3 };
-    let html = '<ol class="wf-steps">';
+    const WARN_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 1.5 21h21L12 2.5z" fill="currentColor"/><path d="M12 9v5.5" stroke="#fff" stroke-width="2.4" stroke-linecap="square"/><rect x="10.8" y="16.6" width="2.4" height="2.4" fill="#fff"/></svg>';
+    let html = hw.on ? `<div class="wf-legend label"><span><span class="wf-fit ok">✓</span>${esc(t('hwLeg_ok'))}</span><span><span class="wf-fit warn">!</span>${esc(t('hwLeg_warn'))}</span><span><span class="wf-fit bad">✗</span>${esc(t('hwLeg_bad'))}</span></div>` : '';
+    html += '<ol class="wf-steps">';
     steps.forEach((s, i) => {
       if (i) {
         const common = (steps[i - 1].out || []).filter(f => (s.in || []).includes(f));
@@ -1223,10 +1241,10 @@
       const progs = (s.software || []).map(progInfo);
       if (hw.on) progs.sort((a, b) => rank[a.f && a.f.level] - rank[b.f && b.f.level]);
       const allBad = hw.on && progs.length && progs.every(x => x.f && x.f.level === 'bad');
-      html += `<li class="wf-step"><span class="wf-n">${String(i + 1).padStart(2, '0')}</span><div>
+      html += `<li class="wf-step${allBad ? ' allbad' : ''}"><span class="wf-n">${String(i + 1).padStart(2, '0')}</span><div>
         <h4>${esc(L(s, 'title'))}</h4><p>${esc(L(s, 'text'))}</p>
         ${progs.length ? `<div class="wf-progs">${progs.map(progHtml).join('')}</div>` : ''}
-        ${allBad ? `<p class="wf-allbad">${esc(t('hwAllBad'))}</p>` : ''}</div></li>`;
+        ${allBad ? `<p class="wf-allbad" role="alert">${WARN_ICON}<span>${esc(t('hwAllBad'))}</span></p>` : ''}</div></li>`;
     });
     wfResult.innerHTML = html + `</ol><p class="wf-note">${esc(t('wfNote'))}${hw.on ? ' ' + esc(t('hwNote')) : ''}</p>`;
   }

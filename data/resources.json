@@ -1506,6 +1506,25 @@
       "added": "2026-11-20",
       "n": 2,
       "oss": true
+    },
+    {
+      "title": "ONLYOFFICE Docs with AI: Write, Edit, and Collaborate in One Place",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "OnlyOffice"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Lucrul în echipă în ONLYOFFICE Docs și DocSpace: camere de proiect, conectarea unui furnizor AI (de exemplu ChatGPT) pentru rezumat, rescriere și traducere în document, plus comentarii, chat și modificări urmărite în timp real.",
+      "descEn": "Teamwork in ONLYOFFICE Docs and DocSpace: project rooms, connecting an AI provider (such as ChatGPT) for summarising, rewriting and translating inside the document, plus comments, chat and tracked changes in real time.",
+      "url": "https://www.youtube.com/watch?v=wuM2nuAQh_4",
+      "author": "Blog With Ben",
+      "authorUrl": "https://www.youtube.com/@blogwithben",
+      "added": "2026-11-20",
+      "n": 3,
+      "oss": true
     }
   ]
 }

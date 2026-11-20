@@ -75,6 +75,31 @@
       "n": 3,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "Introducing ONLYOFFICE Docs 9.3 [Webinar]",
+      "url": "https://www.youtube.com/watch?v=UNkHENk1oLk",
+      "author": "ONLYOFFICE",
+      "authorUrl": "https://www.youtube.com/@Onlyoffice_Community",
+      "min": 11,
+      "views": 28444,
+      "pub": "2026-02-24",
+      "level": "intro",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "OnlyOffice"
+      ],
+      "oss": true,
+      "rating": null,
+      "flag": "Prezentare oficială a producătorului",
+      "desc": "Noutățile din ONLYOFFICE Docs 9.3, prezentate de producător: editor PDF îmbunătățit, mai multe opțiuni de semnătură, vizualizare pe mai multe pagini, Solver în tabele și GIF-uri în prezentări.",
+      "descEn": "What is new in ONLYOFFICE Docs 9.3, presented by the developer: an improved PDF editor, more signature options, multipage view, Solver in spreadsheets and GIF playback in presentations.",
+      "n": 4,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

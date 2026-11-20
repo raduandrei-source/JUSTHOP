@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-20",
+  "candidates": [
+    {
+      "platform": "YouTube",
+      "title": "How I cloned Adobe with AI — Brandon Thomas, ArtCraft",
+      "url": "https://www.youtube.com/watch?v=UCL4K36SHp0",
+      "author": "AI Engineer",
+      "authorUrl": "https://www.youtube.com/@aiDotEngineer",
+      "min": 20,
+      "views": 813105,
+      "pub": "2026-11-16",
+      "level": "mediu",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "ArtCraft"
+      ],
+      "oss": true,
+      "rating": null,
+      "flag": null,
+      "desc": "Prezentare de la CODE Summit 2026: cum construiește ArtCraft, cu Rust și agenți AI de programare, alternative open-source la Photoshop, Office și Figma, plus automatizare prin MCP și linie de comandă.",
+      "descEn": "A CODE Summit 2026 talk: how ArtCraft uses Rust and AI coding agents to build open-source alternatives to Photoshop, Office and Figma, plus automation through MCP and the command line.",
+      "n": 1,
+      "accept": "Da",
+      "manual": true
+    }
+  ]
+}

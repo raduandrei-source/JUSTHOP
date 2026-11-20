@@ -1487,6 +1487,25 @@
       "added": "2026-11-20",
       "n": 1,
       "oss": true
+    },
+    {
+      "title": "I Replaced Microsoft Office With This Free Open-Source Alternative",
+      "cats": [
+        "AI"
+      ],
+      "software": [
+        "OnlyOffice"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Prezentare a OnlyOffice, suită de birou open-source care înlocuiește Microsoft Office: documente, tabele, prezentări, PDF și formulare, instalare pe Windows, macOS și Linux, colaborare în timp real și funcții AI integrate.",
+      "descEn": "An overview of OnlyOffice, an open-source office suite that replaces Microsoft Office: documents, spreadsheets, presentations, PDFs and forms, installation on Windows, macOS and Linux, real-time collaboration and built-in AI features.",
+      "url": "https://www.youtube.com/watch?v=UYP2tmTob6I",
+      "author": "Tech With Mobin",
+      "authorUrl": "https://www.youtube.com/@TechWithMobin",
+      "added": "2026-11-20",
+      "n": 2,
+      "oss": true
     }
   ]
 }

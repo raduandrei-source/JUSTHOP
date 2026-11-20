@@ -88,6 +88,145 @@
       ]
     },
     {
+      "id": "space-syntax",
+      "group": "Analiză urbană",
+      "groupEn": "Urban analysis",
+      "label": "Analizez vizibilitatea și integrarea spațială (space syntax)",
+      "labelEn": "Analyse visibility and spatial integration (space syntax)",
+      "steps": [
+        "space-syntax"
+      ]
+    },
+    {
+      "id": "oras-3d",
+      "group": "Analiză urbană",
+      "groupEn": "Urban analysis",
+      "label": "Generez un oraș 3D din reguli și date GIS",
+      "labelEn": "Generate a 3D city from rules and GIS data",
+      "steps": [
+        "date-osm",
+        "oras-procedural"
+      ]
+    },
+    {
+      "id": "satelit",
+      "group": "Analiză urbană",
+      "groupEn": "Urban analysis",
+      "label": "Folosesc imagini satelitare (vegetație, căldură, schimbări)",
+      "labelEn": "Use satellite imagery (vegetation, heat, change)",
+      "steps": [
+        "satelit",
+        "publicare-harta"
+      ]
+    },
+    {
+      "id": "parametric",
+      "group": "Design parametric și analiză",
+      "groupEn": "Parametric design and analysis",
+      "label": "Fac o formă sau o fațadă parametrică",
+      "labelEn": "Make a parametric form or facade",
+      "steps": [
+        "param-model"
+      ]
+    },
+    {
+      "id": "clima",
+      "group": "Design parametric și analiză",
+      "groupEn": "Parametric design and analysis",
+      "label": "Analizez însorirea, lumina naturală sau energia",
+      "labelEn": "Analyse sun, daylight or energy",
+      "steps": [
+        "param-model",
+        "analiza-clima"
+      ]
+    },
+    {
+      "id": "structura",
+      "group": "Design parametric și analiză",
+      "groupEn": "Parametric design and analysis",
+      "label": "Găsesc forma și verific structura unei forme libere",
+      "labelEn": "Find the form and check the structure of a free form",
+      "steps": [
+        "param-model",
+        "form-finding",
+        "calcul-structural"
+      ]
+    },
+    {
+      "id": "optimizare",
+      "group": "Design parametric și analiză",
+      "groupEn": "Parametric design and analysis",
+      "label": "Optimizez o formă după mai multe criterii",
+      "labelEn": "Optimise a form against several criteria",
+      "steps": [
+        "param-model",
+        "optimizare"
+      ]
+    },
+    {
+      "id": "ai-grasshopper",
+      "group": "Design parametric și analiză",
+      "groupEn": "Parametric design and analysis",
+      "label": "Construiesc definiții Grasshopper cu ajutorul AI",
+      "labelEn": "Build Grasshopper definitions with AI help",
+      "steps": [
+        "ai-grasshopper"
+      ]
+    },
+    {
+      "id": "agenti",
+      "group": "Design parametric și analiză",
+      "groupEn": "Parametric design and analysis",
+      "label": "Generez forme cu agenți și comportamente simulate",
+      "labelEn": "Generate forms with agents and simulated behaviours",
+      "steps": [
+        "param-model",
+        "agenti"
+      ]
+    },
+    {
+      "id": "bim-model",
+      "group": "BIM",
+      "groupEn": "BIM",
+      "label": "Modelez clădirea în BIM, cu planșe și cantități",
+      "labelEn": "Model the building in BIM, with drawings and quantities",
+      "steps": [
+        "bim-model"
+      ]
+    },
+    {
+      "id": "bim-schimb",
+      "group": "BIM",
+      "groupEn": "BIM",
+      "label": "Schimb modele între programe (IFC, Speckle)",
+      "labelEn": "Exchange models between programs (IFC, Speckle)",
+      "steps": [
+        "bim-model",
+        "bim-schimb"
+      ]
+    },
+    {
+      "id": "bim-coordonare",
+      "group": "BIM",
+      "groupEn": "BIM",
+      "label": "Coordonez specialitățile și caut conflictele",
+      "labelEn": "Coordinate disciplines and find clashes",
+      "steps": [
+        "bim-schimb",
+        "bim-coordonare"
+      ]
+    },
+    {
+      "id": "nesting",
+      "group": "Fabricație",
+      "groupEn": "Fabrication",
+      "label": "Pregătesc piese pentru tăiere CNC sau laser",
+      "labelEn": "Prepare parts for CNC or laser cutting",
+      "steps": [
+        "nesting"
+      ]
+    },
+    {
       "id": "randare",
       "group": "Vizualizare",
       "groupEn": "Visualization",
@@ -105,6 +244,46 @@
       "labelEn": "Generate or edit images with AI",
       "steps": [
         "imagini-ai"
+      ]
+    },
+    {
+      "id": "volumetrie",
+      "group": "Vizualizare",
+      "groupEn": "Visualization",
+      "label": "Fac rapid o volumetrie sau un model de studiu",
+      "labelEn": "Make a quick massing or study model",
+      "steps": [
+        "volumetrie"
+      ]
+    },
+    {
+      "id": "randare-rt",
+      "group": "Vizualizare",
+      "groupEn": "Visualization",
+      "label": "Fac o randare rapidă, în timp real, pentru prezentare",
+      "labelEn": "Make a quick real-time render for a presentation",
+      "steps": [
+        "randare-timp-real"
+      ]
+    },
+    {
+      "id": "concept-ai",
+      "group": "Vizualizare",
+      "groupEn": "Visualization",
+      "label": "Fac imagini de concept dintr-o schiță sau randare, cu AI",
+      "labelEn": "Make concept images from a sketch or render, with AI",
+      "steps": [
+        "ai-control"
+      ]
+    },
+    {
+      "id": "planse",
+      "group": "Vizualizare",
+      "groupEn": "Visualization",
+      "label": "Fac diagrame și planșe de prezentare",
+      "labelEn": "Make diagrams and presentation boards",
+      "steps": [
+        "planse"
       ]
     },
     {
@@ -135,6 +314,26 @@
       "labelEn": "Automate repetitive tasks with an AI agent",
       "steps": [
         "agent-ai"
+      ]
+    },
+    {
+      "id": "notite",
+      "group": "Cercetare și automatizare",
+      "groupEn": "Research and automation",
+      "label": "Țin notițe de cercetare legate între ele",
+      "labelEn": "Keep linked research notes",
+      "steps": [
+        "notite"
+      ]
+    },
+    {
+      "id": "asistent-ai",
+      "group": "Cercetare și automatizare",
+      "groupEn": "Research and automation",
+      "label": "Lucrez cu un asistent AI la texte, analize și cod",
+      "labelEn": "Work with an AI assistant on writing, analysis and code",
+      "steps": [
+        "asistent-ai"
       ]
     }
   ],
@@ -221,6 +420,7 @@
       "text": "În QGIS cu pluginul QuickOSM, sau din Python cu OSMnx. Alegi zona și ce vrei: străzi, clădiri, spații verzi.",
       "textEn": "In QGIS with the QuickOSM plugin, or from Python with OSMnx. Choose the area and what you need: streets, buildings, green spaces.",
       "software": [
+        "OpenStreetMap",
         "QGIS",
         "OSMnx"
       ],
@@ -236,12 +436,13 @@
       "order": 40,
       "title": "Analizează rețeaua de străzi",
       "titleEn": "Analyse the street network",
-      "text": "Cu OSMnx și GeoPandas: distanțe de mers pe jos, izocrone, conectivitate. Rezultatele se întorc în QGIS pentru hartă.",
-      "textEn": "With OSMnx and GeoPandas: walking distances, isochrones, connectivity. Results go back to QGIS for mapping.",
+      "text": "Cu OSMnx și GeoPandas: distanțe de mers pe jos, izocrone, conectivitate. Rezultatele se întorc în QGIS pentru hartă. În Rhino, același tip de analiză se face cu Urban Network Analysis.",
+      "textEn": "With OSMnx and GeoPandas: walking distances, isochrones, connectivity. Results go back to QGIS for mapping. In Rhino, the same kind of analysis is done with Urban Network Analysis.",
       "software": [
         "Python",
         "OSMnx",
-        "GeoPandas"
+        "GeoPandas",
+        "Urban Network Analysis"
       ],
       "in": [
         "GeoPackage",
@@ -396,6 +597,409 @@
         "XLSX",
         "PPTX",
         "PDF"
+      ]
+    },
+    {
+      "id": "volumetrie",
+      "order": 31,
+      "title": "Modelează volumetria",
+      "titleEn": "Model the massing",
+      "text": "SketchUp pentru schițe rapide de volume, sau Rhino când ai nevoie de precizie și forme libere. Exportă OBJ sau FBX pentru randare.",
+      "textEn": "SketchUp for quick massing sketches, or Rhino when you need precision and free forms. Export OBJ or FBX for rendering.",
+      "software": [
+        "SketchUp",
+        "Rhino"
+      ],
+      "in": [
+        "DWG",
+        "DXF"
+      ],
+      "out": [
+        "SKP",
+        "3DM",
+        "OBJ",
+        "FBX",
+        "DWG"
+      ]
+    },
+    {
+      "id": "param-model",
+      "order": 33,
+      "title": "Construiește modelul parametric",
+      "titleEn": "Build the parametric model",
+      "text": "În Rhino cu Grasshopper: forma e controlată de parametri (slidere), deci variantele se fac din mișcarea lor. Lunchbox ajută la panotări de fațadă, Pufferfish la tranziții între forme.",
+      "textEn": "In Rhino with Grasshopper: the form is driven by parameters (sliders), so variants come from moving them. Lunchbox helps with facade panelling, Pufferfish with transitions between forms.",
+      "software": [
+        "Rhino",
+        "Grasshopper",
+        "Lunchbox",
+        "Pufferfish"
+      ],
+      "in": [
+        "3DM",
+        "DWG",
+        "DXF"
+      ],
+      "out": [
+        "3DM"
+      ]
+    },
+    {
+      "id": "ai-grasshopper",
+      "order": 34,
+      "title": "Lasă AI-ul să propună definiția",
+      "titleEn": "Let AI draft the definition",
+      "text": "Raven construiește și repară definiții Grasshopper din text sau imagini. Verifică ce a pus pe canvas înainte să construiești mai departe pe ea.",
+      "textEn": "Raven builds and fixes Grasshopper definitions from text or images. Check what it placed on the canvas before building on it.",
+      "software": [
+        "Raven",
+        "Grasshopper"
+      ],
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
+      ]
+    },
+    {
+      "id": "form-finding",
+      "order": 35,
+      "title": "Găsește forma",
+      "titleEn": "Find the form",
+      "text": "Kangaroo simulează fizic membrane, plase și structuri tensionate; RhinoVAULT găsește forma bolților în compresiune pură. Forma rezultată pleacă la calcul.",
+      "textEn": "Kangaroo physically simulates membranes, nets and tensile structures; RhinoVAULT finds the form of pure-compression vaults. The resulting form goes on to analysis.",
+      "software": [
+        "Kangaroo",
+        "RhinoVAULT"
+      ],
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
+      ]
+    },
+    {
+      "id": "calcul-structural",
+      "order": 36,
+      "title": "Verifică structura",
+      "titleEn": "Check the structure",
+      "text": "Karamba3D calculează cu elemente finite direct în Grasshopper: deformații, eforturi, utilizarea secțiunilor. E o verificare de concept, nu înlocuiește calculul inginerului.",
+      "textEn": "Karamba3D runs finite-element analysis directly in Grasshopper: deflections, forces, section utilisation. It is a concept check, not a substitute for the engineer's calculation.",
+      "software": [
+        "Karamba3D"
+      ],
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM",
+        "CSV"
+      ]
+    },
+    {
+      "id": "analiza-clima",
+      "order": 37,
+      "title": "Analizează clima, soarele și lumina",
+      "titleEn": "Analyse climate, sun and light",
+      "text": "Ladybug Tools în Grasshopper: descarci fișierul meteo EPW al orașului și faci diagrame de însorire, radiație, lumină naturală sau consum de energie pe modelul tău.",
+      "textEn": "Ladybug Tools in Grasshopper: download the city's EPW weather file and run sun-hours, radiation, daylight or energy studies on your model.",
+      "software": [
+        "Ladybug Tools"
+      ],
+      "in": [
+        "3DM",
+        "EPW"
+      ],
+      "out": [
+        "CSV",
+        "PNG"
+      ]
+    },
+    {
+      "id": "optimizare",
+      "order": 38,
+      "title": "Optimizează variantele",
+      "titleEn": "Optimise the variants",
+      "text": "Octopus sau Wallacei încearcă singure mii de combinații de parametri și păstrează variantele care împacă cel mai bine criteriile (însorire, suprafață, cost).",
+      "textEn": "Octopus or Wallacei try thousands of parameter combinations and keep the variants that best balance the criteria (sun, area, cost).",
+      "software": [
+        "Octopus",
+        "Wallacei"
+      ],
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM",
+        "CSV"
+      ]
+    },
+    {
+      "id": "bim-model",
+      "order": 42,
+      "title": "Modelează în BIM",
+      "titleEn": "Model in BIM",
+      "text": "Revit sau ArchiCAD: pereți, planșee și uși sunt obiecte cu informații, iar planșele și cantitățile ies din model.",
+      "textEn": "Revit or ArchiCAD: walls, slabs and doors are objects with data, and drawings and quantities come out of the model.",
+      "software": [
+        "Revit",
+        "ArchiCAD"
+      ],
+      "in": [
+        "DWG",
+        "DXF",
+        "IFC"
+      ],
+      "out": [
+        "RVT",
+        "PLN",
+        "IFC",
+        "DWG",
+        "PDF"
+      ]
+    },
+    {
+      "id": "bim-schimb",
+      "order": 44,
+      "title": "Trimite modelul mai departe",
+      "titleEn": "Pass the model on",
+      "text": "IFC e formatul deschis citit de toate programele BIM. Speckle sincronizează modele între Rhino, Revit, Grasshopper și Blender, cu istoric de versiuni.",
+      "textEn": "IFC is the open format every BIM program reads. Speckle syncs models between Rhino, Revit, Grasshopper and Blender, with version history.",
+      "software": [
+        "IFC",
+        "Speckle"
+      ],
+      "in": [
+        "RVT",
+        "PLN",
+        "IFC",
+        "3DM"
+      ],
+      "out": [
+        "IFC",
+        "3DM",
+        "RVT"
+      ]
+    },
+    {
+      "id": "bim-coordonare",
+      "order": 46,
+      "title": "Coordonează și caută conflicte",
+      "titleEn": "Coordinate and find clashes",
+      "text": "Navisworks unește modelele de arhitectură, structură și instalații și arată unde se lovesc între ele.",
+      "textEn": "Navisworks combines the architecture, structure and MEP models and shows where they clash.",
+      "software": [
+        "Navisworks"
+      ],
+      "in": [
+        "IFC",
+        "RVT",
+        "DWG"
+      ],
+      "out": [
+        "NWD"
+      ]
+    },
+    {
+      "id": "nesting",
+      "order": 55,
+      "title": "Așază piesele pe plăci",
+      "titleEn": "Nest the parts on sheets",
+      "text": "OpenNest în Grasshopper așază automat piesele pe plăcile de material, cu cât mai puțin rest. Exportă DXF pentru mașina CNC sau laser.",
+      "textEn": "OpenNest in Grasshopper places the parts on material sheets with as little waste as possible. Export DXF for the CNC or laser cutter.",
+      "software": [
+        "OpenNest",
+        "Rhino"
+      ],
+      "in": [
+        "3DM",
+        "DXF"
+      ],
+      "out": [
+        "DXF",
+        "3DM"
+      ]
+    },
+    {
+      "id": "space-syntax",
+      "order": 41,
+      "title": "Analizează configurația spațială",
+      "titleEn": "Analyse the spatial configuration",
+      "text": "depthmapX: încarci planul ca DXF și obții hărți de vizibilitate și integrare, care arată ce spații sunt cele mai accesibile și mai vizibile.",
+      "textEn": "depthmapX: load the plan as DXF and get visibility and integration maps showing which spaces are the most accessible and visible.",
+      "software": [
+        "depthmapX"
+      ],
+      "in": [
+        "DXF"
+      ],
+      "out": [
+        "CSV",
+        "PNG"
+      ]
+    },
+    {
+      "id": "oras-procedural",
+      "order": 39,
+      "title": "Generează orașul 3D",
+      "titleEn": "Generate the 3D city",
+      "text": "CityEngine construiește clădiri din reguli (înălțimi, retrageri, tipologii) peste parcelele și străzile din GIS.",
+      "textEn": "CityEngine builds buildings from rules (heights, setbacks, typologies) on top of GIS plots and streets.",
+      "software": [
+        "CityEngine"
+      ],
+      "in": [
+        "Shapefile",
+        "GeoPackage",
+        "DXF"
+      ],
+      "out": [
+        "OBJ",
+        "FBX",
+        "glTF"
+      ]
+    },
+    {
+      "id": "satelit",
+      "order": 26,
+      "title": "Descarcă imaginile satelitare",
+      "titleEn": "Download the satellite imagery",
+      "text": "Copernicus Browser: imagini Sentinel gratuite, cu indici gata făcuți (vegetație NDVI, temperatură, apă), pe date diferite pentru comparații.",
+      "textEn": "Copernicus Browser: free Sentinel images with ready-made indices (NDVI vegetation, temperature, water), on different dates for comparison.",
+      "software": [
+        "Copernicus",
+        "QGIS"
+      ],
+      "in": [],
+      "out": [
+        "GeoTIFF",
+        "PNG"
+      ]
+    },
+    {
+      "id": "randare-timp-real",
+      "order": 61,
+      "title": "Randează în timp real",
+      "titleEn": "Render in real time",
+      "text": "Enscape, Twinmotion sau D5 Render arată imaginea pe loc, cu vegetație și oameni din bibliotecă; V-Ray când ai nevoie de fotorealism maxim.",
+      "textEn": "Enscape, Twinmotion or D5 Render show the image instantly, with vegetation and people from libraries; V-Ray when you need maximum photorealism.",
+      "software": [
+        "Enscape",
+        "Twinmotion",
+        "D5 Render",
+        "V-Ray"
+      ],
+      "in": [
+        "SKP",
+        "RVT",
+        "3DM",
+        "FBX",
+        "OBJ"
+      ],
+      "out": [
+        "PNG",
+        "MP4"
+      ]
+    },
+    {
+      "id": "ai-control",
+      "order": 66,
+      "title": "Generează imagini de concept",
+      "titleEn": "Generate concept images",
+      "text": "Stable Diffusion cu ControlNet păstrează contururile schiței sau randării și schimbă materialele și atmosfera; Midjourney e mai rapid, dar controlezi mai puțin geometria.",
+      "textEn": "Stable Diffusion with ControlNet keeps the edges of your sketch or render and changes materials and mood; Midjourney is faster but gives less control over geometry.",
+      "software": [
+        "Stable Diffusion",
+        "ControlNet",
+        "Midjourney"
+      ],
+      "in": [
+        "PNG",
+        "JPG"
+      ],
+      "out": [
+        "PNG"
+      ]
+    },
+    {
+      "id": "planse",
+      "order": 68,
+      "title": "Compune planșele",
+      "titleEn": "Compose the boards",
+      "text": "Illustrator pentru diagrame și postprocesare de planuri exportate ca PDF sau SVG; păstrează grafica vectorială, ca liniile să rămână clare la print.",
+      "textEn": "Illustrator for diagrams and post-processing plans exported as PDF or SVG; keep the graphics vector so lines stay crisp in print.",
+      "software": [
+        "Illustrator"
+      ],
+      "in": [
+        "PDF",
+        "SVG",
+        "DWG",
+        "DXF",
+        "PNG"
+      ],
+      "out": [
+        "PDF",
+        "PNG",
+        "SVG"
+      ]
+    },
+    {
+      "id": "notite",
+      "order": 82,
+      "title": "Leagă notițele de cercetare",
+      "titleEn": "Link your research notes",
+      "text": "Obsidian ține notițele ca fișiere Markdown pe calculatorul tău, legate între ele; merge bine împreună cu Zotero pentru surse.",
+      "textEn": "Obsidian keeps notes as Markdown files on your computer, linked to each other; it pairs well with Zotero for sources.",
+      "software": [
+        "Obsidian"
+      ],
+      "in": [
+        "MD",
+        "PDF"
+      ],
+      "out": [
+        "MD",
+        "PDF"
+      ]
+    },
+    {
+      "id": "asistent-ai",
+      "order": 86,
+      "title": "Lucrează cu un asistent AI",
+      "titleEn": "Work with an AI assistant",
+      "text": "Claude te ajută la texte, rezumate, analize de date și scripturi. Verifică cifrele și sursele pe care ți le dă înainte să le folosești.",
+      "textEn": "Claude helps with writing, summaries, data analysis and scripts. Check the figures and sources it gives you before using them.",
+      "software": [
+        "Claude"
+      ],
+      "in": [
+        "PDF",
+        "DOCX",
+        "CSV"
+      ],
+      "out": [
+        "MD",
+        "CSV"
+      ]
+    },
+    {
+      "id": "agenti",
+      "order": 34,
+      "title": "Lasă agenții să deseneze forma",
+      "titleEn": "Let agents draw the form",
+      "text": "Culebra simulează agenți care se mișcă după reguli (urmărire, evitare, roire); traseele lor devin curbe și suprafețe în Grasshopper.",
+      "textEn": "Culebra simulates agents moving by rules (following, avoiding, flocking); their trails become curves and surfaces in Grasshopper.",
+      "software": [
+        "Culebra"
+      ],
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
       ]
     }
   ]

@@ -220,6 +220,569 @@
         "PDF",
         "CSV"
       ]
+    },
+    {
+      "name": "Grasshopper",
+      "url": "https://www.grasshopper3d.com",
+      "openSource": false,
+      "license": "inclus în Rhino",
+      "desc": "Programare vizuală pentru design parametric, inclusă în Rhino. Majoritatea pluginurilor de analiză și optimizare rulează în el.",
+      "descEn": "Visual programming for parametric design, included in Rhino. Most analysis and optimisation plugins run inside it.",
+      "in": [
+        "3DM",
+        "CSV",
+        "XLSX"
+      ],
+      "out": [
+        "3DM",
+        "CSV"
+      ]
+    },
+    {
+      "name": "SketchUp",
+      "url": "https://www.sketchup.com",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "Modelare 3D rapidă pentru schițe de volumetrie și interioare.",
+      "descEn": "Fast 3D modelling for massing sketches and interiors.",
+      "in": [
+        "SKP",
+        "DWG",
+        "DXF",
+        "3DS",
+        "DAE"
+      ],
+      "out": [
+        "SKP",
+        "DWG",
+        "DXF",
+        "OBJ",
+        "FBX",
+        "DAE",
+        "PNG"
+      ]
+    },
+    {
+      "name": "Obsidian",
+      "url": "https://obsidian.md",
+      "openSource": false,
+      "license": "gratuit pentru uz personal",
+      "desc": "Notițe legate între ele, în fișiere Markdown pe calculatorul tău. Bun pentru cercetare și documentare.",
+      "descEn": "Linked notes in Markdown files on your own computer. Good for research and documentation.",
+      "in": [
+        "MD"
+      ],
+      "out": [
+        "MD",
+        "PDF"
+      ],
+      "free": true
+    },
+    {
+      "name": "Revit",
+      "url": "https://www.autodesk.com/products/revit",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "BIM: modelul clădirii cu planșe, cantități și coordonare între specialități.",
+      "descEn": "BIM: the building model with drawings, quantities and coordination between disciplines.",
+      "in": [
+        "RVT",
+        "IFC",
+        "DWG",
+        "DXF"
+      ],
+      "out": [
+        "RVT",
+        "IFC",
+        "DWG",
+        "DXF",
+        "FBX",
+        "PDF"
+      ]
+    },
+    {
+      "name": "Ladybug Tools",
+      "url": "https://www.ladybug.tools",
+      "openSource": true,
+      "license": "AGPL-3.0",
+      "desc": "Analize de climă, însorire, lumină naturală și energie în Grasshopper, pe date meteo EPW.",
+      "descEn": "Climate, sun, daylight and energy analysis in Grasshopper, from EPW weather data.",
+      "in": [
+        "EPW",
+        "3DM"
+      ],
+      "out": [
+        "CSV",
+        "PNG"
+      ]
+    },
+    {
+      "name": "Karamba3D",
+      "url": "https://www.karamba3d.com",
+      "openSource": false,
+      "license": "comercial (are variantă gratuită limitată)",
+      "desc": "Calcul structural cu elemente finite direct în Grasshopper, pentru forme parametrice.",
+      "descEn": "Finite-element structural analysis directly in Grasshopper, for parametric forms.",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM",
+        "CSV"
+      ]
+    },
+    {
+      "name": "Kangaroo",
+      "url": "https://www.food4rhino.com/en/app/kangaroo-physics",
+      "openSource": false,
+      "license": "gratuit, inclus în Rhino 7+",
+      "desc": "Simulare fizică în Grasshopper: form finding, membrane, structuri tensionate.",
+      "descEn": "Physics simulation in Grasshopper: form finding, membranes, tensile structures.",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
+      ],
+      "free": true
+    },
+    {
+      "name": "OpenStreetMap",
+      "url": "https://www.openstreetmap.org",
+      "openSource": true,
+      "license": "ODbL (date deschise)",
+      "desc": "Harta lumii făcută de voluntari: străzi, clădiri, funcțiuni, gratuite pentru orice proiect cu menționarea sursei.",
+      "descEn": "The volunteer-made map of the world: streets, buildings, land use, free for any project with attribution.",
+      "in": [],
+      "out": [
+        "OSM",
+        "PBF",
+        "GeoJSON"
+      ]
+    },
+    {
+      "name": "Illustrator",
+      "url": "https://www.adobe.com/products/illustrator.html",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "Grafică vectorială: diagrame, planșe de prezentare, postprocesare de planuri.",
+      "descEn": "Vector graphics: diagrams, presentation boards, post-processing plans.",
+      "in": [
+        "AI",
+        "PDF",
+        "SVG",
+        "DXF",
+        "DWG"
+      ],
+      "out": [
+        "AI",
+        "PDF",
+        "SVG",
+        "PNG",
+        "DXF"
+      ]
+    },
+    {
+      "name": "Claude",
+      "url": "https://claude.ai",
+      "openSource": false,
+      "license": "comercial (are variantă gratuită)",
+      "desc": "Asistent AI pentru texte, analiză, cod și automatizări; Claude Code lucrează direct cu fișierele tale.",
+      "descEn": "An AI assistant for writing, analysis, code and automation; Claude Code works directly on your files.",
+      "in": [
+        "PDF",
+        "DOCX",
+        "CSV",
+        "PNG"
+      ],
+      "out": [
+        "MD",
+        "CSV",
+        "PY"
+      ]
+    },
+    {
+      "name": "Lunchbox",
+      "url": "https://www.food4rhino.com/en/app/lunchbox",
+      "openSource": false,
+      "license": "gratuit",
+      "desc": "Plugin Grasshopper pentru panotări de fațadă, structuri spațiale și legături cu Excel.",
+      "descEn": "A Grasshopper plugin for facade panelling, space frames and Excel links.",
+      "in": [
+        "3DM",
+        "XLSX"
+      ],
+      "out": [
+        "3DM",
+        "XLSX"
+      ],
+      "free": true
+    },
+    {
+      "name": "Pufferfish",
+      "url": "https://www.food4rhino.com/en/app/pufferfish",
+      "openSource": false,
+      "license": "gratuit",
+      "desc": "Plugin Grasshopper pentru tranziții (tween) între curbe, suprafețe și meshuri.",
+      "descEn": "A Grasshopper plugin for tweening between curves, surfaces and meshes.",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
+      ],
+      "free": true
+    },
+    {
+      "name": "ArchiCAD",
+      "url": "https://graphisoft.com/solutions/archicad",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "BIM pentru arhitecți: model, planșe și documentație, cu export IFC bun.",
+      "descEn": "BIM for architects: model, drawings and documentation, with solid IFC export.",
+      "in": [
+        "PLN",
+        "IFC",
+        "DWG",
+        "DXF"
+      ],
+      "out": [
+        "PLN",
+        "IFC",
+        "DWG",
+        "DXF",
+        "PDF"
+      ]
+    },
+    {
+      "name": "IFC",
+      "url": "https://www.buildingsmart.org/standards/bsi-standards/industry-foundation-classes/",
+      "openSource": true,
+      "license": "standard deschis (ISO 16739)",
+      "desc": "Formatul deschis de schimb BIM: modelul trece între Revit, ArchiCAD și alte programe fără să depindă de un producător.",
+      "descEn": "The open BIM exchange format: the model moves between Revit, ArchiCAD and other tools without vendor lock-in.",
+      "in": [
+        "IFC"
+      ],
+      "out": [
+        "IFC"
+      ]
+    },
+    {
+      "name": "Navisworks",
+      "url": "https://www.autodesk.com/products/navisworks",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "Coordonare BIM: unește modelele specialităților și găsește conflictele dintre ele.",
+      "descEn": "BIM coordination: combines discipline models and finds clashes between them.",
+      "in": [
+        "NWD",
+        "NWC",
+        "RVT",
+        "IFC",
+        "DWG"
+      ],
+      "out": [
+        "NWD",
+        "NWC"
+      ]
+    },
+    {
+      "name": "Speckle",
+      "url": "https://speckle.systems",
+      "openSource": true,
+      "license": "Apache-2.0 (în mare parte)",
+      "desc": "Platformă open source care mută modele și date între Rhino, Revit, Grasshopper, Blender și altele, cu istoric de versiuni. Are și planuri plătite în cloud.",
+      "descEn": "An open-source platform that moves models and data between Rhino, Revit, Grasshopper, Blender and more, with version history. Also has paid cloud plans.",
+      "in": [
+        "3DM",
+        "RVT",
+        "IFC",
+        "OBJ"
+      ],
+      "out": [
+        "3DM",
+        "RVT",
+        "IFC",
+        "OBJ"
+      ]
+    },
+    {
+      "name": "Copernicus",
+      "url": "https://browser.dataspace.copernicus.eu",
+      "openSource": false,
+      "license": "gratuit, date deschise",
+      "desc": "Imagini satelitare europene (Sentinel) gratuite: vegetație, temperatură, schimbări în teritoriu.",
+      "descEn": "Free European satellite imagery (Sentinel): vegetation, temperature, land change.",
+      "in": [],
+      "out": [
+        "GeoTIFF",
+        "PNG"
+      ],
+      "free": true
+    },
+    {
+      "name": "OpenNest",
+      "url": "https://petrasvestartas.github.io/OpenNest/",
+      "openSource": true,
+      "license": "MIT",
+      "desc": "Plugin Grasshopper care așază automat piesele pe plăci (nesting) pentru tăiere CNC sau laser.",
+      "descEn": "A Grasshopper plugin that nests parts on sheets for CNC or laser cutting.",
+      "in": [
+        "3DM",
+        "DXF"
+      ],
+      "out": [
+        "3DM",
+        "DXF"
+      ]
+    },
+    {
+      "name": "Twinmotion",
+      "url": "https://www.twinmotion.com",
+      "openSource": false,
+      "license": "comercial (gratuit pentru studenți)",
+      "desc": "Randare în timp real și animații din modele Revit, SketchUp, Rhino sau ArchiCAD.",
+      "descEn": "Real-time rendering and animation from Revit, SketchUp, Rhino or ArchiCAD models.",
+      "in": [
+        "FBX",
+        "SKP",
+        "RVT",
+        "OBJ",
+        "glTF",
+        "DAE"
+      ],
+      "out": [
+        "PNG",
+        "MP4",
+        "EXR"
+      ]
+    },
+    {
+      "name": "D5 Render",
+      "url": "https://www.d5render.com",
+      "openSource": false,
+      "license": "comercial (are variantă gratuită)",
+      "desc": "Randare în timp real cu ray tracing, cu biblioteci de vegetație și oameni.",
+      "descEn": "Real-time ray-traced rendering, with vegetation and people libraries.",
+      "in": [
+        "FBX",
+        "SKP",
+        "OBJ",
+        "glTF"
+      ],
+      "out": [
+        "PNG",
+        "MP4"
+      ]
+    },
+    {
+      "name": "V-Ray",
+      "url": "https://www.chaos.com/vray",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "Motor de randare fotorealistă pentru Rhino, SketchUp, 3ds Max și altele.",
+      "descEn": "A photorealistic render engine for Rhino, SketchUp, 3ds Max and more.",
+      "in": [
+        "3DM",
+        "SKP"
+      ],
+      "out": [
+        "PNG",
+        "EXR"
+      ]
+    },
+    {
+      "name": "Enscape",
+      "url": "https://www.chaos.com/enscape",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "Randare în timp real direct din Revit, SketchUp, Rhino sau ArchiCAD, cu VR.",
+      "descEn": "Real-time rendering straight from Revit, SketchUp, Rhino or ArchiCAD, with VR.",
+      "in": [
+        "RVT",
+        "SKP",
+        "3DM",
+        "PLN"
+      ],
+      "out": [
+        "PNG",
+        "MP4"
+      ]
+    },
+    {
+      "name": "Octopus",
+      "url": "https://www.food4rhino.com/en/app/octopus",
+      "openSource": false,
+      "license": "gratuit",
+      "desc": "Optimizare multi-obiectiv în Grasshopper: caută variantele cele mai bune după mai multe criterii deodată.",
+      "descEn": "Multi-objective optimisation in Grasshopper: searches for the best variants against several criteria at once.",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM",
+        "CSV"
+      ],
+      "free": true
+    },
+    {
+      "name": "Wallacei",
+      "url": "https://www.wallacei.com",
+      "openSource": false,
+      "license": "gratuit",
+      "desc": "Optimizare evolutivă în Grasshopper, cu grafice pentru analiza și alegerea variantelor.",
+      "descEn": "Evolutionary optimisation in Grasshopper, with charts for analysing and choosing variants.",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM",
+        "CSV"
+      ],
+      "free": true
+    },
+    {
+      "name": "Culebra",
+      "url": "https://github.com/elQuixote/Culebra",
+      "openSource": true,
+      "license": "GPL-3.0",
+      "desc": "Plugin Grasshopper pentru design cu agenți: forme generate din traseele unor comportamente simulate.",
+      "descEn": "A Grasshopper plugin for agent-based design: forms generated from the trails of simulated behaviours.",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
+      ]
+    },
+    {
+      "name": "Stable Diffusion",
+      "url": "https://github.com/CompVis/stable-diffusion",
+      "openSource": false,
+      "license": "model deschis (CreativeML OpenRAIL-M)",
+      "desc": "Model AI de generat imagini care poate rula pe calculatorul tău. Greutățile sunt publice, dar licența are restricții de folosire, deci nu e open source în sens strict.",
+      "descEn": "An AI image model that can run on your own computer. The weights are public, but the licence has use restrictions, so it is not open source in the strict sense.",
+      "in": [
+        "PNG",
+        "JPG"
+      ],
+      "out": [
+        "PNG"
+      ],
+      "free": true
+    },
+    {
+      "name": "ControlNet",
+      "url": "https://github.com/lllyasviel/ControlNet",
+      "openSource": true,
+      "license": "Apache-2.0",
+      "desc": "Extensie pentru Stable Diffusion care păstrează geometria unei schițe sau randări (contururi, adâncime) în imaginea generată.",
+      "descEn": "A Stable Diffusion extension that keeps the geometry of a sketch or render (edges, depth) in the generated image.",
+      "in": [
+        "PNG",
+        "JPG"
+      ],
+      "out": [
+        "PNG"
+      ]
+    },
+    {
+      "name": "Raven",
+      "url": "",
+      "openSource": false,
+      "license": "comercial (are plan gratuit)",
+      "desc": "Plugin AI pentru Grasshopper: construiește și repară definiții din text sau imagini. Rulează prin serviciul online al producătorului.",
+      "descEn": "An AI plugin for Grasshopper: builds and fixes definitions from text or images. Runs through the vendor's online service.",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
+      ]
+    },
+    {
+      "name": "Midjourney",
+      "url": "https://www.midjourney.com",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "Generare de imagini cu AI, prin abonament; bun pentru atmosferă și imagini de concept.",
+      "descEn": "Subscription AI image generation; good for mood and concept images.",
+      "in": [
+        "PNG",
+        "JPG"
+      ],
+      "out": [
+        "PNG"
+      ]
+    },
+    {
+      "name": "RhinoVAULT",
+      "url": "https://blockresearchgroup.gitbook.io/rhinovault",
+      "openSource": true,
+      "license": "MIT",
+      "desc": "Form finding pentru bolți în compresiune pură, cu diagrame de formă și de forțe (ETH Zürich). Rulează în Rhino.",
+      "descEn": "Form finding for pure-compression vaults with form and force diagrams (ETH Zurich). Runs in Rhino.",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
+      ]
+    },
+    {
+      "name": "CityEngine",
+      "url": "https://www.esri.com/en-us/arcgis/products/arcgis-cityengine/overview",
+      "openSource": false,
+      "license": "comercial",
+      "desc": "Modelare urbană procedurală: orașe 3D generate din reguli și date GIS.",
+      "descEn": "Procedural urban modelling: 3D cities generated from rules and GIS data.",
+      "in": [
+        "Shapefile",
+        "GeoPackage",
+        "DXF",
+        "OSM"
+      ],
+      "out": [
+        "OBJ",
+        "FBX",
+        "glTF",
+        "DAE"
+      ]
+    },
+    {
+      "name": "depthmapX",
+      "url": "https://github.com/SpaceGroupUCL/depthmapX",
+      "openSource": true,
+      "license": "GPL-3.0",
+      "desc": "Space syntax: analize de vizibilitate și integrare a rețelei spațiale, pe planuri DXF.",
+      "descEn": "Space syntax: visibility and spatial network integration analysis on DXF plans.",
+      "in": [
+        "DXF",
+        "MIF"
+      ],
+      "out": [
+        "CSV",
+        "MIF",
+        "PNG"
+      ]
+    },
+    {
+      "name": "Urban Network Analysis",
+      "url": "https://cityform.mit.edu/projects/una-rhino-toolbox",
+      "openSource": false,
+      "license": "gratuit",
+      "desc": "Toolbox MIT City Form Lab pentru Rhino: accesibilitate, fluxuri pietonale și analiză de rețea urbană.",
+      "descEn": "An MIT City Form Lab toolbox for Rhino: accessibility, pedestrian flows and urban network analysis.",
+      "in": [
+        "3DM",
+        "Shapefile"
+      ],
+      "out": [
+        "3DM",
+        "CSV"
+      ],
+      "free": true
     }
   ]
 }

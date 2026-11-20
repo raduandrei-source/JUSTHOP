@@ -310,6 +310,7 @@
   .wf-prog a:hover { color: var(--accent-text); border-bottom-color: var(--accent-text); }
   .wf-lic { font-size: 10px; padding: 0 5px; border: 1px solid var(--rule); color: var(--muted); }
   .wf-lic.oss { border-color: var(--accent-text); color: var(--accent-text); }
+  .wf-lic.free { border-color: var(--muted); color: var(--ink); }
   .wf-tuts { border: none; background: none; padding: 0; cursor: pointer; font: inherit; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
   .wf-tuts:hover { color: var(--accent-text); }
   .wf-fmt { display: flex; align-items: center; gap: 10px; padding: 8px 0 8px 18px; color: var(--muted); }
@@ -320,6 +321,7 @@
     .wf-body { grid-template-columns: 1fr; overflow-y: auto; }
     .wf-goals, .wf-result { overflow: visible; }
     .wf-goals { border-right: none; border-bottom: 1px solid var(--line); }
+    .wf-head .wf-sub { display: none; }
   }
   /* implicit pe colțul cardului; pe ecrane late JS îl mută la mijloc între titlu și card (placeCube) */
   .hop-cube { position: absolute; right: 18px; top: -48px; width: 88px; height: 88px; pointer-events: none; z-index: 2; overflow: visible; transform-origin: 50% 100%; }
@@ -1001,7 +1003,7 @@
       wfText: 'Bifează ce ai de lucrat și îți propun programele, ordinea pașilor și formatele care trec de la un program la altul.',
       wfSub: 'bifează în stânga, răspunsul apare în dreapta', wfClose: 'Închide', wfLoading: 'se încarcă...',
       wfEmpty: 'Bifează în stânga unul sau mai multe lucruri pe care vrei să le faci. Pașii se pun singuri în ordine, fără dubluri.',
-      wfOss: 'open source', wfPaid: 'comercial', wfTutOne: '1 tutorial', wfTutMany: '{n} tutoriale',
+      wfOss: 'open source', wfFree: 'gratuit', wfPaid: 'comercial', wfTutOne: '1 tutorial', wfTutMany: '{n} tutoriale',
       wfNote: 'Între pași sunt formatele de fișier pe care le poate citi pasul următor. Linkurile duc la site-urile oficiale ale programelor.',
       wfError: 'nu am putut încărca data/workflows.json',
       weekTitle: 'Adăugate săptămâna asta', toList: 'Resurse', toListAria: 'Mergi la resurse', toTopAria: 'Înapoi sus', weekNote: 'actualizat vinerea',
@@ -1038,7 +1040,7 @@
       wfText: 'Tick what you need to do and get the programs, the order of the steps and the file formats that pass from one program to the next.',
       wfSub: 'tick on the left, the answer appears on the right', wfClose: 'Close', wfLoading: 'loading...',
       wfEmpty: 'Tick one or more things you want to do on the left. The steps fall into order by themselves, without duplicates.',
-      wfOss: 'open source', wfPaid: 'commercial', wfTutOne: '1 tutorial', wfTutMany: '{n} tutorials',
+      wfOss: 'open source', wfFree: 'free', wfPaid: 'commercial', wfTutOne: '1 tutorial', wfTutMany: '{n} tutorials',
       wfNote: 'Between steps are the file formats the next step can read. Links go to the programs’ official websites.',
       wfError: 'could not load data/workflows.json',
       weekTitle: 'Added this week', toList: 'Resources', toListAria: 'Go to resources', toTopAria: 'Back to top', weekNote: 'updated on Fridays',
@@ -1391,7 +1393,8 @@
     const p = wfSoft[name.toLowerCase()];
     const n = tutCount(name);
     const label = p && /^https?:\/\//.test(p.url || '') ? `<a href="${esc(p.url)}" target="_blank" rel="noopener" title="${esc(L(p, 'desc') || '')}">${esc(name)}</a>` : esc(name);
-    const lic = p ? `<span class="wf-lic${p.openSource ? ' oss' : ''}">${esc(t(p.openSource ? 'wfOss' : 'wfPaid'))}</span>` : '';
+    const kind = p ? (p.openSource ? 'oss' : p.free ? 'free' : 'paid') : '';   // open source / gratuit (închis) / comercial
+    const lic = p ? `<span class="wf-lic ${kind}" title="${esc(p.license || '')}">${esc(t({ oss: 'wfOss', free: 'wfFree', paid: 'wfPaid' }[kind]))}</span>` : '';
     const tuts = n ? `<button type="button" class="wf-tuts" data-sw="${esc(name)}">${esc(n === 1 ? t('wfTutOne') : t('wfTutMany', { n }))}</button>` : '';
     return `<span class="wf-prog">${label}${lic}${tuts}</span>`;
   }

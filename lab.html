@@ -548,6 +548,105 @@
   .to-top.show { opacity: 1; visibility: visible; transform: none; }
   .to-top:hover { background: var(--lab); border-color: var(--lab); color: #fff; }
 
+
+  /* ---------- CASETA „WORKFLOW SUGERAT" (sub cub, deasupra listei de software) ---------- */
+  .intro-text { grid-row: 2 / span 2; }
+  .soft { grid-row: 3; }
+  .wf-card {
+    grid-column: 2; grid-row: 2;
+    display: block;
+    width: calc((100% - 32px) / 3 * 2 + 16px);   /* deasupra ultimelor două coloane de software, ca pe pagina principală */
+    margin: 20px 0 0 auto;
+    padding: 14px 16px 16px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    box-shadow: 2px 2px 0 var(--shadow-rest);
+    font: inherit; color: inherit; text-align: left; cursor: pointer;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .wf-card:hover { box-shadow: 4px 6px 0 var(--shadow-lift); transform: translate(-1px, -3px); }
+  .wf-card:focus-visible { outline: 2px solid var(--lab-text); outline-offset: 3px; }
+  .wf-card .label { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+  .wf-card .when { margin-left: auto; color: var(--lab-text); }
+  .wf-card .h3 { display: block; margin: 10px 0 0; font-size: 20px; line-height: 1.3; font-weight: 500; letter-spacing: -0.015em; }
+  .wf-card .p { display: block; margin: 6px 0 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
+  .help-mark { display: inline-grid; place-items: center; width: 16px; height: 16px; background: var(--lab); color: #fff; font-weight: 700; letter-spacing: 0; }
+
+  /* fereastra: bife în stânga, răspunsul compus în dreapta */
+  dialog.wf {
+    width: min(1040px, calc(100vw - 32px));
+    max-height: calc(100vh - 48px);
+    padding: 0;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    color: var(--ink);
+    box-shadow: 6px 8px 0 var(--shadow-lift);
+  }
+  dialog.wf[open] { display: flex; flex-direction: column; }
+  dialog.wf::backdrop { background: rgba(28, 28, 28, 0.4); }
+  .wf-head { display: flex; align-items: center; gap: 16px; padding: 0 0 0 24px; height: 48px; flex-shrink: 0; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .wf-head strong { font-weight: 400; }
+  .wf-head .wf-sub { color: var(--muted); }
+  .wf-close { margin-left: auto; width: 48px; height: 100%; border: none; border-left: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 22px; line-height: 1; }
+  .wf-close:hover { background: var(--bg); }
+  .wf-body { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); min-height: 0; flex: 1; }
+  .wf-left, .wf-result { overflow-y: auto; padding: 20px 24px 28px; }
+  .wf-left { border-right: 1px solid var(--line); }
+  .wf-left fieldset { border: 0; margin: 0 0 18px; padding: 0; min-width: 0; }
+  .wf-left legend { padding: 0; margin-bottom: 6px; color: var(--muted); }
+  .wf-goals label { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; font-size: 14px; line-height: 1.4; cursor: pointer; }
+  .wf-goals label:hover { color: var(--lab-text); }
+  .wf-left input, .wf-left select { accent-color: var(--lab-text); }
+  .wf-goals input { margin: 2px 0 0; flex-shrink: 0; }
+  .wf-empty { color: var(--muted); font-size: 14px; }
+  .wf-steps { list-style: none; margin: 0; padding: 0; }
+  .wf-step { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 4px 12px; padding: 14px 16px 16px; background: var(--surface); border: 1.5px solid var(--border); }
+  .wf-n { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--lab-text); padding-top: 2px; }
+  .wf-step h4 { margin: 0; font-size: 17px; line-height: 1.35; font-weight: 500; }
+  .wf-step p { margin: 4px 0 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
+  .wf-progs { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .wf-prog { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; }
+  .wf-prog a.name { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .wf-prog a.name:hover { color: var(--lab-text); border-bottom-color: var(--lab-text); }
+  .wf-lic { font-size: 10px; padding: 0 5px; border: 1px solid var(--rule); color: var(--muted); }
+  .wf-lic.oss { border-color: var(--ok-text); color: var(--ok-text); }
+  .wf-lic.free { border-color: var(--muted); color: var(--ink); }
+  .wf-tuts { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+  .wf-tuts:hover { color: var(--lab-text); }
+  .wf-fit { width: 16px; text-align: center; font-weight: 700; }
+  .wf-fit.ok { color: var(--ok-text); }
+  .wf-fit.warn { color: #B45309; }
+  .wf-fit.bad { color: var(--lab-text); }
+  [data-theme="dark"] .wf-fit.warn { color: #F2B45A; }
+  .wf-why { flex-basis: 100%; padding-left: 24px; font-family: 'Space Grotesk', sans-serif; font-size: 12px; letter-spacing: 0; color: var(--muted); }
+  .wf-prog.bad a.name, .wf-prog.bad > span.name { color: var(--muted); }
+  .wf-allbad { margin: 10px 0 0; font-size: 13px; color: var(--lab-text); }
+  .wf-fmt { display: flex; align-items: center; gap: 10px; padding: 8px 0 8px 18px; color: var(--muted); }
+  .wf-fmt::before { content: '↓'; font-family: var(--mono); color: var(--lab-text); }
+  .wf-fmt.none::before { content: ''; }
+  .wf-note { margin: 18px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted); }
+
+  /* profilul hardware, opțional: rămâne doar în browserul vizitatorului */
+  .hw { border: 1.5px solid var(--border) !important; background: var(--surface); padding: 12px 14px 14px !important; }
+  .hw legend { padding: 0 6px !important; margin-left: -6px; }
+  .hw-on { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.4; cursor: pointer; }
+  .hw-on input { margin: 2px 0 0; }
+  .hw-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; margin-top: 12px; }
+  .hw-fields[hidden] { display: none; }
+  .hw-fields label { display: flex; flex-direction: column; gap: 4px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .hw-fields select { font: inherit; font-family: 'Space Grotesk', sans-serif; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 0; padding: 6px 8px; }
+  .hw-fields .full { grid-column: 1 / -1; }
+  .hw-fields label[hidden] { display: none; }
+  .hw-hint { margin: 8px 0 0; font-size: 12px; line-height: 1.45; color: var(--muted); }
+  @media (max-width: 860px) {
+    .wf-card { grid-column: 1; grid-row: auto; width: auto; margin-top: 24px; }
+    .soft, .intro-text { grid-row: auto; }
+    .wf-body { grid-template-columns: 1fr; overflow-y: auto; }
+    .wf-left, .wf-result { overflow: visible; }
+    .wf-left { border-right: none; border-bottom: 1px solid var(--line); }
+    .wf-head .wf-sub { display: none; }
+  }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px) {
     :root { --pad-x: 24px; }
@@ -573,6 +672,42 @@
 </style>
 </head>
 <body>
+<dialog class="wf" id="wf" aria-labelledby="wfHead">
+  <div class="wf-head label"><strong id="wfHead" data-i18n="wfLabel">Workflow sugerat</strong><span class="wf-sub" data-i18n="wfSub">bifează în stânga, răspunsul apare în dreapta</span><button class="wf-close" id="wfClose" type="button" aria-label="Închide" data-i18n-attr="aria-label:wfClose">×</button></div>
+  <div class="wf-body">
+    <div class="wf-left">
+      <form id="hwForm" onsubmit="return false">
+        <fieldset class="hw">
+          <legend class="label" data-i18n="hwTitle">Calculatorul meu (opțional)</legend>
+          <label class="hw-on"><input type="checkbox" name="on"><span data-i18n="hwOn">Ține cont de calculatorul meu când propui programele</span></label>
+          <div class="hw-fields" id="hwFields" hidden>
+            <label><span data-i18n="hwOsLabel">Sistem</span>
+              <select name="os">
+                <option value="win" data-i18n="hwOs_win">Windows</option>
+                <option value="mac" data-i18n="hwOs_macA">macOS, Apple Silicon (M1–M4)</option>
+                <option value="mac-intel" data-i18n="hwOs_macI">macOS, Intel</option>
+                <option value="linux" data-i18n="hwOs_linux">Linux</option>
+              </select></label>
+            <label><span>RAM</span>
+              <select name="ram"><option value="8">8 GB</option><option value="16">16 GB</option><option value="32">32 GB</option><option value="64">64 GB+</option></select></label>
+            <label class="full"><span data-i18n="hwGpuLabel">Placă video</span>
+              <select name="gpu">
+                <option value="integrated" data-i18n="hwGpu_integrated">integrată (împarte memoria cu RAM-ul)</option>
+                <option value="dedicated" data-i18n="hwGpu_dedicated">dedicată (NVIDIA / AMD, cu memorie proprie)</option>
+                <option value="apple" data-i18n="hwGpu_apple">Apple Silicon (memorie unificată)</option>
+              </select></label>
+            <label class="full"><span data-i18n="hwVramLabel">Memorie video (VRAM)</span>
+              <select name="vram"><option value="2">2 GB</option><option value="4">4 GB</option><option value="6">6 GB</option><option value="8">8 GB</option><option value="12">12 GB</option><option value="16">16 GB</option><option value="24">24 GB+</option></select></label>
+          </div>
+          <p class="hw-hint" data-i18n="hwHint">Rămâne doar în browserul tău, nu se trimite nicăieri.</p>
+        </fieldset>
+      </form>
+      <form class="wf-goals" id="wfGoals" onsubmit="return false"></form>
+    </div>
+    <div class="wf-result" id="wfResult" aria-live="polite"></div>
+  </div>
+</dialog>
+
 <button class="to-top" id="toTop" type="button" aria-label="Înapoi sus" data-i18n-attr="aria-label:toTopAria"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 20V5M5 12l7-7 7 7"/></svg><span>TOP</span></button>
 
 <header class="site-header">
@@ -627,6 +762,12 @@
         <polygon class="stroke" points="50,12 78,28 50,44 22,28" fill="none" stroke-width="4"/>
       </g>
     </svg>
+    <!-- caseta „Workflow sugerat": deschide fereastra cu bife și profilul hardware opțional -->
+    <button class="wf-card" id="wfCard" type="button" aria-haspopup="dialog">
+      <span class="label"><span class="help-mark" aria-hidden="true">?</span><span data-i18n="wfLabel">Workflow sugerat</span><span class="when" data-i18n="wfGo">alege →</span></span>
+      <span class="h3" data-i18n="wfTitle">Ce vrei să faci?</span>
+      <span class="p" data-i18n="wfText">Bifează ce ai de lucrat și îți propun programele, ordinea pașilor și formatele care trec de la un program la altul.</span>
+    </button>
     <aside class="soft" id="soft" aria-label="Software" data-i18n-attr="aria-label:softAria">
       <div class="soft-head label"><span>Software</span><span id="softCount"></span></div>
       <div class="soft-track" id="softTrack"></div>
@@ -692,6 +833,23 @@
       intro: 'Arhivă de pluginuri și unelte găsite pe GitHub, fiecare cu un rezumat scurt despre ce face. Codul fiecăreia e verificat de Claude (asistent AI) pentru riscuri de securitate, fără să fie rulat. Cele marcate „testat” au fost instalate și încercate în practică.',
       warn: 'Nu sunt recomandări. Verificarea codului reduce riscul, dar nu îl elimină, iar un plugin netestat poate să nu funcționeze. Instalezi pe propria răspundere.',
       softAria: 'Software', programOne: 'program', programMany: 'programe',
+      wfLabel: 'Workflow sugerat', wfGo: 'alege →', wfTitle: 'Ce vrei să faci?',
+      wfText: 'Bifează ce ai de lucrat și îți propun programele, ordinea pașilor și formatele care trec de la un program la altul.',
+      wfSub: 'bifează în stânga, răspunsul apare în dreapta', wfClose: 'Închide', wfLoading: 'se încarcă...',
+      wfEmpty: 'Bifează în stânga unul sau mai multe lucruri pe care vrei să le faci. Pașii se pun singuri în ordine, fără dubluri.',
+      wfOss: 'open source', wfFree: 'gratuit', wfPaid: 'comercial', wfTutOne: '1 tutorial', wfTutMany: '{n} tutoriale',
+      wfNote: 'Între pași sunt formatele de fișier pe care le poate citi pasul următor. Linkurile duc la site-urile oficiale ale programelor; tutorialele, pe pagina cu resurse.',
+      wfError: 'nu am putut încărca data/workflows.json',
+      hwTitle: 'Calculatorul meu (opțional)', hwOn: 'Ține cont de calculatorul meu când propui programele', hwOsLabel: 'Sistem',
+      hwOs_win: 'Windows', hwOs_macA: 'macOS, Apple Silicon (M1–M4)', hwOs_macI: 'macOS, Intel', hwOs_linux: 'Linux', hwOs_mac: 'Mac',
+      hwGpuLabel: 'Placă video', hwGpu_integrated: 'integrată (împarte memoria cu RAM-ul)', hwGpu_dedicated: 'dedicată (NVIDIA / AMD, cu memorie proprie)', hwGpu_apple: 'Apple Silicon (memorie unificată)',
+      hwVramLabel: 'Memorie video (VRAM)', hwHint: 'Rămâne doar în browserul tău, nu se trimite nicăieri.',
+      hwOnline: 'rulează online, calculatorul contează puțin', hwNoOs: 'nu rulează pe {os}', hwAppleOnly: 'pe Mac cere Apple Silicon',
+      hwRamMin: 'cere minimum {n} GB RAM', hwRamRec: 'recomandat {n} GB RAM, va merge mai greu', hwNeedsGpu: 'cere placă video dedicată',
+      hwVramMin: 'cere minimum {n} GB memorie video', hwVramRec: 'recomandat {n} GB memorie video', hwFine: 'merge pe calculatorul tău',
+      hwLevel_ok: 'merge', hwLevel_warn: 'merge greu', hwLevel_bad: 'nu merge',
+      hwAllBad: 'Niciun program din pasul ăsta nu merge bine pe calculatorul tău: caută o variantă online sau un calculator mai puternic.',
+      hwNote: 'Semnele ✓ ! ✗ vin din cerințele oficiale de sistem; programele fără semn nu au cerințe speciale sau nu le-am verificat încă.',
       pluginsTitle: 'Pluginuri', toList: 'Pluginuri', toListAria: 'Mergi la pluginuri', toTopAria: 'Înapoi sus', loading: 'se încarcă...', searchPlaceholder: 'caută nume, software, categorie...',
       status: 'Stare', categories: 'Categorii', reset: 'resetează', authors: 'Autori',
       st_testat: 'testat', st_netestat: 'netestat', st_respins: 'respins',
@@ -711,6 +869,23 @@
       intro: 'An archive of plugins and tools found on GitHub, each with a short summary of what it does. The code of each one is reviewed by Claude (an AI assistant) for security risks, without running it. The ones marked “tested” have been installed and tried out in practice.',
       warn: 'These are not recommendations. The code review lowers the risk but does not remove it, and an untested plugin may not work. Install at your own risk.',
       softAria: 'Software', programOne: 'program', programMany: 'programs',
+      wfLabel: 'Suggested workflow', wfGo: 'choose →', wfTitle: 'What do you want to do?',
+      wfText: 'Tick what you need to do and get the programs, the order of the steps and the file formats that pass from one program to the next.',
+      wfSub: 'tick on the left, the answer appears on the right', wfClose: 'Close', wfLoading: 'loading...',
+      wfEmpty: 'Tick one or more things you want to do on the left. The steps fall into order by themselves, without duplicates.',
+      wfOss: 'open source', wfFree: 'free', wfPaid: 'commercial', wfTutOne: '1 tutorial', wfTutMany: '{n} tutorials',
+      wfNote: 'Between steps are the file formats the next step can read. Links go to the programs’ official websites; tutorials open on the resources page.',
+      wfError: 'could not load data/workflows.json',
+      hwTitle: 'My computer (optional)', hwOn: 'Take my computer into account when suggesting programs', hwOsLabel: 'System',
+      hwOs_win: 'Windows', hwOs_macA: 'macOS, Apple Silicon (M1–M4)', hwOs_macI: 'macOS, Intel', hwOs_linux: 'Linux', hwOs_mac: 'Mac',
+      hwGpuLabel: 'Graphics', hwGpu_integrated: 'integrated (shares memory with RAM)', hwGpu_dedicated: 'dedicated (NVIDIA / AMD, own memory)', hwGpu_apple: 'Apple Silicon (unified memory)',
+      hwVramLabel: 'Video memory (VRAM)', hwHint: 'Stays in your browser only, it is never sent anywhere.',
+      hwOnline: 'runs online, your computer matters little', hwNoOs: 'does not run on {os}', hwAppleOnly: 'on Mac it needs Apple Silicon',
+      hwRamMin: 'needs at least {n} GB RAM', hwRamRec: '{n} GB RAM recommended, it will be slow', hwNeedsGpu: 'needs a dedicated graphics card',
+      hwVramMin: 'needs at least {n} GB video memory', hwVramRec: '{n} GB video memory recommended', hwFine: 'runs on your computer',
+      hwLevel_ok: 'runs', hwLevel_warn: 'runs slowly', hwLevel_bad: 'does not run',
+      hwAllBad: 'None of the programs in this step runs well on your computer: look for an online option or a more powerful machine.',
+      hwNote: 'The ✓ ! ✗ marks come from official system requirements; programs without a mark have no special requirements or have not been checked yet.',
       pluginsTitle: 'Plugins', toList: 'Plugins', toListAria: 'Go to plugins', toTopAria: 'Back to top', loading: 'loading...', searchPlaceholder: 'search name, software, category...',
       status: 'Status', categories: 'Categories', reset: 'reset', authors: 'Authors',
       st_testat: 'tested', st_netestat: 'not tested', st_respins: 'rejected',
@@ -919,12 +1094,156 @@
   // cubul roșu sare când treci peste ceva clicabil din bandă, din listă sau peste butonul rotund
   const labCube = document.getElementById('labCube');
   document.addEventListener('mouseover', e => {
-    const el = e.target.closest && e.target.closest('.disc-strip button, .soft-item, .to-list');
+    const el = e.target.closest && e.target.closest('.disc-strip button, .soft-item, .to-list, .wf-card');
     if (!el || el.contains(e.relatedTarget)) return;
     labCube.classList.remove('hop');
     void labCube.getBoundingClientRect();
     labCube.classList.add('hop');
   });
+
+  /* ---------- CASETA „WORKFLOW SUGERAT" ---------- */
+  // lista 1 (goals) = bifele; lista 2 (steps) = piesele răspunsului (data/workflows.json);
+  // programele vin din data/software.json; tutorialele se numără din resources.json, deci cresc singure cu postările
+  let wfData = null, wfSoft = {}, wfLoad = null, resPool = [];
+  const wfDialog = document.getElementById('wf');
+  const wfGoalsBox = document.getElementById('wfGoals');
+  const wfResult = document.getElementById('wfResult');
+  const L = (o, k) => (lang === 'en' && o[k + 'En']) ? o[k + 'En'] : o[k];
+
+  function loadWorkflows() {
+    if (!wfLoad) {
+      wfLoad = Promise.all(['data/workflows.json', 'data/software.json'].map(getJson))
+        .then(([wf, sw]) => { wfData = wf; wfSoft = Object.fromEntries((sw.programs || []).map(p => [p.name.toLowerCase(), p])); })
+        .catch(e => { wfLoad = null; throw e; });
+    }
+    return wfLoad;
+  }
+
+  /* profilul hardware: opțional, salvat doar în browser (localStorage), niciodată trimis */
+  const HW_KEY = 'justhop-hw';
+  const hwForm = document.getElementById('hwForm');
+  function readHw() {
+    let s = null;
+    try { s = JSON.parse(localStorage.getItem(HW_KEY) || 'null'); } catch (e) {}
+    return s && typeof s === 'object' ? s : { on: false, os: 'win', ram: 16, gpu: 'integrated', vram: 4 };
+  }
+  let hw = readHw();
+  function syncHwForm() {
+    hwForm.elements.on.checked = !!hw.on;
+    hwForm.elements.os.value = hw.os;
+    hwForm.elements.ram.value = String(hw.ram);
+    hwForm.elements.gpu.value = hw.gpu;
+    hwForm.elements.vram.value = String(hw.vram);
+    document.getElementById('hwFields').hidden = !hw.on;
+    hwForm.elements.vram.closest('label').hidden = hw.gpu !== 'dedicated';
+  }
+  hwForm.addEventListener('change', () => {
+    const f = hwForm.elements;
+    hw = { on: f.on.checked, os: f.os.value, ram: +f.ram.value, gpu: f.gpu.value, vram: +f.vram.value };
+    try { localStorage.setItem(HW_KEY, JSON.stringify(hw)); } catch (e) {}
+    syncHwForm();
+    renderWfResult();
+  });
+
+  // cât merge programul pe calculatorul din profil: ok / warn / bad, cu motivele
+  function fit(req) {
+    if (!hw.on || !req) return null;
+    if (req.online) return { level: 'ok', why: [t('hwOnline')] };
+    const why = [];
+    let level = 'ok';
+    const worse = l => { if (l === 'bad' || (l === 'warn' && level === 'ok')) level = l; };
+    const os = hw.os.startsWith('mac') ? 'mac' : hw.os;
+    if (req.os && !req.os.includes(os)) { worse('bad'); why.push(t('hwNoOs', { os: t('hwOs_' + os) })); }
+    if (hw.os === 'mac-intel' && req.appleSiliconOnly) { worse('bad'); why.push(t('hwAppleOnly')); }
+    if (req.ramMin && hw.ram < req.ramMin) { worse('bad'); why.push(t('hwRamMin', { n: req.ramMin })); }
+    else if (req.ramRec && hw.ram < req.ramRec) { worse('warn'); why.push(t('hwRamRec', { n: req.ramRec })); }
+    // VRAM: dedicată = cât ai ales; Apple Silicon = memorie unificată (aprox. 2/3 din RAM); integrată = împarte RAM-ul, fără VRAM proprie
+    const vram = hw.gpu === 'dedicated' ? hw.vram : hw.gpu === 'apple' ? Math.floor(hw.ram * 0.66) : 0;
+    if (req.gpu === 'dedicated' && hw.gpu === 'integrated') { worse(req.gpuSoft ? 'warn' : 'bad'); why.push(t('hwNeedsGpu')); }
+    else if (req.gpu !== 'none') {
+      if (req.vramMin && vram < req.vramMin) { worse(hw.gpu === 'integrated' ? 'warn' : 'bad'); why.push(t('hwVramMin', { n: req.vramMin })); }
+      else if (req.vramRec && vram < req.vramRec) { worse('warn'); why.push(t('hwVramRec', { n: req.vramRec })); }
+    }
+    if (level === 'ok' && !why.length) why.push(t('hwFine'));
+    return { level, why };
+  }
+
+  function renderWfGoals() {
+    if (!wfData) return;
+    const checked = new Set([...wfGoalsBox.querySelectorAll('input:checked')].map(i => i.value));
+    const groups = [];
+    wfData.goals.forEach(g => {
+      let grp = groups.find(x => x.key === g.group);
+      if (!grp) groups.push(grp = { key: g.group, name: L(g, 'group'), goals: [] });
+      grp.goals.push(g);
+    });
+    wfGoalsBox.innerHTML = groups.map(grp => `<fieldset><legend class="label">${esc(grp.name)}</legend>${grp.goals.map(g =>
+      `<label><input type="checkbox" value="${esc(g.id)}"${checked.has(g.id) ? ' checked' : ''}><span>${esc(L(g, 'label'))}</span></label>`).join('')}</fieldset>`).join('');
+  }
+
+  const tutCount = name => resPool.filter(p => (p.software || []).some(s => s.toLowerCase() === name.toLowerCase())).length;
+  const FIT_MARK = { ok: '✓', warn: '!', bad: '✗' };
+
+  // cerințele: ale programului sau, la pluginuri, ale gazdei (Rhino, Stable Diffusion); pe Mac se aplică abaterile din req.mac
+  function reqOf(p) {
+    const r = p && (p.req || (p.host && wfSoft[p.host.toLowerCase()] && wfSoft[p.host.toLowerCase()].req));
+    if (!r) return null;
+    return hw.os.startsWith('mac') && r.mac ? { ...r, ...r.mac } : r;
+  }
+  function progInfo(name) {
+    const p = wfSoft[name.toLowerCase()];
+    return { name, p, f: fit(reqOf(p)) };
+  }
+  function progHtml({ name, p, f }) {
+    const n = tutCount(name);
+    const label = p && /^https?:\/\//.test(p.url || '') ? `<a class="name" href="${esc(p.url)}" target="_blank" rel="noopener" title="${esc(L(p, 'desc') || '')}">${esc(name)}</a>` : `<span class="name">${esc(name)}</span>`;
+    const kind = p ? (p.openSource ? 'oss' : p.free ? 'free' : 'paid') : '';
+    const lic = p ? `<span class="wf-lic ${kind}" title="${esc(p.license || '')}">${esc(t({ oss: 'wfOss', free: 'wfFree', paid: 'wfPaid' }[kind]))}</span>` : '';
+    const tuts = n ? `<a class="wf-tuts" href="./?sw=${encodeURIComponent(name)}">${esc(n === 1 ? t('wfTutOne') : t('wfTutMany', { n }))}</a>` : '';
+    const mark = f ? `<span class="wf-fit ${f.level}" title="${esc(f.why.join('; '))}" aria-label="${esc(t('hwLevel_' + f.level))}">${FIT_MARK[f.level]}</span>` : (hw.on ? '<span class="wf-fit"></span>' : '');
+    const why = f && f.level !== 'ok' ? `<span class="wf-why">${esc(f.why.join('; '))}</span>` : '';
+    return `<span class="wf-prog${f ? ' ' + f.level : ''}">${mark}${label}${lic}${tuts}${why}</span>`;
+  }
+
+  // pașii aleși, în ordinea câmpului order, fără dubluri; între doi pași: formatele comune (out ∩ in);
+  // cu profilul activ, programele care merg pe calculatorul tău trec primele
+  function renderWfResult() {
+    if (!wfData) return;
+    const ids = [...wfGoalsBox.querySelectorAll('input:checked')].map(i => i.value);
+    const want = new Set(wfData.goals.filter(g => ids.includes(g.id)).flatMap(g => g.steps));
+    const steps = wfData.steps.filter(s => want.has(s.id)).sort((a, b) => a.order - b.order);
+    if (!steps.length) { wfResult.innerHTML = `<p class="wf-empty">${esc(t('wfEmpty'))}</p>`; return; }
+    const rank = { ok: 0, undefined: 1, warn: 2, bad: 3 };
+    let html = '<ol class="wf-steps">';
+    steps.forEach((s, i) => {
+      if (i) {
+        const common = (steps[i - 1].out || []).filter(f => (s.in || []).includes(f));
+        html += `<li class="wf-fmt label${common.length ? '' : ' none'}">${esc(common.join(' · '))}</li>`;
+      }
+      const progs = (s.software || []).map(progInfo);
+      if (hw.on) progs.sort((a, b) => rank[a.f && a.f.level] - rank[b.f && b.f.level]);
+      const allBad = hw.on && progs.length && progs.every(x => x.f && x.f.level === 'bad');
+      html += `<li class="wf-step"><span class="wf-n">${String(i + 1).padStart(2, '0')}</span><div>
+        <h4>${esc(L(s, 'title'))}</h4><p>${esc(L(s, 'text'))}</p>
+        ${progs.length ? `<div class="wf-progs">${progs.map(progHtml).join('')}</div>` : ''}
+        ${allBad ? `<p class="wf-allbad">${esc(t('hwAllBad'))}</p>` : ''}</div></li>`;
+    });
+    wfResult.innerHTML = html + `</ol><p class="wf-note">${esc(t('wfNote'))}${hw.on ? ' ' + esc(t('hwNote')) : ''}</p>`;
+  }
+
+  function renderWorkflow() { renderWfGoals(); renderWfResult(); }
+
+  function openWorkflow() {
+    syncHwForm();
+    if (!wfDialog.open) wfDialog.showModal();
+    if (wfData) return renderWorkflow();
+    wfResult.innerHTML = `<p class="wf-empty">${esc(t('wfLoading'))}</p>`;
+    loadWorkflows().then(renderWorkflow).catch(() => { wfResult.innerHTML = `<p class="wf-empty">${esc(t('wfError'))}</p>`; });
+  }
+  document.getElementById('wfCard').addEventListener('click', openWorkflow);
+  document.getElementById('wfClose').addEventListener('click', () => wfDialog.close());
+  wfDialog.addEventListener('click', e => { if (e.target === wfDialog) wfDialog.close(); });   // click pe fundalul întunecat
+  wfGoalsBox.addEventListener('change', renderWfResult);
 
   /* ---------- FILTRE ȘI GRILĂ ---------- */
   function applyFilters() {
@@ -1062,7 +1381,7 @@
     if (u.searchParams.has('lang')) { u.searchParams.delete('lang'); history.replaceState(null, '', u.pathname + u.search + u.hash); }
     setStaticText();
     const keep = shown;
-    renderDiscStrip(); renderSoftware();
+    renderDiscStrip(); renderSoftware(); renderWorkflow();
     applyFilters();
     while (shown < keep && shown < currentResults.length) loadMore();
   }
@@ -1078,6 +1397,7 @@
         if (!defs[c.id]) order.push(c.id);
         defs[c.id] = { ...defs[c.id], ...c };
       });
+      resPool = res.resources || [];
       const plugins = (lab.plugins || []).filter(p => p && p.title);
       const used = new Set();
       plugins.forEach(p => (p.cats || []).forEach(id => used.add(id)));

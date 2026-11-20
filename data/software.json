@@ -28,7 +28,16 @@
         "PDF",
         "SVG",
         "PNG"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "gpu": "none",
+        "source": "https://qgis.org/download/"
+      }
     },
     {
       "name": "Blender",
@@ -52,7 +61,21 @@
         "OBJ",
         "FBX",
         "glTF"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "appleSiliconOnly": true,
+        "ramMin": 8,
+        "ramRec": 32,
+        "gpu": "any",
+        "vramMin": 2,
+        "vramRec": 8,
+        "source": "https://www.blender.org/download/requirements/"
+      }
     },
     {
       "name": "Python",
@@ -72,7 +95,15 @@
         "GeoJSON",
         "GeoPackage",
         "PNG"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "gpu": "none"
+      }
     },
     {
       "name": "GeoPandas",
@@ -92,7 +123,15 @@
         "GeoJSON",
         "Shapefile",
         "CSV"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "gpu": "none"
+      }
     },
     {
       "name": "OSMnx",
@@ -106,7 +145,15 @@
         "GeoPackage",
         "GeoJSON",
         "Shapefile"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "gpu": "none"
+      }
     },
     {
       "name": "Zotero",
@@ -124,7 +171,15 @@
         "BibTeX",
         "RIS",
         "DOCX"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "gpu": "none"
+      }
     },
     {
       "name": "Hermes Agent",
@@ -134,7 +189,17 @@
       "desc": "Agent AI care rulează pe calculatorul tău și automatizează sarcini repetitive. Merge cu modele locale sau prin API.",
       "descEn": "An AI agent that runs on your computer and automates repetitive tasks. Works with local models or through an API.",
       "in": [],
-      "out": []
+      "out": [],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "appleSiliconOnly": true,
+        "gpu": "none",
+        "source": "https://hermes-agent.nousresearch.com/docs/reference/faq"
+      }
     },
     {
       "name": "ArtCraft",
@@ -151,7 +216,17 @@
         "PNG",
         "JPG",
         "MP4"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "ramRec": 8,
+        "gpu": "none",
+        "source": "https://getartcraft.com/download"
+      }
     },
     {
       "name": "AutoCAD",
@@ -169,7 +244,25 @@
         "DWG",
         "DXF",
         "PDF"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac"
+        ],
+        "ramMin": 16,
+        "ramRec": 32,
+        "gpu": "any",
+        "vramMin": 2,
+        "vramRec": 8,
+        "mac": {
+          "ramMin": 8,
+          "ramRec": 16,
+          "vramMin": null,
+          "vramRec": null
+        },
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/System-requirements-for-AutoCAD-2027-including-Specialized-Toolsets.html"
+      }
     },
     {
       "name": "Rhino",
@@ -193,7 +286,20 @@
         "OBJ",
         "FBX",
         "PDF"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac"
+        ],
+        "ramRec": 8,
+        "gpu": "any",
+        "vramRec": 4,
+        "mac": {
+          "vramRec": null
+        },
+        "source": "https://www.rhino3d.com/8/system-requirements/"
+      }
     },
     {
       "name": "OnlyOffice",
@@ -219,7 +325,15 @@
         "ODT",
         "PDF",
         "CSV"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "gpu": "none"
+      }
     },
     {
       "name": "Grasshopper",
@@ -236,7 +350,8 @@
       "out": [
         "3DM",
         "CSV"
-      ]
+      ],
+      "host": "Rhino"
     },
     {
       "name": "SketchUp",
@@ -260,7 +375,22 @@
         "FBX",
         "DAE",
         "PNG"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac"
+        ],
+        "appleSiliconOnly": true,
+        "ramMin": 8,
+        "gpu": "dedicated",
+        "vramRec": 8,
+        "mac": {
+          "gpu": "any",
+          "vramRec": null
+        },
+        "source": "https://help.sketchup.com/en/sketchup/system-requirements"
+      }
     },
     {
       "name": "Obsidian",
@@ -276,7 +406,15 @@
         "MD",
         "PDF"
       ],
-      "free": true
+      "free": true,
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "gpu": "none"
+      }
     },
     {
       "name": "Revit",
@@ -298,7 +436,18 @@
         "DXF",
         "FBX",
         "PDF"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win"
+        ],
+        "ramMin": 16,
+        "ramRec": 32,
+        "gpu": "any",
+        "vramMin": 4,
+        "vramRec": 6,
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/System-requirements-for-Revit-2027-products.html"
+      }
     },
     {
       "name": "Ladybug Tools",
@@ -314,7 +463,8 @@
       "out": [
         "CSV",
         "PNG"
-      ]
+      ],
+      "host": "Rhino"
     },
     {
       "name": "Karamba3D",
@@ -329,7 +479,8 @@
       "out": [
         "3DM",
         "CSV"
-      ]
+      ],
+      "host": "Rhino"
     },
     {
       "name": "Kangaroo",
@@ -344,7 +495,8 @@
       "out": [
         "3DM"
       ],
-      "free": true
+      "free": true,
+      "host": "Rhino"
     },
     {
       "name": "OpenStreetMap",
@@ -358,7 +510,10 @@
         "OSM",
         "PBF",
         "GeoJSON"
-      ]
+      ],
+      "req": {
+        "online": true
+      }
     },
     {
       "name": "Illustrator",
@@ -380,7 +535,17 @@
         "SVG",
         "PNG",
         "DXF"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac"
+        ],
+        "ramMin": 8,
+        "ramRec": 16,
+        "gpu": "none",
+        "source": "https://helpx.adobe.com/illustrator/desktop/get-started/learn-the-basics/technical-requirements.html"
+      }
     },
     {
       "name": "Claude",
@@ -399,7 +564,10 @@
         "MD",
         "CSV",
         "PY"
-      ]
+      ],
+      "req": {
+        "online": true
+      }
     },
     {
       "name": "Lunchbox",
@@ -416,7 +584,8 @@
         "3DM",
         "XLSX"
       ],
-      "free": true
+      "free": true,
+      "host": "Rhino"
     },
     {
       "name": "Pufferfish",
@@ -431,7 +600,8 @@
       "out": [
         "3DM"
       ],
-      "free": true
+      "free": true,
+      "host": "Rhino"
     },
     {
       "name": "ArchiCAD",
@@ -452,7 +622,18 @@
         "DWG",
         "DXF",
         "PDF"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac"
+        ],
+        "ramMin": 8,
+        "ramRec": 16,
+        "gpu": "any",
+        "vramRec": 4,
+        "source": "https://www.graphisoft.com/en-ro/plans-and-products/system-requirements/"
+      }
     },
     {
       "name": "IFC",
@@ -485,7 +666,14 @@
       "out": [
         "NWD",
         "NWC"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win"
+        ],
+        "gpu": "any",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/System-requirements-for-Autodesk-Navisworks-2027-products.html"
+      }
     },
     {
       "name": "Speckle",
@@ -519,7 +707,10 @@
         "GeoTIFF",
         "PNG"
       ],
-      "free": true
+      "free": true,
+      "req": {
+        "online": true
+      }
     },
     {
       "name": "OpenNest",
@@ -535,7 +726,8 @@
       "out": [
         "3DM",
         "DXF"
-      ]
+      ],
+      "host": "Rhino"
     },
     {
       "name": "Twinmotion",
@@ -556,7 +748,21 @@
         "PNG",
         "MP4",
         "EXR"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac"
+        ],
+        "appleSiliconOnly": true,
+        "ramMin": 16,
+        "gpu": "dedicated",
+        "vramMin": 6,
+        "mac": {
+          "ramMin": 32
+        },
+        "source": "https://dev.epicgames.com/documentation/twinmotion/hardware-and-software-specifications-for-twinmotion"
+      }
     },
     {
       "name": "D5 Render",
@@ -574,7 +780,14 @@
       "out": [
         "PNG",
         "MP4"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win"
+        ],
+        "gpu": "dedicated",
+        "source": "https://docs.d5render.com/user-guide/hardware/system-requirements-for-d5-render"
+      }
     },
     {
       "name": "V-Ray",
@@ -590,7 +803,17 @@
       "out": [
         "PNG",
         "EXR"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac"
+        ],
+        "ramMin": 8,
+        "ramRec": 16,
+        "gpu": "none",
+        "source": "https://documentation.chaos.com/space/VRHINO/116130023/System+Requirements"
+      }
     },
     {
       "name": "Enscape",
@@ -608,7 +831,18 @@
       "out": [
         "PNG",
         "MP4"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "mac"
+        ],
+        "appleSiliconOnly": true,
+        "gpu": "dedicated",
+        "vramMin": 4,
+        "vramRec": 8,
+        "source": "https://documentation.chaos.com/space/ESKETCHUP/127670780/System+Requirements"
+      }
     },
     {
       "name": "Octopus",
@@ -624,7 +858,8 @@
         "3DM",
         "CSV"
       ],
-      "free": true
+      "free": true,
+      "host": "Rhino"
     },
     {
       "name": "Wallacei",
@@ -640,7 +875,8 @@
         "3DM",
         "CSV"
       ],
-      "free": true
+      "free": true,
+      "host": "Rhino"
     },
     {
       "name": "Culebra",
@@ -654,7 +890,8 @@
       ],
       "out": [
         "3DM"
-      ]
+      ],
+      "host": "Rhino"
     },
     {
       "name": "Stable Diffusion",
@@ -670,7 +907,19 @@
       "out": [
         "PNG"
       ],
-      "free": true
+      "free": true,
+      "req": {
+        "os": [
+          "win",
+          "mac",
+          "linux"
+        ],
+        "ramMin": 8,
+        "gpu": "dedicated",
+        "gpuSoft": true,
+        "vramMin": 4,
+        "source": "https://github.com/comfyanonymous/ComfyUI"
+      }
     },
     {
       "name": "ControlNet",
@@ -685,7 +934,8 @@
       ],
       "out": [
         "PNG"
-      ]
+      ],
+      "host": "Stable Diffusion"
     },
     {
       "name": "Raven",
@@ -699,7 +949,8 @@
       ],
       "out": [
         "3DM"
-      ]
+      ],
+      "host": "Rhino"
     },
     {
       "name": "Midjourney",
@@ -714,7 +965,10 @@
       ],
       "out": [
         "PNG"
-      ]
+      ],
+      "req": {
+        "online": true
+      }
     },
     {
       "name": "RhinoVAULT",
@@ -728,7 +982,8 @@
       ],
       "out": [
         "3DM"
-      ]
+      ],
+      "host": "Rhino"
     },
     {
       "name": "CityEngine",
@@ -748,7 +1003,19 @@
         "FBX",
         "glTF",
         "DAE"
-      ]
+      ],
+      "req": {
+        "os": [
+          "win",
+          "linux"
+        ],
+        "ramMin": 16,
+        "ramRec": 32,
+        "gpu": "any",
+        "vramMin": 2,
+        "vramRec": 8,
+        "source": "https://doc.arcgis.com/en/cityengine/latest/get-started/cityengine-system-requirements.htm"
+      }
     },
     {
       "name": "depthmapX",
@@ -782,7 +1049,8 @@
         "3DM",
         "CSV"
       ],
-      "free": true
+      "free": true,
+      "host": "Rhino"
     }
   ]
 }

@@ -1552,6 +1552,24 @@
       "added": "2026-11-20",
       "n": 4,
       "oss": true
+    },
+    {
+      "title": "EASY Neon Architecture Diagrams and Drawings in Rhino 8 - High Contrast Monochrome Aesthetic",
+      "cats": [
+        "VIZ"
+      ],
+      "software": [
+        "Rhino"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "Stil grafic „neon” pentru diagrame și desene de arhitectură, numai din Rhino 8: mod de afișare personalizat, setări de print display și grosimi de linie, culori monocrome pe layere, contrast, margini estompate și export prin View Capture.",
+      "descEn": "A neon drawing style for architectural diagrams and drawings, made in Rhino 8 alone: a custom display mode, print display and line weight settings, monochrome layer colours, contrast, blurred edges and export with View Capture.",
+      "url": "https://www.youtube.com/watch?v=8wxkvNzmbOU",
+      "author": "United States of Design",
+      "authorUrl": "https://www.youtube.com/@unitedstatesofdesign",
+      "added": "2026-11-22",
+      "n": 1
     }
   ]
 }

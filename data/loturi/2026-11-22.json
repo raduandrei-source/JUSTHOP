@@ -47,6 +47,30 @@
       "n": 2,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "Digimaps to Rhino - Formatting OS Map Data",
+      "url": "https://www.youtube.com/watch?v=aDCAUKcfvak",
+      "author": "Tom Budd",
+      "authorUrl": "https://www.youtube.com/@tombudd15",
+      "min": 16,
+      "views": 8649,
+      "pub": "2021-01-06",
+      "level": "intro",
+      "cats": [
+        "PUD",
+        "VIZ"
+      ],
+      "software": [
+        "Rhino"
+      ],
+      "rating": null,
+      "desc": "Pregătirea unei hărți cadastrale importate în Rhino (date Ordnance Survey din Digimap, Marea Britanie): layere, hașuri pentru clădiri, tipuri de linie, layout la scară, grosimi de linie și erorile frecvente la suprapunerea liniilor și hașurilor.",
+      "descEn": "Preparing an imported base map in Rhino (Ordnance Survey data from Digimap, UK): layers, building hatches, linetypes, a scaled layout, line weights and the usual errors with overlapping lines and hatches.",
+      "n": 3,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

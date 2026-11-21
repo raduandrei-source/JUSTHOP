@@ -23,6 +23,30 @@
       "n": 1,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "How to Create Maps in Rhino",
+      "url": "https://www.youtube.com/watch?v=afaSnu6JClg",
+      "author": "Tom Budd",
+      "authorUrl": "https://www.youtube.com/@tombudd15",
+      "min": 28,
+      "views": 15538,
+      "pub": "2023-10-05",
+      "level": "intro",
+      "cats": [
+        "PUD",
+        "VIZ"
+      ],
+      "software": [
+        "Rhino"
+      ],
+      "rating": null,
+      "desc": "Hărți de sit în Rhino, de la datele brute la PDF: import (din Digimap, serviciul britanic pentru universități), culori și tipuri de linie pe layer, layout la scară, print display, schemă de culori, grosimi de linie, etichete și export.",
+      "descEn": "Site maps in Rhino, from raw data to PDF: import (from Digimap, the UK service for universities), colour and linetype by layer, a scaled layout, print display, a colour scheme, line weights, labels and export.",
+      "n": 2,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

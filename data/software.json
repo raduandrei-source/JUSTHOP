@@ -1092,6 +1092,24 @@
         "DXF"
       ],
       "host": "Blender"
+    },
+    {
+      "name": "RhinoAI",
+      "url": "https://www.rhino3d.com",
+      "openSource": false,
+      "license": "comercial (inclus în Rhino)",
+      "desc": "Asistentul AI din Rhino: conectezi un agent care desenează, editează și scrie comenzi noi direct în model. În Rhino 8 se instalează din PackageManager (Rhino-MCP-Platform).",
+      "descEn": "The AI assistant in Rhino: connect an agent that draws, edits and writes new commands right in the model. In Rhino 8 it installs from the PackageManager (Rhino-MCP-Platform).",
+      "in": [
+        "3DM"
+      ],
+      "out": [
+        "3DM"
+      ],
+      "host": "Rhino",
+      "req": {
+        "online": true
+      }
     }
   ]
 }

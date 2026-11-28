@@ -1656,6 +1656,43 @@
       "added": "2026-11-28",
       "n": 2,
       "oss": true
+    },
+    {
+      "title": "From Concept to Parti with Rhino & RhinoAI | S3 E1 P1 | Rhino Studio Series",
+      "cats": [
+        "AI",
+        "VIZ"
+      ],
+      "software": [
+        "Rhino",
+        "RhinoAI"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Răspuns la critica „nu înțeleg conceptul”: diagrame parti generate cu un model AI, refăcute în Rhino cu RhinoAI ca linii, hașuri și text editabile, două comenzi scrise de AI pentru aspect desenat de mână și noua funcție Markups pentru adnotări.",
+      "descEn": "An answer to the critique “I don't understand the concept”: parti diagrams generated with an AI model, redrawn in Rhino with RhinoAI as editable curves, hatches and text, two AI-written commands for a hand-drawn look, and the new Markups feature for notes.",
+      "url": "https://www.youtube.com/watch?v=uhNlwfapOF4",
+      "author": "Rhino 3D (Rhinoceros3d official)",
+      "authorUrl": "https://www.youtube.com/@Rhinoceros3d",
+      "added": "2026-11-28",
+      "n": 3
+    },
+    {
+      "title": "I Lost My BIM Manager Job.",
+      "cats": [
+        "BIM",
+        "AI"
+      ],
+      "software": [],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Eseu de opinie despre viitorul BIM cu agenți AI: modelul BIM văzut ca bază de date scrisă printr-un limbaj, agenți care lucrează deja în Revit, sfârșitul dependenței de un singur program și abilitățile care rămân valoroase pentru arhitecți și ingineri.",
+      "descEn": "An opinion essay on the future of BIM with AI agents: the BIM model as a database written through a language, agents already working in Revit, the end of lock-in to a single program, and the skills that stay valuable for architects and engineers.",
+      "url": "https://www.youtube.com/watch?v=iaLvbjJoMOE",
+      "author": "BIM Life",
+      "authorUrl": "https://www.youtube.com/@BIM-Life",
+      "added": "2026-11-28",
+      "n": 4
     }
   ]
 }

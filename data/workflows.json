@@ -659,11 +659,12 @@
       "order": 34,
       "title": "Lasă AI-ul să propună definiția",
       "titleEn": "Let AI draft the definition",
-      "text": "Raven construiește și repară definiții Grasshopper din text sau imagini. Verifică ce a pus pe canvas înainte să construiești mai departe pe ea.",
-      "textEn": "Raven builds and fixes Grasshopper definitions from text or images. Check what it placed on the canvas before building on it.",
+      "text": "Raven construiește și repară definiții Grasshopper din text sau imagini; RhinoAI lucrează direct în modelul Rhino și poate scrie comenzi noi. Verifică ce a pus pe canvas sau în model înainte să construiești mai departe pe ea.",
+      "textEn": "Raven builds and fixes Grasshopper definitions from text or images; RhinoAI works right in the Rhino model and can write new commands. Check what it placed on the canvas or in the model before building on it.",
       "software": [
         "Raven",
-        "Grasshopper"
+        "Grasshopper",
+        "RhinoAI"
       ],
       "in": [
         "3DM"

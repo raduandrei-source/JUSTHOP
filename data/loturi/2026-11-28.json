@@ -50,6 +50,54 @@
       "n": 2,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "From Concept to Parti with Rhino & RhinoAI | S3 E1 P1 | Rhino Studio Series",
+      "url": "https://www.youtube.com/watch?v=uhNlwfapOF4",
+      "author": "Rhino 3D (Rhinoceros3d official)",
+      "authorUrl": "https://www.youtube.com/@Rhinoceros3d",
+      "min": 6,
+      "views": 2882,
+      "pub": "2026-11-17",
+      "level": "intro",
+      "cats": [
+        "AI",
+        "VIZ"
+      ],
+      "software": [
+        "Rhino",
+        "RhinoAI"
+      ],
+      "rating": null,
+      "flag": "Prezentare oficială a producătorului",
+      "desc": "Răspuns la critica „nu înțeleg conceptul”: diagrame parti generate cu un model AI, refăcute în Rhino cu RhinoAI ca linii, hașuri și text editabile, două comenzi scrise de AI pentru aspect desenat de mână și noua funcție Markups pentru adnotări.",
+      "descEn": "An answer to the critique “I don't understand the concept”: parti diagrams generated with an AI model, redrawn in Rhino with RhinoAI as editable curves, hatches and text, two AI-written commands for a hand-drawn look, and the new Markups feature for notes.",
+      "n": 3,
+      "accept": "Da",
+      "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "I Lost My BIM Manager Job.",
+      "url": "https://www.youtube.com/watch?v=iaLvbjJoMOE",
+      "author": "BIM Life",
+      "authorUrl": "https://www.youtube.com/@BIM-Life",
+      "min": 20,
+      "views": 197258,
+      "pub": "2026-10-27",
+      "level": "intro",
+      "cats": [
+        "BIM",
+        "AI"
+      ],
+      "software": [],
+      "rating": null,
+      "desc": "Eseu de opinie despre viitorul BIM cu agenți AI: modelul BIM văzut ca bază de date scrisă printr-un limbaj, agenți care lucrează deja în Revit, sfârșitul dependenței de un singur program și abilitățile care rămân valoroase pentru arhitecți și ingineri.",
+      "descEn": "An opinion essay on the future of BIM with AI agents: the BIM model as a database written through a language, agents already working in Revit, the end of lock-in to a single program, and the skills that stay valuable for architects and engineers.",
+      "n": 4,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

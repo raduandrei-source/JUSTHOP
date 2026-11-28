@@ -4,7 +4,9 @@
 //
 //   node scripts/resurse.js list [data]
 //   node scripts/resurse.js publish-lot data/loturi/2026-10-25.json
-//   node scripts/resurse.js new-candidate <data> candidat.json     (adaugă în lot cu următorul nr, accept = Da)
+//   node scripts/resurse.js new-candidate <data> candidat.json     (adaugă în lot cu următorul nr, accept = Da;
+//                                                                     refuză dacă linkul există deja, --force îl adaugă oricum)
+//   node scripts/resurse.js check <url>                             (spune dacă linkul e deja pe site sau într-un lot)
 //   node scripts/resurse.js remove <data> <n> [n...]
 //   node scripts/resurse.js autori [min-decizii]
 //   node scripts/resurse.js sync-categories categorii.json   (adaugă/actualizează categoriile din foaia Excel)
@@ -33,6 +35,32 @@ const toRo = iso => iso.split('-').reverse().join('.');
 const lotPath = iso => path.join(LOTURI, `${iso}.json`);
 const sorted = list => [...list].sort((a, b) => b.added.localeCompare(a.added) || a.n - b.n);
 const catIds = new Set(data.categories.map(c => c.id));
+
+// Dubluri: același clip YouTube are multe forme de link (youtu.be, &t=, &list=, ?si=, shorts), deci se compară după
+// ID-ul videoului; celelalte linkuri, după adresă fără protocol, www, parametri și bara de la final.
+function linkKey(url) {
+  const u = String(url || '').trim();
+  const yt = /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/|live\/)|youtu\.be\/)([\w-]{11})/i.exec(u);
+  if (yt) return 'yt:' + yt[1];
+  return u.toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/[?#].*$/, '').replace(/\/+$/, '');
+}
+function findDuplicates(url) {
+  const key = linkKey(url);
+  const hits = [];
+  data.resources.filter(r => linkKey(r.url) === key)
+    .forEach(r => hits.push({ where: 'site', date: r.added, n: r.n, title: r.title }));
+  for (const f of fs.existsSync(LOTURI) ? fs.readdirSync(LOTURI) : []) {
+    const lot = readJson(path.join(LOTURI, f));
+    lot.candidates.filter(c => linkKey(c.url) === key).forEach(c => {
+      if (hits.some(h => h.where === 'site' && h.date === lot.date && h.n === c.n)) return;
+      hits.push({ where: c.removed ? 'scos' : c.accept === 'Nu' ? 'respins' : 'lot', date: lot.date, n: c.n, title: c.title });
+    });
+  }
+  return hits;
+}
+const describeHit = h => ({
+  site: 'e deja pe site', lot: 'e în lot, nepublicat încă', respins: 'a fost respins', scos: 'a fost scos de pe site',
+})[h.where] + `: ${toRo(h.date)} nr ${h.n} — ${h.title}`;
 
 // Software: programele despre care e resursa (ex. Rhino, Grasshopper, QGIS). Lista din casetă de pe site se
 // generează automat din aceste câmpuri, deci un program nou apare singur. Numele se aliniază la cele existente
@@ -113,6 +141,13 @@ if (cmd === 'list') {
 } else if (cmd === 'new-candidate') {
   const date = toIso(args[0]);
   const c = readJson(args[1]);
+  const dups = findDuplicates(c.url);
+  if (dups.length && !args.includes('--force')) {
+    console.log('Îl avem deja:');
+    dups.forEach(h => console.log('  ' + describeHit(h)));
+    console.log('Nu l-am adăugat. Dacă vrei totuși o a doua intrare, rulează din nou cu --force.');
+    process.exit(2);
+  }
   checkCats(c);
   c.software = normSoftware(c.software);
   const file = lotPath(date);
@@ -125,6 +160,11 @@ if (cmd === 'list') {
   lot.candidates.push({ ...rest, n, accept: needsReview ? (c.accept || null) : 'Da', manual: !needsReview });
   writeJson(file, lot);
   console.log(`Candidat adăugat în lotul ${toRo(date)} cu nr ${n}.`);
+} else if (cmd === 'check') {
+  if (!args[0]) throw new Error('Dă un link: check https://www.youtube.com/watch?v=...');
+  const dups = findDuplicates(args[0]);
+  if (!dups.length) console.log('Nu îl avem.');
+  else { console.log('Îl avem deja:'); dups.forEach(h => console.log('  ' + describeHit(h))); }
 } else if (cmd === 'remove') {
   const date = toIso(args[0]);
   const nums = args.slice(1).map(Number);
@@ -205,6 +245,6 @@ if (cmd === 'list') {
   save();
   console.log(`${before - data.resources.length} resurse de test scoase.`);
 } else {
-  console.log('Comenzi: list [data] | publish-lot lot.json | new-candidate <data> c.json | remove <data> <n...> | autori [min] | software | sync-categories cat.json | remove-test');
+  console.log('Comenzi: list [data] | publish-lot lot.json | new-candidate <data> c.json [--force] | check <url> | remove <data> <n...> | autori [min] | software | sync-categories cat.json | remove-test');
   process.exit(cmd ? 1 : 0);
 }

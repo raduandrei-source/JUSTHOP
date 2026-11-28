@@ -177,6 +177,30 @@
       "n": 7,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "Drawing Standards & Sketch Import with Rhino | S1 E1 | Rhino Studio Series",
+      "url": "https://www.youtube.com/watch?v=JgM4yV86a7o",
+      "author": "Rhino 3D (Rhinoceros3d official)",
+      "authorUrl": "https://www.youtube.com/@Rhinoceros3d",
+      "min": 11,
+      "views": 3521,
+      "pub": "2026-08-19",
+      "level": "intro",
+      "cats": [
+        "VIZ"
+      ],
+      "software": [
+        "Rhino"
+      ],
+      "rating": null,
+      "flag": "Prezentare oficială a producătorului",
+      "desc": "Primul episod din seria de desen de arhitectură în Rhino: ierarhia grafică secționat / văzut / auxiliar, unități și toleranță, schița de mână adusă cu Picture și scalată după o cotă cunoscută, standard de layere cu grosimi de print, pereți, goluri, texte și verificarea în Print Display.",
+      "descEn": "The first episode of the architectural drawing series in Rhino: the cut / projected / supporting graphic hierarchy, units and tolerance, a hand sketch brought in with Picture and scaled to a known dimension, a layer standard with print widths, walls, openings, text and a check in Print Display.",
+      "n": 8,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

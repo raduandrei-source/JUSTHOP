@@ -8,7 +8,7 @@ Descriere (copiază): *Propune un curs, tutorial, articol sau carte de arhitectu
 Întrebări, în această ordine:
 1. **Link resursă**: răspuns scurt, obligatoriu. Validare a răspunsului → *Expresie regulată* → *Se potrivește* → `^https?://\S+$`, mesaj „Lipește un link care începe cu https://".
 2. **Discipline (maximum 3)**: casete de selectare, obligatoriu, exact cele 13 discipline ale site-ului, cu codul în față (importul recunoaște codul):
-   `GH – Grasshopper`, `BIM – BIM`, `GIS – GIS`, `SIM – Simulare energetică`, `FAB – Fabricație digitală`, `VIZ – Vizualizare`, `MC – Modelare computațională`, `AI – AI și fluxuri de lucru`, `CER – Cercetare`, `EBD – Evidence-Based Design`, `REZ – Reziliență structurală`, `FF – Form Finding`, `PUD – Proiectare urbană digitală`, `OFC – Office`.
+   `GH – Grasshopper`, `BIM – BIM`, `GIS – GIS`, `SIM – Simulare energetică`, `FAB – Fabricație digitală`, `VIZ – Vizualizare`, `MC – Modelare computațională`, `AI – AI și fluxuri de lucru`, `CER – Cercetare`, `EBD – Evidence-Based Design`, `REZ – Reziliență structurală`, `FF – Form Finding`, `PUD – Proiectare urbană digitală`, `OFC – Office`, `DES – Design`.
 3. **Altă disciplină care lipsește?**: răspuns scurt, **opțional**.
 4. **Programe / software**: răspuns scurt, opțional (ex. Rhino, Grasshopper).
 5. **De ce merită**: paragraf, opțional.

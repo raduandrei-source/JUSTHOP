@@ -83,6 +83,12 @@
       "name": "Office",
       "color": "#86198F",
       "nameEn": "Office"
+    },
+    {
+      "id": "DES",
+      "name": "Design",
+      "color": "#4D7C0F",
+      "nameEn": "Design"
     }
   ],
   "resources": [
@@ -1632,7 +1638,7 @@
     {
       "title": "Advanced Modeling Technique : Shrinkwrap",
       "cats": [
-        "VIZ",
+        "DES",
         "MC"
       ],
       "software": [

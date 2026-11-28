@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-28",
+  "candidates": [
+    {
+      "platform": "YouTube",
+      "title": "Blender Is Turning Into a Drafting Tool — AutoCAD and Rhino Features Keep Arriving for Free",
+      "url": "https://www.youtube.com/watch?v=_DHwSRYT_i0",
+      "author": "Blender 3D Architect",
+      "authorUrl": "https://www.youtube.com/@blender3darchitect",
+      "min": 12,
+      "views": 8373,
+      "pub": "2026-11-23",
+      "level": "intro",
+      "cats": [
+        "VIZ"
+      ],
+      "software": [
+        "Wanderer CAD",
+        "Blender"
+      ],
+      "oss": true,
+      "rating": null,
+      "desc": "Wanderer CAD, addonul gratuit care transformă Blender în program de desen tehnic: Boundary, hașuri, Break și Match Properties, aliasuri importate din AutoCAD, layere ca în Rhino, vederi 2D automate și planuri de secțiune.",
+      "descEn": "Wanderer CAD, the free add-on that turns Blender into a drafting program: Boundary, hatches, Break and Match Properties, aliases imported from AutoCAD, Rhino-style layers, automatic 2D views and section planes.",
+      "n": 1,
+      "accept": "Da",
+      "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "Advanced Modeling Technique : Shrinkwrap",
+      "url": "https://www.youtube.com/watch?v=bcli7dd52Os",
+      "author": "Baril3D",
+      "authorUrl": "https://www.youtube.com/@baril3d",
+      "min": 21,
+      "views": 10966,
+      "pub": "2024-07-13",
+      "level": "mediu",
+      "cats": [
+        "VIZ",
+        "MC"
+      ],
+      "software": [
+        "Blender"
+      ],
+      "oss": true,
+      "rating": null,
+      "desc": "Modificatorul Shrinkwrap din Blender, de la bază la setările avansate: detalii adăugate pe o suprafață curbă fără să-i strice netezimea, decalaje și decupaje precise. Exemplele sunt din modelarea de produs, dar tehnica merge și la fațade și forme curbe.",
+      "descEn": "Blender's Shrinkwrap modifier, from the basics to the advanced settings: adding details on a curved surface without spoiling its smoothness, precise offsets and cuts. The examples come from product modelling, but the technique also works for facades and curved forms.",
+      "n": 2,
+      "accept": "Da",
+      "manual": true
+    }
+  ]
+}

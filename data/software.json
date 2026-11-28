@@ -1075,6 +1075,23 @@
       ],
       "free": true,
       "host": "Rhino"
+    },
+    {
+      "name": "Wanderer CAD",
+      "url": "https://extensions.blender.org/add-ons/wanderer/",
+      "openSource": true,
+      "license": "GPL-3.0",
+      "desc": "Addon de desen CAD în Blender: linie de comandă, snap-uri, cote, hașuri, layere și layout-uri la scară, cu export PDF, SVG și DXF.",
+      "descEn": "A CAD drafting add-on for Blender: command line, snaps, dimensions, hatches, layers and scaled layouts, with PDF, SVG and DXF export.",
+      "in": [
+        "DXF"
+      ],
+      "out": [
+        "PDF",
+        "SVG",
+        "DXF"
+      ],
+      "host": "Blender"
     }
   ]
 }

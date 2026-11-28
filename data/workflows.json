@@ -277,6 +277,16 @@
       ]
     },
     {
+      "id": "desen-2d",
+      "group": "Vizualizare",
+      "groupEn": "Visualization",
+      "label": "Desenez planuri și secțiuni 2D gratuit, fără AutoCAD",
+      "labelEn": "Draw 2D plans and sections for free, without AutoCAD",
+      "steps": [
+        "desen-2d"
+      ]
+    },
+    {
       "id": "planse",
       "group": "Vizualizare",
       "groupEn": "Visualization",
@@ -1000,6 +1010,28 @@
       ],
       "out": [
         "3DM"
+      ]
+    },
+    {
+      "id": "desen-2d",
+      "order": 67,
+      "title": "Desenează planurile și secțiunile",
+      "titleEn": "Draw the plans and sections",
+      "text": "Desen tehnic direct în Blender, cu addonul gratuit Wanderer CAD: linie de comandă ca în AutoCAD, snap-uri, cote, hașuri și planșe la scară. DWG-urile le salvezi întâi ca DXF; planșa iese ca PDF vectorial.",
+      "textEn": "Technical drawing right inside Blender with the free Wanderer CAD add-on: an AutoCAD-style command line, snaps, dimensions, hatches and scaled sheets. Save DWG files as DXF first; the sheet comes out as a vector PDF.",
+      "software": [
+        "Wanderer CAD",
+        "Blender"
+      ],
+      "in": [
+        "DXF",
+        "OBJ",
+        "FBX"
+      ],
+      "out": [
+        "PDF",
+        "SVG",
+        "DXF"
       ]
     }
   ]

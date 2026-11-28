@@ -1714,6 +1714,27 @@
       "authorUrl": "https://www.youtube.com/@3DBeast",
       "added": "2026-11-28",
       "n": 5
+    },
+    {
+      "title": "RHino AI - You can't keep up!",
+      "cats": [
+        "AI",
+        "CER"
+      ],
+      "software": [
+        "Rhino",
+        "RhinoAI",
+        "ChatGPT"
+      ],
+      "platform": "YouTube",
+      "level": "mediu",
+      "desc": "ChatGPT Astra conectat la Rhino prin platforma MCP gratuită a McNeel: AI-ul documentează arhitectura tradițională thailandeză, caută referințe, modelează o casă tradițională în detaliu și scrie un raport Markdown și o prezentare PDF. Configurare, proces și limitele rezultatului.",
+      "descEn": "ChatGPT Astra connected to Rhino through McNeel's free MCP platform: the AI researches traditional Thai architecture, finds references, models a traditional house in detail, and writes a Markdown report and a PDF presentation. Setup, process and the limits of the result.",
+      "url": "https://www.youtube.com/watch?v=PeNEoiYtiQA",
+      "author": "Philipp Galvan Design",
+      "authorUrl": "https://www.youtube.com/@PhilippGalvanDesign",
+      "added": "2026-11-28",
+      "n": 6
     }
   ]
 }

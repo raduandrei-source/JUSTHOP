@@ -124,6 +124,32 @@
       "n": 5,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "RHino AI - You can't keep up!",
+      "url": "https://www.youtube.com/watch?v=PeNEoiYtiQA",
+      "author": "Philipp Galvan Design",
+      "authorUrl": "https://www.youtube.com/@PhilippGalvanDesign",
+      "min": 15,
+      "views": 104555,
+      "pub": "2026-10-11",
+      "level": "mediu",
+      "cats": [
+        "AI",
+        "CER"
+      ],
+      "software": [
+        "Rhino",
+        "RhinoAI",
+        "ChatGPT"
+      ],
+      "rating": null,
+      "desc": "ChatGPT Astra conectat la Rhino prin platforma MCP gratuită a McNeel: AI-ul documentează arhitectura tradițională thailandeză, caută referințe, modelează o casă tradițională în detaliu și scrie un raport Markdown și o prezentare PDF. Configurare, proces și limitele rezultatului.",
+      "descEn": "ChatGPT Astra connected to Rhino through McNeel's free MCP platform: the AI researches traditional Thai architecture, finds references, models a traditional house in detail, and writes a Markdown report and a PDF presentation. Setup, process and the limits of the result.",
+      "n": 6,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

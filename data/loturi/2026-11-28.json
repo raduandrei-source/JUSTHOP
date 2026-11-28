@@ -98,6 +98,32 @@
       "n": 4,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "I Tested GPT Astra in Rhino & Grasshopper — This Is Crazy",
+      "url": "https://www.youtube.com/watch?v=uYy8iV-k0p8",
+      "author": "3D Beast",
+      "authorUrl": "https://www.youtube.com/@3DBeast",
+      "min": 12,
+      "views": 219796,
+      "pub": "2026-09-11",
+      "level": "intro",
+      "cats": [
+        "AI",
+        "MC"
+      ],
+      "software": [
+        "Rhino",
+        "Grasshopper",
+        "ChatGPT"
+      ],
+      "rating": null,
+      "desc": "Test practic cu GPT Astra (OpenAI) conectat la Rhino și Grasshopper: ce modele 3D și definiții parametrice reușește să construiască, unde greșește și cât de util e acum pentru cine lucrează în design computațional.",
+      "descEn": "A hands-on test of GPT Astra (OpenAI) connected to Rhino and Grasshopper: which 3D models and parametric definitions it manages to build, where it fails, and how useful it is right now for computational design.",
+      "n": 5,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }

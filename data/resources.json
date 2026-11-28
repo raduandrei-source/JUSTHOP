@@ -1693,6 +1693,27 @@
       "authorUrl": "https://www.youtube.com/@BIM-Life",
       "added": "2026-11-28",
       "n": 4
+    },
+    {
+      "title": "I Tested GPT Astra in Rhino & Grasshopper — This Is Crazy",
+      "cats": [
+        "AI",
+        "MC"
+      ],
+      "software": [
+        "Rhino",
+        "Grasshopper",
+        "ChatGPT"
+      ],
+      "platform": "YouTube",
+      "level": "intro",
+      "desc": "Test practic cu GPT Astra (OpenAI) conectat la Rhino și Grasshopper: ce modele 3D și definiții parametrice reușește să construiască, unde greșește și cât de util e acum pentru cine lucrează în design computațional.",
+      "descEn": "A hands-on test of GPT Astra (OpenAI) connected to Rhino and Grasshopper: which 3D models and parametric definitions it manages to build, where it fails, and how useful it is right now for computational design.",
+      "url": "https://www.youtube.com/watch?v=uYy8iV-k0p8",
+      "author": "3D Beast",
+      "authorUrl": "https://www.youtube.com/@3DBeast",
+      "added": "2026-11-28",
+      "n": 5
     }
   ]
 }

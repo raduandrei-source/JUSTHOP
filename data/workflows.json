@@ -981,10 +981,11 @@
       "order": 86,
       "title": "Lucrează cu un asistent AI",
       "titleEn": "Work with an AI assistant",
-      "text": "Claude te ajută la texte, rezumate, analize de date și scripturi. Verifică cifrele și sursele pe care ți le dă înainte să le folosești.",
-      "textEn": "Claude helps with writing, summaries, data analysis and scripts. Check the figures and sources it gives you before using them.",
+      "text": "Claude sau ChatGPT te ajută la texte, rezumate, analize de date și scripturi. Verifică cifrele și sursele pe care ți le dau înainte să le folosești.",
+      "textEn": "Claude or ChatGPT help with writing, summaries, data analysis and scripts. Check the figures and sources they give you before using them.",
       "software": [
-        "Claude"
+        "Claude",
+        "ChatGPT"
       ],
       "in": [
         "PDF",

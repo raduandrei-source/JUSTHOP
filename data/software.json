@@ -1110,6 +1110,28 @@
       "req": {
         "online": true
       }
+    },
+    {
+      "name": "ChatGPT",
+      "url": "https://chatgpt.com",
+      "openSource": false,
+      "license": "comercial (are variantă gratuită)",
+      "desc": "Asistentul AI al OpenAI (modelele GPT, inclusiv GPT Astra): texte, analiză, cod; conectat la Rhino și Grasshopper prin RhinoAI poate construi modele și definiții.",
+      "descEn": "OpenAI's AI assistant (the GPT models, including GPT Astra): writing, analysis, code; connected to Rhino and Grasshopper through RhinoAI it can build models and definitions.",
+      "in": [
+        "PDF",
+        "DOCX",
+        "CSV",
+        "PNG"
+      ],
+      "out": [
+        "MD",
+        "CSV",
+        "PY"
+      ],
+      "req": {
+        "online": true
+      }
     }
   ]
 }

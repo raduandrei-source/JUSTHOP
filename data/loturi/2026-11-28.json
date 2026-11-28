@@ -150,6 +150,33 @@
       "n": 6,
       "accept": "Da",
       "manual": true
+    },
+    {
+      "platform": "YouTube",
+      "title": "Site Analysis to Design Opportunities with Rhino & RhinoAI | S3 E1 P2 | Rhino Studio Series",
+      "url": "https://www.youtube.com/watch?v=HYrV8gKR65c",
+      "author": "Rhino 3D (Rhinoceros3d official)",
+      "authorUrl": "https://www.youtube.com/@Rhinoceros3d",
+      "min": 7,
+      "views": 1448,
+      "pub": "2026-11-25",
+      "level": "intro",
+      "cats": [
+        "EBD",
+        "SIM",
+        "AI"
+      ],
+      "software": [
+        "Rhino",
+        "RhinoAI"
+      ],
+      "rating": null,
+      "flag": "Prezentare oficială a producătorului",
+      "desc": "Răspuns la critica „proiectul nu răspunde la context”: din analiza de sit se aleg sosirea, vederile cu intimitatea și însorirea. În Rhino: diagrame de sit aduse în model, trasee schițate cu Markups, parcurs animat la înălțimea ochiului, iar RhinoAI generează studii de însorire la solstiții ca layout-uri editabile.",
+      "descEn": "An answer to the critique “the project isn't responding to its surroundings”: the site analysis narrows down to arrival, views with privacy, and sunlight. In Rhino: site diagrams brought into the model, routes sketched with Markups, a walk-through at eye level, and RhinoAI builds solstice sun studies as editable layouts.",
+      "n": 7,
+      "accept": "Da",
+      "manual": true
     }
   ]
 }
